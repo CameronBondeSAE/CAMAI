@@ -9,10 +9,17 @@ public class MrDudes_Model : CharacterBase
 		base.Start();
 
 		GetComponent<Health>().OnHurtEvent += MrDudes_Model_OnHurtEvent;
+		GetComponent<Health>().OnDeathEvent += MrDudes_Model_OnDeathEvent;
+	}
+
+	private void MrDudes_Model_OnDeathEvent()
+	{
+		Destroy(gameObject);
 	}
 
 	private void MrDudes_Model_OnHurtEvent()
 	{
-		transform.localScale -= new Vector3(0.1f, 0.1f, 0.1f);
+		float scaleChange = GetComponent<Health>().lastHealthChangedAmount/100f;
+		transform.localScale -= new Vector3(-scaleChange, -scaleChange, -scaleChange);
 	}
 }

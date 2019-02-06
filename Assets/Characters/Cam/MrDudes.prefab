@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 2495383367187495349}
   - component: {fileID: 7649403968653340387}
   - component: {fileID: 361426406107473413}
+  - component: {fileID: 7655335203726710608}
   m_Layer: 0
   m_Name: MrDudes
   m_TagString: Untagged
@@ -143,3 +144,21 @@ MonoBehaviour:
   amount: 100
   maxEnergy: 100
   regenEnergySpeed: 1
+--- !u!114 &7655335203726710608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7273861955753592288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7fadc854e6ad3547ac6e4641878350e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: 
+  debugText: 
+  speedMultiplier: 1
+  decelerationMultiplier: 0.9
+  damageMultiplier: 1
+  target: {x: 0, y: 0, z: 0}
