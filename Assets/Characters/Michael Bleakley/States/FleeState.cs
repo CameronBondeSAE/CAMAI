@@ -11,6 +11,10 @@
         public override void Execute()
         {
             base.Execute();
+            /*
+             * get threat locations and move away from them
+             * or get one threat / the main target and move away
+             */
             print("Fleeing");
         }
 

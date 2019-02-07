@@ -1,4 +1,5 @@
-﻿using Michael;
+﻿using System.Linq;
+using Michael;
 using UnityEngine;
 using UnityEngineInternal.Input;
 
@@ -6,8 +7,7 @@ namespace Michael
 {
     public class Vestra_Model : CharacterBase
     {
-        private GameObject[] _threats;
-        public GameObject target;
+        public  GameObject[] _threats;
 
         public override void Start()
         {
@@ -30,7 +30,7 @@ namespace Michael
 
         private void OnHurtEvent()
         {
-
+            if (GetComponent<Health>().Amount < 30) ChangeState(fleeState);
         }
 
         private void OnDeathEvent()
@@ -64,21 +64,23 @@ namespace Michael
             currentState = newState;
         }
 
-        public void OverrideState()
+        private void OverrideState()
         {
             /*
              * if threat found change to attack
              * if all threats gone change to roam
              * if health low flee/ activate ability
              */
-            for (int i = 0; i < _threats.Length; i++)
+            if (currentState != attackState)
             {
-                if (_threats[i] != null)
+                foreach (var t in _threats)
                 {
-                    ChangeState(attackState);
+                    if (t != null)
+                    {
+                        ChangeState(attackState);
+                    }
                 }
             }
-
         }
 
         #endregion
@@ -90,7 +92,7 @@ namespace Michael
 
         private void OnTriggerEnter(Collider other)
         {
-        
+            _threats.Append(other.gameObject);
         }
     }
 }
