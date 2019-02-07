@@ -1,0 +1,13 @@
+fileFormatVersion: 2
+guid: 9c681ad27656efa43aaadb6cde321ae5
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - spiritBomb: {fileID: 3579346769263642720, guid: c5c3e4ca1572f0f42a002f62904e1533,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

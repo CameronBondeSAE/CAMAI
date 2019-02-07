@@ -2,27 +2,27 @@
 
 namespace Kennith
 {
-    public class AttackState_Kennith : StateBase_Kennith
+    public class MoveState : StateBase
     {
         public override void Enter()
         {
             base.Enter();
             
-            Debug.Log("Attack Enter", gameObject);
+            Debug.Log("Move Enter", gameObject);
         }
 
         public override void Execute()
         {
             base.Execute();
             
-            Debug.Log("Attack Update", gameObject);
+            Debug.Log("Move Execute", gameObject);
         }
 
         public override void Exit()
         {
             base.Exit();
             
-            Debug.Log("Attack Exit", gameObject);
+            Debug.Log("Move Exit", gameObject);
         }
     }
 

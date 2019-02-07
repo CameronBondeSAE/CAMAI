@@ -10,7 +10,6 @@ public class EnergyPickup : PickupBase
 
 		if (!other.isTrigger)
 		{
-
 			if (other.GetComponent<Energy>())
 			{
 				other.GetComponent<Energy>().Change(amount);

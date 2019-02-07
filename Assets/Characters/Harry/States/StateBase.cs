@@ -2,7 +2,7 @@
 
 namespace Kennith
 {
-    public class StateBase_Kennith : MonoBehaviour
+    public class StateBase : MonoBehaviour
     {
         public virtual void Enter()
         {
@@ -16,7 +16,7 @@ namespace Kennith
 
         public virtual void Exit()
         {
-        
+            GetComponent<Kennith_Controller>().EvaluateNextMove();
         }
     }
 
