@@ -11,9 +11,9 @@ namespace Auriel
 			base.Enter();
 		}
 
-		public override void Update()
+		public override void Execute()
 		{
-			base.Update();
+			base.Execute();
 		}
 
 		public override void Exit()
