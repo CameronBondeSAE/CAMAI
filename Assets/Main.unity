@@ -655,7 +655,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-22940
+  m_Name: pb_Mesh24802
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   - {fileID: 9097640740566466123, guid: f38985040fc1ac041bb9f9baf46bce1c, type: 3}
   - {fileID: 6071121813599348559, guid: f469dd4ff9ed66b4187f68f98dec949e, type: 3}
   - {fileID: 119269581116425397, guid: 3fb8fe9fec2d8194a90132941396838c, type: 3}
-  maxClones: 5
+  maxClones: 1
   arenaSize: 10
   timedSpawnInterval: 0
   checkForEmptySpace: 1
