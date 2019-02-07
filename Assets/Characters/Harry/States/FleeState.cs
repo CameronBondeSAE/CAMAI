@@ -2,27 +2,27 @@
 
 namespace Kennith
 {
-    public class WobbleState_Kennith : StateBase_Kennith
+    public class FleeState : StateBase
     {
         public override void Enter()
         {
             base.Enter();
             
-            Debug.Log("Wobble Start", gameObject);
+            Debug.Log("Flee Enter", gameObject);
         }
 
         public override void Execute()
         {
             base.Execute();
             
-            Debug.Log("Wobble Update", gameObject);
+            Debug.Log("Flee Execute", gameObject);
         }
 
         public override void Exit()
         {
-            base.Exit(); 
+            base.Exit();
             
-            Debug.Log("Wobble Exit", gameObject);
+            Debug.Log("Flee Exit", gameObject);
         }
     }
 

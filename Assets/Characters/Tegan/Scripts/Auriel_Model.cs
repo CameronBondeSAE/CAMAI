@@ -14,7 +14,7 @@ namespace Auriel
 
 		public void ChangeState (StateBase newState)
 		{
-			currentState.Exit();
+			//currentState.Exit();
 			newState.Enter();
 			currentState = newState;
 		}
@@ -29,11 +29,11 @@ namespace Auriel
 			base.Start();
 		}
 
-		public void Update()
+		public void Update() 
 		{
 			if (currentState != null)
 			{
-				currentState.Update();
+				currentState.Execute();
 			}
 		}
 	}

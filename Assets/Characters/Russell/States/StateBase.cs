@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-namespace Kennith
+namespace Russell
 {
-    public class StateBase_Kennith : MonoBehaviour
+    public class StateBase : MonoBehaviour
     {
         public virtual void Enter()
         {
@@ -21,4 +23,3 @@ namespace Kennith
     }
 
 }
-

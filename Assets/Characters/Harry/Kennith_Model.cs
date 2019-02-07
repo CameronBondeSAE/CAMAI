@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 
 namespace Kennith
@@ -8,30 +9,42 @@ namespace Kennith
     public class Kennith_Model : CharacterBase
     {
 
-        public StateBase_Kennith attackState;
-        public StateBase_Kennith wobbleState;
-        public StateBase_Kennith currentState;
-        
-        
-        
-        public override void Start()
-        {
-            base.Start();
+        public StateBase attackState, moveState, fleeState, idleState;
+        public StateBase currentState;
 
-            GetComponent<Health>().OnHurtEvent += Kennith_Model_OnHurtEvent;
-            GetComponent<Health>().OnDeathEvent += Kennith_Model_OnDeathEvent;
+        public void ChangeState(StateBase newState)
+        {
+            if (currentState == newState) return;
+            
+            newState.Enter();
+            currentState = newState;
+
         }
 
-        private void Kennith_Model_OnDeathEvent()
+        private void Awake()
         {
-            Destroy(gameObject);
+            attackState = GetComponent<AttackState>();
+            moveState = GetComponent<MoveState>();
+            fleeState = GetComponent<FleeState>();
+            idleState = GetComponent<IdleState>();
+            
+            currentState = idleState;
+            currentState.Enter();
         }
 
-        private void Kennith_Model_OnHurtEvent()
+        private void Update()
         {
-            float scaleChange = GetComponent<Health>().lastHealthChangedAmount/100f;
-            transform.localScale -= new Vector3(-scaleChange, -scaleChange, -scaleChange);
+            // Hacking/Testing
+            
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                GetComponent<Kennith_Controller>().EvaluateNextMove();
+                Debug.Log("input down");
+            }
+            
+            currentState.Execute();
         }
+        
     }
     
 }
