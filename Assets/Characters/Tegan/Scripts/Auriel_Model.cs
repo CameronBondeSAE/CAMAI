@@ -29,11 +29,11 @@ namespace Auriel
 			base.Start();
 		}
 
-		public void Update()
+		public void Update() 
 		{
 			if (currentState != null)
 			{
-				currentState.Update();
+				currentState.Execute();
 			}
 		}
 	}
