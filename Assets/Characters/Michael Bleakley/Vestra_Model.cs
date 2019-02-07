@@ -13,6 +13,7 @@ namespace Michael
         {
             GetComponent<Health>().OnHurtEvent += OnHurtEvent;
             GetComponent<Health>().OnDeathEvent += OnDeathEvent;
+            GetComponent<Energy>().OnReducingEvent += OnReducingEvent;
         }
 
         private void Update()
@@ -35,11 +36,19 @@ namespace Michael
 
         private void OnDeathEvent()
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
 
         #endregion
 
+        #region Energy
+
+        private void OnReducingEvent()
+        {
+            if (GetComponent<Energy>().Amount < 20) ChangeState(fleeState);
+        }
+
+        #endregion
         #region States
 
         public StateBase roamState;
