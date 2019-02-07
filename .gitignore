@@ -35,3 +35,11 @@ sysinfo.txt
 *.apk
 *.unitypackage
 .gradle/
+
+# Rider
+.idea/
+Assets/Plugins/Editor/JetBrains/
+Assets/Plugins/Editor/JetBrains.meta
+
+# Misc - Maybe still be needed at some stage!
+Assets/Plugins/Editor.meta
