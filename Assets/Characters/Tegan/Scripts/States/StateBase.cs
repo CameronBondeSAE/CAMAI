@@ -2,17 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StateBase : MonoBehaviour
+namespace Auriel
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public class StateBase : MonoBehaviour
+	{
+		public virtual void Enter()
+		{
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		}
+
+		public virtual void Update()
+		{
+
+		}
+
+		public virtual void Exit()
+		{
+
+		}
+	}
 }

@@ -2,17 +2,39 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Auriel_Model : MonoBehaviour
+namespace Auriel
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+	public class Auriel_Model : CharacterBase
+	{
+		public StateBase attackState;
+		public StateBase idleState;
+		public StateBase movementState;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+		public StateBase currentState;
+
+		public void ChangeState (StateBase newState)
+		{
+			currentState.Exit();
+			newState.Enter();
+			currentState = newState;
+		}
+
+		private void Awake()
+		{
+			ChangeState(movementState);
+		}
+
+		public override void Start()
+		{
+			base.Start();
+		}
+
+		public override void Update()
+		{
+			if (currentState != null)
+			{
+				currentState.Update();
+			}
+		}
+	}
 }
