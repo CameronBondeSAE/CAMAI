@@ -14,7 +14,7 @@ namespace Auriel
 
 		public void ChangeState (StateBase newState)
 		{
-			currentState.Exit();
+			//currentState.Exit();
 			newState.Enter();
 			currentState = newState;
 		}
