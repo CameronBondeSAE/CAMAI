@@ -1,13 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Josh;
 
 public class PlatoBehaviour : CharacterBase
 {
-    public StateBase currentstate;
+    public Josh.StateBase currentstate;
 
-    public void ChangeState(StateBase newstate)
+    public void ChangeState(Josh.StateBase newstate)
     {
         //check newstate is not current state
         if (newstate != currentstate)
