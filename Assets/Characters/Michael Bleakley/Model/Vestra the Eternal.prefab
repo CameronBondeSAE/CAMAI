@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 8870138744568575290}
   - component: {fileID: 2014302519459914029}
   - component: {fileID: 339034714944262200}
+  - component: {fileID: 1906386952255758725}
+  - component: {fileID: 5968490709956612533}
   m_Layer: 0
   m_Name: Vestra the Eternal
   m_TagString: Untagged
@@ -113,6 +115,9 @@ MonoBehaviour:
   decelerationMultiplier: 0.9
   damageMultiplier: 1
   target: {x: 0, y: 0, z: 0}
+  roamState: {fileID: 339034714944262200}
+  attackState: {fileID: 5968490709956612533}
+  fleeState: {fileID: 1906386952255758725}
   currentState: {fileID: 0}
 --- !u!114 &8870138744568575290
 MonoBehaviour:
@@ -156,5 +161,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e87ec7b5f07aa6440935ecca1b8e92b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1906386952255758725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6071121813599348559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cc4e17efd72f8940a4820313e9b99c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5968490709956612533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6071121813599348559}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4e68abc1aefc0740affd558cc047d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

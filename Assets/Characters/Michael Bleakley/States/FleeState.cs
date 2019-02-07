@@ -1,19 +1,23 @@
-﻿using Michael;
-
-public class FleeState :  StateBase
+﻿namespace Michael
 {
-    public override void Enter()
+    public class FleeState : StateBase
     {
-        base.Enter();
-    }
+        public override void Enter()
+        {
+            base.Enter();
+            print("Entry of Flee");
+        }
 
-    public override void Execute()
-    {
-        base.Execute();
-    }
+        public override void Execute()
+        {
+            base.Execute();
+            print("Fleeing");
+        }
 
-    public override void Exit()
-    {
-        base.Exit();
+        public override void Exit()
+        {
+            base.Exit();
+            print("Exit of Flee");
+        }
     }
 }

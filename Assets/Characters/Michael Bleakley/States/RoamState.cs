@@ -1,23 +1,24 @@
-﻿using Michael;
-
-
-public class RoamState : StateBase
+﻿namespace Michael
 {
-    public override void Enter()
+    public class RoamState : StateBase
     {
-        base.Enter();
-        print("Entry Accepted");
-    }
 
-    public override void Execute()
-    {
-        base.Execute();
-        print("Wait what?!?!");
-    }
+        public override void Enter()
+        {
+            base.Enter();
+            print("Entry of roam");
+        }
 
-    public override void Exit()
-    {
-        base.Exit();
-        print("Exit Accepted");
+        public override void Execute()
+        {
+            base.Execute();
+            print("roaming");
+        }
+
+        public override void Exit()
+        {
+            base.Exit();
+            print("Exit of roam");
+        }
     }
 }
