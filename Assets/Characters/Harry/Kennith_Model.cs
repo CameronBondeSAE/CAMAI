@@ -1,7 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEditorInternal;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Kennith
 {
@@ -9,7 +7,8 @@ namespace Kennith
     public class Kennith_Model : CharacterBase
     {
 
-        public StateBase attackState, moveState, fleeState, idleState;
+        public StateBase spiritBombState;
+        public StateBase moveState, fleeState, idleState;
         public StateBase currentState;
 
         public void ChangeState(StateBase newState)
@@ -23,7 +22,7 @@ namespace Kennith
 
         private void Awake()
         {
-            attackState = GetComponent<AttackState>();
+            spiritBombState = GetComponent<SpiritBomb>();
             moveState = GetComponent<MoveState>();
             fleeState = GetComponent<FleeState>();
             idleState = GetComponent<IdleState>();

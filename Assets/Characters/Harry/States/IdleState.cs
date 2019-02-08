@@ -9,6 +9,8 @@ namespace Kennith
             base.Enter();
             
             Debug.Log("Idle Enter", gameObject);
+            Invoke("Exit", 2f);
+            
         }
 
         public override void Execute()
@@ -16,12 +18,13 @@ namespace Kennith
             base.Execute();
             
             Debug.Log("Idle Execute", gameObject);
+            GetComponent<Renderer>().material.color = new Color(Random.Range(0f,1f),Random.Range(0f,1f),Random.Range(0f,1f));
         }
 
         public override void Exit()
         {
             base.Exit();
-            
+            GetComponent<Renderer>().material.color = new Color(1,1,1);
             Debug.Log("Idle Exit", gameObject);
         }
     }

@@ -2,7 +2,7 @@
 
 namespace Kennith
 {
-    public class AttackState : StateBase
+    public class SpiritBomb : StateBase
     {
 
         public GameObject spiritBomb;
@@ -21,6 +21,7 @@ namespace Kennith
 
             spawnedSpiritBomb = Instantiate(spiritBomb, transform.position + new Vector3(0,2,0), transform.rotation);
             Invoke("Exit", spiritBombDelay);
+            
         }
 
         public override void Execute()
@@ -31,7 +32,7 @@ namespace Kennith
 
             spawnedSpiritBomb.transform.localScale += scaleIncrease;
             spawnedSpiritBomb.transform.position += posIncrease;
-
+        
         }
 
         public override void Exit()
@@ -45,4 +46,3 @@ namespace Kennith
     }
 
 }
-

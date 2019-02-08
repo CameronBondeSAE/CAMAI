@@ -9,6 +9,8 @@ namespace Kennith
             base.Enter();
             
             Debug.Log("Flee Enter", gameObject);
+            GetComponent<Rigidbody>().velocity = Vector3.up * 30;
+            Invoke("Exit", 3f);
         }
 
         public override void Execute()

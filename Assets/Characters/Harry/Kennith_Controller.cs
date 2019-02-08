@@ -14,10 +14,10 @@ namespace Kennith
 
         public void EvaluateNextMove()
         {
-            if (kennith.currentState == kennith.attackState) kennith.ChangeState(kennith.moveState); 
+            if (kennith.currentState == kennith.spiritBombState) kennith.ChangeState(kennith.moveState); 
             else if (kennith.currentState == kennith.moveState) kennith.ChangeState(kennith.fleeState); 
             else if (kennith.currentState == kennith.fleeState) kennith.ChangeState(kennith.idleState); 
-            else if (kennith.currentState == kennith.idleState) kennith.ChangeState(kennith.attackState); 
+            else if (kennith.currentState == kennith.idleState) kennith.ChangeState(kennith.spiritBombState); 
         }
         
     }

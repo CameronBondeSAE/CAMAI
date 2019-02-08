@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5270608428410377824}
   - component: {fileID: 6277559149949596341}
   - component: {fileID: 3489883145994025901}
+  - component: {fileID: 6806361822364699304}
   m_Layer: 0
   m_Name: SpiritBomb
   m_TagString: Untagged
@@ -108,3 +109,15 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &6806361822364699304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3579346769263642720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1231a7b7a567c554cb4cce7dea74732d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
