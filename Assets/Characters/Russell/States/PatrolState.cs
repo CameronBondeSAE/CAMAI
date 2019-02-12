@@ -1,37 +1,37 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Russell;
 using UnityEngine;
 using System;
-
-namespace Russell
-{
-    public class RotateState : StateBase
+namespace Russell {
+    public class PatrolState : StateBase
+        
     {
-        public event Action OnDoneRotating;
+        public event Action OnDoneMoving;
         public override void Enter()
         {
             base.Enter();
-            transform.Rotate(0, 90, 0);
             Invoke("RunEvent", 5f);
+            Debug.Log("Start Moving", gameObject);
         }
-    
+
         public override void Execute()
         {
             base.Execute();
+            GetComponent<Rigidbody>().velocity = transform.forward * 10;
+            Debug.Log("Im moving", gameObject);
         }
-    
+
         public override void Exit()
         {
             base.Exit();
-            
+            GetComponent<Rigidbody>().velocity = transform.forward * 0;
 
         }
+
         private void RunEvent()
         {
-            OnDoneRotating();
+            OnDoneMoving();
         }
     }
-
 }
 
