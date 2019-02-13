@@ -11,6 +11,7 @@ public class Kyllarr_Model : CharacterBase
     public StateBase attackState;
     public StateBase rotateState;
     public StateBase patrolState;
+    
 
     public void ChangeState(StateBase newState)
     {
@@ -52,5 +53,18 @@ public class Kyllarr_Model : CharacterBase
     private void Kyllarr_Model_OnDoneRotating()
     {
         ChangeState(patrolState);
+    }
+
+    public void FanFire()
+    {
+        Debug.Log("FanFire");
+    }
+    public void Attack()
+    {
+        Debug.Log("Attack");
+    }
+    public void Execute()
+    {
+        Debug.Log("Execute");
     }
 }

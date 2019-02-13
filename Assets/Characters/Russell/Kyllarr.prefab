@@ -12,6 +12,15 @@ GameObject:
   - component: {fileID: 4142519013409526049}
   - component: {fileID: 6558456349500912514}
   - component: {fileID: 7691548005404922055}
+  - component: {fileID: 1302546990124985053}
+  - component: {fileID: 316705306940305907}
+  - component: {fileID: 1360217128388490437}
+  - component: {fileID: 8367293175752711615}
+  - component: {fileID: 3814119951544670395}
+  - component: {fileID: 8055369067861555089}
+  - component: {fileID: 7477315379121617651}
+  - component: {fileID: 4470851380010848717}
+  - component: {fileID: 6666481204868232413}
   m_Layer: 0
   m_Name: Kyllarr
   m_TagString: Untagged
@@ -92,3 +101,148 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1302546990124985053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741071797372873685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee43c43c674aacf459b9864b3333e078, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &316705306940305907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741071797372873685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc46d595dcd4f54fb7daabec50090c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1360217128388490437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741071797372873685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f062c5a30db5ef48b3474ef77f32457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  characterName: 
+  debugText: 
+  speedMultiplier: 1
+  decelerationMultiplier: 0.9
+  damageMultiplier: 1
+  target: {x: 0, y: 0, z: 0}
+  currentState: {fileID: 0}
+  attackState: {fileID: 0}
+  rotateState: {fileID: 316705306940305907}
+  patrolState: {fileID: 1302546990124985053}
+--- !u!114 &8367293175752711615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741071797372873685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boundGraphSerialization: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":5530.0,"y":5177.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":5206.0,"y":5347.0},"_tag":"FanFire","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"3"},{"_condition":{"valueA":{"_name":"Energy","_targetVariableID":"723ee4ab-ac31-4415-a536-09a631df3436"},"valueB":{"_value":100},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5059.0,"y":5481.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"4"},{"_condition":{"valueA":{"_name":"NumberOfEnemiesAround","_targetVariableID":"f37fdae3-df39-40cf-9b49-4756ff1d21d1"},"valueB":{"_value":3},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5208.0,"y":5477.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"8"},{"_action":{"log":{"_value":"FanFire"},"verboseMode":"DisplayLabelOnly","$type":"NodeCanvas.Tasks.Actions.DebugLogText"},"_position":{"x":5461.0,"y":5478.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"12"},{"_position":{"x":5774.0,"y":5358.0},"_tag":"Execute","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"15"},{"_condition":{"valueA":{"_name":"OnCooldown","_targetVariableID":"9d9191d2-deb7-49c8-a5e7-8f7343f837be"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_position":{"x":5607.0,"y":5546.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"16"},{"_condition":{"valueA":{"_name":"isEnemyWithinRange","_targetVariableID":"5641fe12-bfaf-4e01-afb5-e43349f3c151"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_position":{"x":5727.0,"y":5484.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"20"},{"_condition":{"valueA":{"_name":"EnemyBelowHealth","_targetVariableID":"29b4a6ea-05ca-4387-93f1-7ebd2b52fbb9"},"checkType":"LessThan","valueB":{"_value":10},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5931.0,"y":5546.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"24"},{"_action":{"log":{"_value":"Execute"},"$type":"NodeCanvas.Tasks.Actions.DebugLogText"},"_position":{"x":6067.0,"y":5482.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"28"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"15"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"12"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"16"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"20"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"24"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"28"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"primeNode":{"$ref":"2"},"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  boundGraphObjectReferences: []
+  enableAction: 0
+  disableAction: 0
+  _graph: {fileID: 0}
+  _blackboard: {fileID: 3814119951544670395}
+--- !u!114 &3814119951544670395
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741071797372873685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _serializedBlackboard: '{"_variables":{"Energy":{"_name":"Energy","_id":"723ee4ab-ac31-4415-a536-09a631df3436","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"NumberOfEnemiesAround":{"_name":"NumberOfEnemiesAround","_id":"f37fdae3-df39-40cf-9b49-4756ff1d21d1","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"isEnemyWithinRange":{"_name":"isEnemyWithinRange","_id":"5641fe12-bfaf-4e01-afb5-e43349f3c151","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"EnemyBelowHealth":{"_name":"EnemyBelowHealth","_id":"29b4a6ea-05ca-4387-93f1-7ebd2b52fbb9","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"OnCooldown":{"_name":"OnCooldown","_id":"9d9191d2-deb7-49c8-a5e7-8f7343f837be","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
+  _objectReferences: []
+--- !u!114 &8055369067861555089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741071797372873685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8471732199156f54cbca6111884c7904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 100
+  maxAmount: 100
+  lastHealingDealer: {fileID: 0}
+  lastDamagingDealer: {fileID: 0}
+  lastHealthChangedAmount: 0
+--- !u!114 &7477315379121617651
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741071797372873685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7796df6e67662e74ea16af2eb800690a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 100
+  maxEnergy: 100
+  regenEnergySpeed: 1
+--- !u!135 &4470851380010848717
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741071797372873685}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &6666481204868232413
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741071797372873685}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
