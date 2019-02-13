@@ -210,10 +210,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6071121813599348559, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
+    - target: {fileID: 2255368251246569485, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
         type: 3}
-      propertyPath: m_Name
-      value: Vestra the Eternal
+      propertyPath: _threats.Array.size
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5441321179296262911, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
         type: 3}
@@ -270,10 +270,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2255368251246569485, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
+    - target: {fileID: 6071121813599348559, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
         type: 3}
-      propertyPath: _threats.Array.size
-      value: 1
+      propertyPath: m_Name
+      value: Vestra the Eternal
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6ee07d7debe2d0a449a80ac6395e7ac5, type: 3}
