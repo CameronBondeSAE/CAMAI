@@ -1,12 +1,22 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Josh;
 using UnityEngine;
 
-public class PlatoBehaviour : Josh.StateMachine
+public class LeigonaireBehaviour : CharacterBase
 {
-    public List<GameObject> troops;
-    
+    public GameObject Leader;
+    public Josh.StateBase currentstate;
+
+    public void ChangeState(Josh.StateBase newstate)
+    {
+        //check newstate is not current state
+        if (newstate != currentstate)
+        {
+            if(currentstate) currentstate.Exit();
+            currentstate = newstate;
+            currentstate.Enter();
+        }
+    }
     public override void Start()
     {
         base.Start();
