@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using Michael;
+using NodeCanvas.BehaviourTrees;
 using UnityEngine;
 using UnityEngineInternal.Input;
 
@@ -23,7 +24,7 @@ namespace Michael
             if (Input.GetKeyDown(KeyCode.A)) ChangeState(fleeState);
             if (Input.GetKeyDown(KeyCode.S)) ChangeState(attackState);
             if (Input.GetKeyDown(KeyCode.D)) ChangeState(roamState);
-
+            if (Input.GetKeyDown(KeyCode.Z)) GetComponent<BehaviourTreeOwner>().Tick();
             OverrideState();
         }
 
@@ -40,7 +41,6 @@ namespace Michael
         }
 
         #endregion
-
         #region Energy
 
         private void OnReducingEvent()
@@ -57,7 +57,7 @@ namespace Michael
 
         public StateBase currentState;
 
-        private void ChangeState(StateBase newState)
+        public void ChangeState(StateBase newState)
         {
             /*
              * check current state
@@ -93,7 +93,24 @@ namespace Michael
         }
 
         #endregion
+        # region Abilities
 
+        public override void Ability1()
+        {
+            Debug.Log("ult");
+        }
+
+        public override void Ability2()
+        {
+            Debug.Log("ability 1");
+        }
+
+        public override void Ability3()
+        {
+            Debug.Log("ability 2");
+        }
+
+        #endregion
         public override void Move(Vector3 speedDirection)
         {
             print("moving");
