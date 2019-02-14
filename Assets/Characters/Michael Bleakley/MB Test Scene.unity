@@ -112,28 +112,201 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &692511511 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6071121813599348559, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
+--- !u!114 &543101950 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1906386952255758725, guid: 1ded1513d8ca93b4eb561d201299acdb,
     type: 3}
-  m_PrefabInstance: {fileID: 903402684}
+  m_PrefabInstance: {fileID: 601936342}
   m_PrefabAsset: {fileID: 0}
---- !u!54 &692511522
-Rigidbody:
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cc4e17efd72f8940a4820313e9b99c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &543101951 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 339034714944262200, guid: 1ded1513d8ca93b4eb561d201299acdb,
+    type: 3}
+  m_PrefabInstance: {fileID: 601936342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e87ec7b5f07aa6440935ecca1b8e92b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1001 &601936342
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6071121813599348559, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+      propertyPath: m_Name
+      value: Vestra the Eternal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 25.45
+      objectReference: {fileID: 0}
+    - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.34
+      objectReference: {fileID: 0}
+    - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.56
+      objectReference: {fileID: 0}
+    - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2255368251246569485, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+      propertyPath: wavePoint
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4715649249818889984, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+      propertyPath: _graph
+      value: 
+      objectReference: {fileID: 1562066988}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1ded1513d8ca93b4eb561d201299acdb, type: 3}
+--- !u!1 &681100453
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 692511511}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 94
-  m_CollisionDetection: 0
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 681100457}
+  - component: {fileID: 681100456}
+  - component: {fileID: 681100455}
+  - component: {fileID: 681100454}
+  m_Layer: 0
+  m_Name: Plane
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &681100454
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681100453}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 0
+  m_CookingOptions: 14
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &681100455
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681100453}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &681100456
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681100453}
+  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &681100457
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681100453}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 90, y: 90, z: 90}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &748173079
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,80 +376,33 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1001 &903402684
-PrefabInstance:
+--- !u!114 &1562066988
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2255368251246569485, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
-        type: 3}
-      propertyPath: _threats.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441321179296262911, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.47355986
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441321179296262911, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.29948092
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441321179296262911, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.13121271
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441321179296262911, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441321179296262911, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441321179296262911, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441321179296262911, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441321179296262911, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441321179296262911, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441321179296262911, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5441321179296262911, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6071121813599348559, guid: 6ee07d7debe2d0a449a80ac6395e7ac5,
-        type: 3}
-      propertyPath: m_Name
-      value: Vestra the Eternal
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 6ee07d7debe2d0a449a80ac6395e7ac5, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a686a47eee2fa44cb0a34b5d86e4d5e, type: 3}
+  m_Name: Vestra the Eternal BehaviourTree
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","translation":{"x":-4740.0,"y":-4422.0},"zoomFactor":0.8554916,"nodes":[{"_position":{"x":6273.0,"y":5268.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":5649.0,"y":5423.0},"_tag":"check
+    for enemy","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"3"},{"_condition":{"valueA":{"_name":"can
+    see enemy","_targetVariableID":"2d71822e-e039-47c3-85e1-7be6a1193800"},"valueB":{"_value":true},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_position":{"x":5499.0,"y":5505.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"4"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":1,"$type":"Michael.RoamState"}}],"parameterIsByRef":[false],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":5706.0,"y":5507.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"8"},{"_position":{"x":5966.0,"y":5609.0},"_tag":"Check
+    for attack state","_comment":"","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"15"},{"_condition":{"method":{"_baseInfo":"Health|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":30.0,"$type":"System.Single"}},"comparison":"GreaterThan","$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":5847.0,"y":5690.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"16"},{"_position":{"x":6108.0,"y":5694.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"20"},{"_position":{"x":5847.0,"y":5786.0},"_tag":"Check
+    for ult usability","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"21"},{"_condition":{"method":{"_baseInfo":"Energy|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":70.0,"$type":"System.Single"}},"comparison":"GreaterOrEqualTo","$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":5707.0,"y":5854.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"22"},{"_action":{"method":{"_baseInfo":"CharacterBase|Ability1|System.Void","_paramsInfo":""},"parameters":[],"parameterIsByRef":[],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":5913.0,"y":5859.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"26"},{"_position":{"x":6009.0,"y":5931.0},"_tag":"First
+    Ability","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"32"},{"_condition":{"method":{"_baseInfo":"Energy|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":40.0,"$type":"System.Single"}},"comparison":"GreaterOrEqualTo","$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":5918.0,"y":6004.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"33"},{"_action":{"method":{"_baseInfo":"CharacterBase|Ability2|System.Void","_paramsInfo":""},"parameters":[],"parameterIsByRef":[],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":6111.0,"y":6006.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"37"},{"_position":{"x":6225.0,"y":5779.0},"_tag":"Second
+    ability","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"43"},{"_condition":{"method":{"_baseInfo":"Energy|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":30.0,"$type":"System.Single"}},"comparison":"GreaterOrEqualTo","$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":6085.0,"y":5858.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"44"},{"_action":{"method":{"_baseInfo":"CharacterBase|Ability3|System.Void","_paramsInfo":""},"parameters":[],"parameterIsByRef":[],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":6285.0,"y":5854.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"48"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":2,"$type":"Michael.FleeState"}}],"parameterIsByRef":[false],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":6494.0,"y":5375.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"54"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"15"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"54"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"16"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"20"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"20"},"_targetNode":{"$ref":"21"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"20"},"_targetNode":{"$ref":"32"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"20"},"_targetNode":{"$ref":"43"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"21"},"_targetNode":{"$ref":"22"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"21"},"_targetNode":{"$ref":"26"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"32"},"_targetNode":{"$ref":"33"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"32"},"_targetNode":{"$ref":"37"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"43"},"_targetNode":{"$ref":"44"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"43"},"_targetNode":{"$ref":"48"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"primeNode":{"$ref":"2"},"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}},"derivedData":{"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  _objectReferences:
+  - {fileID: 0}
+  - {fileID: 543101951}
+  - {fileID: 543101950}
+  _deserializationFailed: 0
+  repeat: 0
+  updateInterval: 0
 --- !u!1001 &1877980878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -318,7 +444,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4349234630103694, guid: aaa4dad1d6001a5419643e733cc4ff33, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4349234630103694, guid: aaa4dad1d6001a5419643e733cc4ff33, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

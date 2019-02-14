@@ -133,7 +133,8 @@ MonoBehaviour:
   speedMultiplier: 20
   decelerationMultiplier: 0.9
   damageMultiplier: 1
-  target: {x: 0, y: 0, z: 0}
+  _target: {fileID: 0}
+  _targetPosition: {x: 0, y: 0, z: 0}
   _threats: []
   rb: {fileID: 745678185094111092}
   wavePoint: {fileID: 0}
@@ -185,7 +186,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 5
   destination: {x: 0, y: 0, z: 0}
-  destinationRange: 10
+  destinationRange: 20
 --- !u!114 &1906386952255758725
 MonoBehaviour:
   m_ObjectHideFlags: 0
