@@ -4,30 +4,31 @@ namespace Kennith
 {
     public class IdleState : StateBase
     {
-        public override void Enter()
+        private Renderer myRenderer;
+
+        private void Start()
         {
-            base.Enter();
-            
-            Debug.Log("Idle Enter", gameObject);
-            Invoke("Exit", 2f);
-            
+            myRenderer = GetComponentInParent<Renderer>();
         }
 
-        public override void Execute()
+        public override void Enter()
         {
-            base.Execute();
-            
+            Debug.Log("Idle Enter", gameObject);
+            StartCoroutine(DelayExit(endDelay));
+        }
+
+        public override void Tick()
+        {
             Debug.Log("Idle Execute", gameObject);
-            GetComponent<Renderer>().material.color = new Color(Random.Range(0f,1f),Random.Range(0f,1f),Random.Range(0f,1f));
+            myRenderer.material.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
         }
 
         public override void Exit()
         {
-            base.Exit();
-            GetComponent<Renderer>().material.color = new Color(1,1,1);
+            myRenderer.material.color = new Color(1, 1, 1);
             Debug.Log("Idle Exit", gameObject);
+
+            base.Exit();
         }
     }
-
 }
-
