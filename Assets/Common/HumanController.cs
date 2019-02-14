@@ -49,7 +49,7 @@ public class HumanController : MonoBehaviour
 			Physics.Raycast(ray, out hitInfo);
 			Debug.DrawLine(hitInfo.point, hitInfo.point + Vector3.up * 10, Color.red);
 
-			TargetModel.Target = hitInfo.point;
+			TargetModel.TargetPosition = hitInfo.point;
 		}
 	}
 

@@ -11,27 +11,9 @@ namespace Cam
 
 public class MrDudes_Model : CharacterBase
 {
-	private float _amountOfStuff;
-	public float AmountOfStuff
-	{
-		get
-		{
-			return _amountOfStuff;
-		}
-		set
-		{
-			Debug.Log("Amount changed = "+value);
-			_amountOfStuff = value;
-		}
-	}
 
-	// TODO HACK remove
-	public StateBase attackState;
-	public StateBase wobbleState;
-
-	
 	public StateBase currentState;
-	public Transform myTransform;
+	private Transform myTransform;
 	public float teleportRange;
 	public float getBigScalar;
 
@@ -62,7 +44,7 @@ public class MrDudes_Model : CharacterBase
 
 	private void Awake()
 	{
-		ChangeState(wobbleState);
+//		ChangeState(wobbleState);
 	}
 
 	public override void Start()
@@ -80,18 +62,14 @@ public class MrDudes_Model : CharacterBase
 	{
 		// Update statemachine
 		if (currentState != null) currentState.Execute();
-
-		// TODO HACK remove
-		if (Input.GetKeyDown(KeyCode.Q))
-		{
-			ChangeState(attackState);
-		}
-		if (Input.GetKeyDown(KeyCode.W))
-		{
-			ChangeState(wobbleState);
-		}
 	}
 
+	public void Move()
+	{
+		
+	}
+	
+	
 	private void MrDudes_Model_OnDeathEvent()
 	{
 		Destroy(gameObject);

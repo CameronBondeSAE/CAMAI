@@ -1,20 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using Tayx.Graphy.Utils;
 using UnityEngine;
 
-public class Manager : MonoBehaviour
+public class GameManager : SimpleSingleton<GameManager>
 {
 	public List<CharacterBase> CharacterBases;
 
-	public GameObject DeadGameObject;
-
 	[SerializeField]
-	private float uiOffset;
+//	private float uiOffset;
 
 	// Health UI (HACK: should probably go in a UIManager)
-	public ResourceBar HealthEnergyUIPrefab;
+//	public ResourceBar HealthEnergyUIPrefab;
 
-	ResourceBar healthEnergyUI;
+//	ResourceBar healthEnergyUI;
 
 	/// <summary>
 	/// Options:
@@ -25,6 +25,9 @@ public class Manager : MonoBehaviour
 
 	void Awake()
 	{
+		// First scan the world for any existing Characters, as the GameManager is a singleton that may not exist at first, until someone calls it
+		CharacterBases = FindObjectsOfType<CharacterBase>().ToList();
+		
 		CharacterBase.OnSpawned += OnSpawned;
 		CharacterBase.OnDestroyed += OnDestroyed;
 	}
@@ -38,8 +41,8 @@ public class Manager : MonoBehaviour
 	{
 		CharacterBases.Add(charBase);
 
-		healthEnergyUI = Instantiate(HealthEnergyUIPrefab);
-		healthEnergyUI.owner = charBase;
+//		healthEnergyUI = Instantiate(HealthEnergyUIPrefab);
+//		healthEnergyUI.owner = charBase;
 	}
 
 	public Vector3 thing;

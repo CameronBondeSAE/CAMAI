@@ -35,14 +35,21 @@ public class CharacterBase : MonoBehaviour
 		set { damageMultiplier = value; }
 	}
 
-	public Vector3 Target
+	[SerializeField] private GameObject _target;
+	public GameObject Target
 	{
-		get { return target; }
-		set { target = value; }
+		get { return _target; }
+		set { _target = value; }
 	}
 
-	[SerializeField] private Vector3 target;
+	public Vector3 TargetPosition
+	{
+		get { return _targetPosition; }
+		set { _targetPosition = value; }
+	}
 
+	[SerializeField] private Vector3 _targetPosition;
+	
 
 	public virtual void Start()
 	{

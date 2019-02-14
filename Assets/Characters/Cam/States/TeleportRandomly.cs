@@ -5,17 +5,17 @@ using UnityEngine;
 
 public class TeleportRandomly : StateBase
 {
-    private MrDudes_Model _mrDudesModel;
-    public AudioClip meowClip;
-    private Transform _transform;
+    public MrDudes_Model _mrDudesModel;
     public float teleportRange;
-    private AudioSource _audioSource;
+    public AudioClip meowClip;
+    public Transform _transform;
+    public AudioSource _audioSource;
 
-    private void Start()
+    private void Awake()
     {
-        _audioSource = GetComponent<AudioSource>();
-        _transform = GetComponent<Transform>();
-        _mrDudesModel = GetComponent<MrDudes_Model>();
+//        _audioSource = GetComponent<AudioSource>();
+//        _transform = GetComponent<Transform>();
+//        _mrDudesModel = GetComponent<MrDudes_Model>();
     }
 
     public override void Enter()
@@ -24,14 +24,14 @@ public class TeleportRandomly : StateBase
 
 //            Debug.Log("AttackEnter");
             
-        GetComponent<Renderer>().material.color = Color.green;
-        StartCoroutine("AttackCoroutine");
+//        GetComponent<Renderer>().material.color = Color.green;
+        StartCoroutine(AttackCoroutine());
     }
 
     public override void Execute()
     {
         base.Execute();
-        Debug.Log("AttackUpdate");
+//        Debug.Log("AttackUpdate");
     }
 
     public IEnumerator AttackCoroutine()
@@ -44,11 +44,13 @@ public class TeleportRandomly : StateBase
         _mrDudesModel.EndState();
     }
 
+
     public override void Exit()
     {
         base.Exit();
         //          Debug.Log("AttackExit");
-        GetComponent<Renderer>().material.color = Color.white;
+//        GetComponent<Renderer>().material.color = Color.white;
     }
 
+    
 }
