@@ -1,24 +1,29 @@
-﻿namespace Michael
+﻿using UnityEngine;
+
+namespace Michael
 {
     public class RoamState : StateBase
     {
+        [SerializeField]
+        private Vector3 destination;
+        public int destinationRange;
 
         public override void Enter()
         {
-            base.Enter();
-            print("Entry of roam");
+            destination = new Vector3(Random.Range(destinationRange, -destinationRange),0,Random.Range(destinationRange, -destinationRange));
+            destination += transform.position;
         }
 
         public override void Execute()
         {
             base.Execute();
-            print("roaming");
+            if (Vector3.Distance(transform.position, destination) < 1) Exit();
+            GetComponent<Vestra_Model>().Move(destination);
         }
 
         public override void Exit()
         {
             base.Exit();
-            print("Exit of roam");
         }
     }
 }
