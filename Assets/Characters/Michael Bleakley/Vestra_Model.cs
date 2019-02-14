@@ -3,16 +3,14 @@ using Michael;
 using NodeCanvas.BehaviourTrees;
 using NodeCanvas.Tasks.Actions;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngineInternal.Input;
 
 namespace Michael
 {
     public class Vestra_Model : CharacterBase
     {
-        public  GameObject[] _threats;
         public Rigidbody rb;
-
-        public GameObject wavePoint;
         
         public override void Start()
         {
@@ -75,6 +73,7 @@ namespace Michael
 
         private void OverrideState()
         {
+            currentState.Exit();
             /*
              * if threat found change to attack
              * if all threats gone change to roam
@@ -113,7 +112,38 @@ namespace Michael
 
             var targetPosition = transform.InverseTransformPoint(speedDirection);
             rb.AddRelativeTorque(0,vary * (targetPosition.x/ targetPosition.magnitude),0);
-            
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 7f))
+            {
+                if (!hitcheck(hit))
+                {
+                    rb.AddRelativeTorque(0, vary * 10, 0);
+                    /*
+                    if (Random.Range(-1, 1) < 0)
+                    {
+                        rb.AddRelativeTorque(0, vary * -1, 0);
+                    }
+                    else
+                    {
+                        rb.AddRelativeTorque(0, vary, 0);
+                    }
+                    */
+                }
+            }
+
+            if (Physics.Raycast(transform.position, transform.forward + transform.right, out hit, 5f))
+            {
+                Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
+                if (!hitcheck(hit)) rb.AddRelativeTorque(0, -vary * 10, 0);
+            }
+
+            if (Physics.Raycast(transform.position, transform.forward - transform.right, out hit, 5f))
+            {
+                Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
+                if (!hitcheck(hit)) rb.AddRelativeTorque(0, vary * 10, 0);
+            }
+
             /*
             if (Vector3.Angle(transform.position, wavePoint.transform.position) > 0)
             {
@@ -128,9 +158,12 @@ namespace Michael
             */
        }
 
-        private void OnTriggerEnter(Collider other)
+        private bool hitcheck(RaycastHit hit)
         {
-            _threats.Append(other.gameObject);
+            if (hit.transform.gameObject.GetComponent<CharacterBase>() == null) return false;
+            Target = hit.transform.gameObject;
+            //OverrideState();
+            return true;
         }
     }
 }

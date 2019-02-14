@@ -10,7 +10,7 @@ namespace Michael
 
         public override void Enter()
         {
-            destination = new Vector3(Random.Range(destinationRange, -destinationRange),0,Random.Range(destinationRange, -destinationRange));
+            destination = new Vector3(Random.Range(-destinationRange, destinationRange),0,Random.Range(-destinationRange, destinationRange));
             destination += transform.position;
         }
 
