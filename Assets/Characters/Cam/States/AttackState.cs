@@ -1,41 +1,37 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 namespace Cam
 {
     public class AttackState : StateBase
     {
-        private MrDudes_Model _mrDudesModel;
-        public AudioClip meowClip;
-        private AudioSource _audioSource;
+        public MrDudes_Model _mrDudesModel;
 
-        private void Start()
-        {
-            _audioSource = GetComponent<AudioSource>();
-            _mrDudesModel = GetComponent<MrDudes_Model>();
-        }
+        public event Action OnAttack;
 
+        
         public override void Enter()
         {
             base.Enter();
 
-//            Debug.Log("AttackEnter");
-            
-            GetComponent<Renderer>().material.color = Color.red;
             StartCoroutine("AttackCoroutine");
         }
 
         public override void Execute()
         {
             base.Execute();
-            Debug.Log("AttackUpdate");
         }
 
         public IEnumerator AttackCoroutine()
         {
-            _audioSource.clip = meowClip;
-            _audioSource.Play();
-            
+            if (GameManager.Instance.CharacterBases.Count > 0)
+            {
+                _mrDudesModel.Target = GameManager.Instance.CharacterBases[0].gameObject;
+            }
+
+            OnAttack?.Invoke();
+
             yield return new WaitForSeconds(2);
             _mrDudesModel.EndState();
         }
@@ -43,8 +39,7 @@ namespace Cam
         public override void Exit()
         {
             base.Exit();
-  //          Debug.Log("AttackExit");
-            GetComponent<Renderer>().material.color = Color.white;
+//            GetComponent<Renderer>().material.color = Color.white;
         }
     }
 }

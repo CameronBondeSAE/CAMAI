@@ -7,6 +7,12 @@ namespace Russell {
         
     {
         public event Action OnDoneMoving;
+        public Rigidbody rb;
+        
+        private Vector3 leftMoveRay;
+        private Vector3 rightMoveRay;
+        public float minMoveDistance = 10;
+        
         public override void Enter()
         {
             base.Enter();
@@ -17,8 +23,18 @@ namespace Russell {
         public override void Execute()
         {
             base.Execute();
-            GetComponent<Rigidbody>().velocity = transform.forward * 10;
+            rb.velocity = transform.forward * 10;
             Debug.Log("Im moving", gameObject);
+            RaycastHit hit;           
+            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit))
+            {
+//                if()
+                Debug.Log(hit.transform.name);
+
+            }
+
+
+
         }
 
         public override void Exit()
