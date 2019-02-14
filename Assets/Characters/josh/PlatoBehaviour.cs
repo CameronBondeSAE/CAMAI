@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlatoBehaviour : Josh.StateMachine
 {
-    public List<GameObject> troops;
+    public CharacterBase target;
     
     public override void Start()
     {

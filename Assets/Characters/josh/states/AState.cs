@@ -15,11 +15,13 @@ namespace Josh
 
         public override void Execute()
         {
+            base.Execute();
             RaycastHit hit;
             if (Physics.Raycast(gameObject.transform.position, Vector3.down, out hit, Mathf.Infinity))
             {
                 if (hit.distance <= 2)
                 {
+                    //gameObject.GetComponent<StateMachine>().ChangeState(null);
                     Exit();
                 }
                 else
@@ -27,7 +29,6 @@ namespace Josh
                     gameObject.transform.Translate(Vector3.down);
                 }
             }
-            base.Execute();
             Debug.Log("Aupdate",gameObject);
         }
 

@@ -16,8 +16,13 @@ namespace Josh
             {
                 if(currentstate) currentstate.Exit();
                 currentstate = newstate;
-                currentstate.Enter();
+                if(currentstate) currentstate.Enter();
             }
+        }
+
+        public void EndState()
+        {
+            ChangeState(null);
         }
     }
 }
