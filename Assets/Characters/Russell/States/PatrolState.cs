@@ -11,7 +11,7 @@ namespace Russell {
         
         private Vector3 leftMoveRay;
         private Vector3 rightMoveRay;
-        public float minMoveDistance = 10
+        public float minMoveDistance = 10;
         
         public override void Enter()
         {
@@ -28,7 +28,7 @@ namespace Russell {
             RaycastHit hit;           
             if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit))
             {
-                if()
+//                if()
                 Debug.Log(hit.transform.name);
 
             }
