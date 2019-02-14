@@ -11,7 +11,7 @@ public class Kyllarr_Model : CharacterBase
     public StateBase attackState;
     public StateBase rotateState;
     public StateBase patrolState;
-    
+    public List<Collider> whosAround = new List<Collider>(); 
 
     public void ChangeState(StateBase newState)
     {
@@ -34,8 +34,8 @@ public class Kyllarr_Model : CharacterBase
     {
         base.Start();
         
-        GetComponent<PatrolState>().OnDoneMoving += Kyllarr_Model_OnDoneMoving;
-        GetComponent<RotateState>().OnDoneRotating += Kyllarr_Model_OnDoneRotating;
+        //GetComponent<PatrolState>().OnDoneMoving += Kyllarr_Model_OnDoneMoving;
+        //GetComponent<RotateState>().OnDoneRotating += Kyllarr_Model_OnDoneRotating;
     }
     
     
@@ -66,5 +66,19 @@ public class Kyllarr_Model : CharacterBase
     public void Execute()
     {
         Debug.Log("Execute");
+    }
+    
+    //Checking whos is within range and remove them if no longer in range
+    //HACKY atm
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!whosAround.Contains(other) && other.GetComponent<CharacterBase>())
+        {
+            whosAround.Add(other);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    { 
+        whosAround.Remove(other);        
     }
 }
