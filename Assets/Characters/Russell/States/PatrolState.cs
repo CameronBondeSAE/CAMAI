@@ -8,10 +8,8 @@ namespace Russell {
     {
         public event Action OnDoneMoving;
         public Rigidbody rb;
-        
-        private Vector3 leftMoveRay;
-        private Vector3 rightMoveRay;
-        public float minMoveDistance = 10;
+        public float moveSpeed = 5f;
+        //public float minMoveDistance = 10;
         
         public override void Enter()
         {
@@ -24,13 +22,51 @@ namespace Russell {
         {
             base.Execute();
             rb.velocity = transform.forward * 10;
-            Debug.Log("Im moving", gameObject);
-            RaycastHit hit;           
-            if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out hit))
+            //;
+            Ray ray;          
+            ray = new Ray(transform.position, transform.forward);
+            RaycastHit hit;
+            RaycastHit leftHit;
+            RaycastHit rightHit;
+            RaycastHit leftSideHit;
+            RaycastHit rightSideHit;
+            Vector3 origin = transform.position;
+            if (Physics.Raycast(ray, out hit, 50f))
             {
-//                if()
-                Debug.Log(hit.transform.name);
+                //HACK TESTING if something gets hit
+                if (hit.collider.tag == "Target")
+                {
+                    Debug.DrawLine(ray.origin, hit.point, Color.red);
+                    Debug.Log(hit.collider.name + "is my target");
+                }
+                else
+                {
+                    rb.velocity += transform.forward * moveSpeed * Time.deltaTime;
+                    Debug.DrawLine(ray.origin, hit.point, Color.blue);
+                }
+                if (Physics.Raycast(origin, Quaternion.AngleAxis(45f, transform.up) * transform.forward, out rightHit, 20f))
+                {
+                    transform.Rotate(0, -80 * Time.deltaTime, 0); 
+                    Debug.DrawLine(origin, rightHit.point, Color.yellow);
+                }
+                else if (Physics.Raycast(origin, Quaternion.AngleAxis(-45f, transform.up) * transform.forward, out leftHit, 20f))
+                {
+                    transform.Rotate(0, 80 * Time.deltaTime, 0); 
+                    Debug.DrawLine(origin, leftHit.point, Color.cyan);
+                }
 
+                if (Physics.Raycast(origin, Quaternion.AngleAxis(90f, transform.up) * transform.forward, out rightSideHit,
+                    10f))
+                {
+                    transform.Rotate(0, -80 * Time.deltaTime, 0); 
+                    Debug.DrawLine(origin, rightSideHit.point, Color.yellow);
+                }
+                if (Physics.Raycast(origin, Quaternion.AngleAxis(90f, transform.up) * transform.forward, out leftSideHit,
+                    10f))
+                {
+                    transform.Rotate(0, 80 * Time.deltaTime, 0); 
+                    Debug.DrawLine(origin, leftSideHit.point, Color.cyan);
+                }
             }
 
 
