@@ -12,6 +12,7 @@ namespace Michael
         {
             destination = new Vector3(Random.Range(-destinationRange, destinationRange),0,Random.Range(-destinationRange, destinationRange));
             destination += transform.position;
+            base.Enter();
         }
 
         public override void Execute()
