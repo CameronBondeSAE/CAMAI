@@ -1,12 +1,12 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Russell;
 using UnityEngine;
 
 public class Kyllarr_Model : CharacterBase
 {
-
-
+    public event Action KillMove;
     public StateBase currentState;
     public StateBase attackState;
     public StateBase rotateState;
@@ -73,6 +73,7 @@ public class Kyllarr_Model : CharacterBase
     //HACKY atm
     private void OnTriggerEnter(Collider other)
     {
+        KillMove();
         if (!whosAround.Contains(other) && other.GetComponent<CharacterBase>())
         {
             whosAround.Add(other);
