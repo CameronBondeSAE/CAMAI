@@ -82,7 +82,7 @@ namespace Russell {
 
         private void RunEvent()
         {
-            OnDoneMoving();
+            //OnDoneMoving();
         }
     }
 }

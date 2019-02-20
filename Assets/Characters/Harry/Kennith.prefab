@@ -17,9 +17,6 @@ GameObject:
   - component: {fileID: 4989107132567772241}
   - component: {fileID: 1926993538}
   - component: {fileID: 1926993537}
-  - component: {fileID: 7431535777563786068}
-  - component: {fileID: 7064954331325108178}
-  - component: {fileID: 2633747548431497002}
   m_Layer: 0
   m_Name: Kennith
   m_TagString: Untagged
@@ -129,20 +126,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3260218eabb000c4da36328a7b500f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Kennith
+  characterName: 
   debugText: 
   speedMultiplier: 1
   decelerationMultiplier: 0.9
   damageMultiplier: 1
-  _target: {fileID: 0}
-  _targetPosition: {x: 0, y: 0, z: 0}
+  target: {x: 0, y: 0, z: 0}
   spiritBombState: {fileID: 0}
   moveState: {fileID: 0}
   fleeState: {fileID: 0}
   idleState: {fileID: 0}
   currentState: {fileID: 0}
-  visionRange: 50
-  visionAngle: 100
+  visionRange: 100
+  visionAngle: 80
   TargetObject: {fileID: 0}
 --- !u!114 &4989107132567772241
 MonoBehaviour:
@@ -200,50 +196,6 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Energy":{"_value":100,"_name":"Energy","_id":"4501419a-e19d-4c1a-b52a-2a0291e2a31f","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences: []
---- !u!114 &7431535777563786068
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2633747548431497001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8471732199156f54cbca6111884c7904, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 100
-  maxAmount: 100
-  lastHealingDealer: {fileID: 0}
-  lastDamagingDealer: {fileID: 0}
-  lastHealthChangedAmount: 0
---- !u!114 &7064954331325108178
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2633747548431497001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7796df6e67662e74ea16af2eb800690a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  amount: 100
-  maxEnergy: 100
-  regenEnergySpeed: 1
---- !u!114 &2633747548431497002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2633747548431497001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f840701a44019904dbfce01a223c4c53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6651266506066914824
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,7 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e24d7247a150549a6b73e9886da0a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endDelay: 3
+  endDelay: 2
 --- !u!114 &2752629927640249266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01259f5a5a73f2042838419139e8513e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endDelay: 3
+  endDelay: 2
 --- !u!114 &8294038363573145302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,7 +268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 61c4146b8fcd0054e968d48f22914f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endDelay: 3
+  endDelay: 2
 --- !u!114 &1315328866068515835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -329,6 +281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c681ad27656efa43aaadb6cde321ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endDelay: 3
+  endDelay: 5
   spiritBomb: {fileID: 3579346769263642720, guid: c5c3e4ca1572f0f42a002f62904e1533,
     type: 3}

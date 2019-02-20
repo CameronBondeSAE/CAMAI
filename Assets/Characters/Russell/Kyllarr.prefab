@@ -67,6 +67,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1466720059040676440}
+  - component: {fileID: 8916188017716040587}
   m_Layer: 0
   m_Name: Abilities
   m_TagString: Untagged
@@ -88,6 +89,20 @@ Transform:
   m_Father: {fileID: 8197385201465928923}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8916188017716040587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7136757087601931997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c09440ed79bb454ea2018b4c4c04569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _characterBase: {fileID: 0}
+  ai: {fileID: 7741071797372873685}
 --- !u!1 &7741071797372873685
 GameObject:
   m_ObjectHideFlags: 0
@@ -106,6 +121,7 @@ GameObject:
   - component: {fileID: 3814119951544670395}
   - component: {fileID: 8055369067861555089}
   - component: {fileID: 7477315379121617651}
+  - component: {fileID: 5601631383252863935}
   - component: {fileID: 4470851380010848717}
   m_Layer: 0
   m_Name: Kyllarr
@@ -297,6 +313,18 @@ MonoBehaviour:
   amount: 100
   maxEnergy: 100
   regenEnergySpeed: 1
+--- !u!114 &5601631383252863935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741071797372873685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72c355a5d62bc0e42a396e8b71599145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &4470851380010848717
 SphereCollider:
   m_ObjectHideFlags: 0

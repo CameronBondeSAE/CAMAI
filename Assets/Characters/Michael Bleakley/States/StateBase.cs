@@ -19,8 +19,8 @@ namespace Michael
 
         public virtual void Exit()
         {
-            CancelInvoke();
             GetComponent<BehaviourTreeOwner>().Tick();
+            CancelInvoke();
         }
     }
 }

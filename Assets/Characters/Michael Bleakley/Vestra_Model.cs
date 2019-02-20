@@ -11,7 +11,6 @@ namespace Michael
     public class Vestra_Model : CharacterBase
     {
         public Rigidbody rb;
-        public bool enemySeen;
         
         public override void Start()
         {
@@ -24,8 +23,7 @@ namespace Michael
         private void Update()
         {
             if (currentState != null) currentState.Execute();
-            enemySeen = Target != null;
-
+            
             /* test code
             if (Input.GetKeyDown(KeyCode.A)) ChangeState(fleeState);
             if (Input.GetKeyDown(KeyCode.S)) ChangeState(attackState);
@@ -113,16 +111,14 @@ namespace Michael
             rb.AddRelativeForce(Vector3.forward * SpeedMultiplier, ForceMode.Force);
 
             var targetPosition = transform.InverseTransformPoint(speedDirection);
-            var temp = (targetPosition.x / targetPosition.magnitude);
-            rb.AddRelativeTorque(0,(vary * 0.5f) * temp,0);
+            rb.AddRelativeTorque(0,vary * (targetPosition.x/ targetPosition.magnitude),0);
 
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 1.3f))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 7f))
             {
                 if (!hitcheck(hit))
                 {
-                    rb.AddRelativeTorque(0, vary * 2f, 0);
-                    
+                    rb.AddRelativeTorque(0, vary * 10, 0);
                     /*
                     if (Random.Range(-1, 1) < 0)
                     {
@@ -136,16 +132,16 @@ namespace Michael
                 }
             }
 
-            if (Physics.Raycast(transform.position, transform.forward + transform.right, out hit, 1f))
+            if (Physics.Raycast(transform.position, transform.forward + transform.right, out hit, 5f))
             {
-                
-                if (!hitcheck(hit)) rb.AddRelativeTorque(0, -vary * 1.5f, 0);
+                Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
+                if (!hitcheck(hit)) rb.AddRelativeTorque(0, -vary * 10, 0);
             }
 
-            if (Physics.Raycast(transform.position, transform.forward - transform.right, out hit, 1f))
+            if (Physics.Raycast(transform.position, transform.forward - transform.right, out hit, 5f))
             {
-               
-                if (!hitcheck(hit)) rb.AddRelativeTorque(0, vary *1.5f, 0);
+                Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
+                if (!hitcheck(hit)) rb.AddRelativeTorque(0, vary * 10, 0);
             }
 
             /*
