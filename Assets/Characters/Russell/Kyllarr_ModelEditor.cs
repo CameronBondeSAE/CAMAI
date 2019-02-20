@@ -8,7 +8,7 @@ public class Kyllarr_ModelEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
-        EditorGUILayout.
+        //base.OnInspectorGUI();
+        //GUILayout
     }
 }
