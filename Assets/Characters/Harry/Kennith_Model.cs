@@ -12,6 +12,7 @@ namespace Kennith
         
         public double visionRange;
         public double visionAngle;
+        public float turningDistance = 5f;
 
         public GameObject TargetObject;
     
@@ -41,7 +42,7 @@ namespace Kennith
             currentState.Tick();
             
             //TESTING
-            CheckFor(TargetObject);
+            if (TargetObject != null) CheckFor(TargetObject);
         }
         
         public bool CheckFor(GameObject other) // returns true/false if object inserted is visible
@@ -60,7 +61,7 @@ namespace Kennith
             return true;
 
         }
-
+        
         // NEEDS TO BE OPTIMISED
         private bool CheckBounds(GameObject other)
         {

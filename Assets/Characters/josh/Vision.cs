@@ -17,6 +17,13 @@ public class Vision : MonoBehaviour
         
     }
 
+    public RaycastHit CastRay(Vector3 direction)
+    {
+        RaycastHit ray;
+        Physics.Raycast(gameObject.transform.position, direction, out ray);
+        return ray;
+    }
+    
     public List<CharacterBase> UpdateVision()
     {
         List<CharacterBase> found = new List<CharacterBase>();
@@ -37,4 +44,29 @@ public class Vision : MonoBehaviour
 
         return found;
     }
+    /*
+    public CharacterBase GetClosest()
+    {
+        List<CharacterBase> order = UpdateVision();
+        CharacterBase smallest;
+        order.Sort( ,);
+        foreach (CharacterBase item in order)
+        {
+            if (smallest)
+            {
+                if (Vector3.Distance(gameObject.transform.position, smallest.gameObject.transform.position) >
+                    Vector3.Distance(gameObject.transform.position, item.gameObject.transform.position))
+                {
+                    smallest = item;
+                }
+            }
+            else
+            {
+                smallest = item;
+            }
+        }
+
+        return smallest;
+    }
+    */
 }

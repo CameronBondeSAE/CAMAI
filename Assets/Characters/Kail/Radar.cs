@@ -75,11 +75,20 @@ namespace Kail
 
         private void OnTriggerStay(Collider other)
         {
-            if ((other.gameObject == posTarget) && (targetFound == true))
+            if ((other.gameObject == posTarget) && (targetFound == true) && (current.currentState = current.idleState))
             {
                 tarDistance = Vector3.Distance(posTarget.transform.position, transform.position);
             }
         }
+
+        public void RuningAway()
+        {
+            //myDude turns (handled by runstate)
+            //checks if you can see the target
+            //if no, targetFound = false
+            //if yes, check distance.  If distance = more
+        }
+        
 
         public void TargetNotFound()
         {
