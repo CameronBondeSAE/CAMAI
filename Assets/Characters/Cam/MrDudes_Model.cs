@@ -16,6 +16,9 @@ public class MrDudes_Model : CharacterBase
 	private Transform myTransform;
 	public float teleportRange;
 	public float getBigScalar;
+	public float speed;
+	private Rigidbody _rigidbody;
+	public float turnSpeed;
 
 	public void ChangeState(StateBase newState)
 	{
@@ -44,6 +47,7 @@ public class MrDudes_Model : CharacterBase
 
 	private void Awake()
 	{
+		_rigidbody = GetComponent<Rigidbody>();
 //		ChangeState(wobbleState);
 	}
 
@@ -62,14 +66,20 @@ public class MrDudes_Model : CharacterBase
 	{
 		// Update statemachine
 		if (currentState != null) currentState.Execute();
+		
+		Move();
 	}
 
 	public void Move()
 	{
-		
+		_rigidbody.AddRelativeForce(0,0,speed*Time.deltaTime, ForceMode.VelocityChange);
 	}
-	
-	
+
+	private void OnTriggerStay(Collider other)
+	{
+		_rigidbody.AddRelativeTorque(0,turnSpeed*Time.deltaTime,0);
+	}
+
 	private void MrDudes_Model_OnDeathEvent()
 	{
 		Destroy(gameObject);
@@ -85,6 +95,7 @@ public class MrDudes_Model : CharacterBase
 	{
 		myTransform.localScale = myTransform.localScale * getBigScalar;
 	}
+
 }
 
 }

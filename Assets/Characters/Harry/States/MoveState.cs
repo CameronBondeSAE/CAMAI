@@ -6,23 +6,20 @@ namespace Kennith
     {
         public override void Enter()
         {
-            base.Enter();
-            Invoke("Exit", 3f);
+            StartCoroutine(DelayExit(endDelay));
             Debug.Log("Move Enter", gameObject);
         }
 
-        public override void Execute()
+        public override void Tick()
         {
-            base.Execute();
-            GetComponent<Rigidbody>().velocity = transform.forward * 4;
+            GetComponentInParent<Rigidbody>().velocity = transform.forward * 4;
             Debug.Log("Move Execute", gameObject);
         }
 
         public override void Exit()
-        {
-            base.Exit();
-            
+        {           
             Debug.Log("Move Exit", gameObject);
+            base.Exit();
         }
     }
 

@@ -17,6 +17,7 @@ namespace Russell
         public override void Execute()
         {
             base.Execute();
+            transform.position = transform.forward * 10 * Time.deltaTime;
         }
 
         public override void Exit()

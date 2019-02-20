@@ -66,6 +66,7 @@ public class Kyllarr_Model : CharacterBase
     public void Execute()
     {
         Debug.Log("Execute");
+        
     }
     
     //Checking whos is within range and remove them if no longer in range

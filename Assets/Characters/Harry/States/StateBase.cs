@@ -1,22 +1,32 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Kennith
 {
     public class StateBase : MonoBehaviour
     {
+
+        public float endDelay = 3f;
+        
         public virtual void Enter()
         {
         
         }
 
-        public virtual void Execute()
+        public virtual void Tick()
         {
         
         }
 
         public virtual void Exit()
         {
-            GetComponent<Kennith_Controller>().EvaluateNextMove();
+            GetComponentInParent<Kennith_Controller>().EvaluateNextMove();
+        }
+
+        public IEnumerator DelayExit(float time)
+        {
+            yield return new WaitForSeconds(time);
+            Exit();
         }
     }
 
