@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_SpiritBomb
+  m_Name: FurMat
   m_Shader: {fileID: 4800000, guid: 0d496d8195c59a14084c9a6fb4f2bcca, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 1
