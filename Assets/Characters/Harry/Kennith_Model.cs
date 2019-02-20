@@ -12,6 +12,7 @@ namespace Kennith
         
         public double visionRange;
         public double visionAngle;
+        public float turningDistance = 5f;
 
         public GameObject TargetObject;
     
@@ -60,7 +61,7 @@ namespace Kennith
             return true;
 
         }
-
+        
         // NEEDS TO BE OPTIMISED
         private bool CheckBounds(GameObject other)
         {
