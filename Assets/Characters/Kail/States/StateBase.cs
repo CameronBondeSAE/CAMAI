@@ -27,6 +27,11 @@ namespace Kail
         {
             //what happens once movement has ended
         }
+
+        public virtual void MoveStop()
+        {
+            //what happens when the movement is forced to stop
+        }
         
         public virtual void Exit()
         {

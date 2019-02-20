@@ -12,6 +12,7 @@ namespace Kail
         public float speed;
 
         public bool timeEnd;
+        public bool moveStop;
         public StateBase currentState;
         
         
@@ -24,6 +25,7 @@ namespace Kail
             speed = theSpeed;
             time = theTime;
             timeEnd = false;
+            moveStop = false;
             rb = GetComponent<Rigidbody>();
 
         }
@@ -40,30 +42,35 @@ namespace Kail
         public void MoveOverride()
         {
             //stops the movement if told to, even if there is still time left
-            
-            time = 0;
+            moveStop = true;
         }
-        
+
         void FixedUpdate()
         {
             //moves the player, so long as there is time left to
-            
-            if (time <= 0)
+            if (moveStop == true)
             {
-                if (timeEnd == false)
-                {
-                    MoveStop();
-                }
-                else
-                {
-                    //do nothing
-                }
+                //do nothing
             }
             else
             {
+                if (time <= 0)
+                {
+                    if (timeEnd == false)
+                    {
+                        MoveStop();
+                    }
+                    else
+                    {
+                        //do nothing
+                    }
+                }
+                else
+                {
 
-                transform.position += transform.forward * speed * Time.deltaTime;
-                time = time - 1;
+                    transform.position += transform.forward * speed * Time.deltaTime;
+                    time = time - 1;
+                }
             }
         }
     }

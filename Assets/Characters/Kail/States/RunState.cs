@@ -13,6 +13,7 @@ namespace Kail
         public int time;
         public float speed = 9f;
         
+        
         public override void Enter()
         {
             base.Enter();
@@ -45,6 +46,11 @@ namespace Kail
             //check distance between you and target
         }
 
+        public override void MoveStop()
+        {
+            base.MoveStop();
+            movementRun.MoveOverride();
+        }
 
         public override void Exit()
         {

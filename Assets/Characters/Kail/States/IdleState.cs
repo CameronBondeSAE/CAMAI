@@ -50,11 +50,16 @@ namespace Kail
             MoveSet();
         }
         
+        public override void MoveStop()
+        {
+            base.MoveStop();
+            movementIdle.MoveOverride();
+        }
+        
         public override void Exit()
         {
             base.Exit();
             movementIdle.MoveOverride();
-            //end walk pattern?
         }
 
     }

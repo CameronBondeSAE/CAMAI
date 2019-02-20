@@ -9,16 +9,29 @@ namespace Kail
     {
 
         public StateBase currentState;
+        public StateBase newState;
         public StateBase tauntState;
         public StateBase idleState;
         public StateBase runState;
 
         public GameObject myTarget;
         
-        public void ChangeState(StateBase newState)
+        public void ChangeState(int state)
         {
 
-            if (currentState == newState) return;
+            switch (state)
+            {
+                case 0:
+                    newState = idleState;
+                    break;
+                case 1:
+                    newState = tauntState;
+                    break;
+                case 2:
+                    newState = runState;
+                    break;
+
+            }
             
             //go to currentState exit, then newState Enter, then set the new state
             currentState.Exit();
@@ -36,7 +49,7 @@ namespace Kail
             runState = GetComponent<RunState>();
 
             currentState = idleState;
-            //currentState.Enter();
+            currentState.Enter();
 
         }
 
