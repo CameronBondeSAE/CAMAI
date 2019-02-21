@@ -33,7 +33,7 @@ namespace Kennith
             fleeState = GetComponentInChildren<FleeState>();
             idleState = GetComponentInChildren<IdleState>();
             
-            currentState = idleState;
+            currentState = moveState;
             currentState.Enter();
         }
 
@@ -159,6 +159,7 @@ namespace Kennith
                 hit.transform.gameObject == other)
             {
                 r9 = true;
+                
                 Debug.DrawLine(transform.position, v9, Color.magenta);
             }
             
