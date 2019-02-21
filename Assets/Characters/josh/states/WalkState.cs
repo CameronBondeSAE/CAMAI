@@ -28,7 +28,7 @@ namespace Josh
             {
                 if(dist <= 2)
                 {
-                    body.angularVelocity=new Vector3(0,speed*2,0);
+                    body.angularVelocity=new Vector3(0,speed*3,0);
                 }
                 else
                 {

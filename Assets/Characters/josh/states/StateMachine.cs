@@ -23,6 +23,8 @@ namespace Josh
                 if(newstate) newstate.Enter();
                 currentstate = newstate;
             }
+
+            //return newstate != currentstate;
         }
 
         public void EndState()
