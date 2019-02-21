@@ -17,6 +17,13 @@ public class Vision : MonoBehaviour
         
     }
 
+    public float castray()
+    {
+        RaycastHit hit;
+        Physics.Raycast(gameObject.transform.position, gameObject.transform.forward*2, out hit);
+        return hit.distance;
+    }
+
     public List<CharacterBase> UpdateVision()
     {
         List<CharacterBase> found = new List<CharacterBase>();

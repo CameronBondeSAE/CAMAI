@@ -17,6 +17,8 @@ GameObject:
   - component: {fileID: 4989107132567772241}
   - component: {fileID: 1926993538}
   - component: {fileID: 1926993537}
+  - component: {fileID: 7142741343373913224}
+  - component: {fileID: 4217463243122868325}
   m_Layer: 0
   m_Name: Kennith
   m_TagString: Untagged
@@ -108,11 +110,11 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 2
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &7738847046209722866
 MonoBehaviour:
@@ -131,7 +133,8 @@ MonoBehaviour:
   speedMultiplier: 1
   decelerationMultiplier: 0.9
   damageMultiplier: 1
-  target: {x: 0, y: 0, z: 0}
+  _target: {fileID: 0}
+  _targetPosition: {x: 0, y: 0, z: 0}
   spiritBombState: {fileID: 0}
   moveState: {fileID: 0}
   fleeState: {fileID: 0}
@@ -140,6 +143,7 @@ MonoBehaviour:
   visionRange: 100
   visionAngle: 80
   TargetObject: {fileID: 0}
+  turningDistance: 3
 --- !u!114 &4989107132567772241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +200,38 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"Energy":{"_value":100,"_name":"Energy","_id":"4501419a-e19d-4c1a-b52a-2a0291e2a31f","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences: []
+--- !u!114 &7142741343373913224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2633747548431497001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7796df6e67662e74ea16af2eb800690a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 100
+  maxEnergy: 100
+  regenEnergySpeed: 1
+--- !u!114 &4217463243122868325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2633747548431497001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8471732199156f54cbca6111884c7904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 100
+  maxAmount: 100
+  lastHealingDealer: {fileID: 0}
+  lastDamagingDealer: {fileID: 0}
+  lastHealthChangedAmount: 0
 --- !u!1 &6651266506066914824
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +292,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endDelay: 2
+  parent: {fileID: 1079792966830485675}
+  speed: 25
+  speedCap: 10
+  rotationValue: 0
 --- !u!114 &8294038363573145302
 MonoBehaviour:
   m_ObjectHideFlags: 0
