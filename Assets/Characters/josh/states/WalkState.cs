@@ -13,7 +13,7 @@ namespace Josh
         public override void Enter()
         {
             base.Enter();
-            Debug.Log("Eg start",gameObject);
+            Debug.Log("Walk start",gameObject);
             body = gameObject.GetComponent<Rigidbody>();
             worldprop = gameObject.transform;
         }
@@ -52,7 +52,7 @@ namespace Josh
         public override void Exit()
         {
             base.Exit();
-            Debug.Log("Eg exit",gameObject);
+            Debug.Log("Walk exit",gameObject);
         }
         public float castray(Vector3 start, Vector3 directiondist)
         {

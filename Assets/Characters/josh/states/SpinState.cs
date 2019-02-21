@@ -18,7 +18,6 @@ namespace Josh
             base.Enter();
             body = gameObject.GetComponent<Rigidbody>();
             originalrot = gameObject.transform.eulerAngles.y;
-            Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, 3);
             power = gameObject.GetComponent<Energy>().Amount / gameObject.GetComponent<Energy>().MaxEnergy;
             Debug.Log("SpinStart",gameObject);
         }
@@ -26,8 +25,25 @@ namespace Josh
         public override void Execute()
         {
             base.Execute();
+            Collider[] colliders = Physics.OverlapSphere(gameObject.transform.position, 3);
+            foreach (Collider item in colliders)
+            {
+                CharacterBase choice = item.GetComponent<CharacterBase>();
+                if (choice)
+                {
+                    choice.GetComponent<Health>().Change(-15,gameObject);
+                    if (choice.GetComponent<Rigidbody>())
+                    {
+                        choice.GetComponent<Rigidbody>().AddExplosionForce(5,gameObject.transform.position,4);
+                    }
+                    else
+                    {
+                        //choice.SpeedMultiplier 
+                    }
+                }
+            }
             completion += basespeed+ (Time.deltaTime * power * maxspeed);
-            body.angularVelocity.Set(0,1,0);
+            body.angularVelocity.Set(0,2,0);
             //gameObject.transform.Rotate(Vector3.up,basespeed+(Time.deltaTime*maxspeed*power));
             if (completion >= 360)
             {
