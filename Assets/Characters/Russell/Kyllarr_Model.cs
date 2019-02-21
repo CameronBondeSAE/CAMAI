@@ -11,8 +11,8 @@ public class Kyllarr_Model : CharacterBase
     public StateBase attackState;
     public StateBase rotateState;
     public StateBase patrolState;
-    public List<Collider> whosAround = new List<Collider>(); 
-
+    public List<Collider> whosAround = new List<Collider>();
+    public float numberOfPlayers;
     public void ChangeState(StateBase newState)
     {
         //Check state is not the same
@@ -73,14 +73,16 @@ public class Kyllarr_Model : CharacterBase
     //HACKY atm
     private void OnTriggerEnter(Collider other)
     {
-        KillMove();
+        
         if (!whosAround.Contains(other) && other.GetComponent<CharacterBase>())
         {
             whosAround.Add(other);
+            numberOfPlayers = whosAround.Count;
         }
     }
     private void OnTriggerExit(Collider other)
     { 
-        whosAround.Remove(other);        
+        whosAround.Remove(other);  
+        numberOfPlayers = whosAround.Count;
     }
 }

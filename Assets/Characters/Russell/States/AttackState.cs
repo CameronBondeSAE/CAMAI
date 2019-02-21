@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 
 
@@ -8,15 +9,25 @@ namespace Russell
     {
         public Rigidbody obj;
         public Transform location;
-        
+        private CharacterBase _characterBase;
+
+        private void Awake()
+        {
+            _characterBase = transform.GetComponent<CharacterBase>();
+        }
+
         public override void Enter()
         {
-            base.Enter();
+            base.Enter();            
         }
 
         public override void Execute()
         {
             base.Execute();
+            if (!_characterBase.Target == null)
+            {
+                
+            }
             transform.position = transform.forward * 10 * Time.deltaTime;
         }
 
