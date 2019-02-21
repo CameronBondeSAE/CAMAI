@@ -112,24 +112,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!114 &487726994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a686a47eee2fa44cb0a34b5d86e4d5e, type: 3}
-  m_Name: Kyllarr BehaviourTree
-  m_EditorClassIdentifier: 
-  _serializedGraph: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":5530.0,"y":5177.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":5206.0,"y":5347.0},"_tag":"FanFire","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"3"},{"_condition":{"valueA":{"_name":"Energy","_targetVariableID":"723ee4ab-ac31-4415-a536-09a631df3436"},"valueB":{"_value":100},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5059.0,"y":5481.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"4"},{"_condition":{"valueA":{"_name":"NumberOfEnemiesAround","_targetVariableID":"f37fdae3-df39-40cf-9b49-4756ff1d21d1"},"valueB":{"_value":3},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5208.0,"y":5477.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"8"},{"_action":{"log":{"_value":"FanFire"},"verboseMode":"DisplayLabelOnly","$type":"NodeCanvas.Tasks.Actions.DebugLogText"},"_position":{"x":5461.0,"y":5478.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"12"},{"_position":{"x":5774.0,"y":5358.0},"_tag":"Execute","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"15"},{"_condition":{"valueA":{"_name":"OnCooldown","_targetVariableID":"9d9191d2-deb7-49c8-a5e7-8f7343f837be"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_position":{"x":5607.0,"y":5546.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"16"},{"_condition":{"valueA":{"_name":"isEnemyWithinRange","_targetVariableID":"5641fe12-bfaf-4e01-afb5-e43349f3c151"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_position":{"x":5727.0,"y":5484.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"20"},{"_condition":{"valueA":{"_name":"EnemyBelowHealth","_targetVariableID":"29b4a6ea-05ca-4387-93f1-7ebd2b52fbb9"},"checkType":"LessThan","valueB":{"_value":10},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5931.0,"y":5546.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"24"},{"_action":{"log":{"_value":"Execute"},"$type":"NodeCanvas.Tasks.Actions.DebugLogText"},"_position":{"x":6067.0,"y":5482.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"28"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"15"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"12"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"16"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"20"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"24"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"28"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"primeNode":{"$ref":"2"},"localBlackboard":{"_name":"Local
-    Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
-  _objectReferences: []
-  _deserializationFailed: 0
-  repeat: 1
-  updateInterval: 0
 --- !u!1 &501649120
 GameObject:
   m_ObjectHideFlags: 0
@@ -290,6 +272,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &667690459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a686a47eee2fa44cb0a34b5d86e4d5e, type: 3}
+  m_Name: Kyllarr BehaviourTree
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":5530.0,"y":5177.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":5206.0,"y":5347.0},"_tag":"FanFire","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"3"},{"_condition":{"valueA":{"_name":"Energy","_targetVariableID":"723ee4ab-ac31-4415-a536-09a631df3436"},"valueB":{"_value":100},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5059.0,"y":5481.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"4"},{"_condition":{"valueA":{"_name":"NumberOfEnemiesAround","_targetVariableID":"f37fdae3-df39-40cf-9b49-4756ff1d21d1"},"valueB":{"_value":3},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5208.0,"y":5477.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"8"},{"_action":{"log":{"_value":"FanFire"},"verboseMode":"DisplayLabelOnly","$type":"NodeCanvas.Tasks.Actions.DebugLogText"},"_position":{"x":5461.0,"y":5478.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"12"},{"_position":{"x":5774.0,"y":5358.0},"_tag":"Execute","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"15"},{"_condition":{"valueA":{"_name":"OnCooldown","_targetVariableID":"9d9191d2-deb7-49c8-a5e7-8f7343f837be"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_position":{"x":5607.0,"y":5546.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"16"},{"_condition":{"valueA":{"_name":"isEnemyWithinRange","_targetVariableID":"5641fe12-bfaf-4e01-afb5-e43349f3c151"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_position":{"x":5727.0,"y":5484.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"20"},{"_condition":{"valueA":{"_name":"EnemyBelowHealth","_targetVariableID":"29b4a6ea-05ca-4387-93f1-7ebd2b52fbb9"},"checkType":"LessThan","valueB":{"_value":10},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5931.0,"y":5546.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"24"},{"_action":{"log":{"_value":"Execute"},"$type":"NodeCanvas.Tasks.Actions.DebugLogText"},"_position":{"x":6067.0,"y":5482.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"28"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"15"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"12"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"16"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"20"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"24"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"28"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"primeNode":{"$ref":"2"},"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  _objectReferences: []
+  _deserializationFailed: 0
+  repeat: 1
+  updateInterval: 0
 --- !u!1 &807496006
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,24 +554,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 42.763, y: 0, z: 0}
---- !u!114 &1247831567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a686a47eee2fa44cb0a34b5d86e4d5e, type: 3}
-  m_Name: Kyllarr BehaviourTree
-  m_EditorClassIdentifier: 
-  _serializedGraph: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":5530.0,"y":5177.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":5206.0,"y":5347.0},"_tag":"FanFire","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"3"},{"_condition":{"valueA":{"_name":"Energy","_targetVariableID":"723ee4ab-ac31-4415-a536-09a631df3436"},"valueB":{"_value":100},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5059.0,"y":5481.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"4"},{"_condition":{"valueA":{"_name":"NumberOfEnemiesAround","_targetVariableID":"f37fdae3-df39-40cf-9b49-4756ff1d21d1"},"valueB":{"_value":3},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5208.0,"y":5477.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"8"},{"_action":{"log":{"_value":"FanFire"},"verboseMode":"DisplayLabelOnly","$type":"NodeCanvas.Tasks.Actions.DebugLogText"},"_position":{"x":5461.0,"y":5478.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"12"},{"_position":{"x":5774.0,"y":5358.0},"_tag":"Execute","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"15"},{"_condition":{"valueA":{"_name":"OnCooldown","_targetVariableID":"9d9191d2-deb7-49c8-a5e7-8f7343f837be"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_position":{"x":5607.0,"y":5546.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"16"},{"_condition":{"valueA":{"_name":"isEnemyWithinRange","_targetVariableID":"5641fe12-bfaf-4e01-afb5-e43349f3c151"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_position":{"x":5727.0,"y":5484.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"20"},{"_condition":{"valueA":{"_name":"EnemyBelowHealth","_targetVariableID":"29b4a6ea-05ca-4387-93f1-7ebd2b52fbb9"},"checkType":"LessThan","valueB":{"_value":10},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5931.0,"y":5546.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"24"},{"_action":{"log":{"_value":"Execute"},"$type":"NodeCanvas.Tasks.Actions.DebugLogText"},"_position":{"x":6067.0,"y":5482.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"28"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"15"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"12"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"16"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"20"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"24"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"28"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"primeNode":{"$ref":"2"},"localBlackboard":{"_name":"Local
-    Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
-  _objectReferences: []
-  _deserializationFailed: 0
-  repeat: 1
-  updateInterval: 0
 --- !u!1 &1374110849 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7741071797372873685, guid: c2c4ac8f7383fdd4fae506afb0a40a49,
@@ -942,7 +924,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _graph
       value: 
-      objectReference: {fileID: 1247831567}
+      objectReference: {fileID: 667690459}
     - target: {fileID: 8367293175752711615, guid: c2c4ac8f7383fdd4fae506afb0a40a49,
         type: 3}
       propertyPath: enableAction

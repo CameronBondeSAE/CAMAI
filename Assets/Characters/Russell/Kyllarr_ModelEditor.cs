@@ -3,12 +3,23 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-[CustomEditor(typeof(Kyllarr_Model))]
-public class Kyllarr_ModelEditor : Editor
+namespace Russell
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(Kyllarr_Model))]
+    public class Kyllarr_ModelEditor : Editor
     {
-        //base.OnInspectorGUI();
-        //GUILayout
+        public override void OnInspectorGUI()
+        {
+            base.OnInspectorGUI();
+            Kyllarr_Model kyllarr_model = target as Kyllarr_Model;
+        
+            //GUILayout
+            if (GUILayout.Button("TEST"))
+            {
+                Debug.Log("Testing");
+            }
+        }
     }
+
 }
+

@@ -13,7 +13,7 @@ namespace Russell {
         
         public override void Enter()
         {
-            base.Enter();
+            base.Enter();           
             Invoke("RunEvent", 5f);
             Debug.Log("Start Moving", gameObject);
         }
