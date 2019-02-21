@@ -8,6 +8,11 @@ namespace Josh
     {
         public Josh.StateBase currentstate;
         // Start is called before the first frame update
+
+        public void RunState()
+        {
+            if(currentstate) currentstate.Execute();
+        }
         
         public void ChangeState(Josh.StateBase newstate)
         {
@@ -15,8 +20,8 @@ namespace Josh
             if (newstate != currentstate)
             {
                 if(currentstate) currentstate.Exit();
+                if(newstate) newstate.Enter();
                 currentstate = newstate;
-                if(currentstate) currentstate.Enter();
             }
         }
 
