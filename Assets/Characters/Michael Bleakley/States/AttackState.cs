@@ -4,12 +4,12 @@ namespace Michael
 {
     public class AttackState : StateBase
     {
-        private GameObject target;
-
+        
         public override void Enter()
         {
             base.Enter();
-            print("Entry of Attack");
+            Destroy( GetComponent<CharacterBase>().Target);
+            //print("Entry of Attack");
         }
 
         public override void Execute()
@@ -21,13 +21,14 @@ namespace Michael
              * when in range use ability
              */
             base.Execute();
-            print("Attacking");
+            //print("Attacking");
         }
 
         public override void Exit()
         {
+            GetComponent<CharacterBase>().Target = null;
             base.Exit();
-            print("Exit of attack");
+            //print("Exit of attack");
         }
     }
 }

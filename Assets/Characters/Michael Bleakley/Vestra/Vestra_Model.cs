@@ -44,6 +44,9 @@ namespace Michael
 
         private void OnDeathEvent()
         {
+        GetComponent<Health>().OnHurtEvent -= OnHurtEvent;
+                    GetComponent<Health>().OnDeathEvent -= OnDeathEvent;
+                    GetComponent<Energy>().OnReducingEvent -= OnReducingEvent;
             currentState.Exit();
             Destroy(gameObject);
         }
@@ -77,7 +80,8 @@ namespace Michael
 
         private void OverrideState()
         {
-            currentState.Exit();
+            if (currentState != null)currentState.Exit();
+            currentState = null;
             /*
              * if threat found change to attack
              * if all threats gone change to roam
@@ -90,23 +94,28 @@ namespace Michael
 
         public override void Ability1()
         {
-            Debug.Log("ult");
+        //GetComponent<Energy>().Change(-50);
+            
         }
 
         public override void Ability2()
         {
+        GetComponent<Energy>().Change(-20);
             Debug.Log("ability 1");
+            Target = null;
         }
 
         public override void Ability3()
         {
+        GetComponent<Energy>().Change(-10);
             Debug.Log("ability 2");
+            Target = null;
         }
 
         #endregion
 
        public override void Move(Vector3 speedDirection)
-               {
+               {               
                     /*
                     * add force forward
                     * add turning to direction wanted
@@ -117,7 +126,7 @@ namespace Michael
                    var targetPosition = transform.InverseTransformPoint(speedDirection);
                    var temp = (targetPosition.x / targetPosition.magnitude);
                    rb.AddRelativeTorque(0,(vary * 0.5f) * temp,0);
-       
+
                    RaycastHit hit;
                    if (Physics.Raycast(transform.position, transform.forward, out hit, 2.3f))
                    {
@@ -173,7 +182,8 @@ namespace Michael
                
                    if (hit.transform.gameObject.GetComponent<CharacterBase>() == null) return false;
                    Target = hit.transform.gameObject;
-                   //OverrideState();
+                   enemySeen = true;
+                   OverrideState();
                    return true;
                }
     }
