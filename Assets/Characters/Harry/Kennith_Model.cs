@@ -14,7 +14,8 @@ namespace Kennith
         public double visionAngle;
 
         public GameObject TargetObject;
-    
+        public float turningDistance;
+
 
         public void ChangeState(StateBase newState)
         {
@@ -55,7 +56,7 @@ namespace Kennith
 
             if (!CheckBounds(other)) return false;
 
-            Debug.Log("I CAN SEE THE TARGET");
+            // Debug.Log("I CAN SEE THE TARGET");
             
             return true;
 
