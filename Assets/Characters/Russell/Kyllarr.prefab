@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7153943629637950525}
   - component: {fileID: 2582273152625366266}
   - component: {fileID: 7752430748007767819}
+  - component: {fileID: 1482666035037582517}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -44,8 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee43c43c674aacf459b9864b3333e078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 911020549927256389}
+  rb: {fileID: 1374110862}
   moveSpeed: 10
+  myTarget: {fileID: 0}
 --- !u!114 &7752430748007767819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58,6 +60,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dbc46d595dcd4f54fb7daabec50090c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1482666035037582517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426340172277600898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8cde135b8a9964299af7d22b5ed884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 11.4
+  viewAngle: 70.52
+  visibleTargets: []
 --- !u!1 &7136757087601931997
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,7 +141,8 @@ GameObject:
   - component: {fileID: 7477315379121617651}
   - component: {fileID: 5601631383252863935}
   - component: {fileID: 4470851380010848717}
-  - component: {fileID: 911020549927256389}
+  - component: {fileID: 3187449451116224936}
+  - component: {fileID: 1374110862}
   m_Layer: 0
   m_Name: Kyllarr
   m_TagString: Untagged
@@ -231,6 +249,7 @@ MonoBehaviour:
   rotateState: {fileID: 7752430748007767819}
   patrolState: {fileID: 2582273152625366266}
   whosAround: []
+  numberOfPlayers: 0
 --- !u!114 &5593287004618512292
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -257,7 +276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":5530.0,"y":5177.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":5206.0,"y":5347.0},"_tag":"FanFire","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"3"},{"_condition":{"valueA":{"_name":"Energy","_targetVariableID":"723ee4ab-ac31-4415-a536-09a631df3436"},"valueB":{"_value":100},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5059.0,"y":5481.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"4"},{"_condition":{"valueA":{"_name":"NumberOfEnemiesAround","_targetVariableID":"f37fdae3-df39-40cf-9b49-4756ff1d21d1"},"valueB":{"_value":3},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5208.0,"y":5477.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"8"},{"_action":{"log":{"_value":"FanFire"},"verboseMode":"DisplayLabelOnly","$type":"NodeCanvas.Tasks.Actions.DebugLogText"},"_position":{"x":5461.0,"y":5478.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"12"},{"_position":{"x":5774.0,"y":5358.0},"_tag":"Execute","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"15"},{"_condition":{"valueA":{"_name":"OnCooldown","_targetVariableID":"9d9191d2-deb7-49c8-a5e7-8f7343f837be"},"valueB":{},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_position":{"x":5607.0,"y":5546.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"16"},{"_condition":{"valueA":{"_name":"isEnemyWithinRange","_targetVariableID":"5641fe12-bfaf-4e01-afb5-e43349f3c151"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_position":{"x":5727.0,"y":5484.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"20"},{"_condition":{"valueA":{"_name":"EnemyBelowHealth","_targetVariableID":"29b4a6ea-05ca-4387-93f1-7ebd2b52fbb9"},"checkType":"LessThan","valueB":{"_value":10},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":5931.0,"y":5546.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"24"},{"_action":{"log":{"_value":"Execute"},"$type":"NodeCanvas.Tasks.Actions.DebugLogText"},"_position":{"x":6067.0,"y":5482.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"28"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"15"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"12"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"16"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"20"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"24"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"15"},"_targetNode":{"$ref":"28"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"primeNode":{"$ref":"2"},"localBlackboard":{"_name":"Local
+  boundGraphSerialization: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":5530.0,"y":5177.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":5206.0,"y":5347.0},"_tag":"FanFire","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"3"},{"_condition":{"valueA":{"_name":"Amount","_targetVariableID":"1e904da6-9482-4a6b-8445-cb11ebdc66e6"},"valueB":{"_value":100.0},"$type":"NodeCanvas.Tasks.Conditions.CheckFloat"},"_position":{"x":5054.0,"y":5458.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"4"},{"_condition":{"valueA":{"_name":"numberOfPlayers","_targetVariableID":"fbed5afe-32d4-40c9-8b13-8fe3357ddf09"},"checkType":"GreaterOrEqualTo","valueB":{"_value":3.0},"_invert":true,"$type":"NodeCanvas.Tasks.Conditions.CheckFloat"},"_position":{"x":5240.0,"y":5456.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"8"},{"_action":{"method":{"_baseInfo":"Kyllarr_Model|FanFire|System.Void","_paramsInfo":""},"parameters":[],"parameterIsByRef":[],"returnValue":{},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":5489.0,"y":5466.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"12"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"12"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"primeNode":{"$ref":"2"},"localBlackboard":{"_name":"Local
     Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
   boundGraphObjectReferences: []
   enableAction: 1
@@ -276,11 +295,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _serializedBlackboard: '{"_variables":{"Energy":{"_name":"Energy","_id":"723ee4ab-ac31-4415-a536-09a631df3436","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"NumberOfEnemiesAround":{"_name":"NumberOfEnemiesAround","_id":"f37fdae3-df39-40cf-9b49-4756ff1d21d1","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"isEnemyWithinRange":{"_name":"isEnemyWithinRange","_id":"5641fe12-bfaf-4e01-afb5-e43349f3c151","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"EnemyBelowHealth":{"_name":"EnemyBelowHealth","_id":"29b4a6ea-05ca-4387-93f1-7ebd2b52fbb9","$type":"NodeCanvas.Framework.Variable`1[[System.Int32,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"OnCooldown":{"_name":"OnCooldown","_id":"9d9191d2-deb7-49c8-a5e7-8f7343f837be","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
+  _serializedBlackboard: '{"_variables":{"Amount":{"_propertyPath":"Energy.Amount","_name":"Amount","_id":"1e904da6-9482-4a6b-8445-cb11ebdc66e6","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"whosAround":{"_propertyPath":"Kyllarr_Model.whosAround","_name":"whosAround","_id":"c21f6b0b-e321-4696-9c57-60fd2e36f10e","$type":"NodeCanvas.Framework.Variable`1[[System.Collections.Generic.List`1[[UnityEngine.Collider,
+    UnityEngine.PhysicsModule, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null]],
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"numberOfPlayers":{"_propertyPath":"Kyllarr_Model.numberOfPlayers","_name":"numberOfPlayers","_id":"fbed5afe-32d4-40c9-8b13-8fe3357ddf09","$type":"NodeCanvas.Framework.Variable`1[[System.Single,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences: []
 --- !u!114 &8055369067861555089
@@ -340,7 +358,22 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 6
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &911020549927256389
+--- !u!114 &3187449451116224936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741071797372873685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8cde135b8a9964299af7d22b5ed884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0
+  viewAngle: 0
+  visibleTargets: []
+--- !u!54 &1374110862
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
