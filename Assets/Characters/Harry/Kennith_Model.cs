@@ -42,7 +42,7 @@ namespace Kennith
             currentState.Tick();
             
             //TESTING
-            CheckFor(TargetObject);
+            if (TargetObject!= null) CheckFor(TargetObject);
         }
         
         public bool CheckFor(GameObject other) // returns true/false if object inserted is visible
