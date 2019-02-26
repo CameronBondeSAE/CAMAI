@@ -55,25 +55,25 @@ namespace Russell {
                 }
                 if (Physics.Raycast(origin, Quaternion.AngleAxis(45f, transform.up) * transform.forward, out rightHit, 10f))
                 {
-                    transform.Rotate(0, -80 * Time.deltaTime, 0); 
+                    rb.transform.Rotate(0, -80 * Time.deltaTime, 0); 
                     Debug.DrawLine(origin, rightHit.point, Color.yellow);
                 }
                 else if (Physics.Raycast(origin, Quaternion.AngleAxis(-45f, transform.up) * transform.forward, out leftHit, 10f))
                 {
-                    transform.Rotate(0, 80 * Time.deltaTime, 0); 
+                    rb.transform.Rotate(0, 80 * Time.deltaTime, 0); 
                     Debug.DrawLine(origin, leftHit.point, Color.cyan);
                 }
 
                 if (Physics.Raycast(origin, Quaternion.AngleAxis(90f, transform.up) * transform.forward, out rightSideHit,
                     5f))
                 {
-                    transform.Rotate(0, -120 * Time.deltaTime, 0); 
+                    rb.transform.Rotate(0, -120 * Time.deltaTime, 0); 
                     Debug.DrawLine(origin, rightSideHit.point, Color.yellow);
                 }
                 if (Physics.Raycast(origin, Quaternion.AngleAxis(90f, transform.up) * transform.forward, out leftSideHit,
                     5f))
                 {
-                    transform.Rotate(0, 120 * Time.deltaTime, 0); 
+                    rb.transform.Rotate(0, 120 * Time.deltaTime, 0); 
                     Debug.DrawLine(origin, leftSideHit.point, Color.cyan);
                 }
             }
@@ -85,7 +85,7 @@ namespace Russell {
         public override void Exit()
         {
             base.Exit();
-            GetComponent<Rigidbody>().velocity = transform.forward * 0;
+            rb.velocity = transform.forward * 0;
 
         }
 

@@ -14,10 +14,15 @@ namespace Russell
             Kyllarr_Model kyllarr_model = target as Kyllarr_Model;
         
             //GUILayout
-            if (GUILayout.Button("TEST"))
+            if (GUILayout.Button("Kill Move"))
             {
-                Debug.Log("Testing");
+                kyllarr_model.DashAttack();
             }
+            if (GUILayout.Button("Kill Me"))
+            {
+                kyllarr_model.Kyllarr_Dies();
+            }
+            
         }
     }
 

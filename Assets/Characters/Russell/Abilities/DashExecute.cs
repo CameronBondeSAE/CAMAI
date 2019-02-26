@@ -11,20 +11,28 @@ namespace Russell
         public GameObject newTarget;
         private float backDistance = 5;
         private bool onCD;
-        
+        private ParticleSystem particle;
+        public float damage = 20f;
+        private Health targetHealth;
         
         private void Awake()
         {
             _characterBase = ai.GetComponent<CharacterBase>();
             ai.GetComponent<Kyllarr_Model>().KillMove += Kyllarr_Model_KillThatGuy;
+            particle = GetComponent<ParticleSystem>();
         }
 
         private void Kyllarr_Model_KillThatGuy()
         {
             newTarget = _characterBase.Target;
             ai.transform.position = newTarget.transform.position - newTarget.transform.forward * backDistance;
+            ai.transform.LookAt(newTarget.transform);
             Debug.Log("you ded");
             onCD = true;
+            particle.Play();
+            targetHealth = newTarget.GetComponent<Health>();
+            targetHealth.Change(-damage,_characterBase);
+            
         }
 
         public override void Enter()
@@ -51,6 +59,8 @@ namespace Russell
             onCD = false;
             
         } 
+        
+        
 
 
     }

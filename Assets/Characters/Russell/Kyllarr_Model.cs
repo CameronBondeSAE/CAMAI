@@ -13,6 +13,7 @@ public class Kyllarr_Model : CharacterBase
     public StateBase patrolState;
     public List<Collider> whosAround = new List<Collider>();
     public float numberOfPlayers;
+    public ParticleSystem _particleSystem;
     public void ChangeState(StateBase newState)
     {
         //Check state is not the same
@@ -25,17 +26,26 @@ public class Kyllarr_Model : CharacterBase
 
     private void Awake()
     {
-        patrolState = GetComponent<PatrolState>();
+        
         //ChangeState(patrolState);
         currentState.Enter();
+        GetComponent<Health>().OnDeathEvent += Kyllarr_Dies;
+        
     }
+
+    public void Kyllarr_Dies()
+    {
+        //Doesnt work quite yet but will finish soon
+        _particleSystem.Play();
+        OnDestroy();
+       
+    }
+
     // Start is called before the first frame update
     public override void Start()
     {
         base.Start();
-        
-        //GetComponent<PatrolState>().OnDoneMoving += Kyllarr_Model_OnDoneMoving;
-        //GetComponent<RotateState>().OnDoneRotating += Kyllarr_Model_OnDoneRotating;
+
     }
     
     
@@ -44,6 +54,7 @@ public class Kyllarr_Model : CharacterBase
     public void Update()
     {
         currentState.Execute();
+
     }
 
     private void Kyllarr_Model_OnDoneMoving()
@@ -58,6 +69,13 @@ public class Kyllarr_Model : CharacterBase
     public void FanFire()
     {
         Debug.Log("FanFire");
+    }
+
+    public void DashAttack()
+    {
+        ChangeState(attackState);
+        KillMove();
+        
     }
     public void Attack()
     {
