@@ -5,9 +5,9 @@ namespace Kennith
     
     public class Kennith_Model : CharacterBase
     {
-
-        public StateBase spiritBombState;
-        public StateBase moveState, fleeState, idleState;
+        [HideInInspector]
+        public StateBase spiritBombState, moveState, fleeState, idleState, deathState;
+        
         public StateBase currentState;
         
         public double visionRange;
@@ -32,9 +32,12 @@ namespace Kennith
             moveState = GetComponentInChildren<MoveState>();
             fleeState = GetComponentInChildren<FleeState>();
             idleState = GetComponentInChildren<IdleState>();
+            deathState = GetComponentInChildren<DeathState>();
             
             currentState = moveState;
             currentState.Enter();
+
+            GetComponent<Health>().OnDeathEvent += Perish;
         }
 
         private void Update()
@@ -42,7 +45,7 @@ namespace Kennith
             currentState.Tick();
             
             //TESTING
-            if (TargetObject!= null) CheckFor(TargetObject);
+            if (TargetObject != null) CheckFor(TargetObject);
         }
         
         public bool CheckFor(GameObject other) // returns true/false if object inserted is visible
@@ -106,7 +109,11 @@ namespace Kennith
 
             return false;
         }
-        
+
+        public void Perish()
+        {
+           ChangeState(deathState);
+        }
     }
     
 }
