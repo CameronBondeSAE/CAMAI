@@ -34,7 +34,11 @@ namespace Michael
             if (GUILayout.Button("Comming Soon Too"))
             {
                 Debug.Log("here");
-            }            
+            }    
+            if (GUILayout.Button("Comming Soon Too"))
+            {
+                
+            }           
             //GUI.Button();
         }    
     }

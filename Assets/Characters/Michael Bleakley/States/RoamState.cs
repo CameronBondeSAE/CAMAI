@@ -19,7 +19,8 @@ namespace Michael
         {
             base.Execute();
             if (Vector3.Distance(transform.position, destination) < 1) Exit();
-            GetComponent<Vestra_Model>().Move(destination);
+            Self.GetComponent<Vestra_Model>().Move(destination);
+            Debug.Log("testing");
             
         }
 

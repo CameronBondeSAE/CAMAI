@@ -44,9 +44,9 @@ namespace Michael
 
         private void OnDeathEvent()
         {
-        GetComponent<Health>().OnHurtEvent -= OnHurtEvent;
-                    GetComponent<Health>().OnDeathEvent -= OnDeathEvent;
-                    GetComponent<Energy>().OnReducingEvent -= OnReducingEvent;
+            GetComponent<Health>().OnHurtEvent -= OnHurtEvent;
+            GetComponent<Health>().OnDeathEvent -= OnDeathEvent;
+            GetComponent<Energy>().OnReducingEvent -= OnReducingEvent;
             currentState.Exit();
             Destroy(gameObject);
         }
