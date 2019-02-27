@@ -56,18 +56,19 @@ public class MrDudes_Model : CharacterBase
 	private void Awake()
 	{
 		_rigidbody = GetComponent<Rigidbody>();
+		myTransform = GetComponent<Transform>();
 //		ChangeState(wobbleState);
+
+		// Listen/Subscribe to events coming out of Health.
+		GetComponent<Health>().OnHurtEvent += Hurt;
+		GetComponent<Health>().OnDeathEvent += Death;
 	}
 
 	public override void Start()
 	{
 		base.Start();
 
-		myTransform = GetComponent<Transform>();
 		
-		// Listen/Subscribe to events coming out of Health.
-		GetComponent<Health>().OnHurtEvent += Hurt;
-		GetComponent<Health>().OnDeathEvent += Death;
 	}
 
 	private void FixedUpdate()

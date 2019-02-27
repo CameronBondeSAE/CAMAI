@@ -11,7 +11,7 @@ public class CamKillTester : EditorWindow
         // Note the "CamEd" should be yours
         EditorWindow.GetWindow(typeof(CamKillTester));
     }
-
+    
     private void OnGUI()
     {
         GUILayout.Label("Attempt to kill...");
