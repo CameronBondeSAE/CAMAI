@@ -11,14 +11,15 @@ namespace Michael
         public override void Enter()
         {
             destination = new Vector3(Random.Range(-destinationRange, destinationRange),0,Random.Range(-destinationRange, destinationRange));
-            destination += transform.position;
+            //destination += Self.transform.position;
+            base.Enter();
         }
 
         public override void Execute()
         {
             base.Execute();
             if (Vector3.Distance(transform.position, destination) < 1) Exit();
-            GetComponent<Vestra_Model>().Move(destination);
+            Self.GetComponent<Vestra_Model>().Move(destination + Self.transform.position);
         }
 
         public override void Exit()

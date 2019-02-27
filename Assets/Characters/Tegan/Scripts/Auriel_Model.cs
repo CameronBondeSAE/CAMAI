@@ -22,6 +22,9 @@ namespace Auriel
 		private void Awake()
 		{
 			ChangeState(movementState);
+
+			GetComponent<Health>().OnHurtEvent += AurielHurt;
+			GetComponent<Health>().OnDeathEvent += AurielDeath;
 		}
 
 		public override void Start()
@@ -35,6 +38,16 @@ namespace Auriel
 			{
 				currentState.Execute();
 			}
+		}
+		
+		private void AurielHurt()
+		{
+			
+		}
+		
+		private void AurielDeath()
+		{
+			Destroy(gameObject);
 		}
 	}
 }

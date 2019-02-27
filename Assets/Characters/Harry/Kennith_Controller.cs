@@ -7,18 +7,19 @@ namespace Kennith
 {
     public class Kennith_Controller : MonoBehaviour
     {
-
-        public Kennith_Model kennith;
+        private BehaviourTreeOwner tree;
+        private Kennith_Model kennith;
 
         private void Awake()
         {
             kennith = GetComponent<Kennith_Model>();
+            tree = GetComponent<BehaviourTreeOwner>();
         }
 
         public void EvaluateNextMove()
         {
             
-            GetComponent<BehaviourTreeOwner>().Tick();
+            tree.Tick();
             
 //            if (kennith.currentState == kennith.spiritBombState) kennith.ChangeState(kennith.moveState); 
 //            else if (kennith.currentState == kennith.moveState) kennith.ChangeState(kennith.fleeState); 

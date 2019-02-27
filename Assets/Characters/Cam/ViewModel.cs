@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Cam;
 using UnityEngine;
 
-public class ModelView : MonoBehaviour
+public class ViewModel : MonoBehaviour
 {
     public AttackState AttackState;
     public AudioSource AudioSource;
@@ -11,16 +11,33 @@ public class ModelView : MonoBehaviour
 
     public AudioClip meowClip;
 
+    public MrDudes_Model mrDudesModel;
+
+    public ParticleSystem particleSystem;
+
 // Start is called before the first frame update
     void Awake()
     {
         AttackState.OnAttack += OnAttack;
+        
+        mrDudesModel.OnGetBig += OnGetBig;        
     }
 
     private void OnDestroy()
     {
         AttackState.OnAttack -= OnAttack;
+        mrDudesModel.OnGetBig -= OnGetBig;        
     }
+
+    private void OnGetBig()
+    {
+        AudioSource.clip = meowClip;
+        AudioSource.Play();
+        ParticleSystem.ShapeModule shapeModule = particleSystem.shape;
+        shapeModule.radius = mrDudesModel.getBigHitRadius;
+        particleSystem.Emit(1000);
+    }
+
     
     
 

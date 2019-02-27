@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 namespace Michael
 {
     public class AttackState : StateBase
     {
-        private GameObject target;
-
+        
         public override void Enter()
         {
+            Debug.Log("West");
             base.Enter();
-            print("Entry of Attack");
+            Destroy( Self.GetComponent<CharacterBase>().Target);
+            //print("Entry of Attack");
         }
 
         public override void Execute()
@@ -21,13 +23,14 @@ namespace Michael
              * when in range use ability
              */
             base.Execute();
-            print("Attacking");
+            //print("Attacking");
         }
 
         public override void Exit()
         {
+            Self.GetComponent<CharacterBase>().Target = null;
             base.Exit();
-            print("Exit of attack");
+            //print("Exit of attack");
         }
     }
 }
