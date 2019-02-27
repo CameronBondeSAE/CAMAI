@@ -91,6 +91,21 @@ namespace Kennith
                 }
             }
             
+            if(GUILayout.Button("Perish"))
+            {
+                if (model != null)
+                {
+                    if (!Application.isPlaying)
+                    {
+                        Debug.LogWarning("Editor must be playing for this button to function");
+                    } else model.ChangeState(model.deathState);
+                }
+                else
+                {
+                    Debug.LogError("Selected Object does not have required component");
+                }
+            }
+            
         }
     }
 }

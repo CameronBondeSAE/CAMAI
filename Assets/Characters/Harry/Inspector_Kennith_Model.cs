@@ -32,6 +32,11 @@ namespace Kennith
                 model.ChangeState(model.fleeState);
             }
             
+            if(GUILayout.Button("Perish"))
+            {
+                model.ChangeState(model.deathState);
+            }
+            
             DrawDefaultInspector();
         }
         
