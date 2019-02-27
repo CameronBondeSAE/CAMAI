@@ -14,8 +14,8 @@ namespace Josh
         {
             base.Enter();
             Debug.Log("Walk start",gameObject);
-            body = gameObject.GetComponent<Rigidbody>();
-            worldprop = gameObject.transform;
+            worldprop = transform.parent;
+            body = worldprop.GetComponent<Rigidbody>();
         }
 
         public override void Execute()
@@ -33,23 +33,23 @@ namespace Josh
                 }
                 else
                 {
-                    body.AddTorque(-body.angularVelocity);
+                    body.AddTorque(-body.angularVelocity,ForceMode.VelocityChange);
                     //Debug.Log("straight");
                     //body.angularVelocity=new Vector3(0,0,0);
                 }
             }
             else if (distleft > distright)
             {
-                body.AddTorque(0,-speed,0);
+                body.AddTorque(0,-speed,0,ForceMode.VelocityChange);
                 //body.angularVelocity=new Vector3(0,-speed*2,0);
             }
             else
             {
-                body.AddTorque(0,speed,0);
+                body.AddTorque(0,speed,0,ForceMode.VelocityChange);
                 //body.angularVelocity=new Vector3(0,speed*2,0);
             }
             
-            body.AddForce(worldprop.forward*speed);
+            body.AddForce(worldprop.forward*speed,ForceMode.VelocityChange);
             //Debug.Log("Eg update",gameObject);
         }
 
