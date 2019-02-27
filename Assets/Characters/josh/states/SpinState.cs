@@ -29,7 +29,7 @@ namespace Josh
             foreach (Collider item in colliders)
             {
                 CharacterBase choice = item.GetComponent<CharacterBase>();
-                if (choice)
+                if (choice && choice!= gameObject.GetComponent<CharacterBase>())
                 {
                     choice.GetComponent<Health>().Change(-15,gameObject);
                     if (choice.GetComponent<Rigidbody>())
@@ -47,7 +47,8 @@ namespace Josh
             //gameObject.transform.Rotate(Vector3.up,basespeed+(Time.deltaTime*maxspeed*power));
             if (completion >= 360)
             {
-                Exit();
+                
+                //Exit();
             }
             Debug.Log("Bupdate",gameObject);
         }

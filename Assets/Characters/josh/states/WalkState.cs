@@ -28,24 +28,28 @@ namespace Josh
             {
                 if(dist <= 2)
                 {
-                    body.angularVelocity=new Vector3(0,speed*3,0);
+                    //body.AddTorque(0,speed*3,0);
+                    //body.angularVelocity=new Vector3(0,speed*3,0);
                 }
                 else
                 {
+                    body.AddTorque(-body.angularVelocity);
                     //Debug.Log("straight");
-                    body.angularVelocity=new Vector3(0,0,0);
+                    //body.angularVelocity=new Vector3(0,0,0);
                 }
             }
             else if (distleft > distright)
             {
-                body.angularVelocity=new Vector3(0,-speed*2,0);
+                body.AddTorque(0,-speed,0);
+                //body.angularVelocity=new Vector3(0,-speed*2,0);
             }
             else
             {
-                body.angularVelocity=new Vector3(0,speed*2,0);
+                body.AddTorque(0,speed,0);
+                //body.angularVelocity=new Vector3(0,speed*2,0);
             }
             
-            body.velocity = worldprop.forward*speed;
+            body.AddForce(worldprop.forward*speed);
             //Debug.Log("Eg update",gameObject);
         }
 

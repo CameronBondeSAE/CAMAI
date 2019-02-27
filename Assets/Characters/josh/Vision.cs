@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Vision : MonoBehaviour
 {
     public float ViewDist = 10;
+
+    public List<CharacterBase> visible;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,7 +27,7 @@ public class Vision : MonoBehaviour
         return hit.distance;
     }
 
-    public List<CharacterBase> UpdateVision()
+    public void UpdateVision()
     {
         List<CharacterBase> found = new List<CharacterBase>();
         RaycastHit ray;
@@ -41,7 +44,8 @@ public class Vision : MonoBehaviour
                 }
             }
         }
+        //found.Sort();
 
-        return found;
+        visible = found;
     }
 }
