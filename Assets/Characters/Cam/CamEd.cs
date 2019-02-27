@@ -14,6 +14,8 @@ public class CamEd : EditorWindow
 	
 	private void OnGUI()
 	{
+		
+		
 		// Simple button
 		if (GUILayout.Button("Press me"))
 		{
