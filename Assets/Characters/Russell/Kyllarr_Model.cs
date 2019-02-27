@@ -36,8 +36,9 @@ public class Kyllarr_Model : CharacterBase
     public void Kyllarr_Dies()
     {
         //Doesnt work quite yet but will finish soon
-        _particleSystem.Play();
-        OnDestroy();
+        GetComponent<Health>().OnDeathEvent -= Kyllarr_Dies;
+        //_particleSystem.Play();
+        Destroy(gameObject);
        
     }
 
