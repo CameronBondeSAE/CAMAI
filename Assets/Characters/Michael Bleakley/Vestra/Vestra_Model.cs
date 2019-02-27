@@ -121,17 +121,17 @@ namespace Michael
                     * add turning to direction wanted
                     * detect collision on sides with ray cast and front to determine turning to avoid obsticles and slowing down speed
                     */
-                   rb.AddRelativeForce(Vector3.forward * SpeedMultiplier, ForceMode.Force);
+                    if (rb != null)rb.AddRelativeForce(Vector3.forward * SpeedMultiplier, ForceMode.Force);
        
                    var targetPosition = transform.InverseTransformPoint(speedDirection);
                    var temp = (targetPosition.x / targetPosition.magnitude);
-                   rb.AddRelativeTorque(0,(vary * 0.5f) * temp,0);
+                   if (rb != null)rb.AddRelativeTorque(0,(vary * 0.5f) * temp,0);
 
                    RaycastHit hit;
                    if (Physics.Raycast(transform.position, transform.forward, out hit, 2.3f))
                    {
                    Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
-                   rb.AddRelativeTorque(0, vary * 2f, 0);
+                   if (rb != null)rb.AddRelativeTorque(0, vary * 2f, 0);
                        if (hitcheck(hit)) Target = hit.transform.gameObject;
                        
                            
@@ -152,14 +152,14 @@ namespace Michael
                    if (Physics.Raycast(transform.position, transform.forward + transform.right, out hit, 2f))
                    {
                    Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
-                   rb.AddRelativeTorque(0, -vary * 1.5f, 0);
+                   if (rb != null)rb.AddRelativeTorque(0, -vary * 1.5f, 0);
                        if (hitcheck(hit)) Target = hit.transform.gameObject;
                    }
        
                    if (Physics.Raycast(transform.position, transform.forward - transform.right, out hit, 2f))
                    {
                    Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
-                   rb.AddRelativeTorque(0, vary *1.5f, 0);
+                   if (rb != null)rb.AddRelativeTorque(0, vary *1.5f, 0);
                        if (hitcheck(hit)) Target = hit.transform.gameObject;
                    }
        

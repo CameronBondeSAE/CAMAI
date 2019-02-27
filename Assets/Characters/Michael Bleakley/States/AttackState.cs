@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 namespace Michael
 {
@@ -7,8 +8,9 @@ namespace Michael
         
         public override void Enter()
         {
+            Debug.Log("West");
             base.Enter();
-            Destroy( GetComponent<CharacterBase>().Target);
+            Destroy( Self.GetComponent<CharacterBase>().Target);
             //print("Entry of Attack");
         }
 
@@ -26,7 +28,7 @@ namespace Michael
 
         public override void Exit()
         {
-            GetComponent<CharacterBase>().Target = null;
+            Self.GetComponent<CharacterBase>().Target = null;
             base.Exit();
             //print("Exit of attack");
         }

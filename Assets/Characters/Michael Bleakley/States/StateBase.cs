@@ -8,6 +8,11 @@ namespace Michael
         public float delay;
         public GameObject Self;
 
+        private void Awake()
+        {
+            Self = GetComponentInParent<CharacterBase>().transform.gameObject;
+        }
+
         public virtual void Enter()
         {
             Invoke("Exit", delay);
