@@ -22,7 +22,10 @@ namespace Russell
             {
                 kyllarr_model.Kyllarr_Dies();
             }
-            
+            if (GUILayout.Button("DECOY!"))
+            {
+                kyllarr_model.JustGotHurt();
+            }
         }
     }
 

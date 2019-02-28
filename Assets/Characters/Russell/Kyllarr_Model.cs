@@ -8,6 +8,7 @@ public class Kyllarr_Model : CharacterBase
 {
     public event Action KillMove;
     public event Action Killme;
+    public event Action IGotHurt;
     public StateBase currentState;
     public StateBase attackState;
     public StateBase rotateState;
@@ -29,7 +30,13 @@ public class Kyllarr_Model : CharacterBase
         //ChangeState(patrolState);
         currentState.Enter();
         GetComponent<Health>().OnDeathEvent += Kyllarr_Dies;
-        
+        GetComponent<Health>().OnHurtEvent += JustGotHurt;
+
+    }
+
+    public void JustGotHurt()
+    {
+        IGotHurt();
     }
 
     public void Kyllarr_Dies()
