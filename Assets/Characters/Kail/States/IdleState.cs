@@ -64,6 +64,9 @@ namespace Kail
                 case 2:
                     GetComponent<Renderer>().material.color = Color.yellow;
                     break;
+                default:
+                    GetComponent<Renderer>().material.color = Color.black;
+                    break;
                 
             }
         }

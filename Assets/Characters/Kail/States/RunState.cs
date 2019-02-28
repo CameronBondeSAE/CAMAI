@@ -41,7 +41,6 @@ namespace Kail
             time = Random.Range(100, 150);
             this.transform.Rotate(0f,180f,0f);
             movementRun.MoveStart(run, speed, time);
-            Debug.Log(this.transform.rotation.y);
         }
         
         public override void MoveEnd()
@@ -94,6 +93,9 @@ namespace Kail
                     break;
                 case 1:
                     GetComponent<Renderer>().material.color = Color.red;
+                    break;
+                default:
+                    GetComponent<Renderer>().material.color = Color.black;
                     break;
                 
             }

@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Kail
 {
@@ -16,6 +17,8 @@ namespace Kail
         public CharacterBase me;
 
         public CharacterBase empty;
+
+        public string insult;
 
 
         private void Awake()
@@ -62,7 +65,26 @@ namespace Kail
         }
 
 
-        
+        public void SetInsult()
+        {
+            var insultChoose = UnityEngine.Random.Range(0, 3);
+            switch (insultChoose)
+            {
+                case 0:
+                    insult = "You fight like someone who can't fight well!";
+                    break;
+                case 1:
+                    insult = "Nanananana, you can't catch me.";
+                    break;
+                case 2:
+                    insult = "I'm mad AND disappointed!";
+                    break;
+                case 3:
+                    insult = "GitGud";
+                    break;
+            }
+            
+        }
 
         public override void Exit(int nextState)
         {
@@ -77,6 +99,9 @@ namespace Kail
                     break;
                 case 2:
                     GetComponent<Renderer>().material.color = Color.yellow;
+                    break;
+                default:
+                    GetComponent<Renderer>().material.color = Color.black;
                     break;
                 
             }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 
@@ -17,11 +18,11 @@ namespace Kail
 
         public CharacterBase speedBase;
 
-
         public void MoveStart(StateBase theState, float theSpeed, int theTime)
         {
 
             speedBase = GetComponent<CharacterBase>();
+            
             
             currentState = theState;
             speed = theSpeed * speedBase.SpeedMultiplier;

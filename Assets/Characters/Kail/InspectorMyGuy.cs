@@ -26,6 +26,10 @@ namespace Kail
             {
                 myGuy.SetState(2);
             }
+            if (GUILayout.Button("Die now"))
+            {
+                myGuy.SetState(3);
+            }
         }
     }
 }
