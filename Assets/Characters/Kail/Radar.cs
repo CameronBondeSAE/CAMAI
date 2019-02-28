@@ -46,7 +46,9 @@ namespace Kail
             //transform.LookAt(posTarget.transform.position);
 
             //sets the rotation.x to 0f, because i want that
-            
+            var tempRot = new Quaternion();
+            tempRot.Set(0f, transform.rotation.y - 180f, 0f, 1);
+            transform.rotation = tempRot;
 
             if (current.currentState == current.idleState)
             {

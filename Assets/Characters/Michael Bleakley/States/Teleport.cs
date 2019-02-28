@@ -15,7 +15,7 @@ namespace Michael
         {
             previousPosition = transform.position;
             destination = new Vector3(Random.Range(-destinationRange, destinationRange),transform.position.y,Random.Range(-destinationRange, destinationRange));
-            destination += transform.position;
+            destination += Self.transform.position;
             Invoke("teleport", delay);
             Invoke("Exit", delay + 1);
         }
@@ -24,18 +24,16 @@ namespace Michael
         {
             base.Execute();
             if (transform.position.y < 0){
-            transform.position = previousPosition;
+                if (previousPosition != new Vector3()) transform.position = previousPosition;
+                destination = new Vector3(Random.Range(-destinationRange, destinationRange),2,Random.Range(-destinationRange, destinationRange));
+                destination.x += Self.transform.position.x;
+                destination.z += Self.transform.position.z;
             }
-        }
-
-        public override void Exit()
-        {
-            base.Exit();
-        }    
+        }  
         
         private void teleport()
         {
-            transform.position = destination;
+            Self.transform.position = destination;
         }
     }
 }
