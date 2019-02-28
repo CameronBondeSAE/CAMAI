@@ -14,47 +14,57 @@ namespace Kail
         public GameObject seenTarget;
         public GameObject posTarget;
 
+        public bool look;
+
         public float tarDistance;
+
+        public bool objChecking;
+        public float objDistance;
+        public GameObject obj;
+        
 
         public void OnTriggerEnter(Collider other)
         {
 
             current = GetComponent<MyGuyController>();
-            
-            
-            
             seenTarget = other.gameObject;
             
-            if (seenTarget.GetComponent<CharacterBase>() != null)
+            if ((seenTarget.GetComponent<CharacterBase>() != null)  && (targetFound == false) && (seenTarget.GetComponent<MyGuyController>() == null))
             {
-                if (targetFound == false)
-                {
+                    current.currentState.MoveStop();
                     posTarget = seenTarget;
-                    CheckTarget();
-                }
+                    LookAtEnemy();
             }
+
+            
 
         }
 
-        private void CheckTarget()
+        public void LookAtEnemy()
         {
-            //these things only happen if player is on idle
+            
+            //transform.LookAt(posTarget.transform.position);
+
+            //sets the rotation.x to 0f, because i want that
+            
+
             if (current.currentState == current.idleState)
             {
-                current.currentState.MoveStop();
+                CheckTarget();
+            }
 
+            if (current.currentState == current.runState)
+            {
+                look = true;
+                RunningAway();
+            }
 
-                var tempVec = posTarget.transform.position;
-                tempVec = new Vector3(0f, tempVec.y, 0f);
+        }
+        
+        
+        public void CheckTarget()
+        {
 
-                transform.LookAt(tempVec);
-
-                //sets the roation.x to 0f, because i want that
-                var tempRot = new Quaternion();
-                tempRot.Set(0f, transform.rotation.y, 0f, 1);
-                transform.rotation = tempRot;
-
-                
                 //checks if you can see the enemy
                 var tempObj = new RaycastHit();
 
@@ -69,26 +79,54 @@ namespace Kail
                     posTarget = null;
                     current.currentState.MoveSet();
                 }
-            }
         }
 
 
-        private void OnTriggerStay(Collider other)
+
+        public void RunningAway()
         {
-            if ((other.gameObject == posTarget) && (targetFound == true) && (current.currentState = current.idleState))
+            //checks if you can see the enemy
+            var tempObj = new RaycastHit();
+            
+            if ((Physics.Linecast(transform.position, posTarget.transform.position, out tempObj)) && (tempObj.transform.gameObject == posTarget))
             {
+                //it sees the player
                 tarDistance = Vector3.Distance(posTarget.transform.position, transform.position);
+                current.currentState.MoveSet();
             }
-        }
-
-        public void RuningAway()
-        {
-            //myDude turns (handled by runstate)
-            //checks if you can see the target
-            //if no, targetFound = false
-            //if yes, check distance.  If distance = more
+            else
+            {
+                posTarget = null;
+                targetFound = false;
+            }
         }
         
+        private void OnTriggerStay(Collider other)
+        {
+            /*if ((other.gameObject == posTarget) && (targetFound == true) && (current.currentState = current.idleState))
+            {
+                tarDistance = Vector3.Distance(posTarget.transform.position, transform.position);
+            }*/
+
+            if ((other.GetComponent<CharacterBase>() == null) && (current.currentState != current.runState))
+            {
+                obj = other.gameObject;
+                objChecking = true;
+            }
+        }
+
+        private void Update()
+        {
+            if (objChecking == true)
+            {
+                objDistance = Vector3.Distance(obj.transform.position, transform.position);
+                if (objDistance >= 1.5f)
+                {
+                    objChecking = false;
+                    current.currentState.MoveSet();
+                }
+            }
+        }
 
         public void TargetNotFound()
         {

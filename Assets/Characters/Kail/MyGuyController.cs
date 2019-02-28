@@ -15,10 +15,22 @@ namespace Kail
         public StateBase runState;
 
         public GameObject myTarget;
+        public int next;
         
-        public void ChangeState(int state)
+        public void ChangeState()
+        {
+            //go to currentState exit, then newState Enter, then set the new state
+            currentState.Exit(next);
+            //note - makes sure currentState exits pre newState starting
+            newState.Enter();
+            currentState = newState;
+        }
+
+        public void SetState(int state)
         {
 
+            next = state;
+            
             switch (state)
             {
                 case 0:
@@ -32,15 +44,19 @@ namespace Kail
                     break;
 
             }
+
+            if (newState == currentState)
+            {
+                //do nothing
+            }
+
+            else
+            {
+                ChangeState();
+            }
             
-            //go to currentState exit, then newState Enter, then set the new state
-            currentState.Exit();
-            //note - makes sure currentState exits pre newState starting
-            newState.Enter();
-            currentState = newState;
         }
-        
-        
+
         public void Awake()
         {
             //set everything up
