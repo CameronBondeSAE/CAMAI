@@ -6,6 +6,12 @@ namespace Michael
     public class StateBase : MonoBehaviour
     {
         public float delay;
+        public GameObject Self;
+
+        private void Awake()
+        {
+            Self = GetComponentInParent<CharacterBase>().transform.gameObject;
+        }
 
         public virtual void Enter()
         {
@@ -19,8 +25,8 @@ namespace Michael
 
         public virtual void Exit()
         {
-            GetComponent<BehaviourTreeOwner>().Tick();
             CancelInvoke();
+            Self.GetComponentInChildren<BehaviourTreeOwner>().Tick();
         }
     }
 }

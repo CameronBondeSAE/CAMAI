@@ -14,7 +14,7 @@ namespace Kennith
         public override void Enter()
         {
             
-            Debug.Log("Attack Enter", gameObject);
+            // Debug.Log("Attack Enter", gameObject);
 
             spawnedSpiritBomb = Instantiate(spiritBomb, transform.position + new Vector3(0,2,0), transform.rotation);
             StartCoroutine(DelayExit(endDelay));
@@ -24,7 +24,7 @@ namespace Kennith
         public override void Tick()
         {
            
-            Debug.Log("Attack Execute", gameObject);
+            // Debug.Log("Attack Execute", gameObject);
 
             spawnedSpiritBomb.transform.localScale += scaleIncrease;
             spawnedSpiritBomb.transform.position += posIncrease;
@@ -35,7 +35,7 @@ namespace Kennith
         {
             spawnedSpiritBomb.GetComponent<Rigidbody>().velocity = spawnedSpiritBomb.transform.forward * 100;
             
-            Debug.Log("Attack Exit", gameObject);
+            // Debug.Log("Attack Exit", gameObject);
             
             base.Exit();
         }

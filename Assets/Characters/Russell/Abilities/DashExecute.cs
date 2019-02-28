@@ -10,6 +10,9 @@ namespace Russell
         public GameObject ai;
         public GameObject newTarget;
         private float backDistance = 5;
+        private bool onCD;
+        public float damage = 20f;
+        private Health targetHealth;
         
         private void Awake()
         {
@@ -21,7 +24,12 @@ namespace Russell
         {
             newTarget = _characterBase.Target;
             ai.transform.position = newTarget.transform.position - newTarget.transform.forward * backDistance;
+            ai.transform.LookAt(newTarget.transform);
             Debug.Log("you ded");
+            onCD = true;
+            targetHealth = newTarget.GetComponent<Health>();
+            targetHealth.Change(-damage,_characterBase);
+            
         }
 
         public override void Enter()
@@ -39,9 +47,17 @@ namespace Russell
         public override void Exit()
         {
             base.Exit();
-
-
+            StartCoroutine(WaitForCD(10f));
         }
+
+        IEnumerator WaitForCD(float coolDown)
+        {
+            yield return new WaitForSeconds(coolDown);
+            onCD = false;
+            
+        } 
+        
+        
 
 
     }

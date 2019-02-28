@@ -1,14 +1,16 @@
 ﻿using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 namespace Michael
 {
     public class AttackState : StateBase
     {
-        private GameObject target;
-
+        
         public override void Enter()
         {
+            Debug.Log("West");
             base.Enter();
+            Destroy( Self.GetComponent<CharacterBase>().Target);
             print("Entry of Attack");
         }
 
@@ -26,6 +28,7 @@ namespace Michael
 
         public override void Exit()
         {
+            Self.GetComponent<CharacterBase>().Target = null;
             base.Exit();
             print("Exit of attack");
         }

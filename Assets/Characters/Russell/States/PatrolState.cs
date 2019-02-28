@@ -9,11 +9,13 @@ namespace Russell {
         public event Action OnDoneMoving;
         public Rigidbody rb;
         public float moveSpeed = 5f;
+
+        public GameObject myTarget;
         //public float minMoveDistance = 10;
         
         public override void Enter()
         {
-            base.Enter();
+            base.Enter();           
             Invoke("RunEvent", 5f);
             Debug.Log("Start Moving", gameObject);
         }
@@ -33,38 +35,45 @@ namespace Russell {
             Vector3 origin = transform.position;
             if (Physics.Raycast(ray, out hit, 50f))
             {
-                //HACK TESTING if something gets hit
-                if (hit.collider.tag == "Target")
+                //Will Need to change to add force
+                CharacterBase characterBase = hit.collider.GetComponent<CharacterBase>();
+                if (characterBase != null && characterBase != this)
                 {
-                    Debug.DrawLine(ray.origin, hit.point, Color.red);
-                    Debug.Log(hit.collider.name + "is my target");
+                    myTarget = hit.collider.gameObject;
+                    rb.GetComponent<CharacterBase>().Target = myTarget;
+
+                    if (myTarget != null)
+                    {
+                        //rb.velocity += Vector3.MoveTowards(transform.position, myTarget.transform.position, )
+                    }
                 }
+                //HACK TESTING if something gets hit
                 else
                 {
-                    rb.velocity += transform.forward * moveSpeed * Time.deltaTime;
+                    rb.AddForce(0,0,moveSpeed *Time.deltaTime);
                     Debug.DrawLine(ray.origin, hit.point, Color.blue);
                 }
-                if (Physics.Raycast(origin, Quaternion.AngleAxis(45f, transform.up) * transform.forward, out rightHit, 20f))
+                if (Physics.Raycast(origin, Quaternion.AngleAxis(45f, transform.up) * transform.forward, out rightHit, 10f))
                 {
-                    transform.Rotate(0, -80 * Time.deltaTime, 0); 
+                    rb.transform.Rotate(0, -80 * Time.deltaTime, 0); 
                     Debug.DrawLine(origin, rightHit.point, Color.yellow);
                 }
-                else if (Physics.Raycast(origin, Quaternion.AngleAxis(-45f, transform.up) * transform.forward, out leftHit, 20f))
+                else if (Physics.Raycast(origin, Quaternion.AngleAxis(-45f, transform.up) * transform.forward, out leftHit, 10f))
                 {
-                    transform.Rotate(0, 80 * Time.deltaTime, 0); 
+                    rb.transform.Rotate(0, 80 * Time.deltaTime, 0); 
                     Debug.DrawLine(origin, leftHit.point, Color.cyan);
                 }
 
                 if (Physics.Raycast(origin, Quaternion.AngleAxis(90f, transform.up) * transform.forward, out rightSideHit,
-                    10f))
+                    5f))
                 {
-                    transform.Rotate(0, -80 * Time.deltaTime, 0); 
+                    rb.transform.Rotate(0, -120 * Time.deltaTime, 0); 
                     Debug.DrawLine(origin, rightSideHit.point, Color.yellow);
                 }
                 if (Physics.Raycast(origin, Quaternion.AngleAxis(90f, transform.up) * transform.forward, out leftSideHit,
-                    10f))
+                    5f))
                 {
-                    transform.Rotate(0, 80 * Time.deltaTime, 0); 
+                    rb.transform.Rotate(0, 120 * Time.deltaTime, 0); 
                     Debug.DrawLine(origin, leftSideHit.point, Color.cyan);
                 }
             }
@@ -76,7 +85,7 @@ namespace Russell {
         public override void Exit()
         {
             base.Exit();
-            GetComponent<Rigidbody>().velocity = transform.forward * 0;
+            rb.velocity = transform.forward * 0;
 
         }
 

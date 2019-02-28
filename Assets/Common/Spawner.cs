@@ -18,8 +18,11 @@ public class Spawner : MonoBehaviour
 	public LayerMask layerMask;
 
 	// Use this for initialization
-	void Awake()
+	IEnumerator Start()
 	{
+		// TODO HACK NodeCanvas for some reason needs a delay, or the Script actions link back to the prefab, instead of the instance
+		yield return new WaitForSeconds(1);
+		
 		foreach (GameObject item in prefabs)
 		{
 			for (int i = 0; i < maxClones; i++)

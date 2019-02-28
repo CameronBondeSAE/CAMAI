@@ -17,7 +17,7 @@ public class PlatoBehaviour : Josh.StateMachine
 
     private void Update()
     {
-        currentstate.Execute();
+        RunState();
     }
 
     private void PlatoBehaviour_OnDeathEvent()
