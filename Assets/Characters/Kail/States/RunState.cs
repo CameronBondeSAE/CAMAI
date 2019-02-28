@@ -47,8 +47,7 @@ namespace Kail
         public override void MoveEnd()
         {
             base.MoveEnd();
-            Debug.Log("Got here");
-            this.transform.Rotate(0f, oldY, 0f);  //does not work
+            //this.transform.Rotate(0f, -180f, 0f);
             checkDist.LookAtEnemy();
             
             
