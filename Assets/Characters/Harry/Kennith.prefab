@@ -140,6 +140,7 @@ MonoBehaviour:
   fleeState: {fileID: 0}
   idleState: {fileID: 0}
   deathState: {fileID: 0}
+  hailState: {fileID: 0}
   currentState: {fileID: 0}
   visionRange: 100
   visionAngle: 80
@@ -214,7 +215,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   amount: 100
   maxEnergy: 100
-  regenEnergySpeed: 1
+  regenEnergySpeed: 3
 --- !u!114 &4217463243122868325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,6 +247,7 @@ GameObject:
   - component: {fileID: 8294038363573145302}
   - component: {fileID: 1315328866068515835}
   - component: {fileID: 1370405668967251989}
+  - component: {fileID: 7027597299074053606}
   m_Layer: 0
   m_Name: States
   m_TagString: Untagged
@@ -338,3 +340,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   endDelay: 1.5
+  deathParticle: {fileID: 7509582139750665599, guid: b72d0208e976687418fe5a85a25eab39,
+    type: 3}
+--- !u!114 &7027597299074053606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6651266506066914824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22dcedc02d11be4eaf88e6ce3284915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  endDelay: 0
+  hailProjectile: {fileID: 6679346490958833768, guid: ccd4344a0510e2c41be49f9a328648d2,
+    type: 3}
+  randomizedAngle: 60
+  energyCost: 4
+  delay: 1

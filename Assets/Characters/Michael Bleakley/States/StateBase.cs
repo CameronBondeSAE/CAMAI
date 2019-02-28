@@ -20,7 +20,7 @@ namespace Michael
 
         public virtual void Execute()
         {
-
+            if (Self == null) CancelInvoke();
         }
 
         public virtual void Exit()

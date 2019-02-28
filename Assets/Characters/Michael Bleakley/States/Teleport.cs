@@ -6,7 +6,7 @@ namespace Michael
 {
     public class Teleport : StateBase
     {
-    
+        [SerializeField] int cost;
      private Vector3 destination;
      private Vector3 previousPosition;
      public int destinationRange;
@@ -16,8 +16,7 @@ namespace Michael
             previousPosition = transform.position;
             destination = new Vector3(Random.Range(-destinationRange, destinationRange),transform.position.y,Random.Range(-destinationRange, destinationRange));
             destination += Self.transform.position;
-            Invoke("teleport", delay);
-            Invoke("Exit", delay + 1);
+            Invoke("teleport",delay);
         }
 
         public override void Execute()
@@ -34,6 +33,8 @@ namespace Michael
         private void teleport()
         {
             Self.transform.position = destination;
+            Self.GetComponent<Energy>().Change(-cost);
+            Exit();
         }
     }
 }

@@ -17,6 +17,11 @@ namespace Kennith
                 model.ChangeState(model.spiritBombState);
             }
             
+            if(GUILayout.Button("Throw Hail Attack"))
+            {
+                model.ChangeState(model.hailState);
+            }
+            
             if(GUILayout.Button("Go Idle"))
             {
                 model.ChangeState(model.idleState);

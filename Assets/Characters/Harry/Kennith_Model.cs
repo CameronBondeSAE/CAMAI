@@ -6,7 +6,7 @@ namespace Kennith
     public class Kennith_Model : CharacterBase
     {
         [HideInInspector]
-        public StateBase spiritBombState, moveState, fleeState, idleState, deathState;
+        public StateBase spiritBombState, moveState, fleeState, idleState, deathState, hailState;
         
         public StateBase currentState;
         
@@ -33,6 +33,7 @@ namespace Kennith
             fleeState = GetComponentInChildren<FleeState>();
             idleState = GetComponentInChildren<IdleState>();
             deathState = GetComponentInChildren<DeathState>();
+            hailState = GetComponentInChildren<HailAttack>();
             
             currentState = moveState;
             currentState.Enter();
