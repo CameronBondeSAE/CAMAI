@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NodeCanvas.Tasks.Actions;
 using UnityEngine;
 
 namespace Kail
@@ -46,6 +47,7 @@ namespace Kail
         public override void MoveEnd()
         {
             base.MoveEnd();
+            Debug.Log("Got here");
             this.transform.Rotate(0f, oldY, 0f);  //does not work
             checkDist.LookAtEnemy();
             
