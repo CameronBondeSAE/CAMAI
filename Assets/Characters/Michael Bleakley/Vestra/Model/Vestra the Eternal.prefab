@@ -214,7 +214,7 @@ MonoBehaviour:
   _targetPosition: {x: 0, y: 0, z: 0}
   rb: {fileID: 745678185094111092}
   enemySeen: 0
-  currentState: {fileID: 1216260802888800206}
+  currentState: {fileID: 9197482412396406404}
   vary: 20
 --- !u!114 &8870138744568575290
 MonoBehaviour:
@@ -324,7 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delay: 5
   Self: {fileID: 6071121813599348559}
-  destination: {x: 3, y: 0, z: -2}
+  destination: {x: 2, y: 0, z: 1}
   destinationRange: 5
 --- !u!114 &6296972132911323513
 MonoBehaviour:

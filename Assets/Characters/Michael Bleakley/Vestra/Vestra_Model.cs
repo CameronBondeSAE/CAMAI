@@ -39,7 +39,6 @@ namespace Michael
         private void OnHurtEvent()
         {
             currentState.Exit();
-            GetComponent<BehaviourTreeOwner>().Tick();
         }
 
         private void OnDeathEvent()
@@ -82,6 +81,7 @@ namespace Michael
         {
             if (currentState != null)currentState.Exit();
             currentState = null;
+            Debug.Log("PostOverride");
             /*
              * if threat found change to attack
              * if all threats gone change to roam
@@ -179,10 +179,11 @@ namespace Michael
 
        private bool hitcheck(RaycastHit hit)
                {
-               
+                   Debug.Log("HitCheck");
                    if (hit.transform.gameObject.GetComponent<CharacterBase>() == null) return false;
                    Target = hit.transform.gameObject;
                    enemySeen = true;
+                   Debug.Log("PreOverride");
                    OverrideState();
                    return true;
                }
