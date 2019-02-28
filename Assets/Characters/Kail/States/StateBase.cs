@@ -33,7 +33,7 @@ namespace Kail
             //what happens when the movement is forced to stop
         }
         
-        public virtual void Exit()
+        public virtual void Exit(int nextState)
         {
             //what happens when the ai leaves the state
         }

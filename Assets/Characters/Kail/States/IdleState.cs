@@ -13,18 +13,14 @@ namespace Kail
         public int time;
         public float speed = 3f;
         public float angle;
-            
+
         
         public override void Enter()
         {
             base.Enter();
-            
-            GetComponent<Radar>().TargetNotFound();
-            
-            GetComponent<Renderer>().material.color = Color.gray;
-            
             idle = GetComponent<IdleState>();
             movementIdle = GetComponent<MyGuyMovement>();
+            
             MoveSet();
         }
 
@@ -56,10 +52,20 @@ namespace Kail
             movementIdle.MoveOverride();
         }
         
-        public override void Exit()
+        public override void Exit(int nextState)
         {
-            base.Exit();
+            base.Exit(nextState);
             movementIdle.MoveOverride();
+            switch (nextState)
+            {
+                case 1:
+                    GetComponent<Renderer>().material.color = Color.red;
+                    break;
+                case 2:
+                    GetComponent<Renderer>().material.color = Color.yellow;
+                    break;
+                
+            }
         }
 
     }

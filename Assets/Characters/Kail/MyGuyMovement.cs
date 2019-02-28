@@ -14,20 +14,21 @@ namespace Kail
         public bool timeEnd;
         public bool moveStop;
         public StateBase currentState;
-        
-        
+
+        public CharacterBase speedBase;
 
 
         public void MoveStart(StateBase theState, float theSpeed, int theTime)
         {
 
+            speedBase = GetComponent<CharacterBase>();
+            
             currentState = theState;
-            speed = theSpeed;
+            speed = theSpeed * speedBase.SpeedMultiplier;
             time = theTime;
             timeEnd = false;
             moveStop = false;
             rb = GetComponent<Rigidbody>();
-
         }
         
         public void MoveStop()
@@ -67,7 +68,6 @@ namespace Kail
                 }
                 else
                 {
-
                     transform.position += transform.forward * speed * Time.deltaTime;
                     time = time - 1;
                 }
