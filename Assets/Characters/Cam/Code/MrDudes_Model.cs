@@ -78,15 +78,25 @@ public class MrDudes_Model : CharacterBase
 		
 		Move();
 
+		AvoidBehaviour();
+
+		WanderBehaviour();
+		
+//		Debug.Log("Dist = "+hit.distance + " : Influence = "+);
+	}
+
+	private void AvoidBehaviour()
+	{
 		RaycastHit hit;
 		if (Physics.Raycast(myTransform.position, myTransform.forward, out hit, 10f))
 		{
-			_rigidbody.AddRelativeTorque(0,(distanceInfluenceCurve.Evaluate(hit.distance/10f) * turnSpeedScalar),0);			
+			_rigidbody.AddRelativeTorque(0, (distanceInfluenceCurve.Evaluate(hit.distance / 10f) * turnSpeedScalar), 0);
 		}
-		
-		_rigidbody.AddRelativeTorque(0,(Mathf.PerlinNoise(Time.time,0) * 2f - 1f) * 35f, 0);
-		
-//		Debug.Log("Dist = "+hit.distance + " : Influence = "+);
+	}
+
+	private void WanderBehaviour()
+	{
+		_rigidbody.AddRelativeTorque(0, (Mathf.PerlinNoise(Time.time, 0) * 2f - 1f) * 35f, 0);
 	}
 
 	public void Move()

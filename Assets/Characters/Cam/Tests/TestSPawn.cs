@@ -11,5 +11,21 @@ public class TestSPawn : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         Instantiate(prefab);
+
+        Vector3 localTargetOffset = transform.InverseTransformPoint(target);
+
+        if (localTargetOffset.x < 0)
+        {
+            
+        }    // he's to the left of me
+
+
+            if (localTargetOffset.z > 0)
+            {
+                
+            }    // He's in front of me
+            
+        
+            Quaternion
     }
 }
