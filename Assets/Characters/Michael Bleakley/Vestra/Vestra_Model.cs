@@ -1,21 +1,17 @@
-﻿using System.Linq;
-using Michael;
-using NodeCanvas.BehaviourTrees;
-using NodeCanvas.Tasks.Actions;
+﻿using NodeCanvas.BehaviourTrees;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngineInternal.Input;
 
 namespace Michael
 {
     public class Vestra_Model : CharacterBase
     {
-        public Rigidbody rb;
         public bool enemySeen;
-        
+        public Rigidbody rb;
+        public bool falling;
+
         public override void Start()
         {
-            base.Start();            
+            base.Start();
             GetComponent<Health>().OnHurtEvent += OnHurtEvent;
             GetComponent<Health>().OnDeathEvent += OnDeathEvent;
             GetComponent<Energy>().OnReducingEvent += OnReducingEvent;
@@ -25,13 +21,97 @@ namespace Michael
         {
             if (currentState != null) currentState.Execute();
             enemySeen = Target != null;
+            falling = transform.position.y < -5;
             /* test code
             if (Input.GetKeyDown(KeyCode.A)) ChangeState(fleeState);
             if (Input.GetKeyDown(KeyCode.S)) ChangeState(attackState);
             if (Input.GetKeyDown(KeyCode.D)) ChangeState(roamState);
             if (Input.GetKeyDown(KeyCode.Z)) GetComponent<BehaviourTreeOwner>().Tick();
             */
-//            OverrideState();
+//          OverrideState();
+        }
+
+        #region Energy
+
+        private void OnReducingEvent()
+        {
+            currentState.Exit();
+            GetComponent<BehaviourTreeOwner>().Tick();
+        }
+
+        #endregion
+
+        public override void Move(Vector3 speedDirection)
+        {
+            /*
+            * add force forward
+            * add turning to direction wanted
+            * detect collision on sides with ray cast and front to determine turning to avoid obsticles and slowing down speed
+            */
+            if (rb != null) rb.AddRelativeForce(Vector3.forward * SpeedMultiplier, ForceMode.Force);
+
+            var targetPosition = transform.InverseTransformPoint(speedDirection);
+            var temp = targetPosition.x / targetPosition.magnitude;
+            if (rb != null) rb.AddRelativeTorque(0, vary * 0.5f * temp, 0);
+
+            RaycastHit hit;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 2.3f))
+            {
+                Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
+                if (rb != null) rb.AddRelativeTorque(0, vary * 2f, 0);
+                if (hitcheck(hit)) Target = hit.transform.gameObject;
+
+
+                /*
+                if (Random.Range(-1, 1) < 0)
+                {
+                    rb.AddRelativeTorque(0, vary * -1, 0);
+                }
+                else
+                {
+                    rb.AddRelativeTorque(0, vary, 0);
+                }
+                */
+            }
+
+            if (Physics.Raycast(transform.position, transform.forward + transform.right, out hit, 2f))
+            {
+                Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
+                if (rb != null) rb.AddRelativeTorque(0, -vary * 1.5f, 0);
+                if (hitcheck(hit)) Target = hit.transform.gameObject;
+            }
+
+            if (Physics.Raycast(transform.position, transform.forward - transform.right, out hit, 2f))
+            {
+                Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
+                if (rb != null) rb.AddRelativeTorque(0, vary * 1.5f, 0);
+                if (hitcheck(hit)) Target = hit.transform.gameObject;
+            }
+
+            /*
+            if (Vector3.Angle(transform.position, wavePoint.transform.position) > 0)
+            {
+                rb.AddRelativeTorque(0,vary,0);
+            }
+            else
+            {
+                rb.AddRelativeTorque(0,-vary,0);
+            }
+                //use torque for ray cast manuvering
+            //rb.AddRelativeTorque(speedDirection);
+            */
+        }
+
+        private bool hitcheck(RaycastHit hit)
+        {
+            Debug.Log("HitCheck");
+            if (hit.transform.gameObject.GetComponent<CharacterBase>() == null) return false;
+            
+            Target = hit.transform.gameObject;
+            enemySeen = true;
+            Debug.Log("PreOverride");
+            OverrideState();
+            return true;
         }
 
         #region Health
@@ -51,16 +131,9 @@ namespace Michael
         }
 
         #endregion
-        #region Energy
 
-        private void OnReducingEvent()
-        {
-            currentState.Exit();
-            GetComponent<BehaviourTreeOwner>().Tick();
-        }
-
-        #endregion
         #region States
+
         public StateBase currentState;
         public float vary;
 
@@ -79,8 +152,8 @@ namespace Michael
 
         private void OverrideState()
         {
-            if (currentState != null)currentState.Exit();
-            currentState = null;
+            if (currentState != null) currentState.Exit();
+            //currentState = null;
             Debug.Log("PostOverride");
             /*
              * if threat found change to attack
@@ -90,102 +163,28 @@ namespace Michael
         }
 
         #endregion
+
         # region Abilities
 
         public override void Ability1()
         {
-        //GetComponent<Energy>().Change(-50);
-            
+            //GetComponent<Energy>().Change(-50);
         }
 
         public override void Ability2()
         {
-        GetComponent<Energy>().Change(-20);
+            GetComponent<Energy>().Change(-20);
             Debug.Log("ability 1");
             Target = null;
         }
 
         public override void Ability3()
         {
-        GetComponent<Energy>().Change(-10);
+            GetComponent<Energy>().Change(-10);
             Debug.Log("ability 2");
             Target = null;
         }
 
         #endregion
-
-       public override void Move(Vector3 speedDirection)
-               {               
-                    /*
-                    * add force forward
-                    * add turning to direction wanted
-                    * detect collision on sides with ray cast and front to determine turning to avoid obsticles and slowing down speed
-                    */
-                    if (rb != null)rb.AddRelativeForce(Vector3.forward * SpeedMultiplier, ForceMode.Force);
-       
-                   var targetPosition = transform.InverseTransformPoint(speedDirection);
-                   var temp = (targetPosition.x / targetPosition.magnitude);
-                   if (rb != null)rb.AddRelativeTorque(0,(vary * 0.5f) * temp,0);
-
-                   RaycastHit hit;
-                   if (Physics.Raycast(transform.position, transform.forward, out hit, 2.3f))
-                   {
-                   Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
-                   if (rb != null)rb.AddRelativeTorque(0, vary * 2f, 0);
-                       if (hitcheck(hit)) Target = hit.transform.gameObject;
-                       
-                           
-                           
-                           /*
-                           if (Random.Range(-1, 1) < 0)
-                           {
-                               rb.AddRelativeTorque(0, vary * -1, 0);
-                           }
-                           else
-                           {
-                               rb.AddRelativeTorque(0, vary, 0);
-                           }
-                           */
-                       
-                   }
-       
-                   if (Physics.Raycast(transform.position, transform.forward + transform.right, out hit, 2f))
-                   {
-                   Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
-                   if (rb != null)rb.AddRelativeTorque(0, -vary * 1.5f, 0);
-                       if (hitcheck(hit)) Target = hit.transform.gameObject;
-                   }
-       
-                   if (Physics.Raycast(transform.position, transform.forward - transform.right, out hit, 2f))
-                   {
-                   Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
-                   if (rb != null)rb.AddRelativeTorque(0, vary *1.5f, 0);
-                       if (hitcheck(hit)) Target = hit.transform.gameObject;
-                   }
-       
-                   /*
-                   if (Vector3.Angle(transform.position, wavePoint.transform.position) > 0)
-                   {
-                       rb.AddRelativeTorque(0,vary,0);
-                   }
-                   else
-                   {
-                       rb.AddRelativeTorque(0,-vary,0);
-                   }
-                       //use torque for ray cast manuvering
-                   //rb.AddRelativeTorque(speedDirection);
-                   */
-              }
-
-       private bool hitcheck(RaycastHit hit)
-               {
-                   Debug.Log("HitCheck");
-                   if (hit.transform.gameObject.GetComponent<CharacterBase>() == null) return false;
-                   Target = hit.transform.gameObject;
-                   enemySeen = true;
-                   Debug.Log("PreOverride");
-                   OverrideState();
-                   return true;
-               }
     }
 }
