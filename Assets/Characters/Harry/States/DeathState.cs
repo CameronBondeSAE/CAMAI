@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using NodeCanvas.BehaviourTrees;
+using NodeCanvas.Tasks.Actions;
 using Russell;
+using UnityEditor.MemoryProfiler;
 using UnityEngine;
 
 namespace Kennith
@@ -9,6 +11,7 @@ namespace Kennith
     public class DeathState : StateBase
     {
         private GameObject parent;
+        public GameObject deathParticle;
             
         public override void Enter()
         {
@@ -38,6 +41,8 @@ namespace Kennith
         public override void Exit()
         {           
             // INSERT SPAWN PARTICLE EFFECT HERE
+            GameObject obj = Instantiate(deathParticle, transform.position, deathParticle.transform.rotation);
+            Destroy(obj, deathParticle.GetComponent<ParticleSystem>().startLifetime);
             Destroy(parent.gameObject);
         }
         
