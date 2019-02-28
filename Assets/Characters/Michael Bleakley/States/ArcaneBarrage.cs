@@ -2,22 +2,26 @@
 using System.Collections.Generic;
 using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Michael
 {
     public class ArcaneBarrage : StateBase
     {
-        private bool fired;
+        private int count;
+        [SerializeField] int cost;
         [SerializeField] private GameObject missle;
         [SerializeField] int damage;
         [SerializeField] private int range;
         public override void Enter()
         {
+            count = 0;
             Invoke("Barrage", delay);
         }
 
         public override void Execute()
         {
+            base.Execute();
             Self.transform.LookAt(Self.GetComponent<Vestra_Model>().Target.transform.position);
             RaycastHit hit;
             if (Vector3.Distance(Self.transform.position, Self.GetComponent<Vestra_Model>().Target.transform.position) > range) Exit();
@@ -29,19 +33,16 @@ namespace Michael
 
         private void Barrage()
         {
-            if (fired)
+            if (count == 6)
             {
-                //Quaternion temp = new Quaternion(0,45,0,0);
-                SetMissle(Instantiate(missle, Self.transform.position + Self.transform.forward + Self.transform.right * 2, Self.transform.localRotation));
-                SetMissle(Instantiate(missle, Self.transform.position + Self.transform.forward / 2 - Self.transform.right * 2, Self.transform.localRotation));
-                
+                Self.GetComponent<Energy>().Change(-cost);
                 Invoke("Exit", 2);
             }
             else
             {
-                SetMissle(Instantiate(missle, Self.transform.position + Self.transform.forward, Self.transform.localRotation));
-                fired = true;
-                    Invoke("Barrage", 0.5f);
+                SetMissle(Instantiate(missle, Self.transform.position + Self.transform.forward * 1.5f , Self.transform.localRotation));
+                count++;
+                Invoke("Barrage", 0.5f);
             }
         }
         
@@ -50,12 +51,6 @@ namespace Michael
             projectile.GetComponent<ProjectileScript>().target = Self.GetComponent<Vestra_Model>().Target;
             projectile.GetComponent<ProjectileScript>().Damage = damage * Self.GetComponent<Vestra_Model>().DamageMultiplier;
             projectile.GetComponent<ProjectileScript>().source = Self;
-        }
-
-        public override void Exit()
-        {
-            fired = false;
-            base.Exit();
         }
     }
 }

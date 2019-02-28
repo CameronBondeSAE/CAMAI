@@ -1,4 +1,6 @@
-﻿using NodeCanvas.BehaviourTrees;
+﻿using System.Collections.Generic;
+using System.Linq;
+using NodeCanvas.BehaviourTrees;
 using UnityEngine;
 
 namespace Michael
@@ -8,6 +10,9 @@ namespace Michael
         public bool enemySeen;
         public Rigidbody rb;
         public bool falling;
+        //private GameObject[] surroundingEnemies;
+        //private List<GameObject> surroundingEnemies;
+        [SerializeField] private VestraTargeting _targeting;
 
         public override void Start()
         {
@@ -20,8 +25,10 @@ namespace Michael
         private void FixedUpdate()
         {
             if (currentState != null) currentState.Execute();
-            enemySeen = Target != null;
             falling = transform.position.y < -5;
+            
+            
+           
             /* test code
             if (Input.GetKeyDown(KeyCode.A)) ChangeState(fleeState);
             if (Input.GetKeyDown(KeyCode.S)) ChangeState(attackState);
@@ -36,7 +43,6 @@ namespace Michael
         private void OnReducingEvent()
         {
             currentState.Exit();
-            GetComponent<BehaviourTreeOwner>().Tick();
         }
 
         #endregion
@@ -59,7 +65,7 @@ namespace Michael
             {
                 Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
                 if (rb != null) rb.AddRelativeTorque(0, vary * 2f, 0);
-                if (hitcheck(hit)) Target = hit.transform.gameObject;
+                
 
 
                 /*
@@ -78,14 +84,12 @@ namespace Michael
             {
                 Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
                 if (rb != null) rb.AddRelativeTorque(0, -vary * 1.5f, 0);
-                if (hitcheck(hit)) Target = hit.transform.gameObject;
             }
 
             if (Physics.Raycast(transform.position, transform.forward - transform.right, out hit, 2f))
             {
                 Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
                 if (rb != null) rb.AddRelativeTorque(0, vary * 1.5f, 0);
-                if (hitcheck(hit)) Target = hit.transform.gameObject;
             }
 
             /*
@@ -100,18 +104,6 @@ namespace Michael
                 //use torque for ray cast manuvering
             //rb.AddRelativeTorque(speedDirection);
             */
-        }
-
-        private bool hitcheck(RaycastHit hit)
-        {
-            Debug.Log("HitCheck");
-            if (hit.transform.gameObject.GetComponent<CharacterBase>() == null) return false;
-            
-            Target = hit.transform.gameObject;
-            enemySeen = true;
-            Debug.Log("PreOverride");
-            OverrideState();
-            return true;
         }
 
         #region Health
@@ -152,39 +144,44 @@ namespace Michael
 
         private void OverrideState()
         {
+            enemySeen = Target != null;
             if (currentState != null) currentState.Exit();
-            //currentState = null;
             Debug.Log("PostOverride");
-            /*
-             * if threat found change to attack
-             * if all threats gone change to roam
-             * if health low flee/ activate ability
-             */
         }
 
         #endregion
 
-        # region Abilities
-
-        public override void Ability1()
+        private void OnTriggerEnter(Collider other)
         {
-            //GetComponent<Energy>().Change(-50);
+            if (other.transform.gameObject.GetComponent<CharacterBase>())
+            {
+                Target = other.transform.gameObject;
+                OverrideState();
+                /*
+                 * surroundingEnemies.Add(other.transform.gameObject);
+                 
+                if (surroundingEnemies.Count > 1)
+                {
+                    Target = _targeting.CheckDistance(surroundingEnemies);
+                    return;
+                }
+                Target = other.transform.gameObject;
+                OverrideState();
+                */
+            }
         }
 
-        public override void Ability2()
+        private void OnTriggerExit(Collider other)
         {
-            GetComponent<Energy>().Change(-20);
-            Debug.Log("ability 1");
-            Target = null;
+            if (Target == other.gameObject)
+            {
+                Target = null;
+                OverrideState();
+            }
+            
+            //surroundingEnemies.Remove(other.transform.gameObject);
+            // if (Target == other.transform.gameObject) Target = _targeting.CheckDistance(surroundingEnemies);
         }
-
-        public override void Ability3()
-        {
-            GetComponent<Energy>().Change(-10);
-            Debug.Log("ability 2");
-            Target = null;
-        }
-
-        #endregion
     }
+    
 }
