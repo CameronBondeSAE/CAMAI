@@ -7,7 +7,7 @@ namespace Auriel
    public class NearestNeighbours : MonoBehaviour
    {
        public List<CharacterBase> neighbours;
-           
+       
        // Start is called before the first frame update
        void Start()
        {

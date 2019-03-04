@@ -189,10 +189,39 @@ PrefabInstance:
       propertyPath: characterName
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3951154402914026625, guid: e9e49d67423f7f747b18292689448989,
+        type: 3}
+      propertyPath: currentState
+      value: 
+      objectReference: {fileID: 1037873008}
     - target: {fileID: 1629374263548797436, guid: e9e49d67423f7f747b18292689448989,
         type: 3}
       propertyPath: m_Radius
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1247994172242200114, guid: e9e49d67423f7f747b18292689448989,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5945824093634193284, guid: e9e49d67423f7f747b18292689448989,
+        type: 3}
+      propertyPath: turnSpeed
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5377389747575600894, guid: e9e49d67423f7f747b18292689448989,
+        type: 3}
+      propertyPath: _graph
+      value: 
+      objectReference: {fileID: 958132733}
+    - target: {fileID: 5377389747575600894, guid: e9e49d67423f7f747b18292689448989,
+        type: 3}
+      propertyPath: boundGraphSerialization
+      value: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":5628.0,"y":5222.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":5302.0,"y":5351.0},"_comment":"Projectile
+        - damages and slows","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"3"},{"_position":{"x":5628.0,"y":5352.0},"_comment":"Shield
+        - absorb damage","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"4"},{"_position":{"x":5908.0,"y":5355.0},"_comment":"Damage
+        reduction and taunt","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"5"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"primeNode":{"$ref":"2"},"localBlackboard":{"_name":"Local
+        Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9e49d67423f7f747b18292689448989, type: 3}
@@ -286,7 +315,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &172014362
 GameObject:
@@ -377,77 +406,8 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 9.99}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &237628237
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4875508737877043514, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_Name
-      value: Dummy (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.55
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2.92
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1d0bb80d2d91c94499b02aa93f6633ce, type: 3}
 --- !u!1 &239663611
 GameObject:
   m_ObjectHideFlags: 0
@@ -537,7 +497,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 9.99}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &816291337
 GameObject:
@@ -628,8 +588,41 @@ Transform:
   m_LocalScale: {x: 0.5, y: 5.596, z: 9.99}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!114 &958132733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a686a47eee2fa44cb0a34b5d86e4d5e, type: 3}
+  m_Name: Auriel BehaviourTree
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":5628.0,"y":5222.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":5302.0,"y":5351.0},"_comment":"Projectile
+    - damages and slows","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"3"},{"_position":{"x":5628.0,"y":5352.0},"_comment":"Shield
+    - absorb damage","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"4"},{"_position":{"x":5908.0,"y":5355.0},"_comment":"Damage
+    reduction and taunt","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"5"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"primeNode":{"$ref":"2"},"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  _objectReferences: []
+  _deserializationFailed: 0
+  repeat: 1
+  updateInterval: 0
+--- !u!114 &1037873008 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5945824093634193284, guid: e9e49d67423f7f747b18292689448989,
+    type: 3}
+  m_PrefabInstance: {fileID: 61446509}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d0d3e52f0d60de44b93f04ab11383eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1454445027
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,7 +712,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 0.5, z: 9.99}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1483387346
 GameObject:
@@ -788,8 +781,29 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1994112396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a686a47eee2fa44cb0a34b5d86e4d5e, type: 3}
+  m_Name: Auriel BehaviourTree
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[{"_position":{"x":5628.0,"y":5222.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":5302.0,"y":5351.0},"_comment":"Projectile
+    - damages and slows","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"3"},{"_position":{"x":5628.0,"y":5352.0},"_comment":"Shield
+    - absorb damage","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"4"},{"_position":{"x":5908.0,"y":5355.0},"_comment":"Damage
+    reduction and taunt","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"5"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"5"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"primeNode":{"$ref":"2"},"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  _objectReferences: []
+  _deserializationFailed: 0
+  repeat: 1
+  updateInterval: 0
 --- !u!1 &2101403293
 GameObject:
   m_ObjectHideFlags: 0
@@ -872,72 +886,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 41.600002, y: 0, z: 0}
---- !u!1001 &2399321583240411699
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4875508737877043514, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_Name
-      value: Dummy
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2517785192881085966, guid: 1d0bb80d2d91c94499b02aa93f6633ce,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1d0bb80d2d91c94499b02aa93f6633ce, type: 3}

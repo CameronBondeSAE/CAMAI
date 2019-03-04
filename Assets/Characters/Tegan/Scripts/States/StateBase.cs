@@ -6,9 +6,11 @@ namespace Auriel
 {
 	public class StateBase : MonoBehaviour
 	{
+		public Rigidbody aurielRB;
+		
 		public virtual void Enter()
 		{
-
+			aurielRB = GetComponent<Rigidbody>();
 		}
 
 		public virtual void Execute()
