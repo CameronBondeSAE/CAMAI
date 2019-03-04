@@ -70,7 +70,7 @@ namespace Russell {
                     rb.transform.Rotate(0, -120 * Time.deltaTime, 0); 
                     Debug.DrawLine(origin, rightSideHit.point, Color.yellow);
                 }
-                if (Physics.Raycast(origin, Quaternion.AngleAxis(90f, transform.up) * transform.forward, out leftSideHit,
+                if (Physics.Raycast(origin, Quaternion.AngleAxis(-90f, transform.up) * transform.forward, out leftSideHit,
                     5f))
                 {
                     rb.transform.Rotate(0, 120 * Time.deltaTime, 0); 

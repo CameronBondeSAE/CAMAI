@@ -25,7 +25,7 @@ public class TestSPawn : MonoBehaviour
                 
             }    // He's in front of me
             
-        
-            Quaternion
+            //Needed to comment this out cause it wasent finished - Russ
+            //Quaternion
     }
 }
