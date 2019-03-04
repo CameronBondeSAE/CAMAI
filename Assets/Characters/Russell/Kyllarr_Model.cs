@@ -8,12 +8,14 @@ public class Kyllarr_Model : CharacterBase
 {
     public event Action KillMove;
     public event Action Killme;
-    public event Action IGotHurt;
+    public event Action GotHurt;
     public StateBase currentState;
     public StateBase attackState;
     public StateBase rotateState;
     public StateBase patrolState;
-    public List<Collider> whosAround = new List<Collider>(); 
+
+    //public GameObject mainAi;
+    
     public void ChangeState(StateBase newState)
     {
         //Check state is not the same
@@ -21,22 +23,19 @@ public class Kyllarr_Model : CharacterBase
         newState.Enter();
         currentState = newState;
         Debug.Log("Ran Change State "+ newState);
-        
     }
 
     private void Awake()
-    {
-        
+    { 
         //ChangeState(patrolState);
         currentState.Enter();
         GetComponent<Health>().OnDeathEvent += Kyllarr_Dies;
-        GetComponent<Health>().OnHurtEvent += JustGotHurt;
-
+        GetComponent<Health>().OnHurtEvent += JustGotHurt;  
     }
 
     public void JustGotHurt()
     {
-        IGotHurt();
+        //GotHurt();
     }
 
     public void Kyllarr_Dies()
@@ -44,9 +43,7 @@ public class Kyllarr_Model : CharacterBase
         Killme();
         //Doesnt work quite yet but will finish soon
         //GetComponent<Health>().OnDeathEvent -= Kyllarr_Dies;
-        StartCoroutine(TestingIfDeathWorks());
-        
-       
+        StartCoroutine(TestingIfDeathWorks());            
     }
 
     // Start is called before the first frame update
@@ -97,20 +94,7 @@ public class Kyllarr_Model : CharacterBase
     
     //Checking whos is within range and remove them if no longer in range
     //HACKY atm
-    private void OnTriggerEnter(Collider other)
-    {
-        
-        if (!whosAround.Contains(other) && other.GetComponent<CharacterBase>())
-        {
-            whosAround.Add(other);
-            //numberOfPlayers = whosAround.Count;
-        }
-    }
-    private void OnTriggerExit(Collider other)
-    { 
-        whosAround.Remove(other);  
-        //numberOfPlayers = whosAround.Count;
-    }
+
     
     //HACK TO FIX
     IEnumerator TestingIfDeathWorks()
@@ -118,4 +102,6 @@ public class Kyllarr_Model : CharacterBase
         yield return new WaitForSeconds(3);
         Destroy(gameObject);
     }
+    
+
 }

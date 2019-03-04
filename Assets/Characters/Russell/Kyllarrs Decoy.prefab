@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 1878327678183865061}
   m_Layer: 0
   m_Name: Kyllarrs Decoy
-  m_TagString: Untagged
+  m_TagString: Clone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -119,7 +119,7 @@ MonoBehaviour:
   attackState: {fileID: 0}
   rotateState: {fileID: 0}
   patrolState: {fileID: 1878327678183865061}
-  whosAround: []
+  decoy: {fileID: 0}
 --- !u!114 &4829858208798989311
 MonoBehaviour:
   m_ObjectHideFlags: 0

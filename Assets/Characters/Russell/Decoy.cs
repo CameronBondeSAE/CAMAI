@@ -10,39 +10,47 @@ namespace Russell
         public GameObject replacementAi;
         private Health myHealth;
         private Health _newHealth;
-        public float cooldown;
         public float currentHealth;
         public Transform myNewSpot;
         public Transform decoySpawn;
         public GameObject decoy;
+        public bool decoyOnCooldown;
+
+        public float decoyCooldown = 10f;
         // Start is called before the first frame update
 
         private void Awake()
         {
             myHealth = myAi.GetComponent<Health>();
-            myAi.GetComponent<Kyllarr_Model>().IGotHurt += SpawnMyClone;
+            myAi.GetComponent<Kyllarr_Model>().GotHurt += SpawnMyClone;
+            decoyOnCooldown = false;
         }
 
         private void SpawnMyClone()
         {
-            currentHealth = myHealth.Amount;
-            Instantiate(decoy, decoySpawn.position, Quaternion.Euler(0,45,0));
-            replacementAi = Instantiate(myAi, myNewSpot.position, Quaternion.Euler(0,-45,0) );
-            _newHealth = myHealth;
-            //_newHealth.Amount = currentHealth;
-            Destroy(myAi);
-            //myAi.GetComponent<Kyllarr_Model>().IGotHurt -= SpawnMyClone;
+            if (decoyOnCooldown == false)
+            {
+                decoyOnCooldown = true;
+                currentHealth = myHealth.Amount;
+                Instantiate(decoy, decoySpawn.position, Quaternion.Euler(0,45,0));
+                replacementAi = Instantiate(myAi, myNewSpot.position, Quaternion.Euler(0,-45,0) );
+                _newHealth = myHealth;
+                myAi.GetComponent<Kyllarr_Model>().GotHurt -= SpawnMyClone;
+                _newHealth.Amount = currentHealth;
+                Destroy(myAi);
+                
+                StartCoroutine(Cooldown());
+            }
+            
+            
+            //
         }
 
-        void Start()
+
+        IEnumerator Cooldown()
         {
-            
-        }
-    
-        // Update is called once per frame
-        void Update()
-        {
-            
+            yield return new WaitForSeconds(decoyCooldown);
+            decoyOnCooldown = false;
         }
     }
 

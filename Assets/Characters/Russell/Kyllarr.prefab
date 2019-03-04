@@ -58,8 +58,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1374110862}
+  aI: {fileID: 0}
   moveSpeed: 10
   myTarget: {fileID: 0}
+  _whosAround: {fileID: 6776560699005137519}
 --- !u!1 &514143155369708375
 GameObject:
   m_ObjectHideFlags: 0
@@ -9671,11 +9673,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myAi: {fileID: 7741071797372873685}
   replacementAi: {fileID: 7741071797372873685}
-  cooldown: 0
   currentHealth: 0
   myNewSpot: {fileID: 851295474239459122}
   decoySpawn: {fileID: 3360953349651169442}
   decoy: {fileID: 3574209252317706191, guid: fda47bd7bcf758d4eb177d73d78b9004, type: 3}
+  decoyOnCooldown: 0
+  decoyCooldown: 10
 --- !u!1 &7741071797372873685
 GameObject:
   m_ObjectHideFlags: 0
@@ -9697,6 +9700,7 @@ GameObject:
   - component: {fileID: 5601631383252863935}
   - component: {fileID: 4470851380010848717}
   - component: {fileID: 1374110862}
+  - component: {fileID: 6776560699005137519}
   m_Layer: 0
   m_Name: Kyllarr
   m_TagString: Untagged
@@ -9803,7 +9807,6 @@ MonoBehaviour:
   attackState: {fileID: 1158104937}
   rotateState: {fileID: 0}
   patrolState: {fileID: 2582273152625366266}
-  whosAround: []
 --- !u!114 &8468258165064669981
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9927,6 +9930,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &6776560699005137519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7741071797372873685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384cbbb2f79384a4d9e1a1729c08a57d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whosAround: []
+  radius: 10
 --- !u!1 &7922095163285958389
 GameObject:
   m_ObjectHideFlags: 0

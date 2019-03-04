@@ -9,21 +9,21 @@ namespace Russell
     {
         // Start is called before the first frame update
         public GameObject parent;
-        private Kyllarr_Model cb;
+        private WhosAround cb;
         private Health targetHealth;
         public float deathDamage = 10f;
 
         private void Awake()
         {
             parent.GetComponent<Kyllarr_Model>().Killme += DamageAllAround;
-            cb = parent.GetComponent<Kyllarr_Model>();
+            cb = parent.GetComponent<WhosAround>();
 
             void DamageAllAround()
             {
-                foreach (Collider collider in cb.whosAround)
+                foreach (CharacterBase characters in cb.whosAround)
                 {
-                    targetHealth = collider.GetComponent<Health>();
-                    targetHealth.Change(-deathDamage, cb);
+                    targetHealth = characters.GetComponent<Health>();
+                    targetHealth.Change(-deathDamage, cb.gameObject);
                 }
             }
 

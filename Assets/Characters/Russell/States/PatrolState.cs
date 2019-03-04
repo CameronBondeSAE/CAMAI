@@ -8,11 +8,19 @@ namespace Russell {
     {
         public event Action OnDoneMoving;
         public Rigidbody rb;
+        public GameObject aI;
         public float moveSpeed = 5f;
 
         public GameObject myTarget;
         //public float minMoveDistance = 10;
-        
+        private float distanceCheck = 4f;
+        public WhosAround _whosAround;
+
+        private void Awake()
+        {
+            _whosAround = aI.GetComponent<WhosAround>();
+        }
+
         public override void Enter()
         {
             base.Enter();           
@@ -23,6 +31,7 @@ namespace Russell {
         public override void Execute()
         {
             base.Execute();
+            RayCastDistanceCheck();
             rb.velocity = transform.forward * 10;
             //;
             Ray ray;          
@@ -92,6 +101,28 @@ namespace Russell {
         private void RunEvent()
         {
             //OnDoneMoving();
+        }
+        
+        public void RayCastDistanceCheck()
+        {
+            foreach (CharacterBase aiAround in _whosAround.whosAround)
+            {
+                float distance;
+                Debug.Log(aiAround + "now raycast");
+                //rayColor = Color.red;
+                
+                if (Physics.Raycast(transform.position, (transform.position - aiAround.transform.position), _whosAround.radius))
+                {
+                    Debug.DrawRay(transform.position, (aiAround.transform.position - transform.position), Color.green);
+                    distance = Vector3.Distance(transform.position, aiAround.transform.position);
+                    if(distance <= distanceCheck )
+                    {
+                        Debug.Log(aiAround + "is to close");
+                        Debug.DrawRay(transform.position, (aiAround.transform.position - transform.position), Color.red);
+                        //move character away from close object
+                    }
+                }
+            }
         }
     }
 }
