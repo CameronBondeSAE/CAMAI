@@ -13,7 +13,7 @@ namespace Russell {
 
         public GameObject myTarget;
         //public float minMoveDistance = 10;
-        private float distanceCheck = 4f;
+        public float distanceCheck = 10f;
         public WhosAround _whosAround;
 
         private void Awake()
@@ -25,7 +25,7 @@ namespace Russell {
         {
             base.Enter();           
             Invoke("RunEvent", 5f);
-            Debug.Log("Start Moving", gameObject);
+            //Debug.Log("Start Moving", gameObject);
         }
 
         public override void Execute()
@@ -119,6 +119,20 @@ namespace Russell {
                     {
                         Debug.Log(aiAround + "is to close");
                         Debug.DrawRay(transform.position, (aiAround.transform.position - transform.position), Color.red);
+                        myTarget = aiAround.gameObject;
+                        Vector3 localTargetOffset = transform.InverseTransformPoint(myTarget.transform.position);
+                        
+                        //HACKY
+                        if (localTargetOffset.x < 0)
+                        {
+                            rb.AddRelativeTorque(0, 20000, 0);
+                            //Debug.Log("On the left");
+                        }
+                        else if (localTargetOffset.x > 0)
+                        {
+                            rb.AddRelativeTorque(0, -20000, 0);
+                            //Debug.Log( "on my right");
+                        }
                         //move character away from close object
                     }
                 }

@@ -18,25 +18,23 @@ namespace Russell
             parent.GetComponent<Kyllarr_Model>().Killme += DamageAllAround;
             cb = parent.GetComponent<WhosAround>();
 
-            void DamageAllAround()
+
+
+        }
+        void DamageAllAround()
+        {
+            foreach (CharacterBase characters in cb.whosAround)
             {
-                foreach (CharacterBase characters in cb.whosAround)
-                {
-                    targetHealth = characters.GetComponent<Health>();
-                    targetHealth.Change(-deathDamage, cb.gameObject);
-                }
+                targetHealth = characters.GetComponent<Health>();
+                targetHealth.Change(-deathDamage, cb.gameObject);
             }
+            Destroy(parent);
+        }
 
-            void Start()
-            {
-
-            }
-
-            // Update is called once per frame
-            void Update()
-            {
-
-            }
+        public override void Exit()
+        {
+            base.Exit();
+            
         }
     }
 

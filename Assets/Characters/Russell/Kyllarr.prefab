@@ -58,9 +58,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 1374110862}
-  aI: {fileID: 0}
+  aI: {fileID: 7741071797372873685}
   moveSpeed: 10
   myTarget: {fileID: 0}
+  distanceCheck: 10
   _whosAround: {fileID: 6776560699005137519}
 --- !u!1 &514143155369708375
 GameObject:
@@ -9923,12 +9924,12 @@ Rigidbody:
   m_GameObject: {fileID: 7741071797372873685}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 2
+  m_AngularDrag: 40
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &6776560699005137519
 MonoBehaviour:
@@ -9943,7 +9944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   whosAround: []
-  radius: 10
+  radius: 20.4
 --- !u!1 &7922095163285958389
 GameObject:
   m_ObjectHideFlags: 0

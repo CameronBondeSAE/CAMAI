@@ -40,10 +40,7 @@ public class Kyllarr_Model : CharacterBase
 
     public void Kyllarr_Dies()
     {
-        Killme();
-        //Doesnt work quite yet but will finish soon
-        //GetComponent<Health>().OnDeathEvent -= Kyllarr_Dies;
-        StartCoroutine(TestingIfDeathWorks());            
+        Killme();     
     }
 
     // Start is called before the first frame update
@@ -91,17 +88,6 @@ public class Kyllarr_Model : CharacterBase
         Debug.Log("Execute");
         
     }
-    
-    //Checking whos is within range and remove them if no longer in range
-    //HACKY atm
 
-    
-    //HACK TO FIX
-    IEnumerator TestingIfDeathWorks()
-    {
-        yield return new WaitForSeconds(3);
-        Destroy(gameObject);
-    }
-    
 
 }
