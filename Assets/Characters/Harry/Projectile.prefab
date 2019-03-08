@@ -198,8 +198,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {x: 5.9, y: 0.5, z: 3}
-  turnSpeed: 5
-  travelSpeed: 40
+  turnSpeed: 4
+  travelSpeed: 30
   damage: 3
   explosionInstances: 12
   parentObject: {fileID: 0}

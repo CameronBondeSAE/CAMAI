@@ -58,42 +58,40 @@ namespace Kennith
 
             rotationValue = 0;
 
-            if (Physics.Raycast(parent.position, parent.forward, out hit, 1))
+            // forward
+            if (Physics.Raycast(parent.position, parent.forward, out hit, dist))
             {
                 Debug.DrawRay(parent.position, parent.forward, Color.red);
-                rotationValue = 10;
-                return rotationValue;
+                rotationValue -= 14;
+                hitSomething = true;
+                
+                if (hit.distance < smallestDist) smallestDist = hit.distance;
             }
             
-            for (int i = -5; i < 6; i++)
+            // right
+            if (Physics.Raycast(parent.position, parent.forward + offset, out hit, dist))
             {
+                Debug.DrawRay(parent.position, parent.forward, Color.white);
+                rotationValue -= 3f;
+                hitSomething = true;
                 
-                if (Physics.Raycast(parent.position, parent.forward + offset, out hit, dist))
-                {
-                    hitSomething = true;
-                    Debug.DrawLine(parent.position, hit.point);
-                    CalculateTurn(offset.x);
-                }
-                
-
-                if (hit.distance < smallestDist)
-                {
-                    smallestDist = hit.distance;
-                }
-                
-                Debug.DrawRay(parent.position, parent.forward + offset);
-                offset -= parent.right * 0.2f;
-            }
-
-            if (!hitSomething)
-            {
-                return dist;
-            }
-            else
-            {
-                return smallestDist;
+                if (hit.distance < smallestDist) smallestDist = hit.distance;
             }
             
+            // left
+            if (Physics.Raycast(parent.position, parent.forward - offset, out hit, dist))
+            {
+                Debug.DrawRay(parent.position, parent.forward, Color.white);
+                rotationValue += 3f;
+                hitSomething = true;
+                
+                if (hit.distance < smallestDist) smallestDist = hit.distance;
+            }
+
+            if (!hitSomething) return dist;
+
+            return smallestDist;
+
         }
 
         private void CalculateTurn(float input)
