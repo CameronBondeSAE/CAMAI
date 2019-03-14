@@ -6,7 +6,7 @@ namespace Kennith
     public class Kennith_Model : CharacterBase
     {
         [HideInInspector]
-        public StateBase spiritBombState, moveState, fleeState, idleState, deathState, hailState;
+        public StateBase spiritBombState, moveState, fleeState, idleState, deathState, hailState, syphonState;
         
         public StateBase currentState;
         
@@ -16,6 +16,8 @@ namespace Kennith
         public GameObject TargetObject;
         public float turningDistance;
 
+        public delegate void OnSpiritBomb(GameObject bomb);
+        public static OnSpiritBomb ShareYourPower;
 
         public void ChangeState(StateBase newState)
         {
@@ -34,13 +36,26 @@ namespace Kennith
             idleState = GetComponentInChildren<IdleState>();
             deathState = GetComponentInChildren<DeathState>();
             hailState = GetComponentInChildren<HailAttack>();
+            syphonState = GetComponentInChildren<PowerSyphonState>();
             
             currentState = moveState;
             currentState.Enter();
 
             GetComponent<Health>().OnDeathEvent += Perish;
+            ShareYourPower += SyphoningPower;
         }
 
+        public void SyphoningPower(GameObject bomb)
+        {
+            TargetObject = bomb;
+            ChangeState(syphonState);   
+        }
+
+        public void InvokeShareYourPower(GameObject bomb)
+        {
+            ShareYourPower?.Invoke(bomb);
+        }
+        
         private void Update()
         {
             currentState.Tick();
