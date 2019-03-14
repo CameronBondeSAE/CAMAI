@@ -14,7 +14,7 @@ namespace Russell
         public Transform myNewSpot;
         public Transform decoySpawn;
         public GameObject decoy;
-        public bool decoyOnCooldown;
+        public bool decoyOnCooldown = true;
 
         public float decoyCooldown = 10f;
         // Start is called before the first frame update
@@ -23,7 +23,12 @@ namespace Russell
         {
             myHealth = myAi.GetComponent<Health>();
             myAi.GetComponent<Kyllarr_Model>().GotHurt += SpawnMyClone;
-            decoyOnCooldown = false;
+            //decoyOnCooldown = false;
+        }
+
+        private void Start()
+        {
+            StartCoroutine(Cooldown());
         }
 
         private void SpawnMyClone()
@@ -32,11 +37,17 @@ namespace Russell
             {
                 decoyOnCooldown = true;
                 currentHealth = myHealth.Amount;
-                Instantiate(decoy, decoySpawn.position, Quaternion.Euler(0,45,0));
-                replacementAi = Instantiate(myAi, myNewSpot.position, Quaternion.Euler(0,-45,0) );
-                _newHealth = myHealth;
-                myAi.GetComponent<Kyllarr_Model>().GotHurt -= SpawnMyClone;
-                _newHealth.Amount = currentHealth;
+                
+                GameObject clone1 = Instantiate(decoy, decoySpawn.position, Quaternion.Euler(0,45,0));
+                GameObject clone2 =  Instantiate(decoy, myNewSpot.position, Quaternion.Euler(0,-45,0));
+
+                clone1.GetComponent<Health>().Amount = currentHealth /2;
+                clone2.GetComponent<Health>().Amount = currentHealth / 2;
+                //replacementAi = Instantiate(myAi, myNewSpot.position, Quaternion.Euler(0,-45,0) );
+                //_newHealth = decoy1.GetComponent<Health>();
+               // _newHealth.maxAmount = currentHealth / 2;
+                
+                
                 Destroy(myAi);
                 
                 StartCoroutine(Cooldown());

@@ -60,30 +60,30 @@ namespace Russell {
                 else
                 {
                     rb.AddForce(0,0,moveSpeed *Time.deltaTime);
-                    Debug.DrawLine(ray.origin, hit.point, Color.blue);
+                    //Debug.DrawLine(ray.origin, hit.point, Color.blue);
                 }
                 if (Physics.Raycast(origin, Quaternion.AngleAxis(45f, transform.up) * transform.forward, out rightHit, 10f))
                 {
                     rb.transform.Rotate(0, -80 * Time.deltaTime, 0); 
-                    Debug.DrawLine(origin, rightHit.point, Color.yellow);
+                    //Debug.DrawLine(origin, rightHit.point, Color.yellow);
                 }
                 else if (Physics.Raycast(origin, Quaternion.AngleAxis(-45f, transform.up) * transform.forward, out leftHit, 10f))
                 {
                     rb.transform.Rotate(0, 80 * Time.deltaTime, 0); 
-                    Debug.DrawLine(origin, leftHit.point, Color.cyan);
+                    //Debug.DrawLine(origin, leftHit.point, Color.cyan);
                 }
 
                 if (Physics.Raycast(origin, Quaternion.AngleAxis(90f, transform.up) * transform.forward, out rightSideHit,
                     5f))
                 {
                     rb.transform.Rotate(0, -120 * Time.deltaTime, 0); 
-                    Debug.DrawLine(origin, rightSideHit.point, Color.yellow);
+                    //Debug.DrawLine(origin, rightSideHit.point, Color.yellow);
                 }
                 if (Physics.Raycast(origin, Quaternion.AngleAxis(-90f, transform.up) * transform.forward, out leftSideHit,
                     5f))
                 {
                     rb.transform.Rotate(0, 120 * Time.deltaTime, 0); 
-                    Debug.DrawLine(origin, leftSideHit.point, Color.cyan);
+                    //Debug.DrawLine(origin, leftSideHit.point, Color.cyan);
                 }
             }
 
@@ -107,35 +107,40 @@ namespace Russell {
         {
             foreach (CharacterBase aiAround in _whosAround.whosAround)
             {
-                float distance;
-                Debug.Log(aiAround + "now raycast");
-                //rayColor = Color.red;
-                
-                if (Physics.Raycast(transform.position, (transform.position - aiAround.transform.position), _whosAround.radius))
+                if (aiAround != null)
                 {
-                    Debug.DrawRay(transform.position, (aiAround.transform.position - transform.position), Color.green);
-                    distance = Vector3.Distance(transform.position, aiAround.transform.position);
-                    if(distance <= distanceCheck )
+                    float distance;
+                    //Debug.Log(aiAround + "now raycast");
+                    //rayColor = Color.red;
+                
+                    if (Physics.Raycast(transform.position, (transform.position - aiAround.transform.position), _whosAround.radius))
                     {
-                        Debug.Log(aiAround + "is to close");
-                        Debug.DrawRay(transform.position, (aiAround.transform.position - transform.position), Color.red);
-                        myTarget = aiAround.gameObject;
-                        Vector3 localTargetOffset = transform.InverseTransformPoint(myTarget.transform.position);
+                        //Debug.DrawRay(transform.position, (aiAround.transform.position - transform.position), Color.green);
+                        distance = Vector3.Distance(transform.position, aiAround.transform.position);
+                        if(distance <= distanceCheck )
+                        {
+                            //Debug.Log(aiAround + "is to close");
+                            //Debug.DrawRay(transform.position, (aiAround.transform.position - transform.position), Color.red);
+                            myTarget = aiAround.gameObject;
+                            Vector3 localTargetOffset = transform.InverseTransformPoint(myTarget.transform.position);
                         
-                        //HACKY
-                        if (localTargetOffset.x < 0)
-                        {
-                            rb.AddRelativeTorque(0, 20000, 0);
-                            //Debug.Log("On the left");
+                            //HACKY
+                            if (localTargetOffset.x < 0)
+                            {
+                                rb.AddRelativeTorque(0, 20000, 0);
+                                //Debug.Log("On the left");
+                            }
+                            else if (localTargetOffset.x > 0)
+                            {
+                                rb.AddRelativeTorque(0, -20000, 0);
+                                //Debug.Log( "on my right");
+                            }
+                            //move character away from close object
                         }
-                        else if (localTargetOffset.x > 0)
-                        {
-                            rb.AddRelativeTorque(0, -20000, 0);
-                            //Debug.Log( "on my right");
-                        }
-                        //move character away from close object
                     }
+                    
                 }
+                
             }
         }
     }
