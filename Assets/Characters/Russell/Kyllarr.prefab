@@ -9673,12 +9673,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myAi: {fileID: 7741071797372873685}
-  replacementAi: {fileID: 7741071797372873685}
+  replacementAi: {fileID: 0}
   currentHealth: 0
   myNewSpot: {fileID: 851295474239459122}
   decoySpawn: {fileID: 3360953349651169442}
-  decoy: {fileID: 3574209252317706191, guid: fda47bd7bcf758d4eb177d73d78b9004, type: 3}
-  decoyOnCooldown: 0
+  decoy: {fileID: 7741071797372873685}
+  decoyOnCooldown: 1
   decoyCooldown: 10
 --- !u!1 &7741071797372873685
 GameObject:
@@ -9821,8 +9821,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myCB: {fileID: 1360217128388490437}
-  radius: 56.7
-  viewAngle: 217.2
+  radius: 34.54
+  viewAngle: 86
   visibleTargets: []
 --- !u!114 &8367293175752711615
 MonoBehaviour:

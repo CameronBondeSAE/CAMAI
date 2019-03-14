@@ -35,12 +35,21 @@ public class Kyllarr_Model : CharacterBase
 
     public void JustGotHurt()
     {
-        //GotHurt();
+        if (GetComponent<DecoyMovement>() == null)
+        {
+            GotHurt();
+        }
+        
+        
     }
 
     public void Kyllarr_Dies()
     {
-        Killme();     
+        if (GetComponent<DecoyMovement>() == null)
+        {
+            Killme();
+        }
+
     }
 
     // Start is called before the first frame update
