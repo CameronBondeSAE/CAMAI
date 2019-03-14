@@ -218,7 +218,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 132994077}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.1, y: 1.51, z: -25.11}
+  m_LocalPosition: {x: 19, y: 2.5, z: -30.8}
   m_LocalScale: {x: 65.666, y: 3.0182, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -329,39 +329,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8493a4b1f4f05a7459ccd54ee08db594, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &509303272
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a686a47eee2fa44cb0a34b5d86e4d5e, type: 3}
-  m_Name: Controller BehaviourTree
-  m_EditorClassIdentifier: 
-  _serializedGraph: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","translation":{"x":-4577.0,"y":-4442.0},"zoomFactor":0.8554916,"nodes":[{"_position":{"x":6273.0,"y":5268.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":5642.0,"y":5419.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"3"},{"_condition":{"checkValue":{"_value":true,"$type":"NodeCanvas.Framework.BBParameter`1[[System.Boolean,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"targetType":"Michael.Vestra_Model","fieldName":"falling","overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Conditions.CheckField"},"_position":{"x":5415.0,"y":5491.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"4"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":2,"$type":"Michael.Teleport"}}],"parameterIsByRef":[false],"returnValue":{},"overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":5630.0,"y":5489.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"8"},{"_position":{"x":5913.0,"y":5548.0},"_tag":"check
-    for enemy","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"16"},{"_condition":{"checkValue":{"$type":"NodeCanvas.Framework.BBParameter`1[[System.Boolean,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"targetType":"Michael.Vestra_Model","fieldName":"enemySeen","overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Conditions.CheckField"},"_position":{"x":5752.0,"y":5633.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"17"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":3,"$type":"Michael.RoamState"}}],"parameterIsByRef":[false,false,false],"returnValue":{},"overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":5970.0,"y":5632.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"21"},{"_position":{"x":6230.0,"y":5734.0},"_tag":"Check
-    for attack state","_comment":"","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"29"},{"_condition":{"method":{"_baseInfo":"Health|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":30.0,"$type":"System.Single"}},"comparison":"GreaterThan","overrideAgent":{"_value":4},"$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":6111.0,"y":5815.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"30"},{"_position":{"x":6372.0,"y":5819.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"35"},{"_position":{"x":6053.0,"y":5899.0},"_tag":"Check
-    for ult usability","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"36"},{"_condition":{"method":{"_baseInfo":"Energy|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":70.0,"$type":"System.Single"}},"comparison":"GreaterOrEqualTo","overrideAgent":{"_value":5},"$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":5785.0,"y":5965.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"37"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":6,"$type":"Michael.ArcaneBarrage"}}],"parameterIsByRef":[false],"returnValue":{},"overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":6052.0,"y":5966.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"42"},{"_position":{"x":6391.0,"y":5994.0},"_tag":"First
-    Ability","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"50"},{"_condition":{"method":{"_baseInfo":"Energy|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":20.0,"$type":"System.Single"}},"comparison":"GreaterOrEqualTo","overrideAgent":{"_value":5},"$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":6300.0,"y":6067.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"51"},{"_action":{"method":{"_baseInfo":"CharacterBase|Ability2|System.Void","_paramsInfo":""},"parameters":[],"parameterIsByRef":[],"returnValue":{},"overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":6589.0,"y":6067.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"56"},{"_position":{"x":6573.0,"y":5615.0},"_tag":"Second
-    ability","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"63"},{"_condition":{"method":{"_baseInfo":"Energy|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":10.0,"$type":"System.Single"}},"comparison":"GreaterOrEqualTo","overrideAgent":{"_value":5},"$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":6433.0,"y":5694.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"64"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":2,"$type":"Michael.Teleport"}}],"parameterIsByRef":[false],"returnValue":{},"overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":6713.0,"y":5697.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"69"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":7,"$type":"Michael.FleeState"}}],"parameterIsByRef":[false],"returnValue":{},"overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":6758.0,"y":5498.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"77"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"16"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"29"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"63"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"77"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"16"},"_targetNode":{"$ref":"17"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"16"},"_targetNode":{"$ref":"21"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"29"},"_targetNode":{"$ref":"30"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"29"},"_targetNode":{"$ref":"35"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"35"},"_targetNode":{"$ref":"36"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"35"},"_targetNode":{"$ref":"50"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"36"},"_targetNode":{"$ref":"37"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"36"},"_targetNode":{"$ref":"42"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"50"},"_targetNode":{"$ref":"51"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"50"},"_targetNode":{"$ref":"56"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"63"},"_targetNode":{"$ref":"64"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"63"},"_targetNode":{"$ref":"69"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"primeNode":{"$ref":"2"},"localBlackboard":{"_name":"Local
-    Blackboard","_variables":{}},"derivedData":{"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
-  _objectReferences:
-  - {fileID: 0}
-  - {fileID: 394572377}
-  - {fileID: 2106330538}
-  - {fileID: 2106330539}
-  - {fileID: 394572376}
-  - {fileID: 394572375}
-  - {fileID: 1728941971}
-  - {fileID: 2106330536}
-  _deserializationFailed: 0
-  repeat: 0
-  updateInterval: 0
 --- !u!1001 &601936342
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -376,28 +343,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2014302519459914029, guid: 1ded1513d8ca93b4eb561d201299acdb,
         type: 3}
-      propertyPath: amount
-      value: 15
+      propertyPath: maxEnergy
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 2014302519459914029, guid: 1ded1513d8ca93b4eb561d201299acdb,
         type: 3}
       propertyPath: regenEnergySpeed
-      value: 0
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.88
+      value: 5.3
       objectReference: {fileID: 0}
     - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.5
+      value: 10.9
       objectReference: {fileID: 0}
     - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.24
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
         type: 3}
@@ -443,7 +410,16 @@ PrefabInstance:
         type: 3}
       propertyPath: _graph
       value: 
-      objectReference: {fileID: 509303272}
+      objectReference: {fileID: 1869800383}
+    - target: {fileID: 1741213597, guid: 1ded1513d8ca93b4eb561d201299acdb, type: 3}
+      propertyPath: vestraPrefab
+      value: 
+      objectReference: {fileID: 6071121813599348559, guid: 1ded1513d8ca93b4eb561d201299acdb,
+        type: 3}
+    - target: {fileID: 1741213597, guid: 1ded1513d8ca93b4eb561d201299acdb, type: 3}
+      propertyPath: delay
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ded1513d8ca93b4eb561d201299acdb, type: 3}
 --- !u!1 &681100453
@@ -607,39 +583,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &880056497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a686a47eee2fa44cb0a34b5d86e4d5e, type: 3}
-  m_Name: Controller BehaviourTree
-  m_EditorClassIdentifier: 
-  _serializedGraph: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","translation":{"x":-4577.0,"y":-4442.0},"zoomFactor":0.8554916,"nodes":[{"_position":{"x":6273.0,"y":5268.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":5642.0,"y":5419.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"3"},{"_condition":{"checkValue":{"_value":true,"$type":"NodeCanvas.Framework.BBParameter`1[[System.Boolean,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"targetType":"Michael.Vestra_Model","fieldName":"falling","overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Conditions.CheckField"},"_position":{"x":5415.0,"y":5491.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"4"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":2,"$type":"Michael.Teleport"}}],"parameterIsByRef":[false],"returnValue":{},"overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":5630.0,"y":5489.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"8"},{"_position":{"x":5913.0,"y":5548.0},"_tag":"check
-    for enemy","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"16"},{"_condition":{"checkValue":{"$type":"NodeCanvas.Framework.BBParameter`1[[System.Boolean,
-    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"targetType":"Michael.Vestra_Model","fieldName":"enemySeen","overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Conditions.CheckField"},"_position":{"x":5752.0,"y":5633.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"17"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":3,"$type":"Michael.RoamState"}}],"parameterIsByRef":[false,false,false],"returnValue":{},"overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":5970.0,"y":5632.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"21"},{"_position":{"x":6230.0,"y":5734.0},"_tag":"Check
-    for attack state","_comment":"","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"29"},{"_condition":{"method":{"_baseInfo":"Health|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":30.0,"$type":"System.Single"}},"comparison":"GreaterThan","overrideAgent":{"_value":4},"$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":6111.0,"y":5815.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"30"},{"_position":{"x":6372.0,"y":5819.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"35"},{"_position":{"x":6053.0,"y":5899.0},"_tag":"Check
-    for ult usability","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"36"},{"_condition":{"method":{"_baseInfo":"Energy|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":70.0,"$type":"System.Single"}},"comparison":"GreaterOrEqualTo","overrideAgent":{"_value":5},"$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":5785.0,"y":5965.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"37"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":6,"$type":"Michael.ArcaneBarrage"}}],"parameterIsByRef":[false],"returnValue":{},"overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":6052.0,"y":5966.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"42"},{"_position":{"x":6391.0,"y":5994.0},"_tag":"First
-    Ability","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"50"},{"_condition":{"method":{"_baseInfo":"Energy|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":20.0,"$type":"System.Single"}},"comparison":"GreaterOrEqualTo","overrideAgent":{"_value":5},"$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":6300.0,"y":6067.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"51"},{"_action":{"method":{"_baseInfo":"CharacterBase|Ability2|System.Void","_paramsInfo":""},"parameters":[],"parameterIsByRef":[],"returnValue":{},"overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":6589.0,"y":6067.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"56"},{"_position":{"x":6573.0,"y":5615.0},"_tag":"Second
-    ability","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"63"},{"_condition":{"method":{"_baseInfo":"Energy|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":10.0,"$type":"System.Single"}},"comparison":"GreaterOrEqualTo","overrideAgent":{"_value":5},"$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":6433.0,"y":5694.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"64"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":2,"$type":"Michael.Teleport"}}],"parameterIsByRef":[false],"returnValue":{},"overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":6713.0,"y":5697.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"69"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":7,"$type":"Michael.FleeState"}}],"parameterIsByRef":[false],"returnValue":{},"overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":6758.0,"y":5498.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"77"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"16"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"29"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"63"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"77"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"16"},"_targetNode":{"$ref":"17"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"16"},"_targetNode":{"$ref":"21"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"29"},"_targetNode":{"$ref":"30"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"29"},"_targetNode":{"$ref":"35"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"35"},"_targetNode":{"$ref":"36"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"35"},"_targetNode":{"$ref":"50"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"36"},"_targetNode":{"$ref":"37"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"36"},"_targetNode":{"$ref":"42"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"50"},"_targetNode":{"$ref":"51"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"50"},"_targetNode":{"$ref":"56"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"63"},"_targetNode":{"$ref":"64"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"63"},"_targetNode":{"$ref":"69"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"primeNode":{"$ref":"2"},"localBlackboard":{"_name":"Local
-    Blackboard","_variables":{}},"derivedData":{"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
-  _objectReferences:
-  - {fileID: 0}
-  - {fileID: 394572377}
-  - {fileID: 2106330538}
-  - {fileID: 2106330539}
-  - {fileID: 394572376}
-  - {fileID: 394572375}
-  - {fileID: 1728941971}
-  - {fileID: 2106330536}
-  _deserializationFailed: 0
-  repeat: 0
-  updateInterval: 0
 --- !u!1 &943861281
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,6 +765,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 81.45, z: 0}
+--- !u!4 &1093497990 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5441321179296262911, guid: 1ded1513d8ca93b4eb561d201299acdb,
+    type: 3}
+  m_PrefabInstance: {fileID: 601936342}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1095726225
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +874,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3a7485edc65924396e189e84e80b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1741213597 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1741213597, guid: 1ded1513d8ca93b4eb561d201299acdb,
+    type: 3}
+  m_PrefabInstance: {fileID: 601936342}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a3f4b3e55328745a212afc1b724c04, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1869800383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a686a47eee2fa44cb0a34b5d86e4d5e, type: 3}
+  m_Name: Controller BehaviourTree
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","translation":{"x":-3082.0,"y":-2744.0},"zoomFactor":0.6055013,"nodes":[{"_position":{"x":6254.0,"y":5154.0},"$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":5362.0,"y":5272.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"3"},{"_action":{"setValue":{"_type":"System.Boolean","_value":{"$content":false,"$type":"System.Boolean"}},"targetType":"Michael.Vestra_Model","fieldName":"fleeing","overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.SetField"},"_position":{"x":4887.0,"y":5372.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"4"},{"_condition":{"checkValue":{"_value":true,"$type":"NodeCanvas.Framework.BBParameter`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"targetType":"Michael.Vestra_Model","fieldName":"falling","overrideAgent":{"_value":2},"$type":"NodeCanvas.Tasks.Conditions.CheckField"},"_position":{"x":5149.0,"y":5393.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"8"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":3,"$type":"Michael.Teleport"}}],"parameterIsByRef":[false],"returnValue":{},"overrideAgent":{"_value":2},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":5369.0,"y":5372.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"12"},{"_position":{"x":5683.0,"y":5460.0},"_tag":"Check
+    for ult usability","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"20"},{"_condition":{"method":{"_baseInfo":"Energy|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":70.0,"$type":"System.Single"}},"comparison":"GreaterOrEqualTo","overrideAgent":{"_value":4},"$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":5377.0,"y":5529.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"21"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":5,"$type":"Michael.SpawnState"}}],"parameterIsByRef":[false],"returnValue":{},"overrideAgent":{"_value":2},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":5682.0,"y":5527.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"26"},{"_position":{"x":5971.0,"y":5592.0},"_tag":"check
+    for enemy","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"34"},{"_condition":{"checkValue":{"$type":"NodeCanvas.Framework.BBParameter`1[[System.Boolean,
+    mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"targetType":"Michael.Vestra_Model","fieldName":"enemySeen","overrideAgent":{"_value":2},"$type":"NodeCanvas.Tasks.Conditions.CheckField"},"_position":{"x":5731.0,"y":5665.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"35"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":6,"$type":"Michael.RoamState"}}],"parameterIsByRef":[false,false,false],"returnValue":{},"overrideAgent":{"_value":2},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":5975.0,"y":5677.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"39"},{"_position":{"x":6332.0,"y":5749.0},"_tag":"Check
+    for attack state","_comment":"","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"47"},{"_condition":{"method":{"_baseInfo":"Health|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":30.0,"$type":"System.Single"}},"comparison":"GreaterThan","overrideAgent":{"_value":7},"$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":6013.0,"y":5830.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"48"},{"_condition":{"method":{"_baseInfo":"Energy|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":20.0,"$type":"System.Single"}},"comparison":"GreaterOrEqualTo","overrideAgent":{"_value":4},"$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":6208.0,"y":5899.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"53"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":8,"$type":"Michael.ArcaneBarrage"}}],"parameterIsByRef":[false],"returnValue":{},"overrideAgent":{"_value":2},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":6452.0,"y":5819.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"58"},{"_position":{"x":6550.0,"y":5484.0},"_tag":"Second
+    ability","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"66"},{"_condition":{"method":{"_baseInfo":"Energy|get_Amount|System.Single","_paramsInfo":""},"checkValue":{"_type":"System.Single","_value":{"$content":10.0,"$type":"System.Single"}},"comparison":"GreaterOrEqualTo","overrideAgent":{"_value":4},"$type":"NodeCanvas.Tasks.Conditions.CheckProperty_Multiplatform"},"_position":{"x":6419.0,"y":5575.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"67"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":3,"$type":"Michael.Teleport"}}],"parameterIsByRef":[false],"returnValue":{},"overrideAgent":{"_value":2},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":6783.0,"y":5593.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"72"},{"_position":{"x":6844.0,"y":5311.0},"$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"80"},{"_action":{"method":{"_baseInfo":"Michael.Vestra_Model|ChangeState|System.Void","_paramsInfo":"Michael.StateBase"},"parameters":[{"_type":"Michael.StateBase","_value":{"$content":9,"$type":"Michael.FleeState"}}],"parameterIsByRef":[false],"returnValue":{},"overrideAgent":{"_value":2},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":6667.0,"y":5398.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"81"},{"_action":{"setValue":{"_type":"System.Boolean","_value":{"$content":true,"$type":"System.Boolean"}},"targetType":"Michael.Vestra_Model","fieldName":"fleeing","overrideAgent":{"_value":1},"$type":"NodeCanvas.Tasks.Actions.SetField"},"_position":{"x":7014.0,"y":5405.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"89"}],"connections":[{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"3"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"20"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"34"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"47"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"66"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"2"},"_targetNode":{"$ref":"80"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"4"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"8"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"3"},"_targetNode":{"$ref":"12"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"20"},"_targetNode":{"$ref":"21"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"20"},"_targetNode":{"$ref":"26"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"34"},"_targetNode":{"$ref":"35"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"34"},"_targetNode":{"$ref":"39"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"47"},"_targetNode":{"$ref":"48"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"47"},"_targetNode":{"$ref":"53"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"47"},"_targetNode":{"$ref":"58"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"66"},"_targetNode":{"$ref":"67"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"66"},"_targetNode":{"$ref":"72"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"80"},"_targetNode":{"$ref":"81"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"},{"_sourceNode":{"$ref":"80"},"_targetNode":{"$ref":"89"},"$type":"NodeCanvas.BehaviourTrees.BTConnection"}],"primeNode":{"$ref":"2"},"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}},"derivedData":{"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  _objectReferences:
+  - {fileID: 0}
+  - {fileID: 1093497990}
+  - {fileID: 394572377}
+  - {fileID: 2106330538}
+  - {fileID: 394572375}
+  - {fileID: 1741213597}
+  - {fileID: 2106330539}
+  - {fileID: 394572376}
+  - {fileID: 1728941971}
+  - {fileID: 2106330536}
+  _deserializationFailed: 0
+  repeat: 0
+  updateInterval: 0
 --- !u!1001 &1877980878
 PrefabInstance:
   m_ObjectHideFlags: 0

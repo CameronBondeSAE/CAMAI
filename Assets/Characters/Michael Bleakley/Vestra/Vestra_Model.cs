@@ -10,6 +10,7 @@ namespace Michael
         public bool enemySeen;
         public Rigidbody rb;
         public bool falling;
+        public bool fleeing;
         //private GameObject[] surroundingEnemies;
         //private List<GameObject> surroundingEnemies;
         [SerializeField] private VestraTargeting _targeting;
@@ -26,7 +27,7 @@ namespace Michael
         {
             if (currentState != null) currentState.Execute();
             falling = transform.position.y < -5;
-            
+            enemySeen = Target != null;
             
            
             /* test code
@@ -138,7 +139,7 @@ namespace Michael
              * update current state
              */
             newState.Enter();
-
+            Debug.Log("Change state here");
             currentState = newState;
         }
 
@@ -146,7 +147,6 @@ namespace Michael
         {
             enemySeen = Target != null;
             if (currentState != null) currentState.Exit();
-            Debug.Log("PostOverride");
         }
 
         #endregion
@@ -155,8 +155,10 @@ namespace Michael
         {
             if (other.transform.gameObject.GetComponent<CharacterBase>())
             {
+                if (other.transform.gameObject.GetComponent<Vestra_Model>()) return;
+                if (other.transform.gameObject.GetComponent<Darkling_Model>()) return;
                 Target = other.transform.gameObject;
-                OverrideState();
+                if (!fleeing)OverrideState();
                 /*
                  * surroundingEnemies.Add(other.transform.gameObject);
                  
@@ -176,7 +178,7 @@ namespace Michael
             if (Target == other.gameObject)
             {
                 Target = null;
-                OverrideState();
+                if (!fleeing)OverrideState();
             }
             
             //surroundingEnemies.Remove(other.transform.gameObject);

@@ -13,6 +13,7 @@ namespace Michael
             destination = new Vector3(Random.Range(-destinationRange, destinationRange),0,Random.Range(-destinationRange, destinationRange));
             //destination += Self.transform.position;
             base.Enter();
+            Debug.Log("Testing entry on roam");
         }
 
         public override void Execute()

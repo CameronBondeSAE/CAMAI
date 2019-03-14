@@ -36,7 +36,7 @@ namespace Michael
             if (count == 6)
             {
                 Self.GetComponent<Energy>().Change(-cost);
-                Invoke("Exit", 2);
+                Self.transform.rotation = new Quaternion(0,Self.transform.rotation.y,0,Self.transform.rotation.w);
             }
             else
             {
