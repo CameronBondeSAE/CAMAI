@@ -9,10 +9,11 @@ namespace Michael
     public class ArcaneBarrage : StateBase
     {
         private int count;
-        [SerializeField] int cost;
+        [SerializeField] private int cost;
         [SerializeField] private GameObject missle;
-        [SerializeField] int damage;
+        [SerializeField] private int damage;
         [SerializeField] private int range;
+        [SerializeField] private int noProj;
         public override void Enter()
         {
             count = 0;
@@ -33,7 +34,7 @@ namespace Michael
 
         private void Barrage()
         {
-            if (count == 6)
+            if (count >= noProj)
             {
                 Self.GetComponent<Energy>().Change(-cost);
                 Self.transform.rotation = new Quaternion(0,Self.transform.rotation.y,0,Self.transform.rotation.w);

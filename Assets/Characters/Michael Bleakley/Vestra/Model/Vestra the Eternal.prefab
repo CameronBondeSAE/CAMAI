@@ -441,6 +441,7 @@ MonoBehaviour:
   missle: {fileID: 2695648125269520619, guid: e8c9506213d5aac4190749afcf6d319e, type: 3}
   damage: 5
   range: 30
+  noProj: 6
 --- !u!114 &1741213597
 MonoBehaviour:
   m_ObjectHideFlags: 0

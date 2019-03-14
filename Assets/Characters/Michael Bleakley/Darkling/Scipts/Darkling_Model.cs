@@ -1,21 +1,26 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace Michael
 {
     public class Darkling_Model : CharacterBase
     {
-        
         public StateBase currentState;
-        private GameObject vestraLead;
+        public bool enemySeen;
+        public float distance;
         private GameObject[] friends;
+        [SerializeField] private Rigidbody rb;
+        private List<GameObject> targets;
 
         [SerializeField] private float turningVariable;
-        [SerializeField] private Rigidbody rb;
+
+        public GameObject vestraLead;
         // Start is called before the first frame update
-        void Start()
+
+        public override void Start()
         {
+            targets = new List<GameObject>();
             base.Start();
             GetComponent<Health>().OnHurtEvent += OnHurtEvent;
             GetComponent<Health>().OnDeathEvent += OnDeathEvent;
@@ -34,7 +39,6 @@ namespace Michael
 
         private void OnHurtEvent()
         {
-            
         }
 
         public void ChangeState(StateBase newState)
@@ -42,17 +46,37 @@ namespace Michael
             newState.Enter();
             currentState = newState;
         }
-        // Update is called once per frame
-        void FixedUpdate()
-        {
 
+        private void OverrideState()
+        {
+            enemySeen = Target != null;
+            if (currentState != null) currentState.Exit();
+        }
+        // Update is called once per frame
+        private void FixedUpdate()
+        {
+            if (currentState != null) currentState.Execute();
+            if (transform.position.y < -5)
+            {
+                vestraLead.GetComponentInChildren<SpawnState>().darklings.Remove(gameObject);
+                Destroy(gameObject);
+            }
+            enemySeen = targets.Count >= 1;
+            if (vestraLead != null)
+            {
+                distance = Vector3.Distance(transform.position, vestraLead.transform.position);
+            }
+            else
+            {
+                distance = 0;
+            }
         }
 
-        public void Movement(Vector3 Destination)
+        public override void Move(Vector3 speedDirection)
         {
             if (rb != null) rb.AddRelativeForce(Vector3.forward * SpeedMultiplier, ForceMode.Force);
 
-            var targetPosition = transform.InverseTransformPoint(Destination);
+            var targetPosition = transform.InverseTransformPoint(speedDirection);
             var temp = targetPosition.x / targetPosition.magnitude;
             if (rb != null) rb.AddRelativeTorque(0, turningVariable * 0.5f * temp, 0);
 
@@ -61,31 +85,31 @@ namespace Michael
             {
                 Debug.DrawLine(transform.position, hit.point, Color.red, 1f);
                 if (rb != null) rb.AddRelativeTorque(0, turningVariable * 2f, 0);
-                
-
-
-                /*
-                if (Random.Range(-1, 1) < 0)
-                {
-                    rb.AddRelativeTorque(0, vary * -1, 0);
-                }
-                else
-                {
-                    rb.AddRelativeTorque(0, vary, 0);
-                }
-                */
             }
 
             if (Physics.Raycast(transform.position, transform.forward + transform.right, out hit, 1f))
-            {
-                if (rb != null) rb.AddRelativeTorque(0, -turningVariable * 1.5f, 0);
-            }
+                if (rb != null)
+                    rb.AddRelativeTorque(0, -turningVariable * 1.5f, 0);
 
             if (Physics.Raycast(transform.position, transform.forward - transform.right, out hit, 1f))
-            {
-                if (rb != null) rb.AddRelativeTorque(0, turningVariable * 1.5f, 0);
-            }
+                if (rb != null)
+                    rb.AddRelativeTorque(0, turningVariable * 1.5f, 0);
+        }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.transform.gameObject.GetComponent<CharacterBase>())
+            {
+                if (other.transform.gameObject.GetComponent<Vestra_Model>()) return;
+                if (other.transform.gameObject.GetComponent<Darkling_Model>()) return;
+                targets.Add(other.transform.gameObject);
+                OverrideState();
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            targets.Remove(other.gameObject);
         }
         /*
          * Abilities:
