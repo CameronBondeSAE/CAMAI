@@ -61,7 +61,7 @@ public class Spawner : MonoBehaviour
 //					if (!Physics.Raycast(randomPosition, Vector3.up, 10f))
 					{
 						Debug.DrawLine(randomPosition, randomPosition + Vector3.up * 5f, Color.green, 3);
-						Debug.Log("Spawner: Found empty spot");
+//						Debug.Log("Spawner: Found empty spot");
 						break;
 					}
 					else

@@ -62,6 +62,14 @@ public class MrDudes_Model : CharacterBase
 		// Listen/Subscribe to events coming out of Health.
 		GetComponent<Health>().OnHurtEvent += Hurt;
 		GetComponent<Health>().OnDeathEvent += Death;
+		
+		// Subscribe to STATIC danger events (note, no need to GetComponent or anything)
+		Danger.OnDanger += OnDanger;
+	}
+
+	private void OnDanger(GameObject emitter, CharacterBase owner, float radiusofdanger, float maxdamageamount)
+	{
+		debugText = "RUN AWAY!";
 	}
 
 	public override void Start()
@@ -83,6 +91,7 @@ public class MrDudes_Model : CharacterBase
 		WanderBehaviour();
 		
 //		Debug.Log("Dist = "+hit.distance + " : Influence = "+);
+
 	}
 
 	private void AvoidBehaviour()

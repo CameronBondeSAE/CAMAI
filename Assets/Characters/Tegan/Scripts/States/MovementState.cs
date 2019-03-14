@@ -33,13 +33,13 @@ namespace Auriel
                 
                 aurielRB.AddRelativeForce(turnSpeed, 0,0, ForceMode.Acceleration);
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * rayHit.distance, Color.magenta);
-                Debug.Log("Hit");
+//                Debug.Log("Hit");
 			}
 
             else
             {
                 Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * 1000, Color.black);
-                Debug.Log("Didn't hit");
+//                Debug.Log("Didn't hit");
             }
 		}
 
