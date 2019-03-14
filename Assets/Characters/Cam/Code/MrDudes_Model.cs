@@ -3,11 +3,12 @@ using Cam;
 using Tayx.Graphy.Utils;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
+using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
 namespace Cam
 {
-	
 
 public class MrDudes_Model : CharacterBase
 {
@@ -69,7 +70,8 @@ public class MrDudes_Model : CharacterBase
 
 	private void OnDanger(GameObject emitter, CharacterBase owner, float radiusofdanger, float maxdamageamount)
 	{
-		debugText = "RUN AWAY!";
+		// TODO: Need distance check, THEN line of sight raycast check etc
+		debugText = "Received Danger event";
 	}
 
 	public override void Start()
