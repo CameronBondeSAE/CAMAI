@@ -37,6 +37,8 @@ namespace Kennith
 
             desiredPos = Vector3.zero;
             desiredScale = transform.localScale;
+
+            GetComponent<Health>().OnDeathEvent += Explode;
         }
         
         void Update()
@@ -86,7 +88,7 @@ namespace Kennith
             }
         }
 
-        private void Explode()
+        public void Explode()
         {
             col.enabled = false;
             exploding = true;

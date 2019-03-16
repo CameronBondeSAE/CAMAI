@@ -21,7 +21,7 @@ namespace Kennith
 
         public void ChangeState(StateBase newState)
         {
-           // if (currentState == newState) return;
+            if (currentState == deathState) return;
             
             newState.Enter();
             currentState = newState;
@@ -129,6 +129,11 @@ namespace Kennith
         public void Perish()
         {
            ChangeState(deathState);
+        }
+
+        private void OnDestroy()
+        {
+            ShareYourPower -= SyphoningPower;
         }
     }
     

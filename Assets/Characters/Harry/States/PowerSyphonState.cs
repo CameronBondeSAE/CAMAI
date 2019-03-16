@@ -27,13 +27,13 @@ namespace Kennith
         public override void Tick()
         {
             // Debug.Log("Hail Attack Execute", gameObject);
+            if (model.TargetObject == null) Exit();
 
             randRotation.eulerAngles = new Vector3(Random.Range(-(randomizedAngle * 2), -randomizedAngle), 0, Random.Range(-(randomizedAngle * 2), -randomizedAngle));
             randOffset = new Vector3(Random.Range(-0.5f, 0.5f), 1, Random.Range(-0.5f, 0.5f));
 
             if (energy.Amount > 0 && delayTick >= delay)
             {
-                if (model.TargetObject == null) return;
                 
                 GameObject spawn = Instantiate(syphonProjectile, transform.position + randOffset, randRotation);
                 spawn.GetComponent<ProjectileSyphon>().parentObject = model.gameObject;
