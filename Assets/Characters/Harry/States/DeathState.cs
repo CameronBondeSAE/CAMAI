@@ -27,7 +27,7 @@ namespace Kennith
 
         public override void Tick()
         {
-            Debug.Log(parent.transform.rotation.eulerAngles.x, gameObject);
+
             if (parent.transform.rotation.eulerAngles.x > 75 || parent.transform.rotation.eulerAngles.x < -75)
             {
                 StartCoroutine(DelayExit(endDelay));

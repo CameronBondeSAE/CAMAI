@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using NodeCanvas.Tasks.Actions;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Kennith
 {
-    public class HailAttack : StateBase
+    public class PowerSyphonState : StateBase
     {
 
         private Quaternion randRotation;
@@ -13,7 +10,7 @@ namespace Kennith
         private Kennith_Model model;
         private Energy energy;
         
-        public GameObject hailProjectile;
+        public GameObject syphonProjectile;
 
         public float randomizedAngle = 60;
         public float energyCost = 4;
@@ -37,9 +34,10 @@ namespace Kennith
 
             if (energy.Amount > 0 && delayTick >= delay)
             {
-                GameObject spawn = Instantiate(hailProjectile, transform.position + randOffset, randRotation);
-                spawn.GetComponent<ProjectileChase>().parentObject = model.gameObject;
-                spawn.GetComponent<ProjectileChase>().target = model.TargetObject.transform.position;
+                
+                GameObject spawn = Instantiate(syphonProjectile, transform.position + randOffset, randRotation);
+                spawn.GetComponent<ProjectileSyphon>().parentObject = model.gameObject;
+                spawn.GetComponent<ProjectileSyphon>().target = model.TargetObject.transform;
                 
                 energy.Amount -= energyCost;
                 delayTick = 0;

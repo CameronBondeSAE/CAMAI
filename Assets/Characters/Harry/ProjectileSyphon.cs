@@ -1,16 +1,14 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using System.Text;
-using NodeCanvas.Tasks.Actions;
+using Kennith;
 using UnityEngine;
 
-public class ProjectileChase : MonoBehaviour
+public class ProjectileSyphon : MonoBehaviour
 {
-    public Vector3 target;
+    public Transform target;
     
     public float turnSpeed = 1;
     public float travelSpeed = 1;
-    public float damage = 2;
+    public float power = 2;
     
     private Rigidbody body;
     private Collider col;
@@ -37,10 +35,10 @@ public class ProjectileChase : MonoBehaviour
         }
         else
         {
-            if (target != null) RotateTowards(target);
+            if (target != null) RotateTowards(target.position);
 
             body.velocity = transform.forward * travelSpeed;
-        }
+        }   
         
     }
 
@@ -61,9 +59,9 @@ public class ProjectileChase : MonoBehaviour
     {
         if (other.gameObject != parentObject && other.gameObject.GetComponent<ProjectileChase>() == null)
         {
-            if (other.GetComponent<Health>() != null)
+            if (other.GetComponent<Projectile_SpiritBomb>() != null)
             {
-                other.GetComponent<Health>().Change(-damage, parentObject);
+                other.GetComponent<Projectile_SpiritBomb>().Power(power);
                 exploding = true;
             }
             else
@@ -87,7 +85,7 @@ public class ProjectileChase : MonoBehaviour
         }
         else
         {
-            transform.localScale += Vector3.one / 5;
+            transform.localScale *= 0.2f;
         }
         
     }
@@ -98,4 +96,5 @@ public class ProjectileChase : MonoBehaviour
 
         exploding = true;
     }
+
 }

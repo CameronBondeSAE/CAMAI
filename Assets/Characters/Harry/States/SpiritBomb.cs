@@ -7,16 +7,33 @@ namespace Kennith
 
         public GameObject spiritBomb;
         private GameObject spawnedSpiritBomb;
-
-        readonly Vector3 scaleIncrease = new Vector3(0.02f,0.02f,0.02f);
-        readonly Vector3 posIncrease = new Vector3(0,0.013f,0);
+        
+        private Kennith_Model model;
+        private Energy energy;
+        public int energyCost;
+        public Vector3 offset = Vector3.up;
+        
+        private int delayTick;
+        public int delay = 2;
+        
+        private void Awake()
+        {
+            model = GetComponentInParent<Kennith_Model>();
+            energy = GetComponentInParent<Energy>();
+        }
         
         public override void Enter()
         {
+            GetComponentInParent<Health>().OnDeathEvent += ExplodeOnDeath;
             
             // Debug.Log("Attack Enter", gameObject);
+            spawnedSpiritBomb = Instantiate(spiritBomb, transform.position + offset, transform.rotation);
+            spawnedSpiritBomb.GetComponent<Projectile_SpiritBomb>().parent = model.gameObject;
+            spawnedSpiritBomb.GetComponent<Projectile_SpiritBomb>().target = model.TargetObject.transform;
 
-            spawnedSpiritBomb = Instantiate(spiritBomb, transform.position + new Vector3(0,2,0), transform.rotation);
+            Kennith_Model.ShareYourPower -= model.SyphoningPower;
+            model.InvokeShareYourPower(spawnedSpiritBomb);
+            
             StartCoroutine(DelayExit(endDelay));
             
         }
@@ -26,18 +43,34 @@ namespace Kennith
            
             // Debug.Log("Attack Execute", gameObject);
 
-            spawnedSpiritBomb.transform.localScale += scaleIncrease;
-            spawnedSpiritBomb.transform.position += posIncrease;
+            if (energy.Amount > 0 && delayTick >= delay)
+            {
+                spawnedSpiritBomb.GetComponent<Projectile_SpiritBomb>().Power(energyCost);
+                energy.Amount -= energyCost;
+                delayTick = 0;
+            }
+            else
+            {
+                delayTick++;
+            }
         
         }
-
+        
         public override void Exit()
         {
-            spawnedSpiritBomb.GetComponent<Rigidbody>().velocity = spawnedSpiritBomb.transform.forward * 100;
+            spawnedSpiritBomb.GetComponent<Projectile_SpiritBomb>().thrown = true;
+
+            GetComponentInParent<Health>().OnDeathEvent -= ExplodeOnDeath;
+            Kennith_Model.ShareYourPower += model.SyphoningPower;
             
             // Debug.Log("Attack Exit", gameObject);
-            
+            model.ChangeState(model.moveState);
             base.Exit();
+        }
+
+        public void ExplodeOnDeath()
+        {
+            spawnedSpiritBomb.GetComponent<Projectile_SpiritBomb>().Explode();
         }
     }
 

@@ -32,7 +32,7 @@ namespace Kail
             runState = GetComponent<RunState>();
             healthBase = GetComponent<Health>();
 
-            health = healthBase.Amount;
+            //health = healthBase.Amount;
             
             
 
