@@ -193,7 +193,7 @@ PrefabInstance:
         type: 3}
       propertyPath: currentState
       value: 
-      objectReference: {fileID: 1037873008}
+      objectReference: {fileID: 0}
     - target: {fileID: 1629374263548797436, guid: e9e49d67423f7f747b18292689448989,
         type: 3}
       propertyPath: m_Radius
@@ -611,18 +611,6 @@ MonoBehaviour:
   _deserializationFailed: 0
   repeat: 1
   updateInterval: 0
---- !u!114 &1037873008 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5945824093634193284, guid: e9e49d67423f7f747b18292689448989,
-    type: 3}
-  m_PrefabInstance: {fileID: 61446509}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d0d3e52f0d60de44b93f04ab11383eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1454445027
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +771,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!114 &1994112396
+--- !u!114 &1891107679
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
