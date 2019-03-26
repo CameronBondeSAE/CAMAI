@@ -46,7 +46,7 @@ namespace Russell
             RaycastHit hit;
 
             var origin = transform.position;
-            if (Physics.Raycast(origin, Quaternion.AngleAxis(30f, transform.right) * transform.forward, out floorHit, 5f))
+            if (Physics.Raycast(origin, Quaternion.AngleAxis(20f, transform.right) * transform.forward, out floorHit, 8f))
             {
                 
                 Debug.DrawLine(ray.origin, floorHit.point, Color.red);
@@ -89,7 +89,7 @@ namespace Russell
             }
             else
             {
-                rb.AddRelativeTorque(0, -20000, 0);
+                rb.AddRelativeTorque(0, -80000, 0);
             }
         }
 
