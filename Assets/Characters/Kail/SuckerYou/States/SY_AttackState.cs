@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Kail
 {
-    public class Sy_AttackState : StateBase
+    public class SY_AttackState : StateBase
     {
         //starts once its attached to the target
 

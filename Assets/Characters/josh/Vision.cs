@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Vision : MonoBehaviour
 {
     public float ViewDist = 10;
 
-    public List<CharacterBase> visible;
+    public Queue<CharacterBase> visible;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +30,7 @@ public class Vision : MonoBehaviour
 
     public void UpdateVision()
     {
+        visible.Clear();
         List<CharacterBase> found = new List<CharacterBase>();
         RaycastHit ray;
         foreach (CharacterBase item in GameManager.Instance.CharacterBases)
@@ -45,7 +47,10 @@ public class Vision : MonoBehaviour
             }
         }
         //found.Sort();
-
-        visible = found;
+        found = found.OrderBy(o => Vector3.Distance(o.transform.position, transform.position)).ToList();
+        foreach (CharacterBase item in found)
+        {
+            visible.Enqueue(item);
+        }
     }
 }

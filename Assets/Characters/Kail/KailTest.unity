@@ -420,6 +420,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &189651722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a686a47eee2fa44cb0a34b5d86e4d5e, type: 3}
+  m_Name: SuckerYou BehaviourTree
+  m_EditorClassIdentifier: 
+  _serializedGraph: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[],"connections":[],"localBlackboard":{"_name":"Local
+    Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
+  _objectReferences: []
+  _deserializationFailed: 0
+  repeat: 1
+  updateInterval: 0
 --- !u!1 &546853149
 GameObject:
   m_ObjectHideFlags: 0
@@ -495,7 +513,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15358
+  m_Name: pb_Mesh14492
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -963,7 +981,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15320
+  m_Name: pb_Mesh14446
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1123,7 +1141,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15390
+  m_Name: pb_Mesh14526
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -1277,170 +1295,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &1093341654
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1093341658}
-  - component: {fileID: 1093341657}
-  - component: {fileID: 1093341656}
-  - component: {fileID: 1093341655}
-  - component: {fileID: 1093341661}
-  - component: {fileID: 1093341662}
-  - component: {fileID: 1093341660}
-  - component: {fileID: 1093341659}
-  m_Layer: 0
-  m_Name: SuckerYou
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!136 &1093341655
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093341654}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1093341656
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093341654}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &1093341657
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093341654}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1093341658
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093341654}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.33903635, y: -0.58, z: -11.959459}
-  m_LocalScale: {x: 0.43866, y: 0.17134231, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1093341659
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093341654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b98a6db0b653f764eac834f85857a9dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _serializedBlackboard: '{"_variables":{}}'
-  _objectReferences: []
---- !u!114 &1093341660
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093341654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[],"connections":[],"localBlackboard":{"_name":"Local
-    Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
-  boundGraphObjectReferences: []
-  enableAction: 0
-  disableAction: 0
-  _graph: {fileID: 1904681972}
-  _blackboard: {fileID: 1093341659}
---- !u!54 &1093341661
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093341654}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &1093341662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1093341654}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 525bb2d5d87e6514686a4b2dab92b7c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  characterName: 
-  debugText: 
-  speedMultiplier: 1
-  decelerationMultiplier: 0.9
-  damageMultiplier: 1
-  _target: {fileID: 0}
-  _targetPosition: {x: 0, y: 0, z: 0}
 --- !u!1 &1133521334
 GameObject:
   m_ObjectHideFlags: 0
@@ -2153,7 +2007,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15300
+  m_Name: pb_Mesh14426
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2399,24 +2253,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1904681972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a686a47eee2fa44cb0a34b5d86e4d5e, type: 3}
-  m_Name: SuckerYou BehaviourTree
-  m_EditorClassIdentifier: 
-  _serializedGraph: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","nodes":[],"connections":[],"localBlackboard":{"_name":"Local
-    Blackboard","_variables":{}},"derivedData":{"repeat":true,"$type":"NodeCanvas.BehaviourTrees.BehaviourTree+DerivedSerializationData"}}'
-  _objectReferences: []
-  _deserializationFailed: 0
-  repeat: 1
-  updateInterval: 0
 --- !u!1 &2004165868
 GameObject:
   m_ObjectHideFlags: 0
@@ -2731,7 +2567,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh15346
+  m_Name: pb_Mesh14480
   serializedVersion: 9
   m_SubMeshes:
   - serializedVersion: 2
@@ -2885,3 +2721,77 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1001 &8048763452725078663
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8048763451670543185, guid: acac528c06f949e4aa24010c368a42d7,
+        type: 3}
+      propertyPath: m_Name
+      value: SuckerYou
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048763451670543197, guid: acac528c06f949e4aa24010c368a42d7,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.33903635
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048763451670543197, guid: acac528c06f949e4aa24010c368a42d7,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048763451670543197, guid: acac528c06f949e4aa24010c368a42d7,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -11.959459
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048763451670543197, guid: acac528c06f949e4aa24010c368a42d7,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048763451670543197, guid: acac528c06f949e4aa24010c368a42d7,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048763451670543197, guid: acac528c06f949e4aa24010c368a42d7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048763451670543197, guid: acac528c06f949e4aa24010c368a42d7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048763451670543197, guid: acac528c06f949e4aa24010c368a42d7,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048763451670543197, guid: acac528c06f949e4aa24010c368a42d7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048763451670543197, guid: acac528c06f949e4aa24010c368a42d7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048763451670543197, guid: acac528c06f949e4aa24010c368a42d7,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8048763451670543195, guid: acac528c06f949e4aa24010c368a42d7,
+        type: 3}
+      propertyPath: _graph
+      value: 
+      objectReference: {fileID: 189651722}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: acac528c06f949e4aa24010c368a42d7, type: 3}
