@@ -16,9 +16,19 @@ namespace Harry
         public float yDist;
         private float yCheckSize;
 
+        private GameObject floor;
+
         public int resolution = 10;
 
         public int[,] map;
+
+        private void Awake()
+        {
+            RaycastHit hit;
+            Physics.Raycast(transform.position, Vector3.down, out hit, 100f);
+            floor = hit.collider.gameObject;
+            
+        }
 
         // Start is called before the first frame update
         void Update()
@@ -29,11 +39,9 @@ namespace Harry
 
         private void FindGrid()
         {
-            RaycastHit hit;
-            Physics.Raycast(transform.position, Vector3.down, out hit, 100f);
 
-            startPoint = hit.collider.bounds.min;
-            endPoint = hit.collider.bounds.max;
+            startPoint = floor.GetComponent<Collider>().bounds.min;
+            endPoint = floor.GetComponent<Collider>().bounds.max;
 
             xDist = Mathf.Abs(endPoint.x - startPoint.x);
             yDist = Mathf.Abs(endPoint.z - startPoint.z);
