@@ -15,24 +15,43 @@ public class starfield : MonoBehaviour
     public int numstars = 1;
 
     public rendertex viewer;
+
+    public PointMesh cube;
     // Start is called before the first frame update
     void Start()
     {
+        /*
         for (int i = 0; i < numstars; i++)
         {
             stars.Enqueue(new Vector3(Random.value,Random.value,Random.Range(1-(1/maxdist),1)));
         }
+        */
+        cube = new PointMesh();
+        cube.makecube();
     }
 
     // Update is called once per frame
     void Update()
     {
         viewer.Setall(0,0,0);
+        cube.rotateobj();
+        List<Vector3> cubepoints = cube.worldpos();
+        //Debug.Log(cube.origin);
+        foreach (Vector3 item in cubepoints)
+        {
+            Debug.Log(item);
+            float temp2 = Mathf.Lerp(255,0,item.z);
+            //viewer.SetBlock((int)Mathf.Clamp(calcposition2(item).x*viewer.sizex,0,viewer.sizex),(int)Mathf.Clamp(calcposition2(item).y*viewer.sizey,0,viewer.sizex),(int)Mathf.Lerp(maxsize,1,item.z),(int)temp2,(int)temp2,(int)temp2);
+            viewer.SetPixel((int)Mathf.Clamp(calcposition2(item).x*viewer.sizex,0,viewer.sizex),(int)Mathf.Clamp(calcposition2(item).y*viewer.sizey,0,viewer.sizex),(int)temp2,(int)temp2,(int)temp2);
+        }
+        /*
         //stars = new Queue<Vector3>(stars.OrderBy(o => 1-o.z));
         for (int i = 0; i < numstars; i++)
         {
             render2();
         }
+        */
+        
 
         /*
         foreach (Vector3 item in stars)
