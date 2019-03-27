@@ -12,6 +12,8 @@ namespace Russell
         public float radius;
         [UnityEngine.Range(0,360)]
         public float viewAngle;
+
+        public float numberOftargets;
     
         public List<Transform> visibleTargets = new List<Transform>();
         
@@ -28,6 +30,7 @@ namespace Russell
         {        
             visibleTargets.Clear();
             Collider[] charactersICanSee = Physics.OverlapSphere(transform.position, radius);
+            
             for (int i = 0; i < charactersICanSee.Length; i++)
             {
                 
@@ -46,6 +49,7 @@ namespace Russell
                             {
                                 visibleTargets.Add(target);
                                 myCB.Target = visibleTargets[0].gameObject;
+                                numberOftargets = visibleTargets.Count;
                             }
                             
                         }

@@ -1,20 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
-using System;
-namespace Russell {
+
+namespace Russell
+{
     public class PatrolState : StateBase
-        
+
     {
-        public event Action OnDoneMoving;
-        public Rigidbody rb;
+        public WhosAround _whosAround;
+
         public GameObject aI;
+
+        //public float minMoveDistance = 10;
+        public float distanceCheck = 10f;
+        public RaycastHit floorHit;
+        public RaycastHit leftHit;
+        public RaycastHit leftSideHit;
         public float moveSpeed = 5f;
 
         public GameObject myTarget;
-        //public float minMoveDistance = 10;
-        public float distanceCheck = 10f;
-        public WhosAround _whosAround;
+        public Rigidbody rb;
+        public RaycastHit rightHit;
+        public RaycastHit rightSideHit;
+        public event Action OnDoneMoving;
 
         private void Awake()
         {
@@ -23,7 +30,7 @@ namespace Russell {
 
         public override void Enter()
         {
-            base.Enter();           
+            base.Enter();
             Invoke("RunEvent", 5f);
             //Debug.Log("Start Moving", gameObject);
         }
@@ -34,115 +41,93 @@ namespace Russell {
             RayCastDistanceCheck();
             rb.velocity = transform.forward * 10;
             //;
-            Ray ray;          
+            Ray ray;
             ray = new Ray(transform.position, transform.forward);
             RaycastHit hit;
-            RaycastHit leftHit;
-            RaycastHit rightHit;
-            RaycastHit leftSideHit;
-            RaycastHit rightSideHit;
-            Vector3 origin = transform.position;
-            if (Physics.Raycast(ray, out hit, 50f))
+
+            var origin = transform.position;
+            if (Physics.Raycast(origin, Quaternion.AngleAxis(20f, transform.right) * transform.forward, out floorHit, 8f))
             {
-                //Will Need to change to add force
-                CharacterBase characterBase = hit.collider.GetComponent<CharacterBase>();
-                if (characterBase != null && characterBase != this)
+                
+                Debug.DrawLine(ray.origin, floorHit.point, Color.red);
+                if (Physics.Raycast(ray, out hit, 50f))
                 {
-                    myTarget = hit.collider.gameObject;
-                    rb.GetComponent<CharacterBase>().Target = myTarget;
-
-                    if (myTarget != null)
+                    //Will Need to change to add force
+                    var characterBase = hit.collider.GetComponent<CharacterBase>();
+                    if (characterBase != null && characterBase != this)
                     {
-                        //rb.velocity += Vector3.MoveTowards(transform.position, myTarget.transform.position, )
-                    }
-                }
-                //HACK TESTING if something gets hit
-                else
-                {
-                    rb.AddForce(0,0,moveSpeed *Time.deltaTime);
-                    //Debug.DrawLine(ray.origin, hit.point, Color.blue);
-                }
-                if (Physics.Raycast(origin, Quaternion.AngleAxis(45f, transform.up) * transform.forward, out rightHit, 10f))
-                {
-                    rb.transform.Rotate(0, -80 * Time.deltaTime, 0); 
-                    //Debug.DrawLine(origin, rightHit.point, Color.yellow);
-                }
-                else if (Physics.Raycast(origin, Quaternion.AngleAxis(-45f, transform.up) * transform.forward, out leftHit, 10f))
-                {
-                    rb.transform.Rotate(0, 80 * Time.deltaTime, 0); 
-                    //Debug.DrawLine(origin, leftHit.point, Color.cyan);
-                }
+                        myTarget = hit.collider.gameObject;
+                        rb.GetComponent<CharacterBase>().Target = myTarget;
 
-                if (Physics.Raycast(origin, Quaternion.AngleAxis(90f, transform.up) * transform.forward, out rightSideHit,
-                    5f))
-                {
-                    rb.transform.Rotate(0, -120 * Time.deltaTime, 0); 
-                    //Debug.DrawLine(origin, rightSideHit.point, Color.yellow);
-                }
-                if (Physics.Raycast(origin, Quaternion.AngleAxis(-90f, transform.up) * transform.forward, out leftSideHit,
-                    5f))
-                {
-                    rb.transform.Rotate(0, 120 * Time.deltaTime, 0); 
-                    //Debug.DrawLine(origin, leftSideHit.point, Color.cyan);
+                        if (myTarget != null)
+                        {
+                            //rb.velocity += Vector3.MoveTowards(transform.position, myTarget.transform.position, )
+                        }
+                    }
+                    //HACK TESTING if something gets hit
+                    else
+                    {
+                        rb.AddForce(0, 0, moveSpeed * Time.deltaTime);
+                        //Debug.DrawLine(ray.origin, hit.point, Color.blue);
+                    }
+
+                    if (Physics.Raycast(origin, Quaternion.AngleAxis(45f, transform.up) * transform.forward,
+                        out rightHit, 10f))
+                        rb.transform.Rotate(0, -80 * Time.deltaTime, 0);
+                    else if (Physics.Raycast(origin, Quaternion.AngleAxis(-45f, transform.up) * transform.forward,
+                        out leftHit, 10f)) rb.transform.Rotate(0, 80 * Time.deltaTime, 0);
+
+                    if (Physics.Raycast(origin, Quaternion.AngleAxis(90f, transform.up) * transform.forward,
+                        out rightSideHit,
+                        5f))
+                        rb.transform.Rotate(0, -120 * Time.deltaTime, 0);
+                    if (Physics.Raycast(origin, Quaternion.AngleAxis(-90f, transform.up) * transform.forward,
+                        out leftSideHit,
+                        5f))
+                        rb.transform.Rotate(0, 120 * Time.deltaTime, 0);
                 }
             }
-
-
-
+            else
+            {
+                rb.AddRelativeTorque(0, -80000, 0);
+            }
         }
 
         public override void Exit()
         {
             base.Exit();
             rb.velocity = transform.forward * 0;
-
         }
 
         private void RunEvent()
         {
             //OnDoneMoving();
         }
-        
+
         public void RayCastDistanceCheck()
         {
-            foreach (CharacterBase aiAround in _whosAround.whosAround)
-            {
+            foreach (var aiAround in _whosAround.whosAround)
                 if (aiAround != null)
                 {
                     float distance;
-                    //Debug.Log(aiAround + "now raycast");
-                    //rayColor = Color.red;
-                
-                    if (Physics.Raycast(transform.position, (transform.position - aiAround.transform.position), _whosAround.radius))
+
+
+                    if (Physics.Raycast(transform.position, transform.position - aiAround.transform.position,
+                        _whosAround.radius))
                     {
-                        //Debug.DrawRay(transform.position, (aiAround.transform.position - transform.position), Color.green);
                         distance = Vector3.Distance(transform.position, aiAround.transform.position);
-                        if(distance <= distanceCheck )
+                        if (distance <= distanceCheck)
                         {
-                            //Debug.Log(aiAround + "is to close");
-                            //Debug.DrawRay(transform.position, (aiAround.transform.position - transform.position), Color.red);
                             myTarget = aiAround.gameObject;
-                            Vector3 localTargetOffset = transform.InverseTransformPoint(myTarget.transform.position);
-                        
-                            //HACKY
+                            var localTargetOffset = transform.InverseTransformPoint(myTarget.transform.position);
+
                             if (localTargetOffset.x < 0)
-                            {
                                 rb.AddRelativeTorque(0, 20000, 0);
-                                //Debug.Log("On the left");
-                            }
-                            else if (localTargetOffset.x > 0)
-                            {
-                                rb.AddRelativeTorque(0, -20000, 0);
-                                //Debug.Log( "on my right");
-                            }
+                            else if (localTargetOffset.x > 0) rb.AddRelativeTorque(0, -20000, 0);
                             //move character away from close object
                         }
                     }
-                    
                 }
-                
-            }
         }
     }
 }
-
