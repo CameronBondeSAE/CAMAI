@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Kail
 {
@@ -17,11 +18,16 @@ namespace Kail
         
         public StateBase idle;
 
+        private Rigidbody rb;
+        public int turningTime;
+        private bool turned;
+
         public override void Enter()
         {
             base.Enter();
-            idle = GetComponent<IdleState>();
+            idle = this;
             moveIdle = GetComponentInParent<SuckerYouMovement>();
+            rb = GetComponentInParent<Rigidbody>();
             
             MoveSet();
         }
@@ -30,15 +36,35 @@ namespace Kail
         {
             base.MoveSet();
             //moves unless it hits something, so time is high
-            time = 10000;
+            time = UnityEngine.Random.Range(300, 1000);
             moveIdle.MoveSet(speed, time, idle);
         }
 
-        public override void MoveStop()
+        public override void MoveEnd()
         {
             //set it up to add relative torque for x about of time in its own update function, then it goes back to moveset
-            base.MoveStop();
+            //base.MoveStop();
+            turned = false;
+            turningTime = UnityEngine.Random.Range(100,200);
             MoveSet();
+            
+            
+
+        }
+
+        private void FixedUpdate()
+        {
+            if (turningTime > 0)
+            {
+                rb.AddRelativeTorque(0, 30*2, 0);
+                turningTime--;
+            }
+
+            if ((turningTime <= 0) && (turned == false))
+            {
+                turningTime = 0;
+                turned = true;
+            }
         }
     }
 }

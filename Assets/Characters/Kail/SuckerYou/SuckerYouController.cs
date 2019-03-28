@@ -16,7 +16,7 @@ namespace Kail
         private StateBase runState;
 
         //used for swapping and recording states
-        private StateBase currentState;
+        public StateBase currentState;
 
         private void Awake()
         {

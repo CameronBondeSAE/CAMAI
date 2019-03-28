@@ -8,30 +8,33 @@ namespace Kail
     {
 
         private Rigidbody rb;
-        private int time;
+        public int time;
         private float speed;
 
         private bool timeEnd;
         
         //private CharacterBase speedBase;
         private StateBase currentState;
+        private SuckerYouController state;
 
         void Awake()
         {
             //collect all the things you always need
             //speedBase = GetComponent<CharacterBase>();
             rb = GetComponent<Rigidbody>();
+            state = GetComponent<SuckerYouController>();
 
         }
 
         public void MoveSet(float theSpeed, int theTime, StateBase theState)
         {
-            //reset timeend
-            timeEnd = false;
             
             //set up information for movement
             speed = theSpeed;
             time = theTime;
+            
+            //reset timeend
+            timeEnd = false;
             
             //remember where we are
             currentState = theState;
