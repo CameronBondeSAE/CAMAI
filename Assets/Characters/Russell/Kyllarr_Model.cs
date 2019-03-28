@@ -47,7 +47,7 @@ public class Kyllarr_Model : CharacterBase
     {
         if (GetComponent<DecoyMovement>() == null)
         {
-            //Killme();
+            Killme();
         }
 
     }

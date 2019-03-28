@@ -23,11 +23,11 @@ namespace Russell
         }
         void DamageAllAround()
         {
-            foreach (CharacterBase characters in cb.whosAround)
-            {
-                targetHealth = characters.GetComponent<Health>();
-                targetHealth.Change(-deathDamage, cb.gameObject);
-            }
+            //foreach (CharacterBase characters in cb.whosAround)
+            //{
+            //    targetHealth = characters.GetComponent<Health>();
+            //    targetHealth.Change(-deathDamage, cb.gameObject);
+            //}
             Destroy(parent);
         }
 
