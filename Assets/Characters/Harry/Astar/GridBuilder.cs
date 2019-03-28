@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using NodeCanvas.Tasks.Conditions;
 using UnityEngine;
+using UnityEngine.Experimental.PlayerLoop;
 
 namespace Harry
 {
 
     public class GridBuilder : MonoBehaviour
-    {
-
+    {       
         public Vector3 startPoint;
         public Vector3 endPoint;
         public float xDist;
@@ -20,26 +21,20 @@ namespace Harry
 
         public int resolution = 10;
 
-        public int[,] map;
-
+        private Node[,] map;
+        
         private void Awake()
-        {
+        {           
             RaycastHit hit;
             Physics.Raycast(transform.position, Vector3.down, out hit, 100f);
             floor = hit.collider.gameObject;
             
-        }
-
-        // Start is called before the first frame update
-        void Update()
-        {
-            map = new int[resolution,resolution];
+            map = new Node[resolution,resolution];
             FindGrid();
         }
 
         private void FindGrid()
         {
-
             startPoint = floor.GetComponent<Collider>().bounds.min;
             endPoint = floor.GetComponent<Collider>().bounds.max;
 
@@ -54,21 +49,25 @@ namespace Harry
                 for (int j = 0; j < resolution; j++)
                 {
                     Vector3 checkPos = new Vector3(startPoint.x + (xCheckSize * j), startPoint.y + 1, startPoint.z + (yCheckSize * i));
+                    map[j, i] = new Node();
+                    map[j, i].position = checkPos - Vector3.up;
+                    
                     if (Physics.CheckBox(checkPos, new Vector3(xCheckSize / 2, 0.5f, yCheckSize / 2), Quaternion.identity))
-                    {
-                        map[j, i] = 1;
-                        Debug.DrawRay(checkPos, Vector3.up, Color.red);
-                    }
+                        map[j, i].occupied = true;
                     else
-                    {
-                        map[j, i] = 0;
-                        Debug.DrawRay(checkPos, Vector3.up, Color.cyan);
-                    }
+                        map[j, i].occupied = false;
                 }
             }
 
         }
 
+        private void Update()
+        {
+            foreach (Node n in map)
+            {
+                Debug.DrawLine(n.position, n.position + (n.occupied ? (Vector3.up * 2f) : (Vector3.up * 0.2f)), n.occupied ? Color.red : Color.cyan);
+            }
+        }
     }
-   
+    
 }
