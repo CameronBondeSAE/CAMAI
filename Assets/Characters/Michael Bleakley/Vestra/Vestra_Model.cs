@@ -28,8 +28,7 @@ namespace Michael
             if (currentState != null) currentState.Execute();
             falling = transform.position.y < -5;
             enemySeen = Target != null;
-            
-           
+
             /* test code
             if (Input.GetKeyDown(KeyCode.A)) ChangeState(fleeState);
             if (Input.GetKeyDown(KeyCode.S)) ChangeState(attackState);
@@ -64,11 +63,7 @@ namespace Michael
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, 2.3f))
             {
-                Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
                 if (rb != null) rb.AddRelativeTorque(0, vary * 2f, 0);
-                
-
-
                 /*
                 if (Random.Range(-1, 1) < 0)
                 {
@@ -83,13 +78,11 @@ namespace Michael
 
             if (Physics.Raycast(transform.position, transform.forward + transform.right, out hit, 2f))
             {
-                Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
                 if (rb != null) rb.AddRelativeTorque(0, -vary * 1.5f, 0);
             }
 
             if (Physics.Raycast(transform.position, transform.forward - transform.right, out hit, 2f))
             {
-                Debug.DrawLine(transform.position, hit.point, Color.red, 2f);
                 if (rb != null) rb.AddRelativeTorque(0, vary * 1.5f, 0);
             }
 
@@ -139,7 +132,6 @@ namespace Michael
              * update current state
              */
             newState.Enter();
-            Debug.Log("Change state here");
             currentState = newState;
         }
 
@@ -155,9 +147,18 @@ namespace Michael
         {
             if (other.transform.gameObject.GetComponent<CharacterBase>())
             {
+                Debug.Log("Testing entry on attack");
                 if (other.transform.gameObject.GetComponent<Vestra_Model>()) return;
                 if (other.transform.gameObject.GetComponent<Darkling_Model>()) return;
                 Target = other.transform.gameObject;
+                SpawnState temp1 = GetComponentInChildren<SpawnState>();
+                foreach (var i in temp1.darklings)
+                {
+                    Debug.Log("attack!666");
+                    Darkling_Model temp2 = i.GetComponent<Darkling_Model>();
+                    temp2.Target = Target;
+                    temp2.OverrideState();
+                }
                 if (!fleeing)OverrideState();
                 /*
                  * surroundingEnemies.Add(other.transform.gameObject);
@@ -171,18 +172,6 @@ namespace Michael
                 OverrideState();
                 */
             }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            if (Target == other.gameObject)
-            {
-                Target = null;
-                if (!fleeing)OverrideState();
-            }
-            
-            //surroundingEnemies.Remove(other.transform.gameObject);
-            // if (Target == other.transform.gameObject) Target = _targeting.CheckDistance(surroundingEnemies);
         }
     }
     

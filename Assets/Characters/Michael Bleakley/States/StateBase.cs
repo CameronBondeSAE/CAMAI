@@ -25,7 +25,6 @@ namespace Michael
 
         public virtual void Exit()
         {
-            Debug.Log("exiting");
             CancelInvoke();
             Self.GetComponentInChildren<BehaviourTreeOwner>().Tick();
         }

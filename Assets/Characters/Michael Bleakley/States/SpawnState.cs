@@ -49,6 +49,7 @@ namespace Michael
             }
             Vector3 temp = new Vector3(Random.Range(-10,10), 2, Random.Range(-10,10));
             GameObject newDarkling = Instantiate(darklingPrefab, temp + Self.transform.position, transform.rotation);
+            newDarkling.GetComponent<Darkling_Model>().vestraLead = Self;
             darklings.Add(newDarkling);
             Self.GetComponent<Energy>().Change(-cost);
         }
