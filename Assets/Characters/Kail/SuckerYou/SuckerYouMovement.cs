@@ -12,7 +12,7 @@ namespace Kail
         private float speed;
 
         private bool timeEnd;
-
+        
         //private CharacterBase speedBase;
         private StateBase currentState;
 
@@ -52,25 +52,6 @@ namespace Kail
             timeEnd = true;
         }
         
-        private void OnTriggerEnter(Collider other)
-        {
-            //what happens if the character almost hits something
-            GameObject obj = other.gameObject;
-            CharacterBase tar = GetComponent<CharacterBase>();
-            
-            if (tar != null)
-            {
-                //then you are close enough to your target to attack
-            }
-            else
-            {
-                MoveOverride();
-                //this doesn't work. Fix it later.
-                this.transform.Rotate(0f,75f,0f);
-                MoveStop();
-            }
-        }
-
         private void FixedUpdate()
         {
             if (time <= 0)  //dont move if time is 0
@@ -84,8 +65,6 @@ namespace Kail
                 transform.position += transform.forward * speed * Time.deltaTime;
                 time -= 1;
             }
-            
-            
         }
     }
 }

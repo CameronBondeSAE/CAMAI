@@ -36,7 +36,7 @@ namespace Kail
 
         public override void MoveStop()
         {
-            //in case time runs out before it hits something, goes back to MoveSet
+            //set it up to add relative torque for x about of time in its own update function, then it goes back to moveset
             base.MoveStop();
             MoveSet();
         }
