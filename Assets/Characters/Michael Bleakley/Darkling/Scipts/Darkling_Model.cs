@@ -11,16 +11,17 @@ namespace Michael
         public float distance;
         private GameObject[] friends;
         [SerializeField] private Rigidbody rb;
-        private List<GameObject> targets;
+        public float time;
 
         [SerializeField] private float turningVariable;
 
         public GameObject vestraLead;
+
+        [SerializeField] private GameObject vestraOrigin;
         // Start is called before the first frame update
 
         public override void Start()
         {
-            targets = new List<GameObject>();
             base.Start();
             GetComponent<Health>().OnHurtEvent += OnHurtEvent;
             GetComponent<Health>().OnDeathEvent += OnDeathEvent;
@@ -59,7 +60,7 @@ namespace Michael
             if (currentState != null) currentState.Execute();
             if (transform.position.y < -5)
             {
-                vestraLead.GetComponentInChildren<SpawnState>().darklings.Remove(gameObject);
+                if (vestraLead != null) vestraLead.GetComponentInChildren<SpawnState>().darklings.Remove(gameObject);
                 Destroy(gameObject);
             }
 
@@ -71,6 +72,15 @@ namespace Michael
             else
             {
                 distance = 0;
+                if (time > 0)
+                {
+                    time -= Time.fixedDeltaTime;
+                }
+                else
+                {
+                    Instantiate(vestraOrigin, this.transform.position, Quaternion.identity);
+                    Destroy(gameObject);
+                }
             }
         }
 
@@ -117,6 +127,7 @@ namespace Michael
                 OverrideState();
             }
         }
+
         /*
          * Abilities:
          *     Magic Missle limited

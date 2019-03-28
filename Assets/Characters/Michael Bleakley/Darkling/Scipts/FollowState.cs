@@ -9,7 +9,14 @@ namespace Michael
         public override void Execute()
         {
             base.Execute();
-            Self.GetComponent<CharacterBase>().Move(Self.GetComponent<Darkling_Model>().vestraLead.transform.position);
+            if (Self.GetComponent<Darkling_Model>().vestraLead)
+            {
+                Self.GetComponent<CharacterBase>().Move(Self.GetComponent<Darkling_Model>().vestraLead.transform.position);
+            }
+            else
+            {
+                Exit();
+            }
         }
     }
 }

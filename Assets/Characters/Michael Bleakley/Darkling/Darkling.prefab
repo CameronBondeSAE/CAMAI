@@ -88,6 +88,7 @@ GameObject:
   - component: {fileID: 2277943422106871082}
   - component: {fileID: 3848462428115751262}
   - component: {fileID: 3193924733090035394}
+  - component: {fileID: 6077832268647329655}
   m_Layer: 0
   m_Name: Darkling
   m_TagString: Untagged
@@ -195,8 +196,11 @@ MonoBehaviour:
   enemySeen: 0
   distance: 0
   rb: {fileID: 4866140840564750447}
+  time: 10
   turningVariable: 20
   vestraLead: {fileID: 0}
+  vestraOrigin: {fileID: 6071121813599348559, guid: 1ded1513d8ca93b4eb561d201299acdb,
+    type: 3}
 --- !u!135 &3193924733090035394
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -208,8 +212,21 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 6
+  m_Radius: 16
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6077832268647329655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1503865443345721763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b65568406bc26214a895a2d9f65f60f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 0.01
 --- !u!1 &3122932988123491394
 GameObject:
   m_ObjectHideFlags: 0

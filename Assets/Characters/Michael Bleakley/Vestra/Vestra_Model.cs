@@ -147,7 +147,7 @@ namespace Michael
         {
             if (other.transform.gameObject.GetComponent<CharacterBase>())
             {
-                Debug.Log("Testing entry on attack");
+//                Debug.Log("Testing entry on attack");
                 if (other.transform.gameObject.GetComponent<Vestra_Model>()) return;
                 if (other.transform.gameObject.GetComponent<Darkling_Model>()) return;
                 Target = other.transform.gameObject;
