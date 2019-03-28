@@ -47,11 +47,12 @@ namespace Michael
             currentState = newState;
         }
 
-        private void OverrideState()
+        public void OverrideState()
         {
             enemySeen = Target != null;
             if (currentState != null) currentState.Exit();
         }
+
         // Update is called once per frame
         private void FixedUpdate()
         {
@@ -61,7 +62,8 @@ namespace Michael
                 vestraLead.GetComponentInChildren<SpawnState>().darklings.Remove(gameObject);
                 Destroy(gameObject);
             }
-            enemySeen = targets.Count >= 1;
+
+            enemySeen = Target != null;
             if (vestraLead != null)
             {
                 distance = Vector3.Distance(transform.position, vestraLead.transform.position);
@@ -81,19 +83,28 @@ namespace Michael
             if (rb != null) rb.AddRelativeTorque(0, turningVariable * 0.5f * temp, 0);
 
             RaycastHit hit;
-            if (Physics.Raycast(transform.position, transform.forward, out hit, 1.3f))
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 2.3f))
             {
-                Debug.DrawLine(transform.position, hit.point, Color.red, 1f);
-                if (rb != null) rb.AddRelativeTorque(0, turningVariable * 2f, 0);
+                if (rb != null) rb.AddRelativeTorque(0, turningVariable * 3f, 0);
             }
 
-            if (Physics.Raycast(transform.position, transform.forward + transform.right, out hit, 1f))
+            if (Physics.Raycast(transform.position, transform.forward + transform.right, out hit, 2f))
+            {
                 if (rb != null)
+                {
                     rb.AddRelativeTorque(0, -turningVariable * 1.5f, 0);
+                }
+            }
 
-            if (Physics.Raycast(transform.position, transform.forward - transform.right, out hit, 1f))
+
+            if (Physics.Raycast(transform.position, transform.forward - transform.right, out hit, 2f))
+            {
                 if (rb != null)
+                {
+                    Debug.DrawLine(transform.position, hit.point, Color.green);
                     rb.AddRelativeTorque(0, turningVariable * 1.5f, 0);
+                }
+            }
         }
 
         private void OnTriggerEnter(Collider other)
@@ -102,14 +113,9 @@ namespace Michael
             {
                 if (other.transform.gameObject.GetComponent<Vestra_Model>()) return;
                 if (other.transform.gameObject.GetComponent<Darkling_Model>()) return;
-                targets.Add(other.transform.gameObject);
+                Target = other.gameObject;
                 OverrideState();
             }
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            targets.Remove(other.gameObject);
         }
         /*
          * Abilities:
