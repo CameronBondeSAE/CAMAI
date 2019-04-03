@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 102556945}
   - component: {fileID: 102556944}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -286,7 +286,7 @@ GameObject:
   - component: {fileID: 410711617}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: floor
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -461,7 +461,7 @@ GameObject:
   - component: {fileID: 1876224262}
   m_Layer: 0
   m_Name: Manager
-  m_TagString: Untagged
+  m_TagString: manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -478,8 +478,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08814adbb33a43d4584633b08ca51c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floor: {fileID: 0}
-  size: 1200
+  size: 55
 --- !u!65 &1876224263
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ namespace Kail
 {
     public class GridManager : MonoBehaviour
     {
-        public GameObject floor;
+        private GameObject floor;
         private Collider map;//the map
         private Vector3 boundsStart; //the starting part of the map
         private Vector3 boundsEnd; //the furthest point on the map
@@ -18,7 +18,7 @@ namespace Kail
 
         public int size = 55; //the size of the map grid, not dependant on the actual size of anything like above
         
-        private Node[,] mapPoints; //the nodes on the map
+        public Node[,] mapPoints; //the nodes on the map
 
         private void Awake()
         {
@@ -61,6 +61,8 @@ namespace Kail
                     //make new mapPoint and set current position
                     mapPoints[j, i] = new Node();
                     mapPoints[j, i].nodePos = nodePosCheck - Vector3.up;
+                    mapPoints[j, i].xPos = j;
+                    mapPoints[j, i].yPos = i;
                     
                     //physics check to see if something is blocking this node
                     if (Physics.CheckBox(nodePosCheck, new Vector3(xSize / 2, 0.5f, ySize / 2), Quaternion.identity))
