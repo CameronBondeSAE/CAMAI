@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO.Compression;
+using UnityEditor;
 using UnityEngine;
 
 namespace Kail
@@ -15,7 +16,7 @@ namespace Kail
         private float xSize; //how big the mapbounds X is
         private float ySize; //how big the mapbounds Y is
 
-        public int size = 120; //the size of the map grid, not dependant on the actual size of anything like above
+        public int size = 55; //the size of the map grid, not dependant on the actual size of anything like above
         
         private Node[,] mapPoints; //the nodes on the map
 
@@ -65,18 +66,25 @@ namespace Kail
                     if (Physics.CheckBox(nodePosCheck, new Vector3(xSize / 2, 0.5f, ySize / 2), Quaternion.identity))
                         mapPoints[j, i].blocked = true;
                     else mapPoints[j, i].blocked = false;
+                    
 
                 }
             }
         }
 
-        private void Update()
+        private void OnDrawGizmos()
         {
-            //draw a line for every node so i know where it is
-            foreach (Node i in mapPoints)
+            for (int i = 0; i < size; i++)
             {
-                Debug.DrawLine(i.nodePos, i.nodePos + (Vector3.up * 2f), (i.blocked ? Color.red : Color.green));
+                for (int j = 0; j < size; j++)
+                {
+                    if (mapPoints[j,i].blocked == true) Gizmos.color = Color.red;
+                    else Gizmos.color = Color.grey;
+                    
+                    Gizmos.DrawCube(new Vector3(mapPoints[j,i].nodePos.x, mapPoints[j,i].nodePos.y + 1f, mapPoints[j,i].nodePos.z), Vector3.one);
+                }
             }
         }
+
     }
 }
