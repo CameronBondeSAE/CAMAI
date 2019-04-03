@@ -109,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171596ec392e4e445aa5241845612e28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: 
+  Name: Soapy
   CalculationDelay: 0.5
   BlackListGoalOnFailure: 0
   CalculateNewGoalOnStart: 1
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc32b2fc66fcd704695388a2be99792b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: GenericGoal
+  Name: Get Happy
   Priority: 1
   ErrorDelay: 0.5
   WarnPossibleGoal: 1
@@ -165,5 +165,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a85c3bede1f6b045948bea0bc014166, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: GoapAction
+  Name: Spin
   Cost: 1
