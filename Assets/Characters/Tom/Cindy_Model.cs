@@ -39,23 +39,17 @@ namespace Tom
 
         private void Update()
         {
-//            if(currentState != null) currentState.Execute();
-//            // TODO HACK REMOVE 
-//            if (Input.GetKeyDown(KeyCode.Q))
-//            {
-//                ChangeState(attackState);
-//            }
-//            
-//            if (Input.GetKeyDown(KeyCode.W))
-//            {
-//                ChangeState(idleState);
-//            }
+            
+        }     
+       
 
-         }
+
+         
         
         private void Cindy_Model_OnDeathEvent()
         {
-                Destroy(gameObject);
+              
+              Destroy(gameObject);
         }
 
         private void Cindy_Model_OnHurtEvent()
