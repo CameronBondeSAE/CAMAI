@@ -15,6 +15,9 @@ namespace Kail
         private StateBase chaseState;
         private StateBase runState;
 
+        public GameObject target;
+        public bool targetFound;
+
         //used for swapping and recording states
         public StateBase currentState;
 

@@ -18,6 +18,7 @@ namespace Kail
         private Rigidbody rb;
         public int torque;
 
+        
 
         private void Awake()
         {
@@ -33,7 +34,10 @@ namespace Kail
             
             if (tar != null)
             {
-                //then this is your target, change to chase mode
+                Debug.Log("got here"); //gets here but doesnt go any further
+                movement.MoveOverride();
+                current.target = radarObj;
+                current.targetFound = true;
             }
         }
 
