@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using ReGoap.Unity;
 using UnityEngine;
+using ReGoap.Unity;
 
 namespace Harry
 {
     
-    public class GoapGoatAgent : ReGoapAgent<string, object>
+    public class BuilderPlanner : ReGoapPlannerManager<string, object>
     {
-        
+   
     }
-
+    
 }
 
