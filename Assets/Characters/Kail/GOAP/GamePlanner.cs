@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using ReGoap.Unity;
 using UnityEngine;
 
-public class GamePlanner : ReGoapPlannerManager<string, object>
+namespace Kail
 {
-    
+    public class GamePlanner : ReGoapPlannerManager<string, object>
+    {
+
+    }
 }

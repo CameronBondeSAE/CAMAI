@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using ReGoap.Unity;
 using UnityEngine;
 
-public class DavidSensor : ReGoapSensor<string, object>
+namespace Kail
 {
-    
-    
+    public class DavidSensor : ReGoapSensor<string, object>
+    {
+
+
+    }
 }

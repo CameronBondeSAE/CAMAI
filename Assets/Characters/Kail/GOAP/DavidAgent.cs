@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using ReGoap.Unity;
 using UnityEngine;
 
-public class DavidAgent : ReGoapAgent<string, object>
+namespace Kail
 {
-    
+
+    public class DavidAgent : ReGoapAgent<string, object>
+    {
+
+    }
 }

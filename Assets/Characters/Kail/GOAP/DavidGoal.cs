@@ -5,14 +5,12 @@ using UnityEngine;
 
 namespace Kail
 {
-    public class DavidMemory : ReGoapMemory<string, object>
+    public class DavidGoal : ReGoapGoal<string, object>
     {
-        public bool isHappy;
-
         protected override void Awake()
         {
             base.Awake();
-            GetWorldState().Set("childHappy", isHappy);
+            goal.Set("childHappy", true);
         }
     }
 }
