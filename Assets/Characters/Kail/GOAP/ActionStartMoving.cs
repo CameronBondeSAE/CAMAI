@@ -1,21 +1,31 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using ReGoap.Core;
 using ReGoap.Unity;
 using ReGoap.Unity.FSMExample.Actions;
+using ReGoap.Unity.FSMExample.FSM;
 using UnityEngine;
 
 namespace Kail
 {
 
-    public class ActionTheFirst : ReGoapAction<string, object>
+    public class ActionStartMoving : ReGoapAction<string, object>
     {
+    
+        public GameObject child;
+    
         protected override void Awake()
         {
             base.Awake();
             preconditions.Set("childHappy", false);
             effects.Set("nearChild", false);
+            effects.Set("Move", true);
+            //effects.Set("childHappy", true);
+            
+            child = GameObject.FindWithTag("child");
+            
         }
 
         public override void Run(IReGoapAction<string, object> previous, IReGoapAction<string, object> next,
@@ -23,7 +33,9 @@ namespace Kail
             Action<IReGoapAction<string, object>> done, Action<IReGoapAction<string, object>> fail)
         {
             base.Run(previous, next, settings, goalState, done, fail);
-            //goto child
+            
+            //look at child
+            transform.LookAt(child.transform);
             
             //success
             doneCallback(this);
@@ -34,7 +46,11 @@ namespace Kail
             base.Exit(next);
 
             var worldState = agent.GetMemory().GetWorldState();
-            worldState.Set("nearChild", true);
+            foreach (var pair in effects.GetValues())
+            {
+                worldState.Set(pair.Key, pair.Value);
+            }
         }
+
     }
 }
