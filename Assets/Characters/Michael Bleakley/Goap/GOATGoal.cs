@@ -10,7 +10,8 @@ namespace Michael
         protected override void Awake()
         {
             base.Awake();
-            goal.Set("hungry", false);
+            goal.Set("walked", true);
+            //goal.Set("hasEnergy", false);
         }
     }
 }
