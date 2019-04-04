@@ -12,6 +12,8 @@ namespace ReGoap.Unity.FSMExample.OtherScripts
         public int AgentsPerSpawn = 100;
         private float spawnCooldown;
 
+        public bool parentToThis = false;
+        
         void Awake()
         {
         }
@@ -24,7 +26,7 @@ namespace ReGoap.Unity.FSMExample.OtherScripts
                 for (int i = 0; i < AgentsPerSpawn && spawnedBuilders < BuildersCount; i++)
                 {
                     var gameObj = Instantiate(BuilderPrefab);
-                    gameObj.transform.SetParent(transform);
+                    if(parentToThis) gameObj.transform.SetParent(transform);
 
                     spawnedBuilders++;
                 }
