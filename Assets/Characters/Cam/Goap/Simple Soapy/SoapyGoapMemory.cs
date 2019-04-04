@@ -6,13 +6,10 @@ using UnityEngine;
 
 public class SoapyGoapMemory : ReGoapMemory<string, object>
 {
-	public bool isHappy = false;
-	public bool hasEnergy = false;
-
 	protected override void Awake()
 	{
 		base.Awake();
-		GetWorldState().Set("isHappy", isHappy); // Normal Unity inspector for initial value
-		GetWorldState().Set("hasEnergy", hasEnergy); // Normal Unity inspector for initial value
+		GetWorldState().Set("isHappy", false); // Note: You could have normal variables from Unity inspector and copy them in too
+		GetWorldState().Set("hasEnergy", false); 
 	}
 }

@@ -37,6 +37,7 @@ public class SpinAction : ReGoapAction<string, object>
 		base.Exit(next);
 
 		var worldState = agent.GetMemory().GetWorldState();
+		// This is for multiple effects. It'll blindly write them all into memory
 		foreach (var pair in effects.GetValues())
 		{
 			worldState.Set(pair.Key, pair.Value);

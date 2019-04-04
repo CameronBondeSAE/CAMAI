@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using ReGoap.Unity;
 using UnityEngine;
 
-public class SoapyGoapSensor : ReGoapSensor<string, object>
+public class TurnInvisibleAction : ReGoapAction<string, object>
 {
-    
 }

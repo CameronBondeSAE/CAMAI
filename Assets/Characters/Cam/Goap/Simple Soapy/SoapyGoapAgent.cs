@@ -11,7 +11,10 @@ public class SoapyGoapAgent : ReGoapAgent<string, object>
 		// TODO: Debug cheat
 		if (Input.GetKeyDown(KeyCode.Space))
 		{
+			// Use convenience functions to set Dictionary variables
 			GetMemory().GetWorldState().Set("hasEnergy", true);
+			
+			// Manually replan
 			CalculateNewGoal(true);
 		}
 	}
