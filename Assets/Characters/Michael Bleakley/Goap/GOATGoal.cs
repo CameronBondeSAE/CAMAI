@@ -5,14 +5,12 @@ using UnityEngine;
 
 namespace Michael
 {
-    public class GOATMemory : ReGoapMemory<string,object>
+    public class GOATGoal : ReGoapGoal<string, object>
     {
-        public bool isHungry;
-
         protected override void Awake()
         {
             base.Awake();
-            GetWorldState().Set("hungry", isHungry);
+            goal.Set("hungry", false);
         }
     }
 }

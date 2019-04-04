@@ -7,5 +7,10 @@ namespace Michael
 {
     public class GOATSensor : ReGoapSensor<string,object>
     {
+        private void FixedUpdate()
+        {
+            //var worldState = memory.GetWorldState();
+            //worldState.Set("goatSensor", myValue);
+        }
     }
 }
