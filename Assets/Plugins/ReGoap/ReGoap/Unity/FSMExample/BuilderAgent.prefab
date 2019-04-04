@@ -9,12 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4193476711173662}
+  - component: {fileID: 114073144445224372}
+  - component: {fileID: 114920905646716482}
   - component: {fileID: 114750216515206370}
   - component: {fileID: 114339810744227078}
   - component: {fileID: 114771661801520948}
   - component: {fileID: 114338603158517310}
   - component: {fileID: 114013797583600590}
-  - component: {fileID: 114920905646716482}
+  - component: {fileID: 114137335938146110}
   - component: {fileID: 114914069985609830}
   - component: {fileID: 114183626876889284}
   - component: {fileID: 114133309643165458}
@@ -23,8 +25,6 @@ GameObject:
   - component: {fileID: 114213676409245320}
   - component: {fileID: 114677860057467728}
   - component: {fileID: 114080850121303144}
-  - component: {fileID: 114073144445224372}
-  - component: {fileID: 114137335938146110}
   m_Layer: 0
   m_Name: BuilderAgent
   m_TagString: Untagged
@@ -47,6 +47,39 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114073144445224372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125005807267310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56c7a4c97e135ba45aad8c8c1c2b7b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: BuilderAgent
+  CalculationDelay: 0.5
+  BlackListGoalOnFailure: 0
+  CalculateNewGoalOnStart: 1
+--- !u!114 &114920905646716482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125005807267310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea519775062c12f4387af1e6b9488507, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: CollectResourceGoal
+  Priority: 1
+  ErrorDelay: 0.5
+  WarnPossibleGoal: 1
+  ResourceName: Axe
 --- !u!114 &114750216515206370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -121,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: AddResourceToBankAction
   Cost: 1
---- !u!114 &114920905646716482
+--- !u!114 &114137335938146110
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,14 +163,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1125005807267310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ea519775062c12f4387af1e6b9488507, type: 3}
+  m_Script: {fileID: 11500000, guid: ac001915cdb1153419827384af30bb85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: CollectResourceGoal
-  Priority: 1
-  ErrorDelay: 0.5
-  WarnPossibleGoal: 1
-  ResourceName: Axe
+  SensorsUpdateDelay: 0.3
 --- !u!114 &114914069985609830
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -235,7 +264,7 @@ MonoBehaviour:
   WorkInFixedUpdate: 1
   UseRigidBody: 0
   UseRigidbodyVelocity: 0
-  Speed: 25
+  Speed: 5
   MinPowDistanceToObjective: 0.5
   CheckForStuck: 0
   StuckCheckDelay: 1
@@ -252,35 +281,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce460444dc7e88643a84db5ef2885f64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114073144445224372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125005807267310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56c7a4c97e135ba45aad8c8c1c2b7b74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: BuilderAgent
-  CalculationDelay: 0.5
-  BlackListGoalOnFailure: 0
-  CalculateNewGoalOnStart: 1
---- !u!114 &114137335938146110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125005807267310}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac001915cdb1153419827384af30bb85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SensorsUpdateDelay: 0.3
 --- !u!1 &1848442404087198
 GameObject:
   m_ObjectHideFlags: 0

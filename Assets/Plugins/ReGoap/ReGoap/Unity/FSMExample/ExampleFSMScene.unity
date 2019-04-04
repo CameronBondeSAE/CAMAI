@@ -9302,11 +9302,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884770e97ce814c43b1f204490bf74c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BuildersCount: 20
+  BuildersCount: 1
   BuilderPrefab: {fileID: 1125005807267310, guid: 3b8d017b7fea5bb45bd85faf2f15bd5a,
     type: 3}
   DelayBetweenSpawns: 0.133
   AgentsPerSpawn: 1
+  parentToThis: 0
 --- !u!1 &1834516875
 GameObject:
   m_ObjectHideFlags: 0
