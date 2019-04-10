@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec6fbfa3881f6b34583de225ebd39788, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  asleep: 1
+  awake: 0
   target: {fileID: 513480806}
   currentstate: 0
 --- !u!114 &1795957929

@@ -22,8 +22,8 @@ public class testaction : joshgoapaction
 
     public override bool ActionMethod(GameObject agent)
     {
-        Debug.Log("run test");
-        agent.GetComponent<joshgoapagent>().asleep = false;
+        Debug.Log("wake");
+        agent.GetComponent<joshgoapagent>().awake = true;
         woken = true;
         return true;
     }

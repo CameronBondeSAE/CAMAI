@@ -8,6 +8,7 @@ public class moveaction : joshgoapaction
     public NavMeshAgent mover;
     moveaction()
     {
+        AddPre("awake", true);
         AddPre("attarget", false);
         AddPost("attarget", true);
     }

@@ -10,7 +10,7 @@ public class joshgoapagent : MonoBehaviour
         runningaction
     }
 
-    public bool asleep = true;
+    public bool awake = true;
     public GameObject target;
 
     public state currentstate = state.idle;
@@ -80,15 +80,16 @@ public class joshgoapagent : MonoBehaviour
     public HashSet<KeyValuePair<string,object>> createGoalState () {
         HashSet<KeyValuePair<string,object>> goal = new HashSet<KeyValuePair<string,object>> ();
 		
+        goal.Add(new KeyValuePair<string, object>("awake", true ));
         goal.Add(new KeyValuePair<string, object>("attarget", true ));
-        //goal.Add(new KeyValuePair<string, object>("awake", true ));
         return goal;
     }
     public HashSet<KeyValuePair<string,object>> getWorldState () {
         HashSet<KeyValuePair<string,object>> worldData = new HashSet<KeyValuePair<string,object>> ();
 
         worldData.Add(new KeyValuePair<string, object>("attarget", Vector3.Distance(target.transform.position, gameObject.transform.position) < 0.5f ));
-        //worldData.Add(new KeyValuePair<string, object>("attarget", !asleep));
+        worldData.Add(new KeyValuePair<string, object>("awake", awake));
+        //Debug.Log("state "+awake+" "+(Vector3.Distance(target.transform.position, gameObject.transform.position) < 0.5f));
 
         return worldData;
     }
