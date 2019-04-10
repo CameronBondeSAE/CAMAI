@@ -20,7 +20,7 @@ namespace Kail
         public int next;
 
         public Health healthBase;
-        public float health;
+        //public float health;
         
         public void Awake()
         {
@@ -33,6 +33,8 @@ namespace Kail
             healthBase = GetComponent<Health>();
 
             //health = healthBase.Amount;
+
+            healthBase.maxAmount = 100;
             
             
 

@@ -20,6 +20,9 @@ namespace Kail
 
         //used for swapping and recording states
         public StateBase currentState;
+        
+        //for setting the health
+        public Health healthBase;
 
         private void Awake()
         {
@@ -28,9 +31,12 @@ namespace Kail
             attackState = GetComponentInChildren<SY_AttackState>();
             chaseState = GetComponentInChildren<SY_ChaseState>();
             runState = GetComponentInChildren<SY_RunState>();
+            healthBase = GetComponent<Health>();
 
             //put them into the syStates array
             syStates = new StateBase[4] {idleState, attackState, chaseState, runState};
+            //set health
+            healthBase.maxAmount = 100;
             
             currentState = idleState;
             currentState.Enter();
