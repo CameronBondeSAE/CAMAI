@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class joshgoapagent : MonoBehaviour,joshgoapworld
+public class joshgoapagent : MonoBehaviour
 {
     public enum state
     {
@@ -10,10 +10,15 @@ public class joshgoapagent : MonoBehaviour,joshgoapworld
         runningaction
     }
 
+    public bool asleep = true;
+    public GameObject target;
+
     public state currentstate = state.idle;
     public HashSet<joshgoapaction> Avaliableactions = new HashSet<joshgoapaction>();
 
     public Queue<joshgoapaction> Currentactions = new Queue<joshgoapaction>();
+    
+    public HashSet<KeyValuePair<string,object>> goalstate = new HashSet<KeyValuePair<string, object>>();
 
     public joshgoapplanner thunker;
     // Start is called before the first frame update
@@ -21,29 +26,46 @@ public class joshgoapagent : MonoBehaviour,joshgoapworld
     {
         Loadactions();
         thunker = new joshgoapplanner();
-        //Queue<joshgoapaction> temp = thunker.MakePlan(Avaliableactions,)
+        Currentactions = thunker.MakePlan(Avaliableactions, createGoalState(),getWorldState());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Currentactions.Count != 0)
+        if (Currentactions != null)
         {
-            if (!Currentactions.Peek().Actiondone())
+            if (Currentactions.Count != 0)
             {
-                if (Currentactions.Peek().CheckPreconditions())
+                if (!Currentactions.Peek().Actiondone())
                 {
-                    Currentactions.Peek().ActionMethod();
+                    if (Currentactions.Peek().CheckPreconditions())
+                    {
+                        Currentactions.Peek().ActionMethod(gameObject);
+                    }
+                    else
+                    {
+                        // make new plan
+                        Debug.Log("thinking plan");
+                        Currentactions = thunker.MakePlan(Avaliableactions, createGoalState(),getWorldState());
+                    }
                 }
                 else
                 {
-                    // make new plan
+                    Currentactions.Dequeue();
                 }
             }
             else
             {
-                Currentactions.Dequeue();
+                // make new plan
+                Debug.Log("thinking plan");
+                Currentactions = thunker.MakePlan(Avaliableactions, createGoalState(),getWorldState());
             }
+        }
+        else
+        {
+            // make new plan
+            Debug.Log("thinking plan");
+            Currentactions = thunker.MakePlan(Avaliableactions, createGoalState(),getWorldState());
         }
     }
 
@@ -54,39 +76,20 @@ public class joshgoapagent : MonoBehaviour,joshgoapworld
             Avaliableactions.Add(item);
         }
     }
-
-    public HashSet<KeyValuePair<string, object>> getCurrentState()
-    {
-        throw new System.NotImplementedException();
+    
+    public HashSet<KeyValuePair<string,object>> createGoalState () {
+        HashSet<KeyValuePair<string,object>> goal = new HashSet<KeyValuePair<string,object>> ();
+		
+        goal.Add(new KeyValuePair<string, object>("attarget", true ));
+        //goal.Add(new KeyValuePair<string, object>("awake", true ));
+        return goal;
     }
+    public HashSet<KeyValuePair<string,object>> getWorldState () {
+        HashSet<KeyValuePair<string,object>> worldData = new HashSet<KeyValuePair<string,object>> ();
 
-    public HashSet<KeyValuePair<string, object>> createGoalState()
-    {
-        throw new System.NotImplementedException();
-    }
+        worldData.Add(new KeyValuePair<string, object>("attarget", Vector3.Distance(target.transform.position, gameObject.transform.position) < 0.5f ));
+        //worldData.Add(new KeyValuePair<string, object>("attarget", !asleep));
 
-    public void planFailed(HashSet<KeyValuePair<string, object>> failedGoal)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void planFound(HashSet<KeyValuePair<string, object>> goal, Queue<joshgoapaction> actions)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void actionsFinished()
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public void planAborted(joshgoapaction aborter)
-    {
-        throw new System.NotImplementedException();
-    }
-
-    public bool moveAgent(joshgoapaction nextAction)
-    {
-        throw new System.NotImplementedException();
+        return worldData;
     }
 }
