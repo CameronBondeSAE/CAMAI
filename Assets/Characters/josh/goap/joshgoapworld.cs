@@ -4,12 +4,13 @@ using UnityEngine;
 
 public interface joshgoapworld
 {
+ 
    
     /**
      * The starting state of the Agent and the world.
      * Supply what states are needed for actions to run.
      */
-    HashSet<KeyValuePair<string,object>> getWorldState ();
+    HashSet<KeyValuePair<string,object>> getCurrentState ();
 
     /**
      * Give the planner a new goal so it can figure out 
