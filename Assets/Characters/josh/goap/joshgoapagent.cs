@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class joshgoapagent : MonoBehaviour
+public class joshgoapagent : MonoBehaviour,joshgoapworld
 {
     public enum state
     {
@@ -35,6 +35,10 @@ public class joshgoapagent : MonoBehaviour
                 {
                     Currentactions.Peek().ActionMethod();
                 }
+                else
+                {
+                    // make new plan
+                }
             }
             else
             {
@@ -49,5 +53,40 @@ public class joshgoapagent : MonoBehaviour
         {
             Avaliableactions.Add(item);
         }
+    }
+
+    public HashSet<KeyValuePair<string, object>> getCurrentState()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public HashSet<KeyValuePair<string, object>> createGoalState()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void planFailed(HashSet<KeyValuePair<string, object>> failedGoal)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void planFound(HashSet<KeyValuePair<string, object>> goal, Queue<joshgoapaction> actions)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void actionsFinished()
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public void planAborted(joshgoapaction aborter)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    public bool moveAgent(joshgoapaction nextAction)
+    {
+        throw new System.NotImplementedException();
     }
 }
