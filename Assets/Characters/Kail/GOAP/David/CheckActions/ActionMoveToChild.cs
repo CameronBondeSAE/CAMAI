@@ -13,7 +13,7 @@ namespace Kail
 {
     
 
-    public class ActionMove : ReGoapAction<string, object>
+    public class ActionMoveToChild : ReGoapAction<string, object>
     {
         public GameObject child;
         public UnityEngine.Vector3 offset;
@@ -23,7 +23,8 @@ namespace Kail
         protected override void Awake()
         {
             base.Awake();
-            preconditions.Set("childHappy", false);
+            Name = "actionMoveToChild";
+            preconditions.Set("checkChild", false);
             preconditions.Set("nearChild", false);
             preconditions.Set("Move", true);
             effects.Set("nearChild", true);
@@ -57,7 +58,7 @@ namespace Kail
                 {
                     //movement
                     float step = speed * Time.deltaTime;
-                    transform.position = Vector3.MoveTowards(this.transform.position, child.transform.position, step);
+                    transform.parent.position = Vector3.MoveTowards(transform.parent.position, child.transform.position, step);
                 }
             }
         }

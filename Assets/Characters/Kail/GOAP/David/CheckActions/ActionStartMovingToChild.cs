@@ -11,7 +11,7 @@ using UnityEngine;
 namespace Kail
 {
 
-    public class ActionStartMoving : ReGoapAction<string, object>
+    public class ActionStartMovingToChild : ReGoapAction<string, object>
     {
     
         public GameObject child;
@@ -19,10 +19,10 @@ namespace Kail
         protected override void Awake()
         {
             base.Awake();
-            preconditions.Set("childHappy", false);
+            Name = "actionStartMovingToChild";
+            preconditions.Set("checkChild", false);
             effects.Set("nearChild", false);
             effects.Set("Move", true);
-            //effects.Set("childHappy", true);
             
             child = GameObject.FindWithTag("child");
             
