@@ -23,7 +23,7 @@ namespace Harry
             // do your own game logic 
             if (GetComponent<BuilderMemory>().remainingWood <= 0)
             {
-                effects.Set("TreeAvailable", false);
+                agent.GetMemory().GetWorldState().Set("TreeAvailable", false);
                 failCallback(this);
             }
             else
