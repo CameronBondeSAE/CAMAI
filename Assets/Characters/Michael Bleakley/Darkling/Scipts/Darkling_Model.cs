@@ -86,23 +86,31 @@ namespace Michael
 
         public override void Move(Vector3 speedDirection)
         {
-            if (rb != null) rb.AddRelativeForce(Vector3.forward * SpeedMultiplier, ForceMode.Force);
-
+            
             var targetPosition = transform.InverseTransformPoint(speedDirection);
             var temp = targetPosition.x / targetPosition.magnitude;
-            if (rb != null) rb.AddRelativeTorque(0, turningVariable * 0.5f * temp, 0);
+            if (rb != null) rb.AddRelativeTorque(0, turningVariable * 0.5f * temp * distance, 0);
 
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, 2.3f))
             {
-                if (rb != null) rb.AddRelativeTorque(0, turningVariable * 3f, 0);
+                if (rb != null)
+                {
+                    rb.AddRelativeTorque(0, turningVariable * 3f  * distance, 0);
+                    rb.AddRelativeForce(-Vector3.forward * (SpeedMultiplier * 0.5f), ForceMode.Force);
+                }
+            }
+            else
+            {
+                if (rb != null) rb.AddRelativeForce(Vector3.forward * SpeedMultiplier, ForceMode.Force);
             }
 
             if (Physics.Raycast(transform.position, transform.forward + transform.right, out hit, 2f))
             {
                 if (rb != null)
                 {
-                    rb.AddRelativeTorque(0, -turningVariable * 1.5f, 0);
+                    rb.AddRelativeTorque(0, -turningVariable * 1.5f  * distance, 0);
+                    rb.AddRelativeForce(-Vector3.forward * (SpeedMultiplier * 0.5f), ForceMode.Force);
                 }
             }
 
@@ -111,8 +119,8 @@ namespace Michael
             {
                 if (rb != null)
                 {
-                    Debug.DrawLine(transform.position, hit.point, Color.green);
-                    rb.AddRelativeTorque(0, turningVariable * 1.5f, 0);
+                    rb.AddRelativeTorque(0, turningVariable * 1.5f  * distance, 0);
+                    rb.AddRelativeForce(-Vector3.forward * (SpeedMultiplier * 0.5f), ForceMode.Force);
                 }
             }
         }
@@ -131,7 +139,8 @@ namespace Michael
         /*
          * Abilities:
          *     Magic Missle limited
-         *     Channel Devistation : a concentrated "beam" at the target
+         *     Changed: Channel Devistation : a concentrated "beam" at the target
+         *              Constant Area of effect damage
          *     Reformation : when a great number of of darklings are in proximity they join to make a vestra.
          *
          * Movement:

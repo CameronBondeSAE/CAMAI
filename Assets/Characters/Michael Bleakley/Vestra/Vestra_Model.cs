@@ -54,7 +54,7 @@ namespace Michael
             * add turning to direction wanted
             * detect collision on sides with ray cast and front to determine turning to avoid obsticles and slowing down speed
             */
-            if (rb != null) rb.AddRelativeForce(Vector3.forward * SpeedMultiplier, ForceMode.Force);
+            
 
             var targetPosition = transform.InverseTransformPoint(speedDirection);
             var temp = targetPosition.x / targetPosition.magnitude;
@@ -64,6 +64,7 @@ namespace Michael
             if (Physics.Raycast(transform.position, transform.forward, out hit, 2.3f))
             {
                 if (rb != null) rb.AddRelativeTorque(0, vary * 2f, 0);
+                rb.AddRelativeForce(-Vector3.forward * (SpeedMultiplier * 0.5f), ForceMode.Force);
                 /*
                 if (Random.Range(-1, 1) < 0)
                 {
@@ -75,15 +76,21 @@ namespace Michael
                 }
                 */
             }
+            else
+            {
+                if (rb != null) rb.AddRelativeForce(Vector3.forward * SpeedMultiplier, ForceMode.Force);
+            }
 
             if (Physics.Raycast(transform.position, transform.forward + transform.right, out hit, 2f))
             {
                 if (rb != null) rb.AddRelativeTorque(0, -vary * 1.5f, 0);
+                rb.AddRelativeForce(-Vector3.forward * (SpeedMultiplier * 0.5f), ForceMode.Force);
             }
 
             if (Physics.Raycast(transform.position, transform.forward - transform.right, out hit, 2f))
             {
                 if (rb != null) rb.AddRelativeTorque(0, vary * 1.5f, 0);
+                rb.AddRelativeForce(-Vector3.forward * (SpeedMultiplier * 0.5f), ForceMode.Force);
             }
 
             /*
