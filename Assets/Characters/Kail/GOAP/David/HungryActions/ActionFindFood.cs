@@ -13,7 +13,7 @@ using Vector3 = UnityEngine.Vector3;
 
 namespace Kail
 {
-    public class FindFood : ReGoapAction<string, object>
+    public class ActionFindFood : ReGoapAction<string, object>
     {
         public GameObject foundObj; //the object found
         public GameObject pickedFood; //the food you pick 
@@ -39,6 +39,7 @@ namespace Kail
             preconditions.Set("childHungry", true);
             preconditions.Set("foundFood", false);
             effects.Set("foundFood", true);
+            //effects.Set("pickedFood", pickedFood);
 
             //find needed components
             rb = GetComponentInParent<Rigidbody>();
@@ -132,25 +133,65 @@ namespace Kail
 
         public void PickFood()
         {
+            //placeholders while i'm messing with things
+            GameObject pickThis = new GameObject();
+            
             //go through the lists and pick the most fitting food
             if (foodWanted.Count == 1)
             {
                 pickedFood = foodWanted[0].gameObject;
+                doneCallback(this);
             }
 
             if (foodWanted.Count > 1)
             {
-                //pick the one with the highest health
+                //pick the food with the highest health
+                foreach (var i in foodWanted)
+                {
+                    if (pickThis == null) pickThis = i.gameObject;
+                    if (i.health > pickThis.GetComponent<DetsFood>().health)
+                    {
+                        pickThis = i.gameObject;
+                    }
+                }
+                //set the item
+                pickedFood = pickThis;
+                //end
+                doneCallback(this);
             }
 
             if ((foodWanted.Count == 0) && (foodBelow.Count >= 1))
             {
                 //pick the highest food below
+                foreach (var i in foodBelow)
+                {
+                    if (pickThis == null) pickThis = i.gameObject;
+                    if (i.hunger > pickThis.GetComponent<DetsFood>().hunger)
+                    {
+                        pickThis = i.gameObject;
+                    }
+                }
+                //set the item
+                pickedFood = pickThis;
+                //end
+                doneCallback(this);
             }
 
             if ((foodWanted.Count == 0) && (foodBelow.Count == 0) && (foodAbove.Count >= 1))
             {
                 //pick the lowest foodAbove
+                foreach (var i in foodAbove)
+                {
+                    if (pickThis == null) pickThis = i.gameObject;
+                    if (i.hunger < pickThis.GetComponent<DetsFood>().hunger)
+                    {
+                        pickThis = i.gameObject;
+                    }
+                }
+                //set the item
+                pickedFood = pickThis;
+                //end
+                doneCallback(this);
             }
 
             else
@@ -158,7 +199,6 @@ namespace Kail
                 failCallback(this);
             }
             
-            //doneCallback(this);
         }
 
         public override void Exit(IReGoapAction<string, object> next)
