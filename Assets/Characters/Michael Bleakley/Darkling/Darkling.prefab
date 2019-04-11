@@ -197,7 +197,7 @@ MonoBehaviour:
   distance: 0
   rb: {fileID: 4866140840564750447}
   time: 10
-  turningVariable: 20
+  turningVariable: 40
   vestraLead: {fileID: 0}
   vestraOrigin: {fileID: 6071121813599348559, guid: 1ded1513d8ca93b4eb561d201299acdb,
     type: 3}

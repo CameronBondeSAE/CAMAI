@@ -24,7 +24,7 @@ namespace Harry
 
             if (GetComponent<BuilderMemory>().remainingBlocks <= 0)
             {
-                effects.Set("BlockAvailable", false);
+                agent.GetMemory().GetWorldState().Set("BlockAvailable", false);
                 failCallback(this);
             }
             else
