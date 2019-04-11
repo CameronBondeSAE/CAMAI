@@ -34,8 +34,8 @@ namespace Kail
             child = GameObject.FindWithTag("child");
             childDets = child.GetComponent<ChildScript>();
             //find goals
-            hungry = GetComponentInParent<HungryGoal>();
-            happy = GetComponentInParent<HappyGoal>();
+            hungry = GetComponent<HungryGoal>();
+            happy = GetComponent<HappyGoal>();
 
             
 

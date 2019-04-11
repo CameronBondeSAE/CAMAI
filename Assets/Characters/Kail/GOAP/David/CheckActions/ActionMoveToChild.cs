@@ -58,7 +58,7 @@ namespace Kail
                 {
                     //movement
                     float step = speed * Time.deltaTime;
-                    transform.parent.position = Vector3.MoveTowards(transform.parent.position, child.transform.position, step);
+                    transform.position = Vector3.MoveTowards(transform.position, child.transform.position, step);
                 }
             }
         }
