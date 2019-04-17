@@ -1,6 +1,5 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Xml;
 using UnityEngine;
 
 namespace Harry
@@ -8,61 +7,207 @@ namespace Harry
     
     public class AstarManager : MonoBehaviour
     {
-        public Node startNode;
-        public Node targetNode;
+        private Node _startNode;
+        private Node _targetNode;
+        private Node _nextNode;
+        private List<Node> _finalPath = new List<Node>();
+
+        public bool delay = false;
+        private bool done = false;
 
         // continue = break except it only does it for one instance of a loop
         public List<Node> openNodes = new List<Node>();
         public List<Node> closedNodes = new List<Node>();
 
-        public GridBuilder builder;
+        public float evaluationDelay = 0.3f;
+        
+        private GridBuilder _builder;
+
+        private void Awake()
+        {
+            _builder = GetComponent<GridBuilder>();
+        }
 
         private void Start()
         {
-            FindPossiblePath();
-            
+            StartCoroutine(FindPath());
+
         }
 
-        public void FindPossiblePath()
+        
+        [ContextMenu("New Path")]
+        public void NewPath()
+        {
+            openNodes.Clear();
+            closedNodes.Clear();
+            _finalPath.Clear();
+            done = false;
+            
+            StartCoroutine(FindPath());
+        }
+        
+        
+        private IEnumerator FindPath()
+        {
+            yield return new WaitForSeconds(1);
+            
+            FindPossiblePath();
+
+            while (_nextNode != _targetNode)
+            {
+                EvaluateNeighbours(_nextNode);
+                if (delay) yield return new WaitForSeconds(evaluationDelay);
+            }
+            
+            Debug.Log("Done?");
+            
+            _finalPath = new List<Node>();
+
+            Node current = _targetNode;
+            
+            while (current.parentNode != null)
+            {
+                _finalPath.Add(current);
+                current = current.parentNode;
+            }
+            
+            _finalPath.Reverse();
+
+            done = true;
+        }
+
+        private void FindPossiblePath()
         { 
-            Node testStart = GetNode(Random.Range(0, builder.resolution), Random.Range(0, builder.resolution));
+            Node testStart = GetNode(Random.Range(0, _builder.resolution), Random.Range(0, _builder.resolution));
 
             while (testStart.occupied)
             {
-                testStart = GetNode(Random.Range(0, builder.resolution), Random.Range(0, builder.resolution));
+                testStart = GetNode(Random.Range(0, _builder.resolution), Random.Range(0, _builder.resolution));
             }
 
-            startNode = testStart;
+            _startNode = testStart;
+            openNodes.Add(_startNode);
+            Debug.Log("Found Start");
 
-            Node testEnd = GetNode(Random.Range(0, builder.resolution), Random.Range(0, builder.resolution));
+            Node testEnd = GetNode(Random.Range(0, _builder.resolution), Random.Range(0, _builder.resolution));
 
             while (testEnd.occupied)
             {
-                testEnd = GetNode(Random.Range(0, builder.resolution), Random.Range(0, builder.resolution));
+                testEnd = GetNode(Random.Range(0, _builder.resolution), Random.Range(0, _builder.resolution));
             }
 
-            targetNode = testEnd;
+            _targetNode = testEnd;
+            Debug.Log("Found End");
 
+            _nextNode = _startNode;
         }
 
-        public Node GetNode(int x, int y)
+        private Node GetNode(int x, int y)
         {
-            return builder.map[x, y];
+            return _builder.map[x, y];
         }
 
-        public void FindNeighbours(int x, int y)
+        private void EvaluateNeighbours(Node n)
         { 
-            for (int i = -1; i < 2; i++)
+            Debug.Log("Checking Neighbours");
+            if (openNodes.Contains(n))
+                openNodes.Remove(n);
+            
+            for (int y = -1; y < 2; y++)
             {
-                for (int j = -1; j < 2; j++)
+                for (int x = -1; x < 2; x++)
                 {
+                    // Checks to not go outside of array    
+                    if (n.gridPosition.x + x < 0 || n.gridPosition.x + x > _builder.resolution - 1) continue;
+                    if (n.gridPosition.y + y < 0 || n.gridPosition.y + y > _builder.resolution - 1) continue;
+                    
+                    // current node we're checking
+                    Node temp = _builder.map[n.gridPosition.x + x, n.gridPosition.y + y];
+                    
+                    if (temp == n) continue;
+                    
+                    // if its on a wall ignore it
+                    if (temp.occupied) continue;
+                    // If its closed we'll ignore it
+                    if (closedNodes.Contains(temp)) continue;
 
+                    // set parent node
+                    temp.parentNode = n;
+
+                    // calculate path value depending on diagonal positioning
+                    
+                    // (Mathf.Abs(i) + Mathf.Abs(j)) > 1f ? 1.4f : 1f
+                    float pCost = ((Mathf.Abs(y) + Mathf.Abs(x)) > 1f ? 1.4f : 1f) + n.pathCost;
+                    float dCost = Vector3.Distance(temp.worldPosition, _targetNode.worldPosition);
+                    float tCost = dCost + pCost;
+                    
+                    if (temp.totalCost < tCost) continue; 
+                    
+                    // setting costs 
+                    temp.pathCost = pCost;
+                    temp.distCost = dCost;
+                    temp.totalCost = tCost;
+
+                    // add to open node list
+                    if (!openNodes.Contains(temp))
+                        openNodes.Add(temp);
+                    
+                }
+            }
+            
+            if (!closedNodes.Contains(n))
+                closedNodes.Add(n);
+            
+            FindNextNode();
+        }
+        
+
+        private void FindNextNode()
+        {
+            Debug.Log("Finding Next Node");
+            Node lowestCost = new Node();
+            lowestCost.totalCost = float.MaxValue;
+            
+            foreach (Node n in openNodes)
+            {
+                if (lowestCost.totalCost > n.totalCost)
+                {
+                    lowestCost = n;
                 }
             }
 
-
+            _nextNode = lowestCost;
         }
 
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.blue;
+            if (_nextNode != null)
+                Gizmos.DrawCube(_nextNode.worldPosition, Vector3.one);
+            
+            Gizmos.color = Color.red;
+            if (closedNodes != null)
+                foreach (Node n in closedNodes)
+                {
+                    Gizmos.DrawCube(n.worldPosition, new Vector3(1 * _builder.xCheckSize / 2, 2, 1 * _builder.yCheckSize / 2));
+                }
+            
+            Gizmos.color = Color.green;
+            
+            if (_startNode != null && _targetNode != null)
+            {
+                Gizmos.DrawCube(_startNode.worldPosition, Vector3.one);
+                Gizmos.DrawCube(_targetNode.worldPosition, Vector3.one);
+            }
+
+            if (!done) return;
+            
+            foreach (Node n in _finalPath)
+            {
+                Gizmos.DrawCube(n.worldPosition, new Vector3(1 * _builder.xCheckSize / 2, 2, 1 * _builder.yCheckSize / 2));
+            }
+            
+        }
     }
     
 }

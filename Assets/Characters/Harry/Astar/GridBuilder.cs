@@ -13,9 +13,9 @@ namespace Harry
         public Vector3 startPoint;
         public Vector3 endPoint;
         public float xDist;
-        private float xCheckSize;
+        [HideInInspector] public float xCheckSize;
         public float yDist;
-        private float yCheckSize;
+        [HideInInspector] public float yCheckSize;
 
         private GameObject floor;
 
@@ -50,7 +50,8 @@ namespace Harry
                 {
                     Vector3 checkPos = new Vector3(startPoint.x + (xCheckSize * j), startPoint.y + 1, startPoint.z + (yCheckSize * i));
                     map[j, i] = new Node();
-                    map[j, i].position = checkPos - Vector3.up;
+                    map[j, i].worldPosition = checkPos - Vector3.up;
+                    map[j, i].gridPosition = new Vector2Int(j,i);
                     
                     if (Physics.CheckBox(checkPos, new Vector3(xCheckSize / 2, 0.5f, yCheckSize / 2), Quaternion.identity))
                         map[j, i].occupied = true;
@@ -65,7 +66,7 @@ namespace Harry
         {
             foreach (Node n in map)
             {
-                Debug.DrawLine(n.position, n.position + (n.occupied ? (Vector3.up * 2f) : (Vector3.up * 0.2f)), n.occupied ? Color.red : Color.cyan);
+                Debug.DrawLine(n.worldPosition, n.worldPosition + (n.occupied ? (Vector3.up * 2f) : (Vector3.up * 0.2f)), n.occupied ? Color.red : Color.cyan);
             }
         }
     }
