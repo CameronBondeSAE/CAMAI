@@ -6,12 +6,13 @@ namespace Russell
 {
     public class Node
     {
-        public int gCost;
-        public int hCost;
-        public int fCost;
+        public float gCost;
+        public float hCost;
+        public float fCost;
         public bool isBlocked;
         public Node parentNode;
         public Vector3 position;
+        
 
     }
 }
