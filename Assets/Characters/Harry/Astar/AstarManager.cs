@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Harry
 {
@@ -74,6 +75,9 @@ namespace Harry
             _finalPath.Reverse();
 
             done = true;
+            
+            yield return new WaitForSeconds(2);
+            SceneManager.LoadScene(0);
         }
 
         private void FindPossiblePath()
