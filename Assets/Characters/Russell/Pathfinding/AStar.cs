@@ -33,18 +33,21 @@ namespace Russell
         public void LowestFCost()
         {
             Node checkNode = new Node();
-            
+            checkNode.fCost = float.MaxValue;
 
             foreach (Node node in openNodes)
             {
-                
+                if (checkNode.fCost > node.fCost)
+                {
+                    checkNode = node;
+                }
             }
+
+            currentPos = checkNode;
         }
 
-        // Update is called once per frame
-        void Update()
+        public void FindPath()
         {
-
             for (int x = -1; x < 2; x++)
             {
                 for (int y = -1; y < 2; y++)
@@ -68,7 +71,9 @@ namespace Russell
                             newFCost = nb.hCost + nb.gCost;
                             if (nb.fCost < newFCost) continue;
                             nb.fCost = newFCost;
+                            if(!openNodes.Contains(nb))
                             openNodes.Add(nb);
+                            if(!closedNodes.Contains(currentPos))
                             closedNodes.Add(currentPos);
 
                         }
@@ -76,6 +81,24 @@ namespace Russell
 
                 }
             }
+            LowestFCost();
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+            while (currentPos != target)
+            {
+                //FindPath();
+            }
+
+           
+        }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.blue;
+            Gizmos.DrawCube(new Vector3(gridManager.grid[(int)currentPos.position.x,(int)currentPos.position.y].position.x, gridManager.grid[(int)currentPos.position.x,(int)currentPos.position.y].position.y,gridManager.grid[(int)currentPos.position.x,(int)currentPos.position.y].position.z), Vector3.one);
         }
     }
 }
