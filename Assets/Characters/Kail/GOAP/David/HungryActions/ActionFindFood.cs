@@ -38,8 +38,10 @@ namespace Kail
 
             preconditions.Set("childHungry", true);
             preconditions.Set("foundFood", false);
+            preconditions.Set("hasFood", false);
+            
             effects.Set("foundFood", true);
-            //effects.Set("pickedFood", pickedFood);
+            effects.Set("move", true);
 
             //find needed components
             rb = GetComponentInParent<Rigidbody>();

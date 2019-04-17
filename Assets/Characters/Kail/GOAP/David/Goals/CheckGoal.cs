@@ -12,6 +12,7 @@ namespace Kail
             base.Awake();
             Name = "CheckGoal";
             goal.Set("checkChild", true);
+            Priority = 1;
         }
     }
 }

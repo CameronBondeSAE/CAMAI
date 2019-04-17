@@ -124,15 +124,21 @@ GameObject:
   - component: {fileID: 392578055}
   - component: {fileID: 392578054}
   - component: {fileID: 392578053}
-  - component: {fileID: 392578057}
+  - component: {fileID: 392578058}
   - component: {fileID: 392578052}
-  - component: {fileID: 392578051}
-  - component: {fileID: 392578050}
   - component: {fileID: 392578049}
+  - component: {fileID: 392578050}
+  - component: {fileID: 392578057}
+  - component: {fileID: 392578051}
   - component: {fileID: 392578060}
   - component: {fileID: 392578059}
   - component: {fileID: 392578061}
-  - component: {fileID: 392578058}
+  - component: {fileID: 392578062}
+  - component: {fileID: 392578064}
+  - component: {fileID: 392578063}
+  - component: {fileID: 392578067}
+  - component: {fileID: 392578066}
+  - component: {fileID: 392578065}
   m_Layer: 0
   m_Name: David
   m_TagString: Untagged
@@ -164,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 53cd3f9925230244b81a479a906a16e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isHappy: 0
+  checkChild: 0
 --- !u!114 &392578051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -174,12 +180,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 392578048}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fbae873d644d7c4b86e29799fd7d3d6, type: 3}
+  m_Script: {fileID: 11500000, guid: a61173d98cd122949b8503552e9f4512, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Name: GoapAction
-  Cost: 1
-  child: {fileID: 0}
+  Name: GenericGoal
+  Priority: 1
+  ErrorDelay: 0.5
+  WarnPossibleGoal: 1
 --- !u!114 &392578052
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,6 +354,105 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: GoapAction
   Cost: 1
+  child: {fileID: 0}
+--- !u!114 &392578062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392578048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7174e943c5572640a3e33bcf82ce97c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GenericGoal
+  Priority: 1
+  ErrorDelay: 0.5
+  WarnPossibleGoal: 1
+--- !u!114 &392578063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392578048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68bc4dfa0c893d448bb6458d588c0fde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GoapAction
+  Cost: 1
+  pickedFood: {fileID: 0}
+--- !u!114 &392578064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392578048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13cdce4c3cfaa394684c2e3ef8da931b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GoapAction
+  Cost: 1
+  foundObj: {fileID: 0}
+  pickedFood: {fileID: 0}
+  child: {fileID: 0}
+  foodWanted: []
+  foodAbove: []
+  foodBelow: []
+--- !u!114 &392578065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392578048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34b575e70571cff4e990c64806f06a20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GoapAction
+  Cost: 1
+  food: {fileID: 0}
+  child: {fileID: 0}
+--- !u!114 &392578066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392578048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56b69db4eeee11d4699c19aa6a6f8b85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GoapAction
+  Cost: 1
+  child: {fileID: 0}
+--- !u!114 &392578067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 392578048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b31d4989317efb64f9d9541a838b0d99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GoapAction
+  Cost: 1
+  pickedFood: {fileID: 0}
+  food: {fileID: 0}
 --- !u!1 &438981244
 GameObject:
   m_ObjectHideFlags: 0
@@ -553,7 +659,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96aab2115a39fda45b43c6ce4562abf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  name: Chocolate
+  foodName: 
+  useable: 1
+  hunger: 0
   health: -10
   cost: 0
 --- !u!65 &1650254781
@@ -710,6 +818,7 @@ GameObject:
   - component: {fileID: 1893939793}
   - component: {fileID: 1893939792}
   - component: {fileID: 1893939796}
+  - component: {fileID: 1893939797}
   m_Layer: 0
   m_Name: DavidSon
   m_TagString: child
@@ -806,6 +915,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1893939797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1893939791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9fa688a64a6e6784a855c63d28901951, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  childHealth: 10
+  happy: 0
+  hungry: 0
 --- !u!1 &2005582698
 GameObject:
   m_ObjectHideFlags: 0

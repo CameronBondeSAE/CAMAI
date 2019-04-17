@@ -20,6 +20,7 @@ namespace Kail
         //Davids gaols
         private HungryGoal hungry;
         private HappyGoal happy;
+        private CheckGoal check;
         
         protected override void Awake()
         {
@@ -29,6 +30,7 @@ namespace Kail
             preconditions.Set("checkChild", false);
             preconditions.Set("nearChild", true);
             effects.Set("checkChild", true);
+            effects.Set("nearChild", false);
             
             //find child and its details
             child = GameObject.FindWithTag("child");
@@ -36,8 +38,9 @@ namespace Kail
             //find goals
             hungry = GetComponent<HungryGoal>();
             happy = GetComponent<HappyGoal>();
+            check = GetComponent<CheckGoal>();
 
-            
+
 
         }
         
@@ -52,13 +55,14 @@ namespace Kail
             {
                 happy.SetPriority(1);
                 hungry.SetPriority(2);
+                
             }
             else
             {
                 hungry.SetPriority(1);
                 happy.SetPriority(2);
             }
-
+            
             //on the chance that it starts at ten, set these as what is needed
             if (childDets.happy == 10) effects.Set("childHappy", true);
             if (childDets.hungry == 10) effects.Set("childHungry", false);
@@ -72,6 +76,7 @@ namespace Kail
 
             var worldState = agent.GetMemory().GetWorldState();
             worldState.Set("checkChild", true);
+            worldState.Set("nearChild", false);
         }
         
         

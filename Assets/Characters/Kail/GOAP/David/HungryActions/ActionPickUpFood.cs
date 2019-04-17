@@ -11,10 +11,11 @@ using UnityEngine;
 namespace Kail
 {
 
-    public class ActionMoveToFood : ReGoapAction<string, object>
+    public class ActionPickUpFood : ReGoapAction<string, object>
     {
     
         public GameObject pickedFood;
+        public DetsFood food;
     
         protected override void Awake()
         {
@@ -22,12 +23,12 @@ namespace Kail
             Name = "actionMoveToFood";
             preconditions.Set("childHungry", true);
             preconditions.Set("foundFood", true);
-            preconditions.Set("move", true);
+            preconditions.Set("move", false);
             preconditions.Set("hasFood", false);
+            preconditions.Set("pickUp", true);
             
-            effects.Set("nearChild", false);
-            effects.Set("move", false);
-            effects.Set("pickUp", true);
+            effects.Set("move", true);
+            effects.Set("hasFood", true);
 
             pickedFood = GetComponent<ActionFindFood>().pickedFood;
 
@@ -39,31 +40,16 @@ namespace Kail
         {
             base.Run(previous, next, settings, goalState, done, fail);
             
-            //look at food
-            transform.LookAt(pickedFood.transform);
+            //record what food you have
+            food = pickedFood.GetComponent<DetsFood>();
             
+            //run code to make food destroy itself
+            pickedFood.GetComponent<DetsFood>().PickedUp();
+            
+            //move to child
+            doneCallback(this);
         }
-        
-        private void FixedUpdate()
-        {
-            //move
-            RaycastHit hit;
-            if (Physics.Linecast(this.transform.position, pickedFood.transform.position, out hit))
-            {
-                if (hit.distance <= 1)
-                {
-                    //pick up item
-                    doneCallback(this);
-                }
-                else
-                {
-                    //movement
-                    float step = 1 * Time.deltaTime;
-                    transform.position = UnityEngine.Vector3.MoveTowards(transform.position, pickedFood.transform.position, step);
-                }
-            }
-        }
-
+      
         public override void Exit(IReGoapAction<string, object> next)
         {
             base.Exit(next);
