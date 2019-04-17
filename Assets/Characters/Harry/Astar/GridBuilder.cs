@@ -21,7 +21,7 @@ namespace Harry
 
         public int resolution = 10;
 
-        private Node[,] map;
+        public Node[,] map;
         
         private void Awake()
         {           
