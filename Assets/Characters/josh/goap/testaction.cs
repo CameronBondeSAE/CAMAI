@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class testaction : joshgoapaction
 {
-    bool woken = false;
+    private float timer = 0;
     testaction()
     {
         AddPre("awake", false);
@@ -12,7 +12,7 @@ public class testaction : joshgoapaction
     }
     public override bool Actiondone()
     {
-        return woken;
+        return timer >= 5f;
     }
 
     public override bool CheckPreconditions()
@@ -23,8 +23,14 @@ public class testaction : joshgoapaction
     public override bool ActionMethod(GameObject agent)
     {
         Debug.Log("wake");
-        agent.GetComponent<joshgoapagent>().awake = true;
-        woken = true;
+        if (timer < 5)
+        {
+            timer += Time.deltaTime;
+        }
+        else
+        {
+            agent.GetComponent<joshgoapagent>().awake = true;
+        }
         return true;
     }
 }
