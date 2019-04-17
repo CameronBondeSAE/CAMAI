@@ -11,7 +11,7 @@ namespace Russell
         public int fCost;
         public bool isBlocked;
         public Node parentNode;
-        public Vector2Int position;
+        public Vector3 position;
 
     }
 }
