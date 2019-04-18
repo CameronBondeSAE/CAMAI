@@ -42,6 +42,7 @@ namespace Russell
 
                     //grid[x, y].position = new Vector3( (gridSize.x * x), 1, gridSize.y * y);
                     grid[x, y].position = newPos - Vector3.up;
+                    grid[x,y].gridPosition = new Vector2Int(x, y);
                     if (Physics.CheckBox(newPos, new Vector3(xSize/2, 0.5f, ySize/2), Quaternion.identity))
                     {
                         grid[x, y].isBlocked = true;
