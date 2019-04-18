@@ -121,6 +121,8 @@ namespace Harry
             {
                 for (int x = -1; x < 2; x++)
                 {
+                    if (x == 0 && y == 0) continue;
+                
                     // Checks to not go outside of array    
                     if (n.gridPosition.x + x < 0 || n.gridPosition.x + x > _builder.resolution - 1) continue;
                     if (n.gridPosition.y + y < 0 || n.gridPosition.y + y > _builder.resolution - 1) continue;
@@ -128,24 +130,22 @@ namespace Harry
                     // current node we're checking
                     Node temp = _builder.map[n.gridPosition.x + x, n.gridPosition.y + y];
                     
-                    if (temp == n) continue;
-                    
                     // if its on a wall ignore it
                     if (temp.occupied) continue;
                     // If its closed we'll ignore it
                     if (closedNodes.Contains(temp)) continue;
 
-                    // set parent node
-                    temp.parentNode = n;
-
                     // calculate path value depending on diagonal positioning
-                    
-                    // (Mathf.Abs(i) + Mathf.Abs(j)) > 1f ? 1.4f : 1f
-                    float pCost = ((Mathf.Abs(y) + Mathf.Abs(x)) > 1f ? 1.4f : 1f) + n.pathCost;
+                    float pCost = Vector2.Distance(temp.gridPosition, n.gridPosition) + n.pathCost;
                     float dCost = Vector3.Distance(temp.worldPosition, _targetNode.worldPosition);
                     float tCost = dCost + pCost;
                     
                     if (temp.totalCost < tCost) continue; 
+                    
+                    // set parent node
+                    // This need to take place AFTER the check for a better cost, otherwise the path
+                    // will end up being the search direction, not the actual path to take
+                    temp.parentNode = n;
                     
                     // setting costs 
                     temp.pathCost = pCost;
@@ -192,6 +192,13 @@ namespace Harry
             Gizmos.color = Color.red;
             if (closedNodes != null)
                 foreach (Node n in closedNodes)
+                {
+                    Gizmos.DrawCube(n.worldPosition, new Vector3(1 * _builder.xCheckSize / 2, 2, 1 * _builder.yCheckSize / 2));
+                }
+            
+            Gizmos.color = Color.yellow;
+            if (openNodes != null)
+                foreach (Node n in openNodes)
                 {
                     Gizmos.DrawCube(n.worldPosition, new Vector3(1 * _builder.xCheckSize / 2, 2, 1 * _builder.yCheckSize / 2));
                 }

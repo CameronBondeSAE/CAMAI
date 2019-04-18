@@ -335,6 +335,11 @@ PrefabInstance:
       propertyPath: resolution
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 8137272789483632993, guid: 30dd81e846048464ba1da3c26e03c178,
+        type: 3}
+      propertyPath: evaluationDelay
+      value: 0.01
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 30dd81e846048464ba1da3c26e03c178, type: 3}
 --- !u!1001 &8737167550055239115
