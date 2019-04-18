@@ -8,28 +8,38 @@ using UnityEngine;
 public class FindCoverAction : ReGoapAction<string, object>
 {
     public Vector3 coverPosition;
-    
+
     protected override void Awake()
     {
         base.Awake();
-        
+
         preconditions.Set("canSeeTarget", true);
         effects.Set("isHidden", true);
     }
 
-    public override void Run(IReGoapAction<string, object> previous, IReGoapAction<string, object> next, ReGoapState<string, object> settings, ReGoapState<string, object> goalState, Action<IReGoapAction<string, object>> done,
+    public override void Run(IReGoapAction<string, object> previous, IReGoapAction<string, object> next,
+        ReGoapState<string, object> settings, ReGoapState<string, object> goalState,
+        Action<IReGoapAction<string, object>> done,
         Action<IReGoapAction<string, object>> fail)
     {
         base.Run(previous, next, settings, goalState, done, fail);
+
         
+//        StartCoroutine(TestWaiting());
+//        doneCallback(this);
+        Debug.Log("Run");
+    }
+
+    private IEnumerator TestWaiting()
+    {
         Debug.Log("Finding cover");
-        
-        
+
+
         float closestDistance = float.MaxValue;
         GameObject closestGO = null;
-        
+
         // My action code
-        
+
         // Find closest obstacle
         foreach (GameObject go in GameObject.FindGameObjectsWithTag("Obstacle"))
         {
@@ -42,17 +52,23 @@ public class FindCoverAction : ReGoapAction<string, object>
         }
 
         // Find cover position. Basically the OTHER side of the nearest obstacle, facing away from the target
-        Vector3 directionToTarget = (GetComponent<GaryGoapLOSSensor>().target.position - closestGO.transform.position).normalized;
-                                    
+        Vector3 directionToTarget = (GetComponent<GaryGoapLOSSensor>().target.position - closestGO.transform.position)
+            .normalized;
+
         if (closestGO != null)
         {
             coverPosition = closestGO.transform.position - directionToTarget * 4f; // TODO check actual radius
         }
 
-        // TODO HACK, actually move there
-        // TELEPORT!
-        transform.position = new Vector3(coverPosition.x, transform.position.y, coverPosition.z);
-        
+        Vector3 destination = new Vector3(coverPosition.x, transform.position.y, coverPosition.z);
+
+        // Move to
+        while (Vector3.Distance(transform.position, destination) > 1f)
+        {
+            transform.Translate((destination - transform.position) / 100f, Space.World);
+            yield return new WaitForFixedUpdate();
+        }
+
         // Success!
         doneCallback(this);
     }
@@ -69,5 +85,4 @@ public class FindCoverAction : ReGoapAction<string, object>
             worldState.Set(pair.Key, pair.Value);
         }
     }
-
 }
