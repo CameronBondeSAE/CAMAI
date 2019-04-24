@@ -9,6 +9,7 @@ public class ChopTreeAction : ReGoapAction<string,object>
 {
 
     public Transform treePos;
+    public GameObject tree;
     protected override void Awake()
     {
         base.Awake();
@@ -24,7 +25,8 @@ public class ChopTreeAction : ReGoapAction<string,object>
         base.Run(previous, next, settings, goalState, done, fail);
         Debug.Log("ChoppingWood");
         transform.position = treePos.position;
-        doneCallback(this);
+        StartCoroutine(WaitASec());
+        Destroy(tree);
     }
     
     public override void Exit(IReGoapAction<string, object> next)
@@ -35,5 +37,11 @@ public class ChopTreeAction : ReGoapAction<string,object>
         {
             worldState.Set(pair.Key,pair.Value);
         }
+    }
+
+    IEnumerator WaitASec()
+    {
+        yield return new WaitForSeconds(1);
+        doneCallback(this);
     }
 }

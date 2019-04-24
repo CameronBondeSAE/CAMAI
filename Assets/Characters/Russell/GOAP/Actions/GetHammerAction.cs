@@ -8,10 +8,12 @@ using UnityEngine;
 public class GetHammerAction : ReGoapAction<string,object>
 {
     public Transform hammerPos;
+    public GameObject hammer;
     protected override void Awake()
     {
         base.Awake();
         preconditions.Set("hasHammer", false);
+        preconditions.Set("WoodCollected", true);
         effects.Set("hasHammer", true);
     }
 
@@ -21,7 +23,9 @@ public class GetHammerAction : ReGoapAction<string,object>
         base.Run(previous, next, settings, goalState, done, fail);
         Debug.Log("Find Hammer");
         transform.position = hammerPos.position;
-        doneCallback(this);
+        StartCoroutine(WaitASec());
+        Destroy(hammer);
+        
     }
     
     public override void Exit(IReGoapAction<string, object> next)
@@ -32,5 +36,11 @@ public class GetHammerAction : ReGoapAction<string,object>
         {
             worldState.Set(pair.Key,pair.Value);
         }
+    }
+    
+    IEnumerator WaitASec()
+    {
+        yield return new WaitForSeconds(1);
+        doneCallback(this);
     }
 }

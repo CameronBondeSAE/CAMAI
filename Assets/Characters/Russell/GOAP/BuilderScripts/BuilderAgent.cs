@@ -14,6 +14,9 @@ public class BuilderAgent : ReGoapAgent<string,object>
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            CalculateNewGoal(true);
+        }
     }
 }

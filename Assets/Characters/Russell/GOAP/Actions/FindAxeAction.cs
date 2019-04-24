@@ -9,6 +9,7 @@ public class FindAxeAction : ReGoapAction<string,object>
 {
 
     public Transform axePos;
+    public GameObject axe;
     protected override void Awake()
     {
         base.Awake();
@@ -23,7 +24,8 @@ public class FindAxeAction : ReGoapAction<string,object>
         base.Run(previous, next, settings, goalState, done, fail);
         Debug.Log("Need to Find Axe");
         transform.position = axePos.position;
-        doneCallback(this);
+        StartCoroutine(WaitASec());
+        Destroy(axe);
     }
 
     public override void Exit(IReGoapAction<string, object> next)
@@ -34,5 +36,11 @@ public class FindAxeAction : ReGoapAction<string,object>
         {
             worldState.Set(pair.Key,pair.Value);
         }
+    }
+    
+    IEnumerator WaitASec()
+    {
+        yield return new WaitForSeconds(1);
+        doneCallback(this);
     }
 }

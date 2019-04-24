@@ -79,7 +79,7 @@ namespace Russell
         {
             Debug.Log("check next current");
             Node checkNode = new Node();
-            checkNode.fCost = float.MaxValue;
+            checkNode.fCost = float.MaxValue + (Vector3.Distance(checkNode.position,target.position)*5);
 
             foreach (Node node in openNodes)
                 if (checkNode.fCost > node.fCost)

@@ -17,9 +17,9 @@ GameObject:
   - component: {fileID: 932724424045933649}
   - component: {fileID: 6760920521209005163}
   - component: {fileID: 2639230317468147972}
+  - component: {fileID: 2399571791982940876}
   - component: {fileID: 5789648870492281861}
   - component: {fileID: 3172600123082685125}
-  - component: {fileID: 2399571791982940876}
   - component: {fileID: 4943018203131168921}
   - component: {fileID: 1551680756390738850}
   m_Layer: 0
@@ -155,6 +155,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: GoapAction
   Cost: 1
+  axePos: {fileID: 0}
+  axe: {fileID: 0}
 --- !u!114 &2639230317468147972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,34 +171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: GoapAction
   Cost: 1
---- !u!114 &5789648870492281861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7433572281787114219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d1fa9994db4ab0b449b2a10cb942efa9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: GoapAction
-  Cost: 1
---- !u!114 &3172600123082685125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7433572281787114219}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c2c6a511b2d79b458296eb04345ef58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: GoapAction
-  Cost: 1
+  treePos: {fileID: 0}
 --- !u!114 &2399571791982940876
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -211,6 +186,39 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: GoapAction
   Cost: 1
+  treePos: {fileID: 0}
+  tree: {fileID: 0}
+--- !u!114 &5789648870492281861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7433572281787114219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1fa9994db4ab0b449b2a10cb942efa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GoapAction
+  Cost: 1
+  hammerPos: {fileID: 0}
+  hammer: {fileID: 0}
+--- !u!114 &3172600123082685125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7433572281787114219}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c2c6a511b2d79b458296eb04345ef58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GoapAction
+  Cost: 1
+  stockpilePos: {fileID: 0}
 --- !u!114 &4943018203131168921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +233,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: GoapAction
   Cost: 1
+  house: {fileID: 0}
+  houseLocation: {fileID: 0}
 --- !u!114 &1551680756390738850
 MonoBehaviour:
   m_ObjectHideFlags: 0

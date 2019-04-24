@@ -22,7 +22,8 @@ public class ReturnToStockpileAction : ReGoapAction<string,object>
         base.Run(previous, next, settings, goalState, done, fail);
         Debug.Log("Taking Wood Back to stockpile");
         transform.position = stockpilePos.position;
-        doneCallback(this);
+        StartCoroutine(WaitASec());
+        
     }
     
     public override void Exit(IReGoapAction<string, object> next)
@@ -33,5 +34,11 @@ public class ReturnToStockpileAction : ReGoapAction<string,object>
         {
             worldState.Set(pair.Key,pair.Value);
         }
+    }
+    
+    IEnumerator WaitASec()
+    {
+        yield return new WaitForSeconds(1);
+        doneCallback(this);
     }
 }
