@@ -13,8 +13,8 @@ namespace Kail
         private Collider map;//the map
         private Vector3 boundsStart; //the starting part of the map
         private Vector3 boundsEnd; //the furthest point on the map
-        private float xSize; //how big the mapbounds X is
-        private float ySize; //how big the mapbounds Y is
+        public float xSize; //how big the mapbounds X is
+        public float ySize; //how big the mapbounds Y is
 
         public int size = 55; //the size of the map grid, not dependant on the actual size of anything like above
         
@@ -68,8 +68,6 @@ namespace Kail
                     if (Physics.CheckBox(nodePosCheck, new Vector3(xSize / 2, 0.5f, ySize / 2), Quaternion.identity))
                         mapPoints[j, i].blocked = true;
                     else mapPoints[j, i].blocked = false;
-                    
-
                 }
             }
         }
@@ -81,7 +79,7 @@ namespace Kail
                 for (int j = 0; j < size; j++)
                 {
                     if (mapPoints[j,i].blocked == true) Gizmos.color = Color.red;
-                    else Gizmos.color = Color.grey;
+                    else Gizmos.color = Color.white;
                     
                     Gizmos.DrawCube(new Vector3(mapPoints[j,i].nodePos.x, mapPoints[j,i].nodePos.y + 1f, mapPoints[j,i].nodePos.z), Vector3.one);
                 }
