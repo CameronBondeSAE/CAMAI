@@ -74,7 +74,7 @@ namespace Kail
                 pathNext = pathNext.parentNode;
             }
             path.Reverse();
-            thereYet = true;
+            Move();
 
 
         }
@@ -101,7 +101,6 @@ namespace Kail
                 //calc floats for neighbour node
                 float dist = Mathf.Abs(x) + Mathf.Abs(y) > 1 ? 1.4f : 1;
                 float endCost = Vector2.Distance(neighbour.nodePos, end.nodePos);
-                Debug.Log(endCost);
                 
                 float pathCost = current.pathCost + dist;
                 float newTotalCost = endCost + pathCost;
@@ -134,7 +133,22 @@ namespace Kail
                
             //set current to the node with the lowest cost
             current = maybe;
-            Debug.Log("Picked");
+        }
+
+
+        public void Move()
+        {
+            StartCoroutine(Pause());
+        }
+
+        private IEnumerator Pause()
+        {
+            foreach (var node in path)
+            {
+                yield return new WaitForSeconds(0.1f);
+                mover.transform.position = new Vector3(node.nodePos.x, node.nodePos.y + 1, node.nodePos.z);
+            }
+            thereYet = true;
         }
 
 
