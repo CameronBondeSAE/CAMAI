@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using NodeCanvas.Tasks.Actions;
 using UnityEngine;
 
 namespace Kail
@@ -48,8 +49,8 @@ namespace Kail
             mover.transform.position = new Vector3(start.nodePos.x, start.nodePos.y + 1, start.nodePos.z);
             
             //set end location, making sure to reset if blocked
-            end = grid.mapPoints[(int)Random.Range(0, grid.xSize), (int)Random.Range(0, grid.ySize)];
-            if (end.blocked) end = grid.mapPoints[(int)Random.Range(0, grid.xSize), (int)Random.Range(0, grid.ySize)];
+            end = grid.mapPoints[(int)Random.Range(0, grid.size), (int)Random.Range(0, grid.size)];
+            if (end.blocked) end = grid.mapPoints[(int)Random.Range(0, grid.size), (int)Random.Range(0, grid.size)];
             //set target to be at end
             target.transform.position = new Vector3(end.nodePos.x, end.nodePos.y + 1, end.nodePos.z);
             
@@ -88,8 +89,8 @@ namespace Kail
             {
                 //set all positions that should be ignored
                 if (x == 0 && y == 0) continue;
-                if (((current.xPos + x) < 0) || (current.xPos + x) > (grid.xSize - 1)) continue;
-                if (((current.yPos + y) < 0) || (current.yPos + y) > (grid.ySize - 1)) continue;
+                if (((current.xPos + x) < 0) || (current.xPos + x) > (grid.size - 1)) continue;
+                if (((current.yPos + y) < 0) || (current.yPos + y) > (grid.size - 1)) continue;
 
                 //set positions that shouldn't be ignored
                 Node neighbour = grid.mapPoints[current.xPos + x, current.yPos + y];
@@ -100,6 +101,8 @@ namespace Kail
                 //calc floats for neighbour node
                 float dist = Mathf.Abs(x) + Mathf.Abs(y) > 1 ? 1.4f : 1;
                 float endCost = Vector2.Distance(neighbour.nodePos, end.nodePos);
+                Debug.Log(endCost);
+                
                 float pathCost = current.pathCost + dist;
                 float newTotalCost = endCost + pathCost;
 
@@ -126,7 +129,7 @@ namespace Kail
             //find the node with the lowest cost
             foreach (Node node in openNodes)
             {
-                if (maybe.totalCost < node.totalCost) maybe = node;
+                if (maybe.totalCost > node.totalCost) maybe = node;
             }
                
             //set current to the node with the lowest cost
