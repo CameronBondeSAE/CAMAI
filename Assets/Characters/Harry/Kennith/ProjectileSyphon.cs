@@ -92,7 +92,7 @@ public class ProjectileSyphon : MonoBehaviour
 
     private IEnumerator DeathTimer()
     {
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(15);
 
         exploding = true;
     }

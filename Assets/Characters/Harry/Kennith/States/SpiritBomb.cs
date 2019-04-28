@@ -24,7 +24,6 @@ namespace Kennith
         
         public override void Enter()
         {
-            GetComponentInParent<Health>().OnDeathEvent += ExplodeOnDeath;
             
             // Debug.Log("Attack Enter", gameObject);
             spawnedSpiritBomb = Instantiate(spiritBomb, transform.position + offset, transform.rotation);
@@ -34,13 +33,15 @@ namespace Kennith
             Kennith_Model.ShareYourPower -= model.SyphoningPower;
             model.InvokeShareYourPower(spawnedSpiritBomb);
             
+            
             StartCoroutine(DelayExit(endDelay));
             
         }
 
         public override void Tick()
         {
-           
+            model.LookAt(model.TargetObject, 1);
+            
             // Debug.Log("Attack Execute", gameObject);
 
             if (energy.Amount > 0 && delayTick >= delay)
@@ -59,8 +60,7 @@ namespace Kennith
         public override void Exit()
         {
             spawnedSpiritBomb.GetComponent<Projectile_SpiritBomb>().thrown = true;
-
-            GetComponentInParent<Health>().OnDeathEvent -= ExplodeOnDeath;
+            
             Kennith_Model.ShareYourPower += model.SyphoningPower;
             
             // Debug.Log("Attack Exit", gameObject);
@@ -68,10 +68,6 @@ namespace Kennith
             base.Exit();
         }
 
-        public void ExplodeOnDeath()
-        {
-            spawnedSpiritBomb.GetComponent<Projectile_SpiritBomb>().Explode();
-        }
     }
 
 }

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
 namespace Kennith
 {
@@ -14,10 +16,14 @@ namespace Kennith
         public double visionAngle;
 
         public GameObject TargetObject;
+        private bool targetVisible = false;
         public float turningDistance;
 
         public delegate void OnSpiritBomb(GameObject bomb);
         public static OnSpiritBomb ShareYourPower;
+
+        public List<GameObject> enemies = new List<GameObject>();
+        public List<Spawner> spawners = new List<Spawner>();
 
         public void ChangeState(StateBase newState)
         {
@@ -41,10 +47,36 @@ namespace Kennith
             currentState = moveState;
             currentState.Enter();
 
+            CharacterBase[] characters = FindObjectsOfType<CharacterBase>();
+
+            foreach (CharacterBase c in characters)
+            {
+                if (c.gameObject.GetComponent<Kennith_Model>() != null) continue;
+                
+                enemies.Add(c.gameObject);
+                c.GetComponent<Health>().OnDeathEvent += RemoveEnemy;
+            }
+
+            spawners.AddRange(FindObjectsOfType<Spawner>());
+
+            foreach (Spawner s in spawners)
+            {
+                s.OnSpawnedNewGameObject += AddNewEnemy;
+            }
+            
             GetComponent<Health>().OnDeathEvent += Perish;
             ShareYourPower += SyphoningPower;
         }
 
+
+        private void Update()
+        {
+            currentState.Tick();
+            
+            //TESTING
+            if (TargetObject != null) CheckFor(TargetObject);
+        }
+        
         public void SyphoningPower(GameObject bomb)
         {
             TargetObject = bomb;
@@ -55,15 +87,7 @@ namespace Kennith
         {
             ShareYourPower?.Invoke(bomb);
         }
-        
-        private void Update()
-        {
-            currentState.Tick();
-            
-            //TESTING
-            if (TargetObject != null) CheckFor(TargetObject);
-        }
-        
+                
         public bool CheckFor(GameObject other) // returns true/false if object inserted is visible
         {
             float magnitudeTo = Vector3.Distance(transform.position, other.transform.position);
@@ -73,11 +97,7 @@ namespace Kennith
             Vector3 targetDir = other.transform.position - transform.position; // correcting object's location relative to us
             if (Vector3.Angle(targetDir, transform.forward) > (visionAngle / 2)) return false;
 
-            if (!CheckBounds(other)) return false;
-
-            // Debug.Log("I CAN SEE THE TARGET");
-            
-            return true;
+            return CheckBounds(other);
 
         }
 
@@ -92,13 +112,11 @@ namespace Kennith
             if (Physics.Linecast(transform.position + Vector3.up * 2, v, out hit) && hit.transform.gameObject == obj)
             {
                 b = true;
-                Debug.DrawLine(transform.position, v, Color.magenta);
             }
 
             return b;
         }
         
-        // NEEDS TO BE OPTIMISED
         private bool CheckBounds(GameObject other)
         {
             Collider col = other.GetComponent<Collider>();
@@ -108,6 +126,7 @@ namespace Kennith
 
             bool r1 = false, r2 = false, r3 = false, r4 = false, r5 = false, r6 = false, r7 = false, r8 = false, r9 = false;
 
+            // checking all corners of a collider + its centre 
             r1 = ThrowRay(other, col, 0,0,0);
             r2 = ThrowRay(other, col, ext.x, ext.y, ext.z);
             r3 = ThrowRay(other, col, -ext.x, ext.y, ext.z);
@@ -126,14 +145,83 @@ namespace Kennith
             return false;
         }
 
+        public void LookAt(GameObject g, float rotationSpeed)
+        {
+            Vector3 lookPos = g.transform.position - transform.position;
+            lookPos.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(lookPos);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed);
+        }
+
+        private void AddNewEnemy(GameObject g)
+        {
+            if (g.GetComponent<Kennith_Model>() != null) return;
+            
+            enemies.Add(g);
+            g.GetComponentInChildren<Health>().OnDeathEvent += RemoveEnemy;
+
+        }
+
+        private void RemoveEnemy()
+        {
+            foreach (GameObject e in enemies)
+            {
+                if (e == null)
+                    enemies.Remove(e);
+            }
+        }
+        
+        public void FindTarget()
+        {
+            List<GameObject> visible = new List<GameObject>();
+            
+            foreach (GameObject e in enemies)
+            {
+                if (CheckFor(e))
+                    visible.Add(e);
+            }
+
+            TargetObject = visible[Random.Range(0, visible.Count - 1)];
+            targetVisible = true;
+            StartCoroutine(CheckTarget());
+            currentState.Exit();
+        }
+        
+        public IEnumerator CheckTarget()
+        {
+            while (targetVisible)
+            {
+                yield return new WaitForSeconds(0.34f);
+
+                if (!CheckFor(TargetObject))
+                {
+                    targetVisible = false;
+                    currentState.Exit();
+                }
+            }
+
+            yield return null;
+        }
+        
         public void Perish()
         {
+           OnDeath();
            ChangeState(deathState);
         }
 
-        private void OnDestroy()
+        private void OnDeath()
         {
             ShareYourPower -= SyphoningPower;
+
+            foreach (GameObject e in enemies)
+            {
+                e.GetComponent<Health>().OnDeathEvent -= RemoveEnemy;
+            }
+            
+            foreach (Spawner s in spawners)
+            {
+                s.OnSpawnedNewGameObject -= AddNewEnemy;
+            }
         }
     }
     

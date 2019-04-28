@@ -26,6 +26,8 @@ namespace Kennith
 
         public override void Tick()
         {
+            model.LookAt(model.TargetObject, 1);
+            
             // Debug.Log("Hail Attack Execute", gameObject);
             if (model.TargetObject == null) Exit();
 
