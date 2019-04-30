@@ -26,6 +26,11 @@ namespace Russell
             {
                 kyllarr_model.JustGotHurt();
             }
+
+            if (GUILayout.Button("TestHover"))
+            {
+                kyllarr_model.ChangeState(kyllarr_model.hoverState);
+            }
         }
     }
 

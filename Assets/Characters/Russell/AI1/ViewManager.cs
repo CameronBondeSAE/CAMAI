@@ -7,22 +7,24 @@ namespace Russell
     public class ViewManager : MonoBehaviour
     {
         public GameObject parent;
-    
+        public GameObject states;
         public ParticleSystem dashParticleSystem;
         public ParticleSystem deathParticleSystem;
+        public ParticleSystem barrageParticleSystem;
         
         // Start is called before the first frame update
         private void Awake()
         {
             parent.GetComponent<Kyllarr_Model>().KillMove += DashAttackView;
-            parent.GetComponent<Kyllarr_Model>().Killme += DeathView;
+            //parent.GetComponent<Kyllarr_Model>().Killme += DeathView;
+            states.GetComponent<HoverState>().TargetAquired += BarrageView;
     
         }
     
         private void DeathView()
         {
-            Debug.Log("i ran");
-            deathParticleSystem.Play();
+            //Debug.Log("i ran");
+            //deathParticleSystem.Play();
             
         }
     
@@ -31,6 +33,12 @@ namespace Russell
             dashParticleSystem.Play();
             Debug.Log("run you fuck");
             
+        }
+
+
+        private void BarrageView()
+        {
+            barrageParticleSystem.Play();
         }
     
         void Start()

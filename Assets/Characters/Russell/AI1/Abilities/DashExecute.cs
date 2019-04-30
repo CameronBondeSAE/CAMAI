@@ -29,6 +29,7 @@ namespace Russell
             onCD = true;
             targetHealth = newTarget.GetComponent<Health>();
             targetHealth.Change(-damage,_characterBase);
+            Exit();
             
         }
 

@@ -9,10 +9,12 @@ public class Kyllarr_Model : CharacterBase
     public event Action KillMove;
     public event Action Killme;
     public event Action GotHurt;
+    public event Action FullPower;
     public StateBase currentState;
     public StateBase attackState;
     public StateBase rotateState;
     public StateBase patrolState;
+    public StateBase hoverState;
 
     //public GameObject mainAi;
     
@@ -35,21 +37,13 @@ public class Kyllarr_Model : CharacterBase
 
     public void JustGotHurt()
     {
-        if (GetComponent<DecoyMovement>() == null)
-        {
-            GotHurt();
-        }
-        
-        
+        GotHurt();    
     }
 
     public void Kyllarr_Dies()
     {
-        if (GetComponent<DecoyMovement>() == null)
-        {
-            Killme();
-        }
-
+        //Killme();
+        Destroy(gameObject);
     }
 
     // Start is called before the first frame update
@@ -65,6 +59,7 @@ public class Kyllarr_Model : CharacterBase
     public void Update()
     {
         currentState.Execute();
+
 
     }
 

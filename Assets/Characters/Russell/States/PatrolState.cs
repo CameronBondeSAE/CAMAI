@@ -1,4 +1,5 @@
 ﻿using System;
+using TMPro;
 using UnityEngine;
 
 namespace Russell
@@ -7,9 +8,10 @@ namespace Russell
 
     {
         public WhosAround _whosAround;
-
+        public Kyllarr_Model model;
         public GameObject aI;
 
+        public FieldOfView fov;
         //public float minMoveDistance = 10;
         public float distanceCheck = 10f;
         public RaycastHit floorHit;
@@ -21,17 +23,20 @@ namespace Russell
         public Rigidbody rb;
         public RaycastHit rightHit;
         public RaycastHit rightSideHit;
-        public event Action OnDoneMoving;
+
 
         private void Awake()
         {
             _whosAround = aI.GetComponent<WhosAround>();
+            model = aI.GetComponent<Kyllarr_Model>();
+            fov = aI.GetComponent<FieldOfView>();
         }
 
         public override void Enter()
         {
             base.Enter();
-            Invoke("RunEvent", 5f);
+            //for testing
+            //InvokeRepeating("GetTarget", 3,5);
             //Debug.Log("Start Moving", gameObject);
         }
 
@@ -91,6 +96,8 @@ namespace Russell
             {
                 rb.AddRelativeTorque(0, -80000, 0);
             }
+            
+            
         }
 
         public override void Exit()
@@ -99,10 +106,12 @@ namespace Russell
             rb.velocity = transform.forward * 0;
         }
 
-        private void RunEvent()
+        public void GetTarget()
         {
-            //OnDoneMoving();
+            fov.FindVisibleTargets();
         }
+
+
 
         public void RayCastDistanceCheck()
         {
