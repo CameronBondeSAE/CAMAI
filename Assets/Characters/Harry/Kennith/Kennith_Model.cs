@@ -16,7 +16,7 @@ namespace Kennith
         public double visionAngle;
 
         public GameObject TargetObject;
-        private bool targetVisible = false;
+        public bool targetVisible = false;
         public float turningDistance;
 
         public delegate void OnSpiritBomb(GameObject bomb);
