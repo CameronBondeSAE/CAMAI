@@ -185,7 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25756a36baf1f5e45bc44017115addb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: Darkling
   debugText: 
   speedMultiplier: 43
   decelerationMultiplier: 0.9

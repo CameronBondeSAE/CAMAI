@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Kennith;
+using NodeCanvas.Tasks.Actions;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -15,6 +17,8 @@ namespace Michael
         public List<GameObject> darklings;
         [SerializeField]
         private int cost;
+
+        private Kennith_Model[] _kennithModel;
 
         private void Start()
         {
@@ -30,12 +34,13 @@ namespace Michael
         private void newVestra()
         {
             Vector3 temp = new Vector3(Random.Range(-10,10), 2, Random.Range(-10,10));
-            Instantiate(vestraPrefab, temp + Self.transform.position, transform.rotation);
+            GameObject newVestra = Instantiate(vestraPrefab, temp + Self.transform.position, transform.rotation);
             foreach (var VARIABLE in darklings)
             {
-                Destroy(VARIABLE);
+                VARIABLE.GetComponent<Health>().Amount -= 10000;
             }
             darklings.Clear();
+            AddToKennith(newVestra);
         }
 
 
@@ -52,6 +57,16 @@ namespace Michael
             newDarkling.GetComponent<Darkling_Model>().vestraLead = Self;
             darklings.Add(newDarkling);
             Self.GetComponent<Energy>().Change(-cost);
+            AddToKennith(newDarkling);
+        }
+
+        private void AddToKennith(GameObject gameObject)
+        {
+            _kennithModel = FindObjectsOfType<Kennith_Model>();
+            foreach (var Ken in _kennithModel)
+            {
+                Ken.AddNewEnemy(gameObject);
+            }
         }
     }
 }
