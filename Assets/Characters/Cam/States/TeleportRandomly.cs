@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class TeleportRandomly : StateBase
 {
+    public CharacterBase characterBase;
+
+    
     public MrDudes_Model _mrDudesModel;
     public float teleportRange;
     public AudioClip meowClip;
@@ -26,6 +29,8 @@ public class TeleportRandomly : StateBase
             
 //        GetComponent<Renderer>().material.color = Color.green;
         StartCoroutine(AttackCoroutine());
+
+        characterBase.debugText = "Teleporting!";
     }
 
     public override void Execute()

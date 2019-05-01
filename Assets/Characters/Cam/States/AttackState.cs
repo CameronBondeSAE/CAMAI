@@ -16,6 +16,8 @@ namespace Cam
             base.Enter();
 
             StartCoroutine("AttackCoroutine");
+
+            _mrDudesModel.debugText = "Attack!";
         }
 
         public override void Execute()

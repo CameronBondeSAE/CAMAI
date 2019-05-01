@@ -80,7 +80,7 @@ public class Spawner : MonoBehaviour
         }
 
         var newGO = Instantiate(item, randomPosition, Quaternion.identity);
-        Debug.Log("Spawned: "+item.name);
+//        Debug.Log("Spawned: "+item.name);
 
         if (OnSpawnedNewGameObject != null)
             OnSpawnedNewGameObject(newGO);
