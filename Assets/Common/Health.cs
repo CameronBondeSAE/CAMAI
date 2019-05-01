@@ -77,7 +77,7 @@ public class Health : MonoBehaviour
 
         amount = amount + amountOfChange;
         amount = Mathf.Clamp(amount, 0, maxAmount);
-        OnNewAmount(amount);
+        if (OnNewAmount != null) OnNewAmount(amount);
 
         lastHealthChangedAmount = amountOfChange;
 

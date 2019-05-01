@@ -44,9 +44,6 @@ namespace Kennith
             hailState = GetComponentInChildren<HailAttack>();
             syphonState = GetComponentInChildren<PowerSyphonState>();
             
-            currentState = moveState;
-            currentState.Enter();
-
             CharacterBase[] characters = FindObjectsOfType<CharacterBase>();
 
             foreach (CharacterBase c in characters)
@@ -70,13 +67,19 @@ namespace Kennith
             ShareYourPower += SyphoningPower;
         }
 
+        public override void Start()
+        {
+            base.Start();
+            currentState = moveState;
+            currentState.Enter();
+        }
 
         private void Update()
         {
             currentState.Tick();
             
             //TESTING
-            if (TargetObject == null) FindTarget();
+            if (TargetObject == null || !targetVisible) FindTarget();
         }
         
         public void SyphoningPower(GameObject bomb)

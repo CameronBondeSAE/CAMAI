@@ -56,6 +56,18 @@ namespace Kennith
 
             rotationValue = 0;
 
+            // floor detect
+            if (!Physics.Raycast(parent.position + (parent.right * 0.2f), Quaternion.AngleAxis(15f, transform.right) * transform.forward, out hit,12f))
+            {
+                Debug.DrawRay(parent.position, parent.forward, Color.red);
+                rotationValue -= 40;
+            }
+            if (!Physics.Raycast(parent.position - (parent.right * 0.2f), Quaternion.AngleAxis(15f, transform.right) * transform.forward, out hit,12f))
+            {
+                Debug.DrawRay(parent.position, parent.forward, Color.red);
+                rotationValue -= 40;
+            }
+            
             // forward
             if (Physics.Raycast(parent.position, parent.forward, out hit, dist))
             {
