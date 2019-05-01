@@ -71,7 +71,7 @@ public class MrDudes_Model : CharacterBase
 	private void OnDanger(GameObject emitter, CharacterBase owner, float radiusofdanger, float maxdamageamount)
 	{
 		// TODO: Need distance check, THEN line of sight raycast check etc
-		debugText = "Received Danger event";
+//		debugText = "Received Danger event";
 	}
 
 	public override void Start()

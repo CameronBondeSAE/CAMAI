@@ -9,6 +9,10 @@ namespace Cam
   
     public class WobbleState : StateBase
     {
+        public CharacterBase characterBase;
+
+
+
         public override void Enter()
         {
             base.Enter();
@@ -16,6 +20,8 @@ namespace Cam
             Invoke("ChangeToAttack", 3);
             
             Debug.Log("WobbleStart", gameObject);
+
+            characterBase.debugText = "Wandering";
         }
 
         public void ChangeToAttack()

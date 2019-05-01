@@ -32,6 +32,7 @@ public class Health : MonoBehaviour
     public event OnInterceptAttemptedChangeParameters OnInterceptAttemptedChange;
 
     public event Action<float> OnIncomingChange;
+    public event Action<float> OnNewAmount;
 
     public GameObject lastHealingDealer;
     public GameObject lastDamagingDealer;
@@ -76,6 +77,7 @@ public class Health : MonoBehaviour
 
         amount = amount + amountOfChange;
         amount = Mathf.Clamp(amount, 0, maxAmount);
+        OnNewAmount(amount);
 
         lastHealthChangedAmount = amountOfChange;
 

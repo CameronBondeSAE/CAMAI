@@ -32,14 +32,23 @@ public class ResourceBar : MonoBehaviour
             return;
 		}
 
-		owner.GetComponent<Health>().OnDeathEvent += OnDeathEvent;
-		CharacterBase.OnDestroyed += CharacterBaseOnDestroyed;
-
-
-		parentName.text = owner.characterName;
-
 		health = owner.GetComponent<Health>();
+		if (health != null)
+		{
+			health.OnDeathEvent += OnDeathEvent;
+			health.OnNewAmount += OnNewHealthAmount;
+			CharacterBase.OnDestroyed += CharacterBaseOnDestroyed;
+
+			parentName.text = owner.characterName;
+		}
+
 		energy = owner.GetComponent<Energy>();
+	}
+
+	private void OnNewHealthAmount(float newAmount)
+	{		
+		if (health != null) healthBar.fillAmount = newAmount / health.maxAmount;
+		
 	}
 
 	void UpdateKillCount(CharacterBase characterBase)
@@ -85,7 +94,6 @@ public class ResourceBar : MonoBehaviour
 	{
 		debugText.text = owner.debugText;
 
-		if (health != null) healthBar.fillAmount = health.Amount / health.maxAmount;
 		if (energy != null) energyBar.fillAmount = energy.Amount / energy.MaxEnergy;
 
 		//Position
