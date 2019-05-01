@@ -156,7 +156,7 @@ namespace Kennith
             transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed);
         }
 
-        private void AddNewEnemy(GameObject g)
+        public void AddNewEnemy(GameObject g)
         {
             if (g.GetComponent<Kennith_Model>() != null) return;
             
@@ -165,7 +165,7 @@ namespace Kennith
 
         }
 
-        private void RemoveEnemy()
+        public void RemoveEnemy()
         {
             foreach (GameObject e in enemies)
             {
