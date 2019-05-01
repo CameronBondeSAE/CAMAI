@@ -159,6 +159,7 @@ namespace Kennith
         public void AddNewEnemy(GameObject g)
         {
             if (g.GetComponent<Kennith_Model>() != null) return;
+            if (g.GetComponent<Health>() == null) return;
             
             enemies.Add(g);
             g.GetComponentInChildren<Health>().OnDeathEvent += RemoveEnemy;

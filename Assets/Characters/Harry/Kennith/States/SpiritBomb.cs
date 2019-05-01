@@ -24,6 +24,7 @@ namespace Kennith
         
         public override void Enter()
         {
+            base.Enter();
             if (model.TargetObject == null)
             {
                 base.Exit();

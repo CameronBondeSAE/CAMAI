@@ -4,30 +4,28 @@ namespace Kennith
 {
     public class IdleState : StateBase
     {
-        private Renderer myRenderer;
+        private Energy energy;
+        public float regenSpeedMod = 2.25f;
 
         private void Start()
         {
-            myRenderer = GetComponentInParent<Renderer>();
+            energy = GetComponentInParent<Energy>();
         }
 
         public override void Enter()
         {
+            base.Enter();
             // Debug.Log("Idle Enter", gameObject);
+            energy.regenEnergySpeed *= regenSpeedMod;
             StartCoroutine(DelayExit(endDelay));
-        }
-
-        public override void Tick()
-        {
-            // Debug.Log("Idle Execute", gameObject);
-            myRenderer.material.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
         }
 
         public override void Exit()
         {
-            myRenderer.material.color = new Color(1, 1, 1);
             // Debug.Log("Idle Exit", gameObject);
 
+            energy.regenEnergySpeed /= regenSpeedMod;
+            
             base.Exit();
         }
     }

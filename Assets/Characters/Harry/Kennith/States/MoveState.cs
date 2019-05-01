@@ -24,6 +24,7 @@ namespace Kennith
 
         public override void Enter()
         {
+            base.Enter();
             StartCoroutine(DelayExit(endDelay));
             // Debug.Log("Move Enter", gameObject);
         }

@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace Kennith
@@ -7,10 +8,11 @@ namespace Kennith
     {
 
         public float endDelay = 3f;
+        public string stateText;
         
         public virtual void Enter()
         {
-        
+            GetComponentInParent<CharacterBase>().debugText = stateText;
         }
 
         public virtual void Tick()

@@ -41,7 +41,7 @@ namespace Kennith
             {
                 GameObject spawn = Instantiate(hailProjectile, transform.position + randOffset, randRotation);
                 spawn.GetComponent<ProjectileChase>().parentObject = model.gameObject;
-                spawn.GetComponent<ProjectileChase>().target = model.TargetObject.transform.position;
+                spawn.GetComponent<ProjectileChase>().target = model.TargetObject.transform;
                 
                 energy.Amount -= energyCost;
                 delayTick = 0;

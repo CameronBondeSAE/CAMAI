@@ -13,6 +13,7 @@ namespace Kennith
 
         public override void Enter()
         {
+            base.Enter();
             // Debug.Log("Flee Enter", gameObject);
             model.transform.Rotate(new Vector3(0,180,0));
             model.ChangeState(model.moveState);

@@ -6,8 +6,9 @@ using UnityEngine;
 
 public class ProjectileChase : MonoBehaviour
 {
-    public Vector3 target;
-    
+    public Transform target;
+
+    public float speedIncreaseMult = 0.4f;
     public float turnSpeed = 1;
     public float travelSpeed = 1;
     public float damage = 2;
@@ -37,11 +38,12 @@ public class ProjectileChase : MonoBehaviour
         }
         else
         {
-            if (target != null) RotateTowards(target);
+            if (target != null) RotateTowards(target.position);
 
             body.velocity = transform.forward * travelSpeed;
         }
-        
+
+        turnSpeed += Time.deltaTime * speedIncreaseMult;
     }
 
     public void RotateTowards(Vector3 t)

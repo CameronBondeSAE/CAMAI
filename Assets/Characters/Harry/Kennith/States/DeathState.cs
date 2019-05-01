@@ -15,6 +15,7 @@ namespace Kennith
             
         public override void Enter()
         {
+            base.Enter();
             // Debug.Log("A Kennith has died", gameObject);  
             parent = GetComponentInParent<Kennith_Model>().gameObject;
             
