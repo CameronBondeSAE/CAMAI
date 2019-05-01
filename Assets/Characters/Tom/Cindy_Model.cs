@@ -15,6 +15,7 @@ namespace Tom
         public Transform myTransform;
         public float teleportRange;
         public float getBigScalar;
+        
 
         public void ChangeState(StateBase newState)
         {
@@ -39,7 +40,8 @@ namespace Tom
 
         private void Update()
         {
-            
+            Cindy_Model_OnHurtEvent();
+            Cindy_Model_OnDeathEvent();
         }     
        
 
@@ -48,7 +50,7 @@ namespace Tom
         
         private void Cindy_Model_OnDeathEvent()
         {
-              
+              if(GetComponent<Health>().Amount <= 0)
               Destroy(gameObject);
         }
 
