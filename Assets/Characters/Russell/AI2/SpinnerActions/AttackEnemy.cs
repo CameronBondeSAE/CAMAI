@@ -4,36 +4,38 @@ using System.Collections.Generic;
 using ReGoap.Core;
 using ReGoap.Unity;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Russell
 {
-    
-    public class FindEnemyAction : ReGoapAction<string,object>
+    public class AttackEnemy : ReGoapAction<string,object>
     {
-        
-        Spinner_Model model;
-        private WhosAround checkEnemys;
+
+        public Spinner_Model model;
+        public GameObject newTarget;
+        public float damage;
         protected override void Awake()
         {
-            
-            
             base.Awake();
             model = GetComponent<Spinner_Model>();
-            checkEnemys = GetComponent<WhosAround>();
-            preconditions.Set("alive", true);
-            effects.Set("foundEnemy", true);
+            preconditions.Set("foundTarget",true);
+            preconditions.Set("fullEnergy", true);
+            effects.Set("EnemyDamaged", true);
+            
+            
         }
 
         public override void Run(IReGoapAction<string, object> previous, IReGoapAction<string, object> next, ReGoapState<string, object> settings, ReGoapState<string, object> goalState, Action<IReGoapAction<string, object>> done,
             Action<IReGoapAction<string, object>> fail)
         {
             base.Run(previous, next, settings, goalState, done, fail);
-            if (checkEnemys.whosAround != null)
-            {
-                model.Target = checkEnemys.whosAround[Random.Range(0, checkEnemys.whosAround.Count)];
-                doneCallback(this);
-            }
+            newTarget = model.Target;
+            transform.position = newTarget.transform.position - newTarget.transform.forward * 2;
+            transform.LookAt(newTarget.transform);
+            Health targetHealth = newTarget.GetComponent<Health>();
+            
+            targetHealth = newTarget.GetComponent<Health>();
+            targetHealth.Change(-damage,this.gameObject);
+            StartCoroutine(WaitASec());
         }
         
         public override void Exit(IReGoapAction<string, object> next)
@@ -44,6 +46,12 @@ namespace Russell
             {
                 worldState.Set(pair.Key,pair.Value);
             }
+        }
+        
+        IEnumerator WaitASec()
+        {
+            yield return new WaitForSeconds(1);
+            doneCallback(this);
         }
     }
 
