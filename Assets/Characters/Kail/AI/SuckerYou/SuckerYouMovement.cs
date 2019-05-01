@@ -40,7 +40,7 @@ namespace Kail
             currentState = theState;
         }
 
-        private void MoveStop()
+        public void MoveStop()
         {
             //make SY stop moving, then send them back to the state
             time = 0;
