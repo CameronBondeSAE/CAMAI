@@ -10,7 +10,7 @@ namespace Russell
         // Start is called before the first frame update
         void Start()
         {
-        
+            CalculateNewGoal(true);
         }
 
         // Update is called once per frame

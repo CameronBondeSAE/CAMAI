@@ -17,6 +17,7 @@ namespace Russell
             base.Awake();
             spinner = GetComponent<Spinner_Model>();
             preconditions.Set("hasTarget", true);
+            
             effects.Set("targetKilled", true);
         }
 
@@ -24,15 +25,29 @@ namespace Russell
             Action<IReGoapAction<string, object>> fail)
         {
             base.Run(previous, next, settings, goalState, done, fail);
+            spinner.movementSpeed = 0f;
             Health health = spinner.Target.GetComponent<Health>();
-                
-            if (health != null)
+
+            while (health.Amount != 0)
             {
+
                 health.Change(-damageOverTime * Time.deltaTime, this.gameObject );
+                doneCallback(this);
             }
+            
 
             health.OnDeathEvent += SpawnSoul;
-
+            
+        }
+        
+        public override void Exit(IReGoapAction<string, object> next)
+        {
+            base.Exit(next);
+            var worldState = agent.GetMemory().GetWorldState();
+            foreach (var pair in effects.GetValues())
+            {
+                worldState.Set(pair.Key,pair.Value);
+            }
         }
 
 

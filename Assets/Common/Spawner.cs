@@ -6,81 +6,83 @@ using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
 {
-	public List<GameObject> prefabs;
-	public int maxClones;
-	public int arenaSize;
+    public List<GameObject> prefabs;
+    public int maxClones;
+    public int arenaSize;
 
-	public event Action<GameObject> OnSpawnedNewGameObject;
+    public event Action<GameObject> OnSpawnedNewGameObject;
 
-	public float timedSpawnInterval;
+    public float timedSpawnInterval;
 
-	public bool checkForEmptySpace = false;
-	public LayerMask layerMask;
+    public bool checkForEmptySpace = false;
+    public LayerMask layerMask;
 
-	// Use this for initialization
-	IEnumerator Start()
-	{
-		// TODO HACK NodeCanvas for some reason needs a delay, or the Script actions link back to the prefab, instead of the instance
-		yield return new WaitForSeconds(1);
-		
-		foreach (GameObject item in prefabs)
-		{
-			for (int i = 0; i < maxClones; i++)
-			{
-				Spawn(item);
-			}
-		}
+    // Use this for initialization
+    IEnumerator Start()
+    {
+        // TODO HACK NodeCanvas for some reason needs a delay, or the Script actions link back to the prefab, instead of the instance
+        yield return new WaitForSeconds(1);
 
-		if (timedSpawnInterval > 0)
-		{
-			InvokeRepeating("Spawn", timedSpawnInterval, timedSpawnInterval);
-		}
-	}
+        foreach (GameObject item in prefabs)
+        {
+            for (int i = 0; i < maxClones; i++)
+            {
+                Spawn(item);
+            }
+        }
 
-	void Spawn()
-	{
-		Spawn(prefabs[prefabs.Count-1]);
-	}
+        if (timedSpawnInterval > 0)
+        {
+            InvokeRepeating("Spawn", timedSpawnInterval, timedSpawnInterval);
+        }
+    }
 
-	private void Spawn(GameObject item)
-	{
-		if (item != null)
-		{
-			Vector3 randomPosition = new Vector3();
+    void Spawn()
+    {
+        Spawn(prefabs[prefabs.Count - 1]);
+    }
 
-			// Check for things in the way and try again (Bail after 100 tries)
+    private void Spawn(GameObject item)
+    {
+        if (item == null)
+            return;
+        
+        
+        Vector3 randomPosition = new Vector3();
 
-			if (checkForEmptySpace)
-			{
-				for (int i = 0; i < 100; i++)
-				{
-					randomPosition = transform.position + new Vector3(Random.Range(-arenaSize, arenaSize), 0,
-										Random.Range(-arenaSize, arenaSize));
-					if (!Physics.CheckSphere(randomPosition, 0.1f, layerMask, QueryTriggerInteraction.Ignore))
+        // Check for things in the way and try again (Bail after 100 tries)
+
+        if (checkForEmptySpace)
+        {
+            for (int i = 0; i < 100; i++)
+            {
+                randomPosition = transform.position + new Vector3(Random.Range(-arenaSize, arenaSize), 0,
+                                     Random.Range(-arenaSize, arenaSize));
+                if (!Physics.CheckSphere(randomPosition, 0.1f, layerMask, QueryTriggerInteraction.Ignore))
 //					if (!Physics.Raycast(randomPosition, Vector3.up, 1f, layerMask, QueryTriggerInteraction.Ignore))
 //					if (!Physics.Raycast(randomPosition, Vector3.up, 10f))
-					{
-						Debug.DrawLine(randomPosition, randomPosition + Vector3.up * 5f, Color.green, 3);
+                {
+                    Debug.DrawLine(randomPosition, randomPosition + Vector3.up * 5f, Color.green, 3);
 //						Debug.Log("Spawner: Found empty spot");
-						break;
-					}
-					else
-					{
-						Debug.DrawLine(randomPosition, randomPosition + Vector3.up*5f, Color.red, 3);
-						Debug.Log("Spawner: Location blocked, trying again");
-					}
-				}
-			}
-			else
-			{
-				randomPosition = transform.position + new Vector3(Random.Range(-arenaSize, arenaSize), 0,
-									Random.Range(-arenaSize, arenaSize));
-			}
+                    break;
+                }
+                else
+                {
+                    Debug.DrawLine(randomPosition, randomPosition + Vector3.up * 5f, Color.red, 3);
+                    Debug.Log("Spawner: Location blocked, trying again");
+                }
+            }
+        }
+        else
+        {
+            randomPosition = transform.position + new Vector3(Random.Range(-arenaSize, arenaSize), 0,
+                                 Random.Range(-arenaSize, arenaSize));
+        }
 
-			var newGO = Instantiate(item, randomPosition, Quaternion.identity);
+        var newGO = Instantiate(item, randomPosition, Quaternion.identity);
+        Debug.Log("Spawned: "+item.name);
 
-			if (OnSpawnedNewGameObject != null)
-				OnSpawnedNewGameObject(newGO);
-		}
-	}
+        if (OnSpawnedNewGameObject != null)
+            OnSpawnedNewGameObject(newGO);
+    }
 }

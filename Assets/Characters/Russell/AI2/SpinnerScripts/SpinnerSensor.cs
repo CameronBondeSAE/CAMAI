@@ -14,19 +14,19 @@ namespace Russell
 
         private void Awake()
         {
-            
+            spinner = GetComponent<Spinner_Model>();
             checkAround = GetComponent<WhosAround>();
         }
 
         public override void UpdateSensor()
         {
             base.UpdateSensor();
-            if (checkAround.whosAround != null)
+            if (spinner.Target)
             {
-                spinner.Target = checkAround.whosAround[0].gameObject;
-                GetMemory().GetWorldState().Set("hasTarget", true);
+                
+                //GetMemory().GetWorldState().Set("hasTarget", true);
             }
-            else GetMemory().GetWorldState().Set("hasTarget", false);
+            //else GetMemory().GetWorldState().Set("hasTarget", false);
 
             if (health.Amount != 0f)
             {

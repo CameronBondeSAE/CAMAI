@@ -35,9 +35,18 @@ public class ProjectileSyphon : MonoBehaviour
         }
         else
         {
-            if (target != null) RotateTowards(target.position);
-
-            body.velocity = transform.forward * travelSpeed;
+            if (target == null)
+            {
+                if (parentObject == null) 
+                    Destroy(this.gameObject);
+                else 
+                    target = parentObject.transform;
+            }
+            else
+            {
+                RotateTowards(target.position);
+                body.velocity = transform.forward * travelSpeed;
+            }
         }   
         
     }
@@ -62,12 +71,13 @@ public class ProjectileSyphon : MonoBehaviour
             if (other.GetComponent<Projectile_SpiritBomb>() != null)
             {
                 other.GetComponent<Projectile_SpiritBomb>().Power(power);
-                exploding = true;
             }
-            else
+            else if (other.GetComponent<Energy>() != null)
             {
-                exploding = true;
+                other.GetComponent<Energy>().Change(1);
             }
+            
+            exploding = true;
         }
     }
 

@@ -5,165 +5,180 @@ using DG.Tweening;
 //[RequireComponent(typeof(LineRenderer))]
 public class Health : MonoBehaviour
 {
-	// Variables
-	[SerializeField]
-	private float amount = 100;
-	public float Amount
-	{
-		get
-		{
-			return amount;
-		}
-		set
-		{
-			amount = value;
-			Change(0); // HACK: Cheap way to check for death and ranges
-		}
-	}
+    // Variables
+    [SerializeField] private float amount = 100;
 
-	public float maxAmount = 100;
+    public float Amount
+    {
+        get { return amount; }
+        set
+        {
+            amount = value;
+            Change(0); // HACK: Cheap way to check for death and ranges
+        }
+    }
 
-	// Event definitions
+    public float maxAmount = 100;
 
-	public event Action OnDeathEvent;
-	public event Action OnHurtEvent;
-	public event Action OnHealingEvent;
-	public event Action<GameObject> OnDeathEventGameObject;
+    // Event definitions
 
-	public delegate float OnInterceptAttemptedChangeParameters(float amountOfChange);
-	public event OnInterceptAttemptedChangeParameters OnInterceptAttemptedChange;
+    public event Action OnDeathEvent;
+    public event Action OnHurtEvent;
+    public event Action OnHealingEvent;
+    public event Action<GameObject> OnDeathEventGameObject;
 
-	public event Action<float> OnIncomingChange;
+    public delegate float OnInterceptAttemptedChangeParameters(float amountOfChange);
 
-	public GameObject lastHealingDealer;
-	public GameObject lastDamagingDealer;
-	public float lastHealthChangedAmount;
+    public event OnInterceptAttemptedChangeParameters OnInterceptAttemptedChange;
 
-	private GameObject owner;
+    public event Action<float> OnIncomingChange;
 
-//	LineRenderer lineRenderer;
+    public GameObject lastHealingDealer;
+    public GameObject lastDamagingDealer;
+    public float lastHealthChangedAmount;
 
-	// Functions
-	public void Awake()
-	{
-		owner = gameObject;
-//		lineRenderer = gameObject.GetComponent<LineRenderer>();
-//		Material material = Resources.Load<Material>("HealthLine");
+    private GameObject owner;
 
-//		lineRenderer.material = material;
+    LineRenderer lineRenderer;
 
-		//		lineRenderer.wid
-	}
-
-	public void Change(float amountOfChange, CharacterBase healthChangeDealer)
-	{
-		if (healthChangeDealer != null) Change(amountOfChange, healthChangeDealer.gameObject);
-	}
-
-	public void Change(float amountOfChange, GameObject healthChangeDealer)
-	{
-		if (OnIncomingChange != null) OnIncomingChange(amountOfChange);
-
-		// Allow customising amount of change (eg shields/invulnerability etc)
-		if (OnInterceptAttemptedChange != null)
-		{
-			amountOfChange = OnInterceptAttemptedChange(amountOfChange);
-		}
+    // Functions
+    public void Awake()
+    {
+        owner = gameObject;
 
 
+        // View
+        lineRenderer = gameObject.GetComponent<LineRenderer>();
+        if (lineRenderer == null)
+        {
+            lineRenderer = gameObject.AddComponent<LineRenderer>();
+        }
 
-		amount = amount + amountOfChange;
-		amount = Mathf.Clamp(amount, 0, maxAmount);
+        Material material = Resources.Load<Material>("HealthLine");
+        lineRenderer.material = material;
+    }
 
-		lastHealthChangedAmount = amountOfChange;
+    public void Change(float amountOfChange, CharacterBase healthChangeDealer)
+    {
+        if (healthChangeDealer != null) Change(amountOfChange, healthChangeDealer.gameObject);
+    }
 
-		// Fire off events
-		if (amountOfChange > 0)
-		{
-			if (OnHealingEvent != null) OnHealingEvent();
-		}
-		else
-		{
-			if (OnHurtEvent != null) OnHurtEvent();
-		}
+    public void Change(float amountOfChange, GameObject healthChangeDealer)
+    {
+        if (OnIncomingChange != null) OnIncomingChange(amountOfChange);
 
-		if (healthChangeDealer != null)
-		{
-			if (amountOfChange > 0)
-			{
-				lastHealingDealer = healthChangeDealer;
-//				if (owner != null) DrawLine(healthChangeDealer.transform, owner.transform, amountOfChange, Color.green);
-			}
-			else
-			{
-				lastDamagingDealer = healthChangeDealer;
-//				if (owner != null) DrawLine(healthChangeDealer.transform, owner.transform, amountOfChange, Color.red);
-			}
-			Debug.DrawLine(transform.position, healthChangeDealer.transform.position, Color.red, 0.50f);
-
-		}
-		CheckForDeath();
-	}
-
-	[Obsolete("Use the Change function that takes a GameObject")]
-	public void Change(float amountOfChange)
-	{
-		if (OnIncomingChange != null) OnIncomingChange(amountOfChange);
-
-		// Allow customising amount of change (eg shields/invulnerability etc)
-		if (OnInterceptAttemptedChange != null)
-		{
-			amountOfChange = OnInterceptAttemptedChange(amountOfChange);
-		}
-
-		amount = amount + amountOfChange;
-		amount = Mathf.Clamp(amount, 0, maxAmount);
-
-		// Fire off events
-		if (amountOfChange > 0)
-		{
-			if (OnHealingEvent != null) OnHealingEvent();
-		}
-		else
-		{
-			if (OnHurtEvent != null) OnHurtEvent();
-		}
-		CheckForDeath();
-	}
+        // Allow customising amount of change (eg shields/invulnerability etc)
+        if (OnInterceptAttemptedChange != null)
+        {
+            amountOfChange = OnInterceptAttemptedChange(amountOfChange);
+        }
 
 
-//	public void DrawLine(Transform damager, Transform damageReceiver, float amountOfChange, Color colour)
-//	{
-//
-//		lineRenderer.startColor = colour;
-//		lineRenderer.endColor = colour;
-////		lineRenderer.startWidth = (amountOfChange / 10f) / 2f;
-//		lineRenderer.startWidth = 0.5f;
-////		lineRenderer.endWidth = amountOfChange / 10f;
-//		lineRenderer.endWidth = 0.5f;
-//
-//		lineRenderer.SetPosition(0, damager.position);
-//		lineRenderer.SetPosition(1, damageReceiver.position);
-//
-////		DOTween.To(delegate (float value) { lineRenderer.material.color = new Color(colour.r, colour.g, colour.b, value); }, 1f, 0f, amountOfChange / 10f);
-//		DOTween.To(delegate (float value) { lineRenderer.material.color = new Color(colour.r, colour.g, colour.b, value); }, 1f, 0f, 1f);
-//	}
+        amount = amount + amountOfChange;
+        amount = Mathf.Clamp(amount, 0, maxAmount);
 
-	private void CheckForDeath()
-	{
-		// Check if it’s smaller than OR EQUAL TO zero.
-		if (amount <= 0)
-		{
-			Die();
-		}
-	}
+        lastHealthChangedAmount = amountOfChange;
 
-	private void Die()
-	{
-		if (OnDeathEvent != null)
-			OnDeathEvent();
+        // Fire off events
+        if (amountOfChange > 0)
+        {
+            if (OnHealingEvent != null) OnHealingEvent();
+        }
+        else
+        {
+            if (OnHurtEvent != null) OnHurtEvent();
+        }
 
-		if (OnDeathEventGameObject != null)
-			OnDeathEventGameObject(gameObject);
-	}
+        if (healthChangeDealer != null)
+        {
+            if (amountOfChange > 0)
+            {
+                lastHealingDealer = healthChangeDealer;
+                if (owner != null) DrawLine(healthChangeDealer.transform, owner.transform, amountOfChange, Color.green);
+            }
+            else
+            {
+                lastDamagingDealer = healthChangeDealer;
+                if (owner != null) DrawLine(healthChangeDealer.transform, owner.transform, amountOfChange, Color.red);
+            }
+
+            Debug.DrawLine(transform.position, healthChangeDealer.transform.position, Color.red, 0.50f);
+        }
+
+        CheckForDeath();
+    }
+
+    [Obsolete("Use the Change function that takes a GameObject")]
+    public void Change(float amountOfChange)
+    {
+        if (OnIncomingChange != null) OnIncomingChange(amountOfChange);
+
+        // Allow customising amount of change (eg shields/invulnerability etc)
+        if (OnInterceptAttemptedChange != null)
+        {
+            amountOfChange = OnInterceptAttemptedChange(amountOfChange);
+        }
+
+        amount = amount + amountOfChange;
+        amount = Mathf.Clamp(amount, 0, maxAmount);
+
+        // Fire off events
+        if (amountOfChange > 0)
+        {
+            if (OnHealingEvent != null) OnHealingEvent();
+        }
+        else
+        {
+            if (OnHurtEvent != null) OnHurtEvent();
+        }
+
+        CheckForDeath();
+    }
+
+
+    Tweener tweener;
+
+    public void DrawLine(Transform damager, Transform damageReceiver, float amountOfChange, Color colour)
+    {
+        lineRenderer.startColor = colour;
+        lineRenderer.endColor = colour;
+//		lineRenderer.startWidth = (amountOfChange / 10f) / 2f;
+        lineRenderer.startWidth = 0.5f;
+//		lineRenderer.endWidth = amountOfChange / 10f;
+        lineRenderer.endWidth = 0.5f;
+
+        lineRenderer.SetPosition(0, damager.position);
+        lineRenderer.SetPosition(1, damageReceiver.position);
+
+//		DOTween.To(delegate (float value) { lineRenderer.material.color = new Color(colour.r, colour.g, colour.b, value); }, 1f, 0f, amountOfChange / 10f);
+        if (tweener != null && tweener.IsActive())
+        {
+            tweener.Kill();
+        }
+        tweener = DOTween.To(
+            DoSetter, 1f,
+            0f, 1f);
+        void DoSetter(float value)
+        {
+            lineRenderer.material.color = new Color(colour.r, colour.g, colour.b, value);
+        }
+    }
+
+    private void CheckForDeath()
+    {
+        // Check if it’s smaller than OR EQUAL TO zero.
+        if (amount <= 0)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        if (OnDeathEvent != null)
+            OnDeathEvent();
+
+        if (OnDeathEventGameObject != null)
+            OnDeathEventGameObject(gameObject);
+    }
 }

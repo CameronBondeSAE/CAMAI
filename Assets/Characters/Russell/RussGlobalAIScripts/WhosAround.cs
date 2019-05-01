@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class WhosAround : MonoBehaviour
 {
-    public List<CharacterBase> whosAround = new List<CharacterBase>();
+    public List<GameObject> whosAround = new List<GameObject>();
 
     public float radius;
     // Start is called before the first frame update
@@ -23,13 +23,13 @@ public class WhosAround : MonoBehaviour
         
         if (other.GetComponent<CharacterBase>())
         {
-            whosAround.Add(other.GetComponent<CharacterBase>());
+            whosAround.Add(other.gameObject);
             //numberOfPlayers = whosAround.Count;
         }
     }
     private void OnTriggerExit(Collider other)
     { 
-        whosAround.Remove(other.GetComponent<CharacterBase>());  
+        whosAround.Remove(other.gameObject);  
         //numberOfPlayers = whosAround.Count;
     }
 }

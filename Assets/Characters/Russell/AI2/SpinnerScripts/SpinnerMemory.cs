@@ -12,8 +12,9 @@ namespace Russell
         {
             base.Awake();
             GetWorldState().Set("hasTarget", false);
-            GetWorldState().Set("haveMoved", true);
+            GetWorldState().Set("haveMoved", false);
             GetWorldState().Set("alive", true);
+            GetWorldState().Set("targetKilled", false);
         }
 
         // Update is called once per frame

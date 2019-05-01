@@ -52,9 +52,11 @@ namespace Kennith
             foreach (CharacterBase c in characters)
             {
                 if (c.gameObject.GetComponent<Kennith_Model>() != null) continue;
+
+                if (c.GetComponent<Health>() == null) return;
                 
+                c.GetComponentInChildren<Health>().OnDeathEvent += RemoveEnemy;
                 enemies.Add(c.gameObject);
-                c.GetComponent<Health>().OnDeathEvent += RemoveEnemy;
             }
 
             spawners.AddRange(FindObjectsOfType<Spawner>());
@@ -74,7 +76,7 @@ namespace Kennith
             currentState.Tick();
             
             //TESTING
-            if (TargetObject != null) CheckFor(TargetObject);
+            if (TargetObject == null) FindTarget();
         }
         
         public void SyphoningPower(GameObject bomb)
@@ -147,6 +149,7 @@ namespace Kennith
 
         public void LookAt(GameObject g, float rotationSpeed)
         {
+            if (g == null) return;
             Vector3 lookPos = g.transform.position - transform.position;
             lookPos.y = 0;
             Quaternion rotation = Quaternion.LookRotation(lookPos);
@@ -181,6 +184,12 @@ namespace Kennith
                     visible.Add(e);
             }
 
+            if (visible.Count <= 0)
+            {
+                currentState.Exit();
+                return;
+            }
+            
             TargetObject = visible[Random.Range(0, visible.Count - 1)];
             targetVisible = true;
             StartCoroutine(CheckTarget());
@@ -215,7 +224,7 @@ namespace Kennith
 
             foreach (GameObject e in enemies)
             {
-                e.GetComponent<Health>().OnDeathEvent -= RemoveEnemy;
+                e.GetComponentInChildren<Health>().OnDeathEvent -= RemoveEnemy;
             }
             
             foreach (Spawner s in spawners)

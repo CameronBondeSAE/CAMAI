@@ -25,7 +25,7 @@ namespace Russell
             newTarget = _characterBase.Target;
             ai.transform.position = newTarget.transform.position - newTarget.transform.forward * backDistance;
             ai.transform.LookAt(newTarget.transform);
-            Debug.Log("you ded");
+            
             onCD = true;
             targetHealth = newTarget.GetComponent<Health>();
             targetHealth.Change(-damage,_characterBase);

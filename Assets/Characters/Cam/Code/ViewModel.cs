@@ -31,8 +31,8 @@ public class ViewModel : MonoBehaviour
 
     private void OnGetBig()
     {
-        AudioSource.clip = meowClip;
-        AudioSource.Play();
+//        AudioSource.clip = meowClip;
+//        AudioSource.Play();
         ParticleSystem.ShapeModule shapeModule = particleSystem.shape;
         shapeModule.radius = mrDudesModel.getBigHitRadius;
         particleSystem.Emit(1000);
@@ -44,7 +44,7 @@ public class ViewModel : MonoBehaviour
     private void OnAttack()
     {
         GetComponent<Renderer>().material.color = Color.red;
-        AudioSource.clip = meowClip;
-        AudioSource.Play();
+//        AudioSource.clip = meowClip;
+//        AudioSource.Play();
     }
 }
