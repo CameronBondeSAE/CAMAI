@@ -37,8 +37,8 @@ public class TeleportRandomly : StateBase
     public IEnumerator AttackCoroutine()
     {
         _transform.position = _transform.position + new Vector3(Random.Range(-teleportRange, teleportRange), 0, Random.Range(-teleportRange, teleportRange));
-        _audioSource.clip = meowClip;
-        _audioSource.Play();
+//        _audioSource.clip = meowClip;
+//        _audioSource.Play();
             
         yield return new WaitForSeconds(2);
         _mrDudesModel.EndState();
