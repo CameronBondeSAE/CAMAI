@@ -26,6 +26,7 @@ namespace Michael
         private void FixedUpdate()
         {
             if (currentState != null) currentState.Execute();
+            
             falling = transform.position.y < -5;
             enemySeen = Target != null;
 
@@ -140,6 +141,7 @@ namespace Michael
              */
             newState.Enter();
             currentState = newState;
+            debugText = currentState.name;
         }
 
         private void OverrideState()

@@ -372,6 +372,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cc4e17efd72f8940a4820313e9b99c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Fleeing
   delay: 5
   Self: {fileID: 6071121813599348559}
   target: {fileID: 0}
@@ -387,6 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87ec7b5f07aa6440935ecca1b8e92b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Roamming
   delay: 5
   Self: {fileID: 6071121813599348559}
   destination: {x: 4, y: 0, z: -4}
@@ -403,6 +405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a803ddccd66af4ea455c59d67df70e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Teleporting
   delay: 2
   Self: {fileID: 6071121813599348559}
   cost: 10
@@ -421,6 +424,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4e68abc1aefc0740affd558cc047d19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Attacking
   delay: 2
   Self: {fileID: 6071121813599348559}
 --- !u!114 &1292643851982480439
@@ -435,6 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3a7485edc65924396e189e84e80b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Casting ArcaneBarrage
   delay: 2
   Self: {fileID: 6071121813599348559}
   cost: 20
@@ -454,6 +459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a3f4b3e55328745a212afc1b724c04, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Spawning Minion
   delay: 3
   Self: {fileID: 0}
   darklingPrefab: {fileID: 1503865443345721763, guid: 5acb82bb65813a3488e214534b8d339a,

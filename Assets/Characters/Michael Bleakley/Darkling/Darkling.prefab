@@ -349,6 +349,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da8c5fe6d451bd948a37c4ea0e99661a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Following
   delay: 3
   Self: {fileID: 0}
 --- !u!114 &4105658989633376892
@@ -363,6 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae3a7485edc65924396e189e84e80b16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Casting ArcaneBarrage
   delay: 3
   Self: {fileID: 0}
   cost: 10
@@ -382,6 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e87ec7b5f07aa6440935ecca1b8e92b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  name: Roaming
   delay: 3
   Self: {fileID: 0}
   destination: {x: 0, y: 0, z: 0}
