@@ -19,11 +19,20 @@ namespace Tom
 
         public void ChangeState(StateBase newState)
         {
-            //Check current state isn't the same
-            if(currentState != null)currentState.Exit();
-            newState.Enter();
-            currentState = newState;
+            // Check current state isn't the same
+            if (newState == currentState) return;
 
+            if (currentState != null) currentState.Exit();
+            if (newState != null)
+            {
+                newState.Enter();
+
+                currentState = newState;
+            }
+            else
+            {
+                currentState = null;
+            }
         }
         
         private void Awake()
@@ -42,12 +51,13 @@ namespace Tom
         {
             Cindy_Model_OnHurtEvent();
             Cindy_Model_OnDeathEvent();
-        }     
-       
+
+        }
 
 
-         
-        
+
+
+
         private void Cindy_Model_OnDeathEvent()
         {
               if(GetComponent<Health>().Amount <= 0)
@@ -59,15 +69,9 @@ namespace Tom
             float scaleChange = GetComponent<Health>().lastHealthChangedAmount / 100f;
             transform.localScale -= new Vector3(-scaleChange, -scaleChange, -scaleChange);
         }
-        //TODO move to seperate inheritance 
-        public void TeleportRandomly()
-        {
-            myTransform.position = myTransform.position + new Vector3(Random.Range(-teleportRange, teleportRange), Random.Range(-teleportRange, teleportRange), Random.Range(-teleportRange, teleportRange));
-        }
 
-        public void GetBig()
-        {
-            myTransform.localScale = myTransform.localScale * getBigScalar;
-        }
+        //activate panic state function
+
+        
     }
 }
