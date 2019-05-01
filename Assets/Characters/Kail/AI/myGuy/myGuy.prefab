@@ -108,6 +108,7 @@ GameObject:
   - component: {fileID: 6766786951593062527}
   - component: {fileID: 2319863320345900327}
   - component: {fileID: 4149785593832600024}
+  - component: {fileID: 3602490702815472448}
   - component: {fileID: 2047997635115562653}
   - component: {fileID: 7881328977659874765}
   - component: {fileID: 3851290651417460151}
@@ -238,6 +239,7 @@ MonoBehaviour:
   deathState: {fileID: 0}
   myTarget: {fileID: 0}
   next: 0
+  healthBase: {fileID: 0}
 --- !u!114 &6766786951593062527
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -306,6 +308,23 @@ MonoBehaviour:
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"},"pause":{"_propertyPath":"Kail.RunState.pause","_name":"pause","_id":"1f6c61c1-53bd-471e-a5dc-602c755de968","$type":"NodeCanvas.Framework.Variable`1[[System.Boolean,
     mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"}}}'
   _objectReferences: []
+--- !u!114 &3602490702815472448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1359622451692584776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8471732199156f54cbca6111884c7904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  amount: 100
+  maxAmount: 100
+  lastHealingDealer: {fileID: 0}
+  lastDamagingDealer: {fileID: 0}
+  lastHealthChangedAmount: 0
 --- !u!114 &2047997635115562653
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -359,6 +378,7 @@ MonoBehaviour:
   enemy: {fileID: 0}
   me: {fileID: 0}
   empty: {fileID: 0}
+  insult: 
 --- !u!65 &468261038
 BoxCollider:
   m_ObjectHideFlags: 0
