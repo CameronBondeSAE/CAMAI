@@ -57,13 +57,13 @@ namespace Kail
 
         private void FixedUpdate()
         {
-            if ((turningTime > 0) && (move == true))
+            if (turningTime > 0)
             {
                 rb.AddRelativeTorque(0, 30*2, 0);
                 turningTime--;
             }
 
-            if ((turningTime <= 0) && (turned == false) && (move == true))
+            if ((turningTime <= 0) && (turned == false))
             {
                 turningTime = 0;
                 turned = true;
@@ -73,7 +73,7 @@ namespace Kail
         public override void Exit(int nextState)
         {
             base.Exit(nextState);
-            move = false;
+            moveIdle.MoveOverride();
         }
     }
 }

@@ -5,9 +5,10 @@ namespace Michael
 {
     public class StateBase : MonoBehaviour
     {
+        public string name;
         public float delay;
         public GameObject Self;
-
+        
         private void Awake()
         {
             Self = GetComponentInParent<CharacterBase>().transform.gameObject;

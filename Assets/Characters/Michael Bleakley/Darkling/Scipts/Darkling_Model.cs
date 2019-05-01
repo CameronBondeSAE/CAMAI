@@ -46,6 +46,7 @@ namespace Michael
         {
             newState.Enter();
             currentState = newState;
+            debugText = currentState.name;
         }
 
         public void OverrideState()
@@ -58,6 +59,7 @@ namespace Michael
         private void FixedUpdate()
         {
             if (currentState != null) currentState.Execute();
+      
             if (transform.position.y < -5)
             {
                 if (vestraLead != null) vestraLead.GetComponentInChildren<SpawnState>().darklings.Remove(gameObject);

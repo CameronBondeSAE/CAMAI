@@ -24,7 +24,7 @@ namespace Kail
         
         public void Awake()
         {
-            
+            characterName = "myGuy";
             
             //set everything up
             tauntState = GetComponent<TauntState>();
@@ -34,10 +34,7 @@ namespace Kail
 
             //health = healthBase.Amount;
 
-            healthBase.maxAmount = 100;
-            
-            
-
+            healthBase.maxAmount = 100;       
 
             currentState = idleState;
             currentState.Enter();
@@ -63,15 +60,19 @@ namespace Kail
             {
                 case 0:
                     newState = idleState;
+                    debugText = "idle";
                     break;
                 case 1:
                     newState = tauntState;
+                    debugText = "taunting";
                     break;
                 case 2:
                     newState = runState;
+                    debugText = "running";
                     break;
                 case 3:
                     newState = deathState;
+                    debugText = "dying";
                     break;
 
             }

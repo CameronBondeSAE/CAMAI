@@ -11,10 +11,11 @@ namespace Russell
         protected override void Awake()
         {
             base.Awake();
-            GetWorldState().Set("hasTarget", false);
-            GetWorldState().Set("haveMoved", false);
             GetWorldState().Set("alive", true);
-            GetWorldState().Set("targetKilled", false);
+            GetWorldState().Set("foundEnemy", false);
+            GetWorldState().Set("foundPickup", false);
+            GetWorldState().Set("fullEnergy", false);
+            GetWorldState().Set("EnemyDamaged", false);
         }
 
         // Update is called once per frame
