@@ -16,12 +16,12 @@ namespace Russell
 
         private void Update()
         {
-            if (checkTarget.whosAround.Count != 0)
-            {
-                Target = checkTarget.whosAround[Random.Range(0, checkTarget.whosAround.Count)];
-            }
-            else Target = null;
-            Move();
+            //if (checkTarget.whosAround.Count != 0)
+            //{
+            //    Target = checkTarget.whosAround[Random.Range(0, checkTarget.whosAround.Count)];
+            //}
+            //else Target = null;
+            //Move();
             
 
         }

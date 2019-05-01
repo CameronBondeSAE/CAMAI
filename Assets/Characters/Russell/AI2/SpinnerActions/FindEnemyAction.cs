@@ -13,14 +13,14 @@ namespace Russell
     {
         
         Spinner_Model model;
+        public List<GameObject> whosAround = new List<GameObject>();
         private WhosAround checkEnemys;
         protected override void Awake()
         {
             
             
             base.Awake();
-            model = GetComponent<Spinner_Model>();
-            checkEnemys = GetComponent<WhosAround>();
+            model = GetComponent<Spinner_Model>();      
             preconditions.Set("alive", true);
             effects.Set("foundEnemy", true);
         }
@@ -29,10 +29,14 @@ namespace Russell
             Action<IReGoapAction<string, object>> fail)
         {
             base.Run(previous, next, settings, goalState, done, fail);
-            if (checkEnemys.whosAround != null)
+            if (whosAround == null)
             {
-                model.Target = checkEnemys.whosAround[Random.Range(0, checkEnemys.whosAround.Count)];
-                doneCallback(this);
+                failCallback(this);
+            }
+            else if(whosAround != null)
+            {
+                model.Target = whosAround[Random.Range(0, whosAround.Count)];
+                StartCoroutine(WaitASec());
             }
         }
         
@@ -44,6 +48,34 @@ namespace Russell
             {
                 worldState.Set(pair.Key,pair.Value);
             }
+        }
+        
+        
+        IEnumerator WaitASec()
+        {
+            yield return new WaitForSeconds(1);
+            doneCallback(this);
+        }
+        
+        IEnumerator Failed()
+        {
+            yield return new WaitForSeconds(1);
+            
+        }
+        
+        private void OnTriggerEnter(Collider other)
+        {
+        
+            if (other.GetComponent<CharacterBase>())
+            {
+                whosAround.Add(other.gameObject);
+                //numberOfPlayers = whosAround.Count;
+            }
+        }
+        private void OnTriggerExit(Collider other)
+        { 
+            whosAround.Remove(other.gameObject);  
+            //numberOfPlayers = whosAround.Count;
         }
     }
 

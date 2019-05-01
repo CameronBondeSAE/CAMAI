@@ -13,11 +13,12 @@ namespace Russell
         public Spinner_Model model;
         public GameObject newTarget;
         public float damage;
+        public Energy energy;
         protected override void Awake()
         {
             base.Awake();
             model = GetComponent<Spinner_Model>();
-            preconditions.Set("foundTarget",true);
+            preconditions.Set("foundEnemy",true);
             preconditions.Set("fullEnergy", true);
             effects.Set("EnemyDamaged", true);
             
@@ -35,7 +36,13 @@ namespace Russell
             
             targetHealth = newTarget.GetComponent<Health>();
             targetHealth.Change(-damage,this.gameObject);
+            energy.Amount = 0f;
             StartCoroutine(WaitASec());
+
+            if (energy.Amount == 0)
+            {
+                StartCoroutine(Failed()); 
+            }
         }
         
         public override void Exit(IReGoapAction<string, object> next)
@@ -52,6 +59,11 @@ namespace Russell
         {
             yield return new WaitForSeconds(1);
             doneCallback(this);
+        }
+        IEnumerator Failed()
+        {
+            yield return new WaitForSeconds(1);
+            failCallback(this);
         }
     }
 

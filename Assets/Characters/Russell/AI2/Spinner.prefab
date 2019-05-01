@@ -11,14 +11,15 @@ GameObject:
   - component: {fileID: 544435007629359146}
   - component: {fileID: 544435007629359149}
   - component: {fileID: 544435007629359148}
-  - component: {fileID: 1092284896356253278}
-  - component: {fileID: 5700734650243557662}
   - component: {fileID: 648132542341272002}
   - component: {fileID: 4350460044193937236}
   - component: {fileID: 7000935492974212973}
-  - component: {fileID: 616443171060134398}
-  - component: {fileID: 706230913481942387}
   - component: {fileID: 7126872702852503579}
+  - component: {fileID: 2401106488578141289}
+  - component: {fileID: 6324095224633155670}
+  - component: {fileID: 9191768308293593812}
+  - component: {fileID: 757548997939598693}
+  - component: {fileID: 2320142191883902196}
   - component: {fileID: 544435007629359151}
   - component: {fileID: 8329794761621621705}
   - component: {fileID: 4889679098196941193}
@@ -88,38 +89,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!114 &1092284896356253278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544435007629359150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05d72fe3a37150d41b04fd0fb72522d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: GoapAction
-  Cost: 1
-  movementSpeed: 4
---- !u!114 &5700734650243557662
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544435007629359150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c23300aad90bb9340a75e1f076f5dc31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: GoapAction
-  Cost: 1
-  damageOverTime: 30
-  spinner: {fileID: 0}
-  soul: {fileID: 0}
 --- !u!114 &648132542341272002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,36 +132,6 @@ MonoBehaviour:
   checkAround: {fileID: 0}
   spinner: {fileID: 0}
   health: {fileID: 0}
---- !u!114 &616443171060134398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544435007629359150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32649ef1dd4beed45a67ecf76f561fa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Name: GenericGoal
-  Priority: 1
-  ErrorDelay: 0.5
-  WarnPossibleGoal: 1
---- !u!114 &706230913481942387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 544435007629359150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 384cbbb2f79384a4d9e1a1729c08a57d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  whosAround: []
-  radius: 0
 --- !u!114 &7126872702852503579
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +151,88 @@ MonoBehaviour:
   damageMultiplier: 1
   _target: {fileID: 0}
   _targetPosition: {x: 0, y: 0, z: 0}
+  movementSpeed: 0
+--- !u!114 &2401106488578141289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544435007629359150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc0ddae761e3a6b489d2c79aea87292a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GoapAction
+  Cost: 1
+  whosAround: []
+--- !u!114 &6324095224633155670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544435007629359150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c3713b2b593bc649b63742e8089a52c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GoapAction
+  Cost: 1
+  EnergyPickups: []
+  minDist: Infinity
+  newPos: {fileID: 0}
+--- !u!114 &9191768308293593812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544435007629359150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce6f8fa9711159145af0cc7e56f308fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GoapAction
+  Cost: 1
+  model: {fileID: 0}
+  newTarget: {fileID: 0}
+  damage: 0
+  energy: {fileID: 0}
+--- !u!114 &757548997939598693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544435007629359150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed318285e7e0cbb4d9798cf2cd7433f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GoapAction
+  Cost: 1
+  pickup: {fileID: 0}
+--- !u!114 &2320142191883902196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544435007629359150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 175c0811b39b2b14199301a24c74dcaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Name: GenericGoal
+  Priority: 1
+  ErrorDelay: 0.5
+  WarnPossibleGoal: 1
 --- !u!65 &544435007629359151
 BoxCollider:
   m_ObjectHideFlags: 0
