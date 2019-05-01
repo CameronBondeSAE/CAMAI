@@ -22,12 +22,15 @@ namespace Kail
         public int turningTime;
         private bool turned;
 
+        public bool move;
+
         public override void Enter()
         {
             base.Enter();
             idle = this;
             moveIdle = GetComponentInParent<SuckerYouMovement>();
             rb = GetComponentInParent<Rigidbody>();
+            move = true;
             
             MoveSet();
         }
@@ -54,17 +57,23 @@ namespace Kail
 
         private void FixedUpdate()
         {
-            if (turningTime > 0)
+            if ((turningTime > 0) && (move == true))
             {
                 rb.AddRelativeTorque(0, 30*2, 0);
                 turningTime--;
             }
 
-            if ((turningTime <= 0) && (turned == false))
+            if ((turningTime <= 0) && (turned == false) && (move == true))
             {
                 turningTime = 0;
                 turned = true;
             }
+        }
+
+        public override void Exit(int nextState)
+        {
+            base.Exit(nextState);
+            move = false;
         }
     }
 }
