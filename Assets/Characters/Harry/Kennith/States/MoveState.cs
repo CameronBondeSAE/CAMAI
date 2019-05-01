@@ -41,9 +41,6 @@ namespace Kennith
             body.AddForce(parent.forward * speed * smallestDist * model.SpeedMultiplier);
             body.AddRelativeTorque(Vector3.up * rotationValue * 250);
 
-            
-            
-
             body.angularVelocity = Vector3.Lerp(body.velocity, Vector3.zero, 0.02f);
             body.velocity = Vector3.Lerp(body.velocity, Vector3.zero, 0.02f);
             body.velocity = Vector3.ClampMagnitude(body.velocity, speedCap);

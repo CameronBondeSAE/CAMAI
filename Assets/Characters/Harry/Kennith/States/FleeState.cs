@@ -4,24 +4,20 @@ namespace Kennith
 {
     public class FleeState : StateBase
     {
+        private Kennith_Model model;
+
+        private void Awake()
+        {
+            model = GetComponentInParent<Kennith_Model>();
+        }
+
         public override void Enter()
         {
             // Debug.Log("Flee Enter", gameObject);
-            GetComponentInParent<Rigidbody>().velocity = Vector3.up * 30;
-            StartCoroutine(DelayExit(endDelay));
+            model.transform.Rotate(new Vector3(0,180,0));
+            model.ChangeState(model.moveState);
         }
 
-        public override void Tick()
-        {
-            // Debug.Log("Flee Execute", gameObject);
-        }
-
-        public override void Exit()
-        {           
-            // Debug.Log("Flee Exit", gameObject);
-            
-            base.Exit();
-        }
     }
 
 }

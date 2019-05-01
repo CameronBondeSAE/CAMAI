@@ -76,8 +76,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1231a7b7a567c554cb4cce7dea74732d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scaleIncrease: {x: 0.04, y: 0.04, z: 0.04}
-  posIncrease: {x: 0, y: 0.033, z: 0}
+  scaleIncrease: {x: 0.085, y: 0.085, z: 0.085}
+  posIncrease: {x: 0, y: 0.07, z: 0}
   damage: 30
   target: {fileID: 0}
   travelSpeed: 20

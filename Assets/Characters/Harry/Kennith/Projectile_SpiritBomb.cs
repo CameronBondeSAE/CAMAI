@@ -92,7 +92,7 @@ namespace Kennith
             GetComponent<Health>().maxAmount += power;
             GetComponent<Health>().Amount += power;
 
-            damage += 0.25f;
+            damage += 0.6f;
 
             desiredPos += posIncrease;
             desiredScale += scaleIncrease;
