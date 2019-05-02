@@ -165,7 +165,7 @@ namespace Michael
                 SpawnState temp1 = GetComponentInChildren<SpawnState>();
                 foreach (var i in temp1.darklings)
                 {
-                    Debug.Log("attack!666");
+                    if (i == null) continue;
                     Darkling_Model temp2 = i.GetComponent<Darkling_Model>();
                     temp2.Target = Target;
                     temp2.OverrideState();
