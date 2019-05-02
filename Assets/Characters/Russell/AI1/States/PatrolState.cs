@@ -30,6 +30,7 @@ namespace Russell
             _whosAround = aI.GetComponent<WhosAround>();
             model = aI.GetComponent<Kyllarr_Model>();
             fov = aI.GetComponent<FieldOfView>();
+            
         }
 
         public override void Enter()
@@ -38,12 +39,13 @@ namespace Russell
             //for testing
             //InvokeRepeating("GetTarget", 3,5);
             //Debug.Log("Start Moving", gameObject);
-            model.debugText = "Partolling";
+            
         }
 
         public override void Execute()
         {
             base.Execute();
+            model.debugText = "Patrolling";
             RayCastDistanceCheck();
             rb.velocity = transform.forward * 10;
             //;

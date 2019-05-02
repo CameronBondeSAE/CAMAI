@@ -26,14 +26,14 @@ namespace Russell
             base.Enter();
             coll.enabled = true;
             energy.Amount = 0f;
-            cb.debugText = "Barrage Attack";
-
+            
         }
 
         public override void Execute()
         {
             base.Execute();
-            
+            cb.debugText = "Barrage Attack";
+
         }
 
         private void OnTriggerStay(Collider other)

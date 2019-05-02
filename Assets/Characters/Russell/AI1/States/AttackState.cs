@@ -18,13 +18,15 @@ namespace Russell
         public override void Enter()
         {
             base.Enter();
+            
             StartCoroutine(changetoPartol());
-            _characterBase.debugText = "Attack State";
+            
         }
 
         public override void Execute()
         {
             base.Execute();
+            _characterBase.debugText = "Attack State";
 
         }
 
