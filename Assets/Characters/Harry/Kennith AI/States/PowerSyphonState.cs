@@ -39,10 +39,12 @@ namespace Kennith
             {
                 
                 GameObject spawn = Instantiate(syphonProjectile, transform.position + randOffset, randRotation);
-                if (spawn == null | spawn.GetComponent<ProjectileSyphon>() == null) return;
-                spawn.GetComponent<ProjectileSyphon>().parentObject = model.gameObject;
-                spawn.GetComponent<ProjectileSyphon>().target = model.TargetObject.transform;
-                
+                if (spawn.GetComponent<ProjectileSyphon>() != null)
+                {
+                    spawn.GetComponent<ProjectileSyphon>().parentObject = model.gameObject;
+                    spawn.GetComponent<ProjectileSyphon>().target = model.TargetObject.transform;
+                }
+
                 energy.Amount -= energyCost;
                 delayTick = 0;
             }

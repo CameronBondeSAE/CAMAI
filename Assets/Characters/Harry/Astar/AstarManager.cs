@@ -77,7 +77,7 @@ namespace Harry
             done = true;
             
             yield return new WaitForSeconds(2);
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         private void FindPossiblePath()

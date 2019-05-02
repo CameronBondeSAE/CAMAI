@@ -14,11 +14,11 @@ public class ResetScene : MonoBehaviour
         while (true)
         {
             yield return new WaitForSeconds(resetTime);
-            Reset();
+            NextScene();
         }
     }
 
-    void Reset()
+    void NextScene()
     {
         SceneManager.LoadScene(0);
     }
@@ -27,7 +27,7 @@ public class ResetScene : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Reset();
+            NextScene();
         }
     }
 }
