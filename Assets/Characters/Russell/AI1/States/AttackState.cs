@@ -19,6 +19,7 @@ namespace Russell
         {
             base.Enter();
             StartCoroutine(changetoPartol());
+            _characterBase.debugText = "Attack State";
         }
 
         public override void Execute()

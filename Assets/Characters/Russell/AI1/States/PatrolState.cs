@@ -38,6 +38,7 @@ namespace Russell
             //for testing
             //InvokeRepeating("GetTarget", 3,5);
             //Debug.Log("Start Moving", gameObject);
+            model.debugText = "Partolling";
         }
 
         public override void Execute()

@@ -11,11 +11,13 @@ namespace Russell
         public float damageOverTime;
         public GameObject parent;
         public GameObject states;
+        public Kyllarr_Model cb;
 
         private void Awake()
         {            
             states.GetComponent<HoverState>().TargetAquired += Enter;
             energy = parent.GetComponent<Energy>();
+            cb = parent.GetComponent<Kyllarr_Model>();
         }
 
 
@@ -24,7 +26,8 @@ namespace Russell
             base.Enter();
             coll.enabled = true;
             energy.Amount = 0f;
-            
+            cb.debugText = "Barrage Attack";
+
         }
 
         public override void Execute()
