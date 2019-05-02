@@ -34,7 +34,7 @@ namespace Russell
 
         public void Rerun()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         private IEnumerator RunPathFind()

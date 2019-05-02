@@ -51,6 +51,6 @@ public class BuildHouseAction : ReGoapAction<string,object>
     IEnumerator Finished()
     {
         yield return new WaitForSeconds(4);
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
