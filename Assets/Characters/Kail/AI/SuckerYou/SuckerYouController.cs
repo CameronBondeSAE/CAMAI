@@ -83,7 +83,7 @@ namespace Kail
 
         public void Death()
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
 
         public void Hurt()

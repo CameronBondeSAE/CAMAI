@@ -94,17 +94,21 @@ namespace Kail
             {
                 targetFound = false;
             }
-            
-            if ((Physics.Linecast(transform.position, posTarget.transform.position, out tempObj)) && (tempObj.transform.gameObject == posTarget))
-            {
-                //it sees the player
-                tarDistance = Vector3.Distance(posTarget.transform.position, transform.position);
-                current.currentState.MoveSet();
-            }
             else
             {
-                posTarget = null;
-                targetFound = false;
+
+                if ((Physics.Linecast(transform.position, posTarget.transform.position, out tempObj)) &&
+                    (tempObj.transform.gameObject == posTarget))
+                {
+                    //it sees the player
+                    tarDistance = Vector3.Distance(posTarget.transform.position, transform.position);
+                    current.currentState.MoveSet();
+                }
+                else
+                {
+                    posTarget = null;
+                    targetFound = false;
+                }
             }
         }
         

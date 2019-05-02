@@ -87,7 +87,7 @@ namespace Kail
 
         public void Die()
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
 
         private void Update()
