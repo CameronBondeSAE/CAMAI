@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -11,19 +12,22 @@ namespace Kail
         private StateBase[] syStates;
         public string[] statesTxt;
         
-        private StateBase idleState;
-        private StateBase attackState;
-        private StateBase chaseState;
-        private StateBase runState;
+        public StateBase idleState;
+        public StateBase attackState;
+        public StateBase chaseState;
+        public StateBase runState;
 
         public GameObject target;
         public bool targetFound;
+
+        public bool hitOther;
 
         //used for swapping and recording states
         public StateBase currentState;
         
         //for setting the health
         public Health healthBase;
+        public bool isHurt;
 
         private void Awake()
         {
@@ -39,11 +43,20 @@ namespace Kail
             //put them into the syStates array
             syStates = new StateBase[4] {idleState, attackState, chaseState, runState};
             statesTxt = new string[4] {"idle", "attacking", "chasing", "running"};
-            //set health
+            
+            //set health and health actions
             healthBase.maxAmount = 100;
+            healthBase.OnDeathEvent += Death;
+            healthBase.OnHurtEvent += Hurt;
             
             currentState = idleState;
             currentState.Enter();
+        }
+
+        public void SetTarget(GameObject tar)
+        {
+            target = tar;
+            targetFound = true;
         }
 
         public void ChangeState(int next)
@@ -55,7 +68,28 @@ namespace Kail
             debugText = statesTxt[next];
             currentState.Enter();
         }
-        
 
+        private void Update()
+        {
+            if (targetFound)
+            {
+                if (target = null)
+                {
+                    targetFound = false;
+                    hitOther = false;
+                }
+            }
+        }
+
+        public void Death()
+        {
+            Destroy(this);
+        }
+
+        public void Hurt()
+        {
+            //make it only if on attack or chase mode
+            isHurt = true;
+        }
     }
 }

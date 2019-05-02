@@ -7,5 +7,6 @@ namespace Kail
     public class SY_RunState : StateBase
     {
         //Starts if injured
+        
     }
 }
