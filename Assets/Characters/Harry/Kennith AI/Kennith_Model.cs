@@ -229,6 +229,9 @@ namespace Kennith
         {
             ShareYourPower -= SyphoningPower;
 
+            
+            // Still fucked, fix me
+            
             for(var i = enemies.Count - 1; i > -1; i--)
             {
                 if (enemies[i] == null)
