@@ -234,13 +234,13 @@ namespace Kennith
             
             for(var i = enemies.Count - 1; i > -1; i--)
             {
-                if (enemies[i] == null)
+                if (enemies[i] != null)
                     enemies[i].GetComponentInChildren<Health>().OnDeathEvent -= RemoveEnemy;
             }
             
             for(var i = spawners.Count - 1; i > -1; i--)
             {
-                if (spawners[i] == null)
+                if (spawners[i] != null)
                     spawners[i].GetComponent<Spawner>().OnSpawnedNewGameObject -= AddNewEnemy;
             }
         }
