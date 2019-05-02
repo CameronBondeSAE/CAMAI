@@ -69,7 +69,7 @@ namespace Tom
             
         }
 
-        
+        //MAKE A FUNCTION THAT USES CHANGE STATE TO PANIC STATE AS SHOWN ABOVE IN UPDATE
 
         private void Cindy_Model_OnDeathEvent()
         {

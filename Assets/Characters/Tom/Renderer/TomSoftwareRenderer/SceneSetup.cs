@@ -42,7 +42,7 @@ namespace Tom
             //this blacks out the stars to refresh
 
 
-            if (!Input.GetKey(KeyCode.Space))
+            if (!Input.GetKey(KeyCode.H))
             {
                 softwareRenderer.ColourAll();
             }
