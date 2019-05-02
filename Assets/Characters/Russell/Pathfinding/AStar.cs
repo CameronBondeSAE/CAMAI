@@ -57,7 +57,7 @@ namespace Russell
             while (currentNode != target)
             {
                 FindPath();
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.0001f);
             }
             if (currentNode == target)
             {
