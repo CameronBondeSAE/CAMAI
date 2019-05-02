@@ -18,6 +18,12 @@ public class Damager : MonoBehaviour
 
 	public void OnTriggerStay(Collider other)
 	{
+		// Don't trigger other triggers
+		if (other.isTrigger)
+		{
+			return;
+		}
+		
 		var health = other.gameObject.GetComponent<Health>();
 
 		if (health)
