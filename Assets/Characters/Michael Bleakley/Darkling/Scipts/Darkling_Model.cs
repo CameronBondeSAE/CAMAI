@@ -131,6 +131,7 @@ namespace Michael
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.isTrigger) return;
             if (other.transform.gameObject.GetComponentInChildren<CharacterBase>())
             {
                 if (other.transform.gameObject.GetComponent<Vestra_Model>()) return;

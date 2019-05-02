@@ -11,6 +11,8 @@ namespace Michael
         public Rigidbody rb;
         public bool falling;
         public bool fleeing;
+
+        public SpawnState spawnState;
         //private GameObject[] surroundingEnemies;
         //private List<GameObject> surroundingEnemies;
         [SerializeField] private VestraTargeting _targeting;
@@ -114,6 +116,7 @@ namespace Michael
 
         private void OnHurtEvent()
         {
+            if (currentState != spawnState) return;
             currentState.Exit();
         }
 
@@ -156,6 +159,7 @@ namespace Michael
 
         private void OnTriggerEnter(Collider other)
         {
+            if (other.isTrigger) return;
             if (other.transform.gameObject.GetComponentInChildren<CharacterBase>())
             {
 //                Debug.Log("Testing entry on attack");
