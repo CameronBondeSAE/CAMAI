@@ -116,6 +116,8 @@ namespace Kennith
 
         private void OnDestroy()
         {
+            if (parent == null) return;
+            
             parent.GetComponent<Health>().OnDeathEvent -= Explode;
         }
 
