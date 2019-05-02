@@ -18,6 +18,7 @@ namespace Kennith
         public float damage = 30;
         
         public Transform target;
+        private Vector3 targetLastPos;
 
         public float travelSpeed = 1;
     
@@ -51,6 +52,11 @@ namespace Kennith
 
         void Update()
         {
+            if (target != null)
+            {
+                targetLastPos = target.position;
+            }
+            
             if (exploding)
             {
                 Explode();
@@ -59,7 +65,11 @@ namespace Kennith
             {
                 if (thrown)
                 {
-                    body.velocity = Vector3.Normalize(target.position - transform.position) * travelSpeed * Time.deltaTime;
+                    if (target!= null) 
+                        body.velocity = Vector3.Normalize(target.position - transform.position) * travelSpeed * Time.deltaTime;
+                    else 
+                        body.velocity = Vector3.Normalize(targetLastPos - transform.position) * travelSpeed * Time.deltaTime;
+                    
                     travelSpeed *= 1.02f;
                 }
             }
