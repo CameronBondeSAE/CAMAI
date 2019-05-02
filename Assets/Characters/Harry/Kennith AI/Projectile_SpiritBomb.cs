@@ -108,6 +108,7 @@ namespace Kennith
         {
             if (other.gameObject.GetComponent<ProjectileSyphon>() != null) return;
             if (other.gameObject.GetComponent<ProjectileChase>() != null) return;
+            if (other.gameObject.GetComponent<Damager>() != null) return;
             
             exploding = true;
         }
