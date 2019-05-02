@@ -284,7 +284,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e246ab15cf81d44aaa9c05fa15508a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: SuckerYou
   debugText: 
   speedMultiplier: 1
   decelerationMultiplier: 0.9

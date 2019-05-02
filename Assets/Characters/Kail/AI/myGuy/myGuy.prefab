@@ -224,7 +224,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3813c8b5d1d4ad4086a414d16504520, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
+  characterName: MyGuy
   debugText: 
   speedMultiplier: 1
   decelerationMultiplier: 0.9
