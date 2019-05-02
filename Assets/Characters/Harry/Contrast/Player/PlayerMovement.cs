@@ -40,10 +40,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if (WorldManager.Paused) return;
         
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump?.Invoke();
-        }
+//        if (Input.GetKeyDown(KeyCode.Space))
+//        {
+//            Jump?.Invoke();
+//        }
 
         if (body.velocity.x > 0.1f )
             foreach (SpriteRenderer s in sprites)
@@ -77,19 +77,18 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         if (WorldManager.Paused) return;
+//        
+//        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
+//        {
+//            body.velocity = new Vector2(Mathf.Lerp(body.velocity.x, 0, braking * 2), body.velocity.y);
+//            return;
+//        }
         
-        if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D))
-        {
-            body.velocity = new Vector2(Mathf.Lerp(body.velocity.x, 0, braking * 2), body.velocity.y);
-            return;
-        }
-        
-        Vector2 force = new Vector2(inputX * speed * 100 * Time.deltaTime, 0);
+        Vector2 force = new Vector2(1 * speed * 100 * Time.deltaTime, 0);
         
         body.AddForce(force);
         
-        if (inputX <= 0.1f && inputX >= -0.1f)
-            body.velocity = new Vector2(Mathf.Lerp(body.velocity.x, 0, braking), body.velocity.y);
+        body.velocity = new Vector2(Mathf.Lerp(body.velocity.x, 0, braking), body.velocity.y);
         
         body.velocity = new Vector2(Mathf.Clamp(body.velocity.x, -maxSpeed, maxSpeed), body.velocity.y);
     }
