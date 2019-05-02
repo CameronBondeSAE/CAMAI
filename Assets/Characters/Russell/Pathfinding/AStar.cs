@@ -131,6 +131,10 @@ namespace Russell
         // Update is called once per frame
         private void Update()
         {
+            if (finished)
+            {
+                StartCoroutine(WaitASec());
+            }
         }
 
         private void OnDrawGizmos()
@@ -156,6 +160,12 @@ namespace Russell
                 foreach (Node node in finalPath)
                     Gizmos.DrawCube(node.position, scale);
             
+        }
+
+        IEnumerator WaitASec()
+        {
+            yield return new WaitForSeconds(1);
+            Rerun();
         }
     }
 }

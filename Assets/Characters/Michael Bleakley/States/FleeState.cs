@@ -13,6 +13,7 @@ namespace Michael
         public override void Execute()
         {
             base.Execute();
+            if (target == null) return;
             if (Vector3.Distance(transform.position, target.transform.position) > 40) Exit();
             Vector3 temp = -target.transform.position + transform.position;
             temp.y = 1;

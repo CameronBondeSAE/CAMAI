@@ -33,7 +33,8 @@ namespace Michael
                 }
                 else
                 {
-                    targets[i].GetComponentInChildren<Health>().Change(-damage, self);
+                    Health health = targets[i].GetComponentInChildren<Health>();
+                    if (health != null) health.Change(-damage, self);
                 }
             }
         }

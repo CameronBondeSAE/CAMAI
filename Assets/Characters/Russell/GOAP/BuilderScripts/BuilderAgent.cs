@@ -8,7 +8,7 @@ public class BuilderAgent : ReGoapAgent<string,object>
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(WaitASec());
     }
 
     // Update is called once per frame
@@ -18,5 +18,11 @@ public class BuilderAgent : ReGoapAgent<string,object>
         {
             CalculateNewGoal(true);
         }
+    }
+
+    IEnumerator WaitASec()
+    {
+        yield return new WaitForSeconds(2);
+        CalculateNewGoal(true);
     }
 }
