@@ -51,8 +51,6 @@ namespace Kail
             turningTime = UnityEngine.Random.Range(100,200);
             MoveSet();
             
-            
-
         }
 
         private void FixedUpdate()
