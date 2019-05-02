@@ -34,9 +34,9 @@ public class ProjectileScript : MonoBehaviour
     private void OnCollisionEnter(Collision other)
     {
         if (other.transform.gameObject == source) return;
-        if (other.gameObject.GetComponent<Health>())
+        if (other.gameObject.GetComponentInChildren<Health>())
         {
-            other.gameObject.GetComponent<Health>().Change(-Damage, source);
+            other.gameObject.GetComponentInChildren<Health>().Change(-Damage, source);
         }
 
         Destroy();

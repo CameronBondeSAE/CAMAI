@@ -14,21 +14,21 @@ namespace Tom
         {
             base.Enter();
             myTransform = GetComponent<Transform>();
-            Debug.Log("panicStart", gameObject);
+           // Debug.Log("panicStart", gameObject);
         }
         
         public override void Execute()
         {
             base.Execute();
             PanicTeleport();
-            Debug.Log("panicExecute", gameObject);
+           // Debug.Log("panicExecute", gameObject);
         }
 
         public override void Exit()
         {
             base.Exit();
             
-            Debug.Log("panicExit", gameObject);
+           // Debug.Log("panicExit", gameObject);
         }
         
         

@@ -22,7 +22,6 @@ namespace Michael
             destination = new Vector3(Random.Range(-destinationRange, destinationRange),transform.position.y,Random.Range(-destinationRange, destinationRange));
             destination += Self.transform.position;
             Invoke("teleport",delay);
-            Debug.Log("Testing Entry");
         }
 
         public override void Execute()
