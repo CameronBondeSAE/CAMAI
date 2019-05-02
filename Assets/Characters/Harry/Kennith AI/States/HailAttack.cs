@@ -37,13 +37,21 @@ namespace Kennith
                 Exit();
                 return;
             }
-
-            randRotation.eulerAngles = new Vector3(Random.Range(-(randomizedAngle * 2), -randomizedAngle), 0, Random.Range(-(randomizedAngle * 2), -randomizedAngle));
+            
             randOffset = new Vector3(Random.Range(-0.5f, 0.5f), 1, Random.Range(-0.5f, 0.5f));
 
+            Vector3 lookPos = (transform.position + randOffset) - model.transform.position;
+            lookPos.y = 0;
+            randRotation = Quaternion.LookRotation(lookPos);   
+            
             if (energy.Amount > 0 && delayTick >= delay)
             {
-                GameObject spawn = Instantiate(hailProjectile, transform.position + randOffset, randRotation);
+                GameObject spawn = Instantiate(hailProjectile, transform.position + randOffset, Quaternion.identity);
+                
+                spawn.transform.rotation = Quaternion.Slerp(spawn.transform.rotation, randRotation, 1); 
+                spawn.transform.rotation = Quaternion.Inverse(spawn.transform.rotation);
+                spawn.transform.LookAt(spawn.transform.position + spawn.transform.forward + (Vector3.up * 1.5f));
+                
                 spawn.GetComponent<ProjectileChase>().parentObject = model.gameObject;
                 spawn.GetComponent<ProjectileChase>().target = model.TargetObject.transform;
                 
