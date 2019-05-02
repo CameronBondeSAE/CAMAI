@@ -35,7 +35,7 @@ namespace Michael
 
         private void OnDeathEvent()
         {
-            vestraLead.GetComponentInChildren<SpawnState>().darklings.Remove(gameObject);
+            if (vestraLead != null) vestraLead.GetComponentInChildren<SpawnState>().darklings.Remove(gameObject);
             Destroy(gameObject);
         }
 
