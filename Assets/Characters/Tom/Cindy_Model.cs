@@ -43,6 +43,8 @@ namespace Tom
         
         private void Awake()
         {
+            GetComponent<Health>().OnDeathEvent += Cindy_Model_OnDeathEvent;
+            
             ChangeState(idleState);
 
         }
@@ -57,15 +59,12 @@ namespace Tom
         private void Update()
         {
             
-            Cindy_Model_OnDeathEvent();
             
             currentState.Execute();
-            
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                ChangeState(panicState);
-            }
-        
+            //if (GetComponent<Health>().OnHurtEvent = )
+            //{
+            //    ChangeState(panicState);
+            //}
             
             
         }
@@ -74,7 +73,6 @@ namespace Tom
 
         private void Cindy_Model_OnDeathEvent()
         {
-              if(GetComponent<Health>().Amount <= 0)
               Destroy(gameObject);
         }
 
