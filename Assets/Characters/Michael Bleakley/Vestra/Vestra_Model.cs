@@ -27,7 +27,9 @@ namespace Michael
         {
             if (currentState != null) currentState.Execute();
             
-            falling = transform.position.y < -5;
+            falling = transform.position.y < 0.1f;
+            if (falling) currentState.Exit();
+            
             enemySeen = Target != null;
 
             /* test code
