@@ -28,7 +28,11 @@ namespace Russell
             base.Enter();
             if (!ai.Target) ai.ChangeState(ai.patrolState);
             else StartCoroutine(WaitASec());
-            TargetAquired();
+            if (ai.Target != null)
+            {
+                TargetAquired?.Invoke();
+            }
+            
             ai.debugText = "Hovering";
 
 

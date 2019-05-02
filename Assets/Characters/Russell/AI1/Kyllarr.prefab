@@ -14388,7 +14388,7 @@ MonoBehaviour:
   decoySpawn: {fileID: 3360953349651169442}
   decoy: {fileID: 7741071797372873685}
   decoyOnCooldown: 1
-  decoyCooldown: 10
+  decoyCooldown: 5
 --- !u!136 &4402666733541749184
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -14417,7 +14417,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   coll: {fileID: 4402666733541749184}
   energy: {fileID: 0}
-  damageOverTime: 5
+  damageOverTime: 10
   parent: {fileID: 7741071797372873685}
   states: {fileID: 426340172277600898}
   cb: {fileID: 0}

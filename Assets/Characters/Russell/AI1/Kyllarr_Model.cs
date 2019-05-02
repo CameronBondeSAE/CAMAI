@@ -24,7 +24,7 @@ public class Kyllarr_Model : CharacterBase
         currentState.Exit();
         newState.Enter();
         currentState = newState;
-        Debug.Log("Ran Change State "+ newState);
+        //Debug.Log("Ran Change State "+ newState);
     }
 
     private void Awake()

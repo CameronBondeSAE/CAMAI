@@ -12,7 +12,7 @@ namespace Russell
         protected override void Awake()
         {
             base.Awake();
-            GetComponent<AttackEnemy>().RePlan += Recal;
+            //
         }
 
 

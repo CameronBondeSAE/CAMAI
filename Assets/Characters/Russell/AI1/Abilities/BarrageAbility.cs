@@ -24,6 +24,11 @@ namespace Russell
         public override void Enter()
         {
             base.Enter();
+            if (cb.Target == null)
+            {
+                cb.ChangeState(cb.patrolState);
+            }
+            
             coll.enabled = true;
             energy.Amount = 0f;
             
