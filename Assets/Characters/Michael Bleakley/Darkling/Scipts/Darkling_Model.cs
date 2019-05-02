@@ -81,7 +81,8 @@ namespace Michael
                 }
                 else
                 {
-                    Instantiate(vestraOrigin, this.transform.position, Quaternion.identity);
+                    GameObject temp =Instantiate(vestraOrigin, this.transform.position, Quaternion.identity);
+                    temp.GetComponentInChildren<SpawnState>().AddToKennith(temp);
                     Destroy(gameObject);
                 }
             }
@@ -92,7 +93,7 @@ namespace Michael
             
             var targetPosition = transform.InverseTransformPoint(speedDirection);
             var temp = targetPosition.x / targetPosition.magnitude;
-            if (rb != null) rb.AddRelativeTorque(0, turningVariable * 0.5f * temp * distance, 0);
+            if (rb != null) rb.AddRelativeTorque(0, (turningVariable * 0.5f * temp * distance) < 0.001f ? 0.001f : (turningVariable * 0.5f * temp * distance), 0);
 
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, 2.3f))

@@ -60,7 +60,7 @@ namespace Michael
             AddToKennith(newDarkling);
         }
 
-        private void AddToKennith(GameObject gameObject)
+        public void AddToKennith(GameObject gameObject)
         {
             _kennithModel = FindObjectsOfType<Kennith_Model>();
             foreach (var Ken in _kennithModel)

@@ -61,7 +61,7 @@ namespace Michael
 
             var targetPosition = transform.InverseTransformPoint(speedDirection);
             var temp = targetPosition.x / targetPosition.magnitude;
-            if (rb != null) rb.AddRelativeTorque(0, vary * 0.5f * temp, 0);
+            if (rb != null) rb.AddRelativeTorque(0, (vary * 0.5f * temp) < 0.001f ? 0.001f : (vary * 0.5f * temp), 0);
 
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, 2.3f))

@@ -39,7 +39,7 @@ namespace Michael
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.transform.gameObject.GetComponent<Health>())
+            if (other.transform.gameObject.GetComponentInChildren<Health>())
             {
                 if (other.transform.gameObject.GetComponent<Vestra_Model>()) return;
                 if (other.transform.gameObject.GetComponent<Darkling_Model>()) return;
