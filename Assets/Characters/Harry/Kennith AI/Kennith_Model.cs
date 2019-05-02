@@ -229,14 +229,16 @@ namespace Kennith
         {
             ShareYourPower -= SyphoningPower;
 
-            foreach (GameObject e in enemies)
+            for(var i = enemies.Count - 1; i > -1; i--)
             {
-                e.GetComponentInChildren<Health>().OnDeathEvent -= RemoveEnemy;
+                if (enemies[i] == null)
+                    enemies[i].GetComponentInChildren<Health>().OnDeathEvent -= RemoveEnemy;
             }
             
-            foreach (Spawner s in spawners)
+            for(var i = spawners.Count - 1; i > -1; i--)
             {
-                s.OnSpawnedNewGameObject -= AddNewEnemy;
+                if (spawners[i] == null)
+                    spawners[i].GetComponent<Spawner>().OnSpawnedNewGameObject -= AddNewEnemy;
             }
         }
     }

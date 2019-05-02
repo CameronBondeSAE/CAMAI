@@ -61,6 +61,7 @@ public class ProjectileChase : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.isTrigger) return;
         if (other.gameObject.GetComponent<Damager>() != null) return;
         if (other.gameObject != parentObject && other.gameObject.GetComponent<ProjectileChase>() == null)
         {
