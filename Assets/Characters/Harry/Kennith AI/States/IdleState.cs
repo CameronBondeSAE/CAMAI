@@ -5,6 +5,7 @@ namespace Kennith
     public class IdleState : StateBase
     {
         private Energy energy;
+        private float regenSpeed;
         public float regenSpeedMod = 2.25f;
 
         private void Start()
@@ -16,7 +17,8 @@ namespace Kennith
         {
             base.Enter();
             // Debug.Log("Idle Enter", gameObject);
-            energy.regenEnergySpeed *= regenSpeedMod;
+            regenSpeed = energy.regenEnergySpeed;
+            energy.regenEnergySpeed = regenSpeedMod;
             StartCoroutine(DelayExit(endDelay));
         }
 
@@ -24,7 +26,7 @@ namespace Kennith
         {
             // Debug.Log("Idle Exit", gameObject);
 
-            energy.regenEnergySpeed /= regenSpeedMod;
+            energy.regenEnergySpeed = regenSpeed;
             
             base.Exit();
         }

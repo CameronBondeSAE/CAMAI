@@ -118,7 +118,8 @@ namespace Kennith
         }
         
         public override void Exit()
-        {           
+        {
+            body.velocity = Vector3.zero;        
             // Debug.Log("Move Exit", gameObject);
             base.Exit();
         }

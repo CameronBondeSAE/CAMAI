@@ -107,6 +107,7 @@ namespace Kennith
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.GetComponent<ProjectileSyphon>() != null) return;
+            if (other.gameObject.GetComponent<ProjectileChase>() != null) return;
             
             exploding = true;
         }

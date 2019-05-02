@@ -22,6 +22,7 @@ namespace Kennith
 
         public virtual void Exit()
         {
+            StopAllCoroutines();
             GetComponentInParent<Kennith_Controller>().EvaluateNextMove();
         }
 

@@ -32,7 +32,11 @@ namespace Kennith
             model.LookAt(model.TargetObject, 1);
             
             // Debug.Log("Hail Attack Execute", gameObject);
-            if (model.TargetObject == null) Exit();
+            if (model.TargetObject == null)
+            {
+                Exit();
+                return;
+            }
 
             randRotation.eulerAngles = new Vector3(Random.Range(-(randomizedAngle * 2), -randomizedAngle), 0, Random.Range(-(randomizedAngle * 2), -randomizedAngle));
             randOffset = new Vector3(Random.Range(-0.5f, 0.5f), 1, Random.Range(-0.5f, 0.5f));

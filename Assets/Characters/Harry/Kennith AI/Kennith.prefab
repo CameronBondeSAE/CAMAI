@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aad115aca74ce3c4891b3f6de0b4aae8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boundGraphSerialization: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","translation":{"x":-1419.0,"y":-1554.0},"zoomFactor":0.3826389,"nodes":[{"_position":{"x":5302.0,"y":4840.0},"_tag":"Start","$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":4325.0,"y":5135.0},"_tag":"Hail
+  boundGraphSerialization: '{"version":2.8,"type":"NodeCanvas.BehaviourTrees.BehaviourTree","translation":{"x":-2945.0,"y":-2739.0},"zoomFactor":0.614917,"nodes":[{"_position":{"x":5302.0,"y":4840.0},"_tag":"Start","$type":"NodeCanvas.BehaviourTrees.Selector","$id":"2"},{"_position":{"x":4325.0,"y":5135.0},"_tag":"Hail
     Attack","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"3"},{"_condition":{"valueA":{"_name":"targetVisible","_targetVariableID":"7b923049-6f17-4c8f-8296-ac1ec0d68c74"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_position":{"x":4052.0,"y":5320.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"4"},{"_condition":{"valueA":{"_name":"Health","_targetVariableID":"a236d05d-1ed1-4c18-8283-90fdfa58d46e"},"checkType":"GreaterThan","valueB":{"_value":40},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":4252.0,"y":5287.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"8"},{"_condition":{"valueA":{"_name":"Energy","_targetVariableID":"43303675-3229-4308-8203-7353ff85fa92"},"checkType":"GreaterThan","valueB":{"_value":75},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":4354.0,"y":5350.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"12"},{"_action":{"method":{"_baseInfo":"Kennith.Kennith_Model|ChangeState|System.Void","_paramsInfo":"Kennith.StateBase"},"parameters":[{"_type":"Kennith.StateBase","_value":{"$content":1,"$type":"Kennith.HailAttack"},"_name":"Hail
     Attack","_targetVariableID":"76c32d2d-dc50-44e8-a6c4-ce34cac8d607"}],"parameterIsByRef":[false],"returnValue":{},"overrideAgent":{"_value":2},"$type":"NodeCanvas.Tasks.Actions.ExecuteFunction_Multiplatform"},"_position":{"x":4444.0,"y":5277.0},"$type":"NodeCanvas.BehaviourTrees.ActionNode","$id":"16"},{"_position":{"x":4801.0,"y":5243.0},"_tag":"Spirit
     Bomb","$type":"NodeCanvas.BehaviourTrees.Sequencer","$id":"24"},{"_condition":{"valueA":{"_name":"targetVisible","_targetVariableID":"7b923049-6f17-4c8f-8296-ac1ec0d68c74"},"valueB":{"_value":true},"$type":"NodeCanvas.Tasks.Conditions.CheckBoolean"},"_position":{"x":4526.0,"y":5428.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"25"},{"_condition":{"valueA":{"_name":"Health","_targetVariableID":"a236d05d-1ed1-4c18-8283-90fdfa58d46e"},"checkType":"LessOrEqualTo","valueB":{"_value":40},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":4739.0,"y":5395.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"29"},{"_condition":{"valueA":{"_name":"Energy","_targetVariableID":"43303675-3229-4308-8203-7353ff85fa92"},"checkType":"GreaterThan","valueB":{"_value":60},"$type":"NodeCanvas.Tasks.Conditions.CheckInt"},"_position":{"x":4828.0,"y":5458.0},"$type":"NodeCanvas.BehaviourTrees.ConditionNode","$id":"33"},{"_action":{"method":{"_baseInfo":"Kennith.Kennith_Model|ChangeState|System.Void","_paramsInfo":"Kennith.StateBase"},"parameters":[{"_type":"Kennith.StateBase","_name":"Spirit
@@ -317,7 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01259f5a5a73f2042838419139e8513e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  endDelay: 2
+  endDelay: 3
   stateText: Roaming
   parent: {fileID: 1079792966830485675}
   speed: 25
@@ -337,7 +337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endDelay: 2
   stateText: Recharging
-  regenSpeedMod: 2.25
+  regenSpeedMod: 6
 --- !u!114 &1315328866068515835
 MonoBehaviour:
   m_ObjectHideFlags: 0

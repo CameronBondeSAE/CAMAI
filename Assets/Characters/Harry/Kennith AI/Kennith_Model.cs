@@ -84,6 +84,7 @@ namespace Kennith
         
         public void SyphoningPower(GameObject bomb)
         {
+            currentState.StopAllCoroutines();
             TargetObject = bomb;
             ChangeState(syphonState);   
         }
@@ -190,7 +191,7 @@ namespace Kennith
 
             if (visible.Count <= 0)
             {
-                currentState.Exit();
+//                currentState.Exit();
                 return;
             }
             
