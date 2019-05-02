@@ -27,7 +27,9 @@ namespace Michael
         {
             if (currentState != null) currentState.Execute();
             
-            falling = transform.position.y < -5;
+            falling = transform.position.y < 0.1f;
+            if (falling) currentState.Exit();
+            
             enemySeen = Target != null;
 
             /* test code
@@ -59,7 +61,7 @@ namespace Michael
 
             var targetPosition = transform.InverseTransformPoint(speedDirection);
             var temp = targetPosition.x / targetPosition.magnitude;
-            if (rb != null) rb.AddRelativeTorque(0, vary * 0.5f * temp, 0);
+            if (rb != null) rb.AddRelativeTorque(0, (vary * 0.5f * temp) < 0.001f ? 0.001f : (vary * 0.5f * temp), 0);
 
             RaycastHit hit;
             if (Physics.Raycast(transform.position, transform.forward, out hit, 2.3f))
@@ -154,7 +156,7 @@ namespace Michael
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.transform.gameObject.GetComponent<CharacterBase>())
+            if (other.transform.gameObject.GetComponentInChildren<CharacterBase>())
             {
 //                Debug.Log("Testing entry on attack");
                 if (other.transform.gameObject.GetComponent<Vestra_Model>()) return;
@@ -163,7 +165,7 @@ namespace Michael
                 SpawnState temp1 = GetComponentInChildren<SpawnState>();
                 foreach (var i in temp1.darklings)
                 {
-                    Debug.Log("attack!666");
+                    if (i == null) continue;
                     Darkling_Model temp2 = i.GetComponent<Darkling_Model>();
                     temp2.Target = Target;
                     temp2.OverrideState();

@@ -90,6 +90,8 @@ namespace Kail
             //checks if you can see the enemy
             var tempObj = new RaycastHit();
             
+            // need a null check here for postarget
+            
             if ((Physics.Linecast(transform.position, posTarget.transform.position, out tempObj)) && (tempObj.transform.gameObject == posTarget))
             {
                 //it sees the player

@@ -11,17 +11,24 @@ namespace Russell
         public float damageOverTime;
         public GameObject parent;
         public GameObject states;
+        public Kyllarr_Model cb;
 
         private void Awake()
         {            
             states.GetComponent<HoverState>().TargetAquired += Enter;
             energy = parent.GetComponent<Energy>();
+            cb = parent.GetComponent<Kyllarr_Model>();
         }
 
 
         public override void Enter()
         {
             base.Enter();
+            if (cb.Target == null)
+            {
+                cb.ChangeState(cb.patrolState);
+            }
+            
             coll.enabled = true;
             energy.Amount = 0f;
             
@@ -30,7 +37,8 @@ namespace Russell
         public override void Execute()
         {
             base.Execute();
-            
+            cb.debugText = "Barrage Attack";
+
         }
 
         private void OnTriggerStay(Collider other)

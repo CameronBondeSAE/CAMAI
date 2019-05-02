@@ -13,33 +13,26 @@ namespace Tom
         public override void Enter()
         {
             base.Enter();
-            Invoke("ChangeToPanic", 3);
-            TeleportRandomly();
-            Debug.Log("panicStart", gameObject);
-        }
-
-        public void ChangeToPanic()
-        {
-            
-            GetComponent<Cindy_Model>().ChangeState(GetComponent<PanicState>());
+            myTransform = GetComponent<Transform>();
+           // Debug.Log("panicStart", gameObject);
         }
         
         public override void Execute()
         {
             base.Execute();
-            
-            Debug.Log("panicExecute", gameObject);
+            PanicTeleport();
+           // Debug.Log("panicExecute", gameObject);
         }
 
         public override void Exit()
         {
             base.Exit();
             
-            Debug.Log("panicExit", gameObject);
+           // Debug.Log("panicExit", gameObject);
         }
         
         
-        public void TeleportRandomly()
+        public void PanicTeleport()
         {
             myTransform.position = myTransform.position + new Vector3(Random.Range(-teleportRange, teleportRange), Random.Range(-teleportRange, teleportRange), Random.Range(-teleportRange, teleportRange));
         }

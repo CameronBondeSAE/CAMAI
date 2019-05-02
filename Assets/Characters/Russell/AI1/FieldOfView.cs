@@ -47,9 +47,13 @@ namespace Russell
                         {
                             if (hit.transform == target)
                             {
-                                visibleTargets.Add(target);
-                                myCB.Target = visibleTargets[0].gameObject;
-                                numberOftargets = visibleTargets.Count;
+                                if (!target.GetComponent<Kyllarr_Model>())
+                                {
+                                    visibleTargets.Add(target);
+                                    myCB.Target = visibleTargets[0].gameObject;
+                                    numberOftargets = visibleTargets.Count; 
+                                }
+                                
                             }
                             
                         }

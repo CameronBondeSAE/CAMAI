@@ -96,6 +96,8 @@ namespace Kennith
                 
         public bool CheckFor(GameObject other) // returns true/false if object inserted is visible
         {
+            if (other == null) return false;
+            
             float magnitudeTo = Vector3.Distance(transform.position, other.transform.position);
             
             if (magnitudeTo > visionRange) return false;
@@ -172,10 +174,10 @@ namespace Kennith
 
         public void RemoveEnemy()
         {
-            foreach (GameObject e in enemies)
+            for(var i = enemies.Count - 1; i > -1; i--)
             {
-                if (e == null)
-                    enemies.Remove(e);
+                if (enemies[i] == null)
+                    enemies.RemoveAt(i);
             }
         }
         
@@ -227,14 +229,16 @@ namespace Kennith
         {
             ShareYourPower -= SyphoningPower;
 
-            foreach (GameObject e in enemies)
+            for(var i = enemies.Count - 1; i > -1; i--)
             {
-                e.GetComponentInChildren<Health>().OnDeathEvent -= RemoveEnemy;
+                if (enemies[i] == null)
+                    enemies[i].GetComponentInChildren<Health>().OnDeathEvent -= RemoveEnemy;
             }
             
-            foreach (Spawner s in spawners)
+            for(var i = spawners.Count - 1; i > -1; i--)
             {
-                s.OnSpawnedNewGameObject -= AddNewEnemy;
+                if (spawners[i] == null)
+                    spawners[i].GetComponent<Spawner>().OnSpawnedNewGameObject -= AddNewEnemy;
             }
         }
     }

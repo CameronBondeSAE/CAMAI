@@ -22,18 +22,18 @@ namespace Michael
             destination = new Vector3(Random.Range(-destinationRange, destinationRange),transform.position.y,Random.Range(-destinationRange, destinationRange));
             destination += Self.transform.position;
             Invoke("teleport",delay);
-            Debug.Log("Testing Entry");
         }
 
         public override void Execute()
         {
             base.Execute();
-            if (transform.position.y < -1)
+            if (transform.position.y < 0.1f)
             {
-                Debug.Log("Testing teleport");
-                if (previousPosition != new Vector3())
+                
+                if (previousPosition != Vector3.zero)
                 {
                     destination = previousPosition;
+                    teleport();
                 }
                 else
                 {

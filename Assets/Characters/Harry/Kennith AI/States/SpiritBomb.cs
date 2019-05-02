@@ -46,6 +46,11 @@ namespace Kennith
 
         public override void Tick()
         {
+            if (spawnedSpiritBomb == null)
+            {
+                base.Exit();
+                return;
+            }
             model.LookAt(model.TargetObject, 1);
             
             // Debug.Log("Attack Execute", gameObject);
@@ -65,6 +70,11 @@ namespace Kennith
         
         public override void Exit()
         {
+            if (spawnedSpiritBomb == null)
+            {
+                base.Exit();
+                return;
+            }
             spawnedSpiritBomb.GetComponent<Projectile_SpiritBomb>().thrown = true;
             
             GetComponentInParent<Health>().OnDeathEvent -= TakeYouAllDownWithMe;
@@ -76,6 +86,7 @@ namespace Kennith
 
         public void TakeYouAllDownWithMe()
         {
+            if (spawnedSpiritBomb == null) return;
             spawnedSpiritBomb.GetComponent<Projectile_SpiritBomb>().Explode();
         }
         

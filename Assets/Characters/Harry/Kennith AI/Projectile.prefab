@@ -197,11 +197,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d5747c88ea87fb4b907577393020ef0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {x: 5.9, y: 0.5, z: 3}
+  target: {fileID: 0}
   speedIncreaseMult: 3
   turnSpeed: 0
   travelSpeed: 65
-  damage: 3
+  damage: 1
   explosionInstances: 12
   parentObject: {fileID: 0}
 --- !u!54 &6679346490958833686

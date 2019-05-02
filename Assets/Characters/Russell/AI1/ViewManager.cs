@@ -31,7 +31,7 @@ namespace Russell
         private void DashAttackView()
         {
             dashParticleSystem.Play();
-            Debug.Log("run you fuck");
+            //Debug.Log("run you fuck");
             
         }
 

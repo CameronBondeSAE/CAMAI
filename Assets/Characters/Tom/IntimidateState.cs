@@ -19,6 +19,7 @@ namespace Tom
         public override void Execute()
         {
             base.Execute();
+            
         }
 
         public override void Exit()
@@ -28,7 +29,8 @@ namespace Tom
         
         public void BeefUp()
         {
-            myTransform.localScale = myTransform.localScale * getBigScalar;
+            float scaleChange = GetComponent<Health>().lastHealthChangedAmount / 100f;
+            transform.localScale -= new Vector3(-scaleChange, -scaleChange, -scaleChange);
         }
         
     }

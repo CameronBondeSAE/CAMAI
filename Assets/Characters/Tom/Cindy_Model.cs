@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace Tom
@@ -8,10 +9,12 @@ namespace Tom
     public class Cindy_Model : CharacterBase
     {
         // TODO HACK REMOVE 
+        
         public StateBase attackState;
         public StateBase idleState;
-        
-        public StateBase currentState;
+        public PanicState panicState;
+        [SerializeField]
+        private StateBase currentState;
         public Transform myTransform;
         public float teleportRange;
         public float getBigScalar;
@@ -33,11 +36,15 @@ namespace Tom
             {
                 currentState = null;
             }
+            
         }
+        
+        
         
         private void Awake()
         {
-            currentState = idleState;    
+            ChangeState(idleState);
+
         }
         
         public override void Start()
@@ -49,14 +56,21 @@ namespace Tom
 
         private void Update()
         {
-            Cindy_Model_OnHurtEvent();
+            
             Cindy_Model_OnDeathEvent();
-
+            
+            currentState.Execute();
+            
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                ChangeState(panicState);
+            }
+        
+            
+            
         }
 
-
-
-
+        
 
         private void Cindy_Model_OnDeathEvent()
         {
@@ -64,13 +78,13 @@ namespace Tom
               Destroy(gameObject);
         }
 
-        private void Cindy_Model_OnHurtEvent()
-        {
-            float scaleChange = GetComponent<Health>().lastHealthChangedAmount / 100f;
-            transform.localScale -= new Vector3(-scaleChange, -scaleChange, -scaleChange);
-        }
+        //private void Cindy_Model_OnHurtEvent()
+        //{
+        //    float scaleChange = GetComponent<Health>().lastHealthChangedAmount / 100f;
+         //   transform.localScale -= new Vector3(-scaleChange, -scaleChange, -scaleChange);
+        //}
 
-        //activate panic state function
+        
 
         
     }
