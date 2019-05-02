@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using NodeCanvas.Tasks.Actions;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Kail
 {
@@ -55,7 +56,7 @@ namespace Kail
             target.transform.position = new Vector3(end.nodePos.x, end.nodePos.y + 1, end.nodePos.z);
             
             //and we begin
-            Debug.Log("and we begin");
+            
             openNodes.Add(start);
             current = start;
             yield return new WaitForSeconds(1);
@@ -66,7 +67,6 @@ namespace Kail
             }
             
             //once it reaches the target, set the actual path
-            Debug.Log("Yes we're there");
             Node pathNext = end;
             while (pathNext.parentNode != null)
             {
@@ -74,7 +74,7 @@ namespace Kail
                 pathNext = pathNext.parentNode;
             }
             path.Reverse();
-            Move();
+            StartCoroutine(Pause());
 
 
         }
@@ -136,11 +136,6 @@ namespace Kail
         }
 
 
-        public void Move()
-        {
-            StartCoroutine(Pause());
-        }
-
         private IEnumerator Pause()
         {
             foreach (var node in path)
@@ -149,6 +144,7 @@ namespace Kail
                 mover.transform.position = new Vector3(node.nodePos.x, node.nodePos.y + 1, node.nodePos.z);
             }
             thereYet = true;
+            Reload();
         }
 
 
@@ -184,6 +180,12 @@ namespace Kail
                     Gizmos.DrawCube(new Vector3(node.nodePos.x, node.nodePos.y + 1, node.nodePos.z), Vector3.one);
                 }
             }
+        }
+
+        void Reload()
+        {
+            int restart = SceneManager.GetActiveScene().buildIndex;
+            SceneManager.LoadScene(restart);
         }
     }
 }
