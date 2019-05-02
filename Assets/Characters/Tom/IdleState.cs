@@ -11,21 +11,21 @@ namespace Tom
         {
             base.Enter();
             
-            Debug.Log("IdleStart", gameObject);
+            //Debug.Log("IdleStart", gameObject);
         }
 
         public override void Execute()
         {
             base.Execute();
             
-            Debug.Log("IdleExecute", gameObject);
+           // Debug.Log("IdleExecute", gameObject);
         }
 
         public override void Exit()
         {
             base.Exit();
             
-            Debug.Log("IdleExit", gameObject);
+           // Debug.Log("IdleExit", gameObject);
         }
     }
 }
