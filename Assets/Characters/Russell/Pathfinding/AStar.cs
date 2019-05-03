@@ -34,7 +34,7 @@ namespace Russell
 
         public void Rerun()
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 
         private IEnumerator RunPathFind()
@@ -57,7 +57,7 @@ namespace Russell
             while (currentNode != target)
             {
                 FindPath();
-                yield return new WaitForSeconds(0.01f);
+                yield return new WaitForSeconds(0.0001f);
             }
             if (currentNode == target)
             {
@@ -131,6 +131,10 @@ namespace Russell
         // Update is called once per frame
         private void Update()
         {
+            if (finished)
+            {
+                StartCoroutine(WaitASec());
+            }
         }
 
         private void OnDrawGizmos()
@@ -156,6 +160,12 @@ namespace Russell
                 foreach (Node node in finalPath)
                     Gizmos.DrawCube(node.position, scale);
             
+        }
+
+        IEnumerator WaitASec()
+        {
+            yield return new WaitForSeconds(1);
+            Rerun();
         }
     }
 }

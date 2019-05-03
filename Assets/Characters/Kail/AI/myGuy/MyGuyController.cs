@@ -14,7 +14,6 @@ namespace Kail
         public StateBase tauntState;
         public StateBase idleState;
         public StateBase runState;
-        public StateBase deathState;
 
         public GameObject myTarget;
         public int next;
@@ -34,7 +33,8 @@ namespace Kail
 
             //health = healthBase.Amount;
 
-            healthBase.maxAmount = 100;       
+            healthBase.maxAmount = 100;
+            healthBase.OnDeathEvent += Die;
 
             currentState = idleState;
             currentState.Enter();
@@ -70,10 +70,6 @@ namespace Kail
                     newState = runState;
                     debugText = "running";
                     break;
-                case 3:
-                    newState = deathState;
-                    debugText = "dying";
-                    break;
 
             }
 
@@ -89,7 +85,20 @@ namespace Kail
             
         }
 
-        
+        public void Die()
+        {
+            Destroy(this.gameObject);
+        }
 
+        private void Update()
+        {
+            if (currentState == tauntState)
+            {
+                if (myTarget = null)
+                {
+                    SetState(0);
+                }
+            }
+        }
     }
 }

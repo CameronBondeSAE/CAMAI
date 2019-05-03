@@ -11,12 +11,19 @@ public class Damager : MonoBehaviour
 		while (true)
 		{
 			yield return new WaitForSeconds(dangerPingInterval);
-			Danger.OnDangerInvoke(gameObject, null, GetComponent<SphereCollider>().radius, 10000f);
+			SphereCollider sphereCollider = GetComponent<SphereCollider>();
+			if (sphereCollider != null) Danger.OnDangerInvoke(gameObject, null, sphereCollider.radius, 10000f);
 		}
 	}
 
 	public void OnTriggerStay(Collider other)
 	{
+		// Don't trigger other triggers
+		if (other.isTrigger)
+		{
+			return;
+		}
+		
 		var health = other.gameObject.GetComponent<Health>();
 
 		if (health)

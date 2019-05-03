@@ -5,10 +5,31 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Main.unity
+    guid: be25c98a41dd8a645b9cf4238f37d519
   - enabled: 1
     path: Assets/Characters/Harry/Astar/Astar_Harry.unity
     guid: d0a8f04955098c94c886038d8b74a7b7
+  - enabled: 1
+    path: Assets/Characters/Harry/Contrast/SampleScene.unity
+    guid: a82f45b232485544fb0a17e18308d95e
+  - enabled: 1
+    path: Assets/Characters/Harry/SoftRenderer/Scene.unity
+    guid: 05fb2209a16d1c44297a9c26620d52dc
+  - enabled: 1
+    path: Assets/Characters/josh/flocking.unity
+    guid: 1e2757dfa4fcca143b033ec8e39b0149
+  - enabled: 1
+    path: Assets/Characters/josh/rendering.unity
+    guid: 51cccc99123fa4e49bd372a3a8fa3688
+  - enabled: 1
+    path: Assets/Characters/Kail/AStar/AStarTest.unity
+    guid: 0edc2e2c3e3e7c041970a7db1857e86d
+  - enabled: 1
+    path: Assets/Characters/Russell/GOAP/GOAP.unity
+    guid: 4e8017ce3fa8ca6409d2f0dfc4c6ffa3
+  - enabled: 1
+    path: Assets/Characters/Russell/Pathfinding/PathfindingTestEnviroment.unity
+    guid: af24f78881fbee24c80bdcf024953765
   m_configObjects: {}

@@ -20,21 +20,21 @@ namespace Kail
         
         private void FixedUpdate()
         {
-            float step = speed * Time.deltaTime;
-            transform.position = Vector3.MoveTowards(this.transform.position, current.target.transform.position, step);
-        }
-
-        private void OnCollisionEnter(Collision other)
-        {
-            if (other.gameObject == current.target)
+            if (current.currentState == current.chaseState)
             {
-                //enter attack mode
-                Debug.Log("got here");
+                float dist = Vector3.Distance(transform.parent.position, current.target.transform.position);
+                
+                if (dist <= 1f)
+                {
+                    //enter attack mode
+                    current.hitOther = true;
+                }
+                float step = speed * Time.deltaTime;
+                transform.parent.position =
+                    Vector3.MoveTowards(transform.parent.position, current.target.transform.position, step);
             }
-            else
-            {
-                //realize you done fucked up
-            }
+            
+            
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 
 namespace Tom
@@ -8,10 +9,12 @@ namespace Tom
     public class Cindy_Model : CharacterBase
     {
         // TODO HACK REMOVE 
+        
         public StateBase attackState;
         public StateBase idleState;
-        
-        public StateBase currentState;
+        public PanicState panicState;
+        [SerializeField]
+        private StateBase currentState;
         public Transform myTransform;
         public float teleportRange;
         public float getBigScalar;
@@ -19,16 +22,31 @@ namespace Tom
 
         public void ChangeState(StateBase newState)
         {
-            //Check current state isn't the same
-            if(currentState != null)currentState.Exit();
-            newState.Enter();
-            currentState = newState;
+            // Check current state isn't the same
+            if (newState == currentState) return;
 
+            if (currentState != null) currentState.Exit();
+            if (newState != null)
+            {
+                newState.Enter();
+
+                currentState = newState;
+            }
+            else
+            {
+                currentState = null;
+            }
+            
         }
+        
+        
         
         private void Awake()
         {
-            currentState = idleState;    
+            GetComponent<Health>().OnDeathEvent += Cindy_Model_OnDeathEvent;
+            
+            ChangeState(idleState);
+
         }
         
         public override void Start()
@@ -40,34 +58,32 @@ namespace Tom
 
         private void Update()
         {
-            Cindy_Model_OnHurtEvent();
-            Cindy_Model_OnDeathEvent();
-        }     
-       
+            
+            
+            currentState.Execute();
+            //if (GetComponent<Health>().OnHurtEvent = )
+            //{
+            //    ChangeState(panicState);
+            //}
+            
+            
+        }
 
+        //MAKE A FUNCTION THAT USES CHANGE STATE TO PANIC STATE AS SHOWN ABOVE IN UPDATE
 
-         
-        
         private void Cindy_Model_OnDeathEvent()
         {
-              if(GetComponent<Health>().Amount <= 0)
               Destroy(gameObject);
         }
 
-        private void Cindy_Model_OnHurtEvent()
-        {
-            float scaleChange = GetComponent<Health>().lastHealthChangedAmount / 100f;
-            transform.localScale -= new Vector3(-scaleChange, -scaleChange, -scaleChange);
-        }
-        //TODO move to seperate inheritance 
-        public void TeleportRandomly()
-        {
-            myTransform.position = myTransform.position + new Vector3(Random.Range(-teleportRange, teleportRange), Random.Range(-teleportRange, teleportRange), Random.Range(-teleportRange, teleportRange));
-        }
+        //private void Cindy_Model_OnHurtEvent()
+        //{
+        //    float scaleChange = GetComponent<Health>().lastHealthChangedAmount / 100f;
+         //   transform.localScale -= new Vector3(-scaleChange, -scaleChange, -scaleChange);
+        //}
 
-        public void GetBig()
-        {
-            myTransform.localScale = myTransform.localScale * getBigScalar;
-        }
+        
+
+        
     }
 }

@@ -9,6 +9,8 @@ public class ReturnToStockpileAction : ReGoapAction<string,object>
 {
 
     public Transform stockpilePos;
+    public GameObject logs;
+    public Transform logPos;
     protected override void Awake()
     {
         base.Awake();
@@ -22,6 +24,7 @@ public class ReturnToStockpileAction : ReGoapAction<string,object>
         base.Run(previous, next, settings, goalState, done, fail);
         Debug.Log("Taking Wood Back to stockpile");
         transform.position = stockpilePos.position;
+        Instantiate(logs, logPos);
         StartCoroutine(WaitASec());
         
     }

@@ -13,9 +13,12 @@ public class Spawner : MonoBehaviour
     public event Action<GameObject> OnSpawnedNewGameObject;
 
     public float timedSpawnInterval;
+    public int timedSpawnMaxSpawned = 10;
 
     public bool checkForEmptySpace = false;
     public LayerMask layerMask;
+
+    public List<GameObject> thingsISpawned;
 
     // Use this for initialization
     IEnumerator Start()
@@ -46,6 +49,15 @@ public class Spawner : MonoBehaviour
     {
         if (item == null)
             return;
+
+        // For timed spawning, cap it at a sensible max
+        if (timedSpawnInterval>0)
+        {
+            if (thingsISpawned.Count >= timedSpawnMaxSpawned)
+            {
+                return;
+            }
+        }
         
         
         Vector3 randomPosition = new Vector3();
@@ -81,6 +93,10 @@ public class Spawner : MonoBehaviour
 
         var newGO = Instantiate(item, randomPosition, Quaternion.identity);
 //        Debug.Log("Spawned: "+item.name);
+
+        thingsISpawned.Add(newGO);
+        Health health = newGO.GetComponent<Health>();
+        if (health != null) health.OnDeathEventGameObject += go => thingsISpawned.Remove(go);
 
         if (OnSpawnedNewGameObject != null)
             OnSpawnedNewGameObject(newGO);

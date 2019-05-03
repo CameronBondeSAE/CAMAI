@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Rendering;
 
 //[RequireComponent(typeof(LineRenderer))]
 public class Health : MonoBehaviour
@@ -77,7 +78,7 @@ public class Health : MonoBehaviour
 
         amount = amount + amountOfChange;
         amount = Mathf.Clamp(amount, 0, maxAmount);
-        OnNewAmount(amount);
+        if (OnNewAmount != null) OnNewAmount(amount);
 
         lastHealthChangedAmount = amountOfChange;
 
@@ -142,12 +143,13 @@ public class Health : MonoBehaviour
 
     public void DrawLine(Transform damager, Transform damageReceiver, float amountOfChange, Color colour)
     {
-        lineRenderer.startColor = colour;
+        lineRenderer.startColor = colour/1000f;
         lineRenderer.endColor = colour;
 //		lineRenderer.startWidth = (amountOfChange / 10f) / 2f;
-        lineRenderer.startWidth = 0.5f;
+        lineRenderer.startWidth = 0.2f;
 //		lineRenderer.endWidth = amountOfChange / 10f;
-        lineRenderer.endWidth = 0.5f;
+        lineRenderer.endWidth = 0.75f;
+        lineRenderer.shadowCastingMode = ShadowCastingMode.Off;
 
         lineRenderer.SetPosition(0, damager.position);
         lineRenderer.SetPosition(1, damageReceiver.position);

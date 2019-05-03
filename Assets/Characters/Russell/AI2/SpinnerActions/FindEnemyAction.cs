@@ -29,15 +29,7 @@ namespace Russell
             Action<IReGoapAction<string, object>> fail)
         {
             base.Run(previous, next, settings, goalState, done, fail);
-            if (whosAround == null)
-            {
-                failCallback(this);
-            }
-            else if(whosAround != null)
-            {
-                model.Target = whosAround[Random.Range(0, whosAround.Count)];
-                StartCoroutine(WaitASec());
-            }
+            StartCoroutine(WaitASec());
         }
         
         public override void Exit(IReGoapAction<string, object> next)
@@ -48,12 +40,14 @@ namespace Russell
             {
                 worldState.Set(pair.Key,pair.Value);
             }
+            whosAround.Clear();
         }
         
         
         IEnumerator WaitASec()
         {
             yield return new WaitForSeconds(1);
+            FindNearestEnemy();
             doneCallback(this);
         }
         
@@ -63,7 +57,7 @@ namespace Russell
             
         }
         
-        private void OnTriggerEnter(Collider other)
+        /*private void OnTriggerEnter(Collider other)
         {
         
             if (other.GetComponent<CharacterBase>())
@@ -76,6 +70,23 @@ namespace Russell
         { 
             whosAround.Remove(other.gameObject);  
             //numberOfPlayers = whosAround.Count;
+        }*/
+        public float minDist = Mathf.Infinity;
+        public GameObject newTarget;
+        public void FindNearestEnemy()
+        {
+            whosAround.Add(FindObjectOfType<CharacterBase>().gameObject);
+            foreach (var enemy in whosAround)
+            {
+                float dist = Vector3.Distance(enemy.transform.position, this.gameObject.transform.position);
+                if (dist < minDist)
+                {    
+                    newTarget = enemy;
+                    minDist = dist;
+                }
+            }
+
+            model.Target = newTarget;
         }
     }
 

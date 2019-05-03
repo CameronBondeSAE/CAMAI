@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using ReGoap.Core;
 using ReGoap.Unity;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BuildHouseAction : ReGoapAction<string,object>
 {
     public GameObject house;
     public Transform houseLocation;
+    public Transform housePos;
     protected override void Awake()
     {
         base.Awake();
@@ -22,6 +24,7 @@ public class BuildHouseAction : ReGoapAction<string,object>
     {
         base.Run(previous, next, settings, goalState, done, fail);
         Debug.Log("House Built");
+        transform.position = housePos.position;
         StartCoroutine(WaitASec());
         Instantiate(house, houseLocation);
 
@@ -35,11 +38,19 @@ public class BuildHouseAction : ReGoapAction<string,object>
         {
             worldState.Set(pair.Key,pair.Value);
         }
+
+        StartCoroutine(Finished());
     }
     
     IEnumerator WaitASec()
     {
         yield return new WaitForSeconds(1);
         doneCallback(this);
+    }
+
+    IEnumerator Finished()
+    {
+        yield return new WaitForSeconds(4);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }

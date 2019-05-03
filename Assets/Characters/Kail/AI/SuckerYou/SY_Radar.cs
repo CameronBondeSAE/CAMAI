@@ -34,10 +34,9 @@ namespace Kail
             
             if (tar != null)
             {
-                Debug.Log("got here"); //gets here but doesnt go any further
                 movement.MoveOverride();
-                current.target = radarObj;
-                current.targetFound = true;
+                current.SetTarget(radarObj);
+                transform.LookAt(current.target.transform);
             }
         }
 

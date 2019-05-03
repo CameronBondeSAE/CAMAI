@@ -11,6 +11,7 @@ namespace Russell
         protected override void Awake()
         {
             base.Awake();
+            GetComponent<AttackEnemy>().RePlan += ReDo;
             GetWorldState().Set("alive", true);
             GetWorldState().Set("foundEnemy", false);
             GetWorldState().Set("foundPickup", false);
@@ -23,7 +24,16 @@ namespace Russell
         {
             
         }
+
+        public void ReDo()
+        {
+            GetWorldState().Set("foundEnemy", false);
+            GetWorldState().Set("foundPickup", false);
+            GetWorldState().Set("fullEnergy", false);
+            GetWorldState().Set("EnemyDamaged", false);
+        }
     }
 
 
 }
+    

@@ -17,7 +17,7 @@ namespace Tegan
           
            foreach (CharacterBase character in neighbours)
            {
-               Debug.Log("Someone is nearby");
+               //Debug.Log("Someone is nearby");
            }
        }
 
@@ -27,7 +27,7 @@ namespace Tegan
 
            foreach (CharacterBase character in neighbours)
            {
-               Debug.Log("Someone has moved away");
+               //Debug.Log("Someone has moved away");
            }
        }
    }

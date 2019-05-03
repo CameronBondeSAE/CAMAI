@@ -14,10 +14,12 @@ namespace Russell
         public GameObject newTarget;
         public float damage;
         public Energy energy;
+        public event Action RePlan;
         protected override void Awake()
         {
             base.Awake();
             model = GetComponent<Spinner_Model>();
+            energy = GetComponent<Energy>();
             preconditions.Set("foundEnemy",true);
             preconditions.Set("fullEnergy", true);
             effects.Set("EnemyDamaged", true);
@@ -53,6 +55,9 @@ namespace Russell
             {
                 worldState.Set(pair.Key,pair.Value);
             }
+
+            RePlan();
+
         }
         
         IEnumerator WaitASec()

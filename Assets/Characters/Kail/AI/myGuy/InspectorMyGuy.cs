@@ -30,6 +30,8 @@ namespace Kail
             {
                 myGuy.SetState(3);
             }
+            
+            base.OnInspectorGUI();
         }
     }
 }
