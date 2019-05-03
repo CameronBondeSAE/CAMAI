@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Auriel
+namespace Tegan
 {
 	public class StateBase : MonoBehaviour
 	{
-		public Rigidbody aurielRB;
-		
 		public virtual void Enter()
 		{
-			aurielRB = GetComponent<Rigidbody>();
+			
 		}
 
 		public virtual void Execute()
@@ -20,7 +18,7 @@ namespace Auriel
 
 		public virtual void Exit()
 		{
-
+			GetComponentInParent<AurielBehaviourTree>().NextMove();
 		}
 	}
 }

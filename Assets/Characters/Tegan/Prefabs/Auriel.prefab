@@ -19,9 +19,8 @@ GameObject:
   - component: {fileID: 3951154402914026625}
   - component: {fileID: 5377389747575600894}
   - component: {fileID: 7965016941046083223}
-  - component: {fileID: 5945824093634193284}
   - component: {fileID: 8796089065121594257}
-  - component: {fileID: 5901027098042891697}
+  - component: {fileID: 7521970452356982083}
   m_Layer: 0
   m_Name: Auriel
   m_TagString: Untagged
@@ -182,9 +181,12 @@ MonoBehaviour:
   damageMultiplier: 1
   _target: {fileID: 0}
   _targetPosition: {x: 0, y: 0, z: 0}
-  attackState: {fileID: 0}
   idleState: {fileID: 0}
-  movementState: {fileID: 5945824093634193284}
+  movementState: {fileID: 0}
+  deathState: {fileID: 0}
+  entangleState: {fileID: 0}
+  poisonBurstState: {fileID: 0}
+  soulSiphonState: {fileID: 0}
   currentState: {fileID: 0}
 --- !u!114 &5377389747575600894
 MonoBehaviour:
@@ -219,20 +221,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _serializedBlackboard: '{"_variables":{}}'
   _objectReferences: []
---- !u!114 &5945824093634193284
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2998938463816210132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d0d3e52f0d60de44b93f04ab11383eb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  moveSpeed: 0
 --- !u!114 &8796089065121594257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -246,7 +234,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   neighbours: []
---- !u!114 &5901027098042891697
+--- !u!114 &7521970452356982083
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -255,8 +243,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2998938463816210132}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63e420bd3ba837244ad2ef46bb7f1eef, type: 3}
+  m_Script: {fileID: 11500000, guid: 19f673cde791de0439745ba4e7425a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  turnSpeed: 0

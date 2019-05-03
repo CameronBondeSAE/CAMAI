@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEditor;
 
-namespace Auriel
+namespace Tegan
 {
    public class AurielEditor : EditorWindow
    {
@@ -16,14 +16,14 @@ namespace Auriel
 
       void OnGUI()
       {
-         GUILayout.Label("Manually change Auriel's states (for testing).", EditorStyles.boldLabel);
+         GUILayout.Label("Manually change Auriel's state while in play mode (for testing).", EditorStyles.boldLabel);
 
          if (Selection.activeGameObject == null)
          {
             GUILayout.Label("Select an Auriel AI to use this editor");
          }
 
-         auriel = Selection.activeGameObject.GetComponent<Auriel_Model>();
+ //        auriel = Selection.activeGameObject.GetComponent<Auriel_Model>();
 
          if (auriel == null)
          {

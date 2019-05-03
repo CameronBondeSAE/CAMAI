@@ -2,28 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Auriel
+namespace Tegan
 {
    public class NearestNeighbours : MonoBehaviour
    {
-       public List<CharacterBase> neighbours;
-       
-       // Start is called before the first frame update
-       void Start()
-       {
-            //List<CharacterBase> neighbours = new List<CharacterBase>();
-       }
-
-       // Update is called once per frame
-       void Update()
-       {
-           
-       }
+       public List<CharacterBase> neighbours = new List<CharacterBase>();
 
        private void OnTriggerEnter(Collider other)
        {
-           neighbours.Add(new CharacterBase());
-           
+           if (other.GetComponent<CharacterBase>())
+           {
+               neighbours.Add(other.GetComponent<CharacterBase>());
+           }
+          
            foreach (CharacterBase character in neighbours)
            {
                Debug.Log("Someone is nearby");
@@ -32,7 +23,7 @@ namespace Auriel
 
        private void OnTriggerExit(Collider other)
        {
-           neighbours.Remove(new CharacterBase());
+           neighbours.Remove(other.GetComponent<CharacterBase>());
 
            foreach (CharacterBase character in neighbours)
            {

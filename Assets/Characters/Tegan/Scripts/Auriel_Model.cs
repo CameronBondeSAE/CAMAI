@@ -1,45 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Tom;
+using UnityEditorInternal;
 using UnityEngine;
 
-namespace Auriel
+namespace Tegan
 {
 	public class Auriel_Model : CharacterBase
 	{
-		public StateBase attackState;
 		public StateBase idleState;
 		public StateBase movementState;
+		public StateBase deathState;
+		public StateBase entangleState;
+		public StateBase poisonBurstState;
+		public StateBase soulSiphonState;
 
 		public StateBase currentState;
 
 		public void ChangeState (StateBase newState)
 		{
-			//currentState.Exit();
+			if (currentState == deathState) return;
+
 			newState.Enter();
 			currentState = newState;
 		}
 
 		private void Awake()
 		{
-			ChangeState(movementState);
+			idleState = GetComponentInChildren<IdleState>();
+			movementState = GetComponentInChildren<MovementState>();
+			deathState = GetComponentInChildren<DeathState>();
+			entangleState = GetComponentInChildren<Entangle>();
+			poisonBurstState = GetComponentInChildren<PoisonBurst>();
+			soulSiphonState = GetComponentInChildren<SoulSiphon>();
 
+			currentState = movementState;
+			currentState.Enter();
+			
 			GetComponent<Health>().OnHurtEvent += AurielHurt;
 			GetComponent<Health>().OnDeathEvent += AurielDeath;
 		}
 
-		public override void Start()
+		/*public override void Start()
 		{
-			base.Start();
-		}
+			
+		}*/
 
-		public void Update() 
+		public void Update()
 		{
 			if (currentState != null)
 			{
 				currentState.Execute();
 			}
 		}
-		
+
 		private void AurielHurt()
 		{
 			
@@ -47,7 +61,7 @@ namespace Auriel
 		
 		private void AurielDeath()
 		{
-			Destroy(gameObject);
+			ChangeState(deathState);
 		}
 	}
 }
